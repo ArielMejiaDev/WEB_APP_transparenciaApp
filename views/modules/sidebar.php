@@ -1,11 +1,11 @@
 <div class="be-left-sidebar">
-  <div class="left-sidebar-wrapper"><a href="#" class="left-sidebar-toggle">Dashboard</a>
+  <div class="left-sidebar-wrapper"><a href="#" class="left-sidebar-toggle">Escritorio</a>
     <div class="left-sidebar-spacer">
       <div class="left-sidebar-scroll">
         <div class="left-sidebar-content">
           <ul class="sidebar-elements">
             <li class="divider">Menu</li>
-            <li class="active"><a href="index.html"><i class="icon mdi mdi-home"></i><span>Escritorio</span></a>
+            <li class="active"><a href="index.php?action=dashboard"><i class="icon mdi mdi-home"></i><span>Escritorio</span></a>
             </li>
             <li class="parent"><a href="charts.html"><i class="icon mdi mdi-account-circle"></i><span>Usuarios</span></a>
               <ul class="sub-menu">

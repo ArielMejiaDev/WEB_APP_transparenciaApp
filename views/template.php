@@ -19,11 +19,12 @@
     <link rel="stylesheet" href="views/css/style.css" type="text/css"/>
   </head>
   <body>
-    <div class="be-wrapper be-fixed-sidebar">
-      <?php include_once "views/modules/header.php"; ?>
-      <?php include_once "views/modules/sidebar.php"; ?>
-      <?php include_once "views/modules/content.php"; ?>
-    </div>
+    
+            <?php  
+              $enlace = new EnlacesController();
+              $enlace->loadEnlaces();
+            ?>
+          
     <script src="views/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="views/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
     <script src="views/js/main.js" type="text/javascript"></script>
