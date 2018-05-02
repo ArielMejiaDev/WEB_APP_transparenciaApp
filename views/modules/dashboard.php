@@ -1,3 +1,9 @@
+<?php  
+session_start();
+if (!$_SESSION['verificar']) {
+  header('Location:index.php');
+}
+?>  
 <div class="be-wrapper be-fixed-sidebar">
   <div class="be-content">
     <div class="main-content container-fluid">

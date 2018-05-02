@@ -40,6 +40,7 @@
     <script src="views/lib/jqvmap/jquery.vmap.min.js" type="text/javascript"></script>
     <script src="views/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
     <script src="views/js/app-dashboard.js" type="text/javascript"></script>
+    <script src="views/js/validarNuevoPassword.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
       	//initialize the javascript

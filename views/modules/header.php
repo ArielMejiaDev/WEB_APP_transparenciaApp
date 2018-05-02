@@ -1,5 +1,5 @@
 <?php  
-$user = "Ariel Salvador";
+$user = $_SESSION['usuario'];
 ?>
 <nav class="navbar navbar-default navbar-fixed-top be-top-header">
   <div class="container-fluid">
@@ -16,7 +16,7 @@ $user = "Ariel Salvador";
             </li>
             <li><a href="#"><span class="icon mdi mdi-face"></span> Cuenta</a></li>
             <li><a href="#"><span class="icon mdi mdi-settings"></span> Ajustes</a></li>
-            <li><a href="#"><span class="icon mdi mdi-power"></span> Cerrar Sesión</a></li>
+            <li><a href="index.php?action=cerrarSesion"><span class="icon mdi mdi-power"></span> Cerrar Sesión</a></li>
           </ul>
         </li>
       </ul>

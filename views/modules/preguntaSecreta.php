@@ -9,16 +9,16 @@
 	          			<div class="panel-body">
 	            			<form method="post">
 	              				<div class="form-group">
-	                				<label for="preguntaSecreta" class="control-label"><?php echo utf8_encode($_GET['preguntaSeguridad']); ?></label>
+	                				<label for="preguntaSecreta" class="control-label text-danger"><h3><strong>¿ <?php echo utf8_encode($_GET['preguntaSeguridad']); ?> ?</strong></h3></label>
 	              				</div>
 	              				<div class="form-group">
-	                				<input id="usuarioSeguridad" name="usuarioSeguridad" type="text" placeholder="" class="form-control" value="<?php echo utf8_encode($_GET['usuario']);  ?>">
+	                				<input id="usuarioSeguridad" name="usuarioSeguridad" type="hidden" placeholder="" class="form-control" value="<?php echo utf8_encode($_GET['usuario']);  ?>">
 	              				</div>
 	              				<div class="form-group">
-	                				<input id="preguntaSeguridad" name="preguntaSeguridad" type="text" placeholder="" class="form-control" value="<?php echo utf8_encode($_GET['preguntaSeguridad']);  ?>">
+	                				<input id="preguntaSeguridad" name="preguntaSeguridad" type="hidden" placeholder="" class="form-control" value="<?php echo utf8_encode($_GET['preguntaSeguridad']);  ?>">
 	              				</div>
 	              				<div class="form-group">
-	                				<input id="respuestaSeguridad" name="respuestaSeguridad" type="password" placeholder="Contraseña" class="form-control">
+	                				<input id="respuestaSeguridad" name="respuestaSeguridad" type="password" placeholder="Responde a la pregunta" class="form-control">
 	              				</div>
 	              				<?php  
 	              					$comprobarPreguntaSeguridad = new IngresoController();

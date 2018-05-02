@@ -8,7 +8,8 @@ class EnlacesModel extends Conexion{
 			$enlace == "header" || 
 			$enlace == "sidebar" ||
 			$enlace == "dashboard" ||
-			$enlace == "preguntaSecreta" ) {
+			$enlace == "preguntaSecreta" ||
+			$enlace == "formCambiarPassword") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
 			$url = 'views/modules/ingreso.php';
