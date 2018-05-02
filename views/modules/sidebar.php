@@ -9,7 +9,7 @@
             </li>
             <li class="parent"><a href="charts.html"><i class="icon mdi mdi-account-circle"></i><span>Usuarios</span></a>
               <ul class="sub-menu">
-                <li><a href="charts-flot.html"><i class="icon mdi mdi-account-add"></i> Crear usuario</a>
+                <li><a href="index.php?action=crearUsuario"><i class="icon mdi mdi-account-add"></i> Crear usuario</a>
                 </li>
                 <li><a href="charts-sparkline.html"><i class="icon mdi mdi-accounts"></i> Lista de usuarios</a>
                 </li>
