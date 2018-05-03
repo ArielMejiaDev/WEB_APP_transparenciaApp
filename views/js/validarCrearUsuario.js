@@ -1,0 +1,269 @@
+//sugerir usuario
+var usuario = document.getElementById('usuarioCrearUsuario');
+usuario.addEventListener('focus',sugerirUsuario,false);
+function sugerirUsuario(){
+	var nombreUsuario = document.getElementById('nombresCrearUsuario').value;
+	var inicial = nombreUsuario.charAt(0).toLowerCase();
+
+	var apellidoUsuario = document.getElementById('apellidosCrearUsuario').value;
+	var stringArray = apellidoUsuario.split(" ");
+
+
+	var usuarioSugerido = inicial+stringArray[0];
+
+
+	// validar si el apellido es "de"
+	if (stringArray[0]=="de") {
+		var usuarioSugerido = inicial+stringArray[0]+stringArray[1];
+	}
+
+	// validar si el apellido es "del"
+	if (stringArray[0]=="del") {
+		var usuarioSugerido = inicial+stringArray[0]+stringArray[1];
+	}
+
+	// validar si el apellido es "de"
+	if (stringArray[1]=="la") {
+		var usuarioSugerido = inicial+stringArray[0]+stringArray[1]+stringArray[2];
+	}
+	
+	
+
+	var usuario = document.getElementById('usuarioCrearUsuario');
+	usuario.value=usuarioSugerido.toLowerCase();
+
+}
+// VALIDACION DEL PASSWORD
+function validarPassword(){
+	/**
+	 *
+	 * VALIDANDO NOMBRES
+	 *
+	 */
+	
+	var nombres = document.getElementById('nombresCrearUsuario').value;
+	if (nombres!="") {
+		var caracteresNombres = nombres.length;
+		var regExp=/^[a-zA-Z0-9]*$/;
+		var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
+		alertaNombres.style.display="none";
+
+		var alertaApellidos = document.getElementById('avisoApellidosCrearUsuario');
+		alertaApellidos.style.display="none";
+
+		if (!regExp.test(nombres)) {
+			var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
+			alertaNombres.innerHTML="No estan permitidos caracteres especiales";
+			alertaNombres.style.display="inline";
+			return false;
+		}
+	}else{
+		var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
+		alertaNombres.innerHTML="No puede quedar vacio";
+		alertaNombres.style.display="inline";
+		return false;
+	}
+
+	/**
+	 *
+	 * FIN DE VALIDACION DE NOMBRES
+	 *
+	 */
+	
+
+	/**
+	 *
+	 * VALIDACION APELLIDOS
+	 *
+	 */
+
+
+	var apellidos = document.getElementById('apellidosCrearUsuario').value;
+	if (apellidos!="") {
+		var caracteresApellidos = apellidos.length;
+		
+		var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
+		alertaNombres.style.display="none";
+
+		var alertaApellidos = document.getElementById('avisoApellidosCrearUsuario');
+		alertaApellidos.style.display="none";
+
+		if (!regExp.test(apellidos)) {
+		alertaApellidos.innerHTML="No estan permitidos los caracteres especiales";
+		alertaApellidos.style.display="inline";
+		return false;
+		}
+
+	}else{
+		alertaApellidos.innerHTML="No puede quedar vacio";
+		alertaApellidos.style.display="inline";
+		return false;
+	}
+
+	/**
+	 *
+	 * FIN DE VALIDAR APELLIDOS
+	 *
+	 */
+	
+
+
+
+	/**
+	 *
+	 * VALIDAR USUARIO SIN AJAX
+	 *
+	 */
+
+
+	 var usuario = document.getElementById('usuarioCrearUsuario').value;
+	 if (usuario!="") {
+	 	var avisoUsuario = document.getElementById('avisoUsuarioCrearUsuario');
+	 	avisoUsuario.style.display="none";
+
+	 	var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
+		alertaNombres.style.display="none";
+
+		var alertaApellidos = document.getElementById('avisoApellidosCrearUsuario');
+		alertaApellidos.style.display="none";
+
+	 	if (!regExp.test(usuario)) {
+	 		var avisoUsuario = document.getElementById('avisoUsuarioCrearUsuario');
+		 	avisoUsuario.innerHTML="No estan permitidos los caracteres especiales";
+		 	avisoUsuario.style.display="inline";
+		 	return false;
+	 	}
+	 }else{
+	 	var avisoUsuario = document.getElementById('avisoUsuarioCrearUsuario');
+	 	avisoUsuario.innerHTML="No se puede quedar vacio";
+	 	avisoUsuario.style.display="inline";
+	 	return false;
+	 }
+
+	 /**
+	  *
+	  * FIN DE VALIDAR USUARIO SIN AJAX
+	  *
+	  */
+
+
+	  /**
+	   *
+	   * VALIDACION PASSWORD
+	   *
+	   */
+	  
+	 
+	   var password1 = document.getElementById('passwordCrearUsuario').value;
+	   var avisoPassword = document.getElementById('avisoPasswordCrearUsuario');
+	   var regExpPassword= /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/;
+	   avisoPassword.style.display="none";
+	   alertaApellidos.style.display="none";
+	   alertaNombres.style.display="none";
+	   avisoUsuario.style.display="none";
+
+	   if (password1!="") {
+	   		var caracteresPassword1 = password1.length;
+	   		if (caracteresPassword1<8) {
+	   			avisoPassword.innerHTML="Se require un minimo de 8 digitos para la contraseña";
+		   		avisoPassword.style.display="inline";
+		   		return false;
+	   		}
+	   		if (!regExpPassword.test(password1)) {
+	   			avisoPassword.innerHTML="No estan permitidos los caracteres especiales";
+		   		avisoPassword.style.display="inline";
+		   		return false;
+	   		}
+	   }else{
+	   		avisoPassword.innerHTML="No se puede quedar vacio";
+	   		avisoPassword.style.display="inline";
+	   		return false;
+	   }
+
+
+	 /**
+	  *
+	  * FIN VALIDACION PASSWORD
+	  *
+	  */
+
+	  /**
+	   *
+	   * VALIDACION DE CONFIRMACION DE PASSWORD
+	   *
+	   */
+	  
+	   var password2 = document.getElementById('repPasswordCrearUsuario').value;
+	   var avisoPassword2 = document.getElementById('avisoRepPasswordCrearUsuario');
+
+	   avisoPassword2.style.display="none";
+	   avisoPassword.style.display="none";
+	   alertaApellidos.style.display="none";
+	   alertaNombres.style.display="none";
+	   avisoUsuario.style.display="none";
+	   if (password2!="") {
+	   	
+	   		var caracteresPassword2 = password2.length;
+	   		if (caracteresPassword2<8) {
+	   			avisoPassword2.innerHTML="Se require un minimo de 8 digitos para la contraseña";
+		   		avisoPassword2.style.display="inline";
+		   	 	return false;
+	   		}
+	   		if (!regExpPassword.test(password2)) {
+	   			avisoPassword2.innerHTML="No estan permitidos los caracteres especiales";
+		   		avisoPassword2.style.display="inline";
+		   	 	return false;
+	   		}
+	   		if (password1!==password2) {
+	   			avisoPassword2.innerHTML="No coinciden las contraseñas";
+		   		avisoPassword2.style.display="inline";
+		   	 	return false;
+	   		}
+	   }else{
+	   	 	avisoPassword2.innerHTML="No se puede quedar vacio";
+	   		avisoPassword2.style.display="inline";
+	   	 	return false;
+	   }
+
+	  /**
+	   *
+	   * FIN DE VALIDACION DE CONFIRMACION DE PASSWORD
+	   *
+	   */
+
+
+
+	   /**
+	    *
+	    * VALIDACION DEL EMAIL
+	    *
+	    */
+	   	
+
+	   	var email = document.getElementById('emailCrearUsuario').value;
+	   	var avisoEmail = document.getElementById('avisoEmailCrearUsuario');
+	   	var expRegEmail =/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+	   	if (email!="") {
+	   		if (!expRegEmail.test(email)) {
+	   			avisoEmail.innerHTML="Debe ingrear un email valido";
+		   		avisoEmail.style.display="inline";
+		   		return false;
+	   		}
+	   	}else{
+	   		avisoEmail.innerHTML="No puede quedar vacio";
+	   		avisoEmail.style.display="inline";
+	   		return false;
+	   	}
+	  	
+
+	  	/**
+	  	 *
+	  	 * FIN VALIDACION DEL EMAIL
+	  	 *
+	  	 */
+	  	
+	 
+	
+
+	return true;
+}

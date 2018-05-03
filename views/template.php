@@ -29,6 +29,15 @@
     <script src="views/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
     <script src="views/js/main.js" type="text/javascript"></script>
     <script src="views/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery.gritter/js/jquery.gritter.js" type="text/javascript"></script>
+    <script src="assets/js/app-ui-notifications.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        //initialize the javascript
+        App.init();
+        App.uiNotifications();
+      });
+    </script>
     <script src="views/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
     <script src="views/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
     <script src="views/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
@@ -41,6 +50,7 @@
     <script src="views/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
     <script src="views/js/app-dashboard.js" type="text/javascript"></script>
     <script src="views/js/validarNuevoPassword.js"></script>
+    <script src="views/js/validarCrearUsuario.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
       	//initialize the javascript
