@@ -3,6 +3,8 @@ session_start();
 if (!$_SESSION['verificar']) {
   header('Location:index.php');
 }
+$crearUsuario = new UsuariosController();
+$crearUsuario->CrearUsuarioController();
 ?>  
 <div class="be-wrapper be-fixed-sidebar">
       <div class="be-content">
@@ -108,10 +110,6 @@ if (!$_SESSION['verificar']) {
 		                    		<button type="submit" class="btn btn-info"><i class="icon mdi mdi-account-add"></i> Crear Usuario</button>
 		                    	</div>
 		                    </div>
-		                    <?php  
-                    			$crearUsuario = new UsuariosController();
-                    			$crearUsuario->CrearUsuarioController();
-                    		?>
 	                  	</form>
 	                </div>
 	              </div>

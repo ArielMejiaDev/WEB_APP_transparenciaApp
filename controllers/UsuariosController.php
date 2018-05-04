@@ -70,7 +70,20 @@ class UsuariosController{
 									"rol"=>$_POST['rolCrearUsuario'],
 									"preguntaSecreta"=>$_POST['preguntaSeguridadCrearUsuario'],
 									"respuestaSecreta"=>$_POST['respuestaSeguridadCrearUsuario']);
-									echo "<pre>",print_r($datos),"</pre>";
+									//echo "<pre>",print_r($datos),"</pre>";
+									$respuesta = UsuariosModel::CrearUsuarioModel($datos,"usuarios");
+									if ($respuesta=='success') {
+										header('Location:index.php?action=dashboard');
+									}else{
+										echo '	<div class="col-sm-6 col-sm-offset-3">
+												<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
+											    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
+											        <div class="message">
+											          <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> No se pudo insertar el nuevo usuario.
+											        </div>
+											  	</div>
+											</div>';
+									}
 								
 								}else{
 									echo '	<div class="col-sm-6 col-sm-offset-3">
@@ -138,12 +151,3 @@ class UsuariosController{
 		}//VALIDACION INICIAL PARA COMPROBAR QUE ESTE SETEADO EL PRIMER VALOR
 	}// FIN DEL METODO CREAR USUARIO CONTROLLER PARA INSERTAR USUARIOS EN LA BASE DE DATOS
 }
-?>
-<div class="col-sm-6 col-offset-3">
-	<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
-    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-        <div class="message">
-          <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> No puede quedar vacio ningun campo a excepcion de la foto.6
-        </div>
-  	</div>
-</div>
