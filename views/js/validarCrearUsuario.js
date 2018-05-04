@@ -33,6 +33,21 @@ function sugerirUsuario(){
 	usuario.value=usuarioSugerido.toLowerCase();
 
 }
+
+
+//SUGERIR EMAIL
+var sugerenciaEmail = document.getElementById('emailCrearUsuario');
+sugerenciaEmail.addEventListener('focus',sugerirEmail,false);
+
+function sugerirEmail(){
+	var sugerenciaEmail = document.getElementById('emailCrearUsuario');
+	var sugerenciaUsuario = document.getElementById('usuarioCrearUsuario').value;
+	var dominio = "@ipm.org.gt";
+	sugerenciaEmail.value=sugerenciaUsuario+dominio;
+}
+
+
+
 // VALIDACION DEL PASSWORD
 function validarPassword(){
 	/**
@@ -44,6 +59,7 @@ function validarPassword(){
 	var nombres = document.getElementById('nombresCrearUsuario').value;
 	if (nombres!="") {
 		var caracteresNombres = nombres.length;
+		var expRegNombres = /^(?![ .]+$)[a-zA-Z .]*$/;
 		var regExp=/^[a-zA-Z0-9]*$/;
 		var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
 		alertaNombres.style.display="none";
@@ -51,7 +67,7 @@ function validarPassword(){
 		var alertaApellidos = document.getElementById('avisoApellidosCrearUsuario');
 		alertaApellidos.style.display="none";
 
-		if (!regExp.test(nombres)) {
+		if (!expRegNombres.test(nombres)) {
 			var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
 			alertaNombres.innerHTML="No estan permitidos caracteres especiales";
 			alertaNombres.style.display="inline";
@@ -88,7 +104,7 @@ function validarPassword(){
 		var alertaApellidos = document.getElementById('avisoApellidosCrearUsuario');
 		alertaApellidos.style.display="none";
 
-		if (!regExp.test(apellidos)) {
+		if (!expRegNombres.test(apellidos)) {
 		alertaApellidos.innerHTML="No estan permitidos los caracteres especiales";
 		alertaApellidos.style.display="inline";
 		return false;
@@ -259,6 +275,62 @@ function validarPassword(){
 	  	/**
 	  	 *
 	  	 * FIN VALIDACION DEL EMAIL
+	  	 *
+	  	 */
+
+
+	  	/**
+	  	 *
+	  	 * VALIDACION DE PREGUNTA SECRETA
+	  	 *
+	  	 */
+	  	
+	  	
+
+	  	var preguntaSecreta = document.getElementById('preguntaSeguridadCrearUsuario').value;
+	  	var avisoPreguntaSecreta = document.getElementById('avisoPreguntaSeguridadCrearUsuario');
+	  	var contenedor = document.getElementById('contenedorAvisoPreguntaSeguridadCrearUsuario');
+	  	avisoPreguntaSecreta.style.display="none";
+	  	contenedor.style.display="none";
+	  	if (preguntaSecreta!="") {
+
+	  	}else{
+	  		avisoPreguntaSecreta.innerHTML="No puede quedar vacio";
+	  		avisoPreguntaSecreta.style.display="inline";
+	  		contenedor.style.display="inline";
+	  		return false;
+	  	}
+
+
+
+	  	/**
+	  	 *
+	  	 * FIN VALIDACION DE PREGUNTA SECRETA
+	  	 *
+	  	 */
+
+
+	  	 /**
+	  	  *
+	  	  * VALIDAR RESPUESTA SECRETA
+	  	  *
+	  	  */
+	  	 
+	  	
+		var respuestaSecreta = document.getElementById('respuestaSeguridadCrearUsuario').value;
+		var avisoRespuestaSecreta = document.getElementById('avisoRespuestaSeguridadCrearUsuario');
+		if (respuestaSecreta!="") {
+
+		}else{
+			avisoRespuestaSecreta.innerHTML="No puede quedar vacio";
+			avisoRespuestaSecreta.style.display="inline";
+			return false;
+		}
+
+
+	  	/**
+	  	 *
+	  	 * FIN VALIDAR RESPUESTA SECRETA
 	  	 *
 	  	 */
 	  	

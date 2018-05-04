@@ -15,7 +15,7 @@ if (!$_SESSION['verificar']) {
 	              <div class="panel panel-default panel-border-color panel-border-color-primary">
 	                <div class="panel-heading panel-heading-divider"><i class="icon mdi mdi-account-add"></i> Crear Usuario<span class="panel-subtitle">Crea una nueva cuenta de usuario.</span></div>
 	                <div class="panel-body">
-	                  	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarPassword()">
+	                  	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarPassword()" method="post">
 		                    <div class="form-group">
 		                      <label class="col-sm-3 control-label" for="nombresCrearUsuario">Nombres</label>
 		                      <div class="col-sm-6">
@@ -70,15 +70,15 @@ if (!$_SESSION['verificar']) {
 		                      <label class="col-sm-3 control-label">Rol</label>
 		                      <div class="col-sm-6">
 		                        <div class="be-radio inline">
-		                          <input type="radio" name="rolCrearUsuario" id="rol1" class="radio">
+		                          <input type="radio" name="rolCrearUsuario" id="rol1" class="radio" value="usuario">
 		                          <label for="rol1">Usuario</label>
 		                        </div>
 		                        <div class="be-radio inline">
-		                          <input type="radio" name="rolCrearUsuario" id="rol2" class="radio">
+		                          <input type="radio" name="rolCrearUsuario" id="rol2" class="radio" value="editor">
 		                          <label for="rol2">Editor</label>
 		                        </div>
 		                        <div class="be-radio inline">
-		                          <input type="radio" name="rolCrearUsuario" id="rol3" class="radio">
+		                          <input type="radio" name="rolCrearUsuario" id="rol3" class="radio" value="admin">
 		                          <label for="rol3">Admin</label>
 		                        </div>
 		                      </div>
@@ -88,9 +88,13 @@ if (!$_SESSION['verificar']) {
 		                      <div class="col-sm-6">
 		                        <div class="input-group xs-mb-15"><span class="input-group-addon">¿</span>
 		                          <input type="text" class="form-control" id="preguntaSeguridadCrearUsuario" name="preguntaSeguridadCrearUsuario"><span class="input-group-addon">?</span>
-		                        <p id="avisoPreguntaSeguridadCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 		                        </div>
 		                      </div>
+		                    </div>
+		                    <div class="form-group" style="display: none" id="contenedorAvisoPreguntaSeguridadCrearUsuario">
+		                    	<div class="col-sm-6 col-sm-offset-3">
+		                    		<p id="avisoPreguntaSeguridadCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+		                    	</div>
 		                    </div>
 		                    <div class="form-group">
 		                      <label class="col-sm-3 control-label" for="respuestaSeguridadCrearUsuario">Escribe tu respuesta de seguridad</label>
@@ -104,6 +108,10 @@ if (!$_SESSION['verificar']) {
 		                    		<button type="submit" class="btn btn-info"><i class="icon mdi mdi-account-add"></i> Crear Usuario</button>
 		                    	</div>
 		                    </div>
+		                    <?php  
+                    			$crearUsuario = new UsuariosController();
+                    			$crearUsuario->CrearUsuarioController();
+                    		?>
 	                  	</form>
 	                </div>
 	              </div>
