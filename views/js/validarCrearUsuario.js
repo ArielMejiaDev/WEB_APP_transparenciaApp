@@ -74,6 +74,9 @@ function respAjax(){
 				  title: 'Oops...',
 				  text: 'El usuario ya existe',
 				})
+			}else{
+				var avisoUsuario = document.getElementById('avisoUsuarioCrearUsuario');
+				avisoUsuario.style.display="none";
 			}
 		}
 	}else{
@@ -90,8 +93,40 @@ function respAjax(){
 
 
 //VALIDACION DE EMAIL REPETIDO CON AJAX EN EL FORM DE CREAR USUARIO
-
-
+var emailValidar = document.getElementById('emailCrearUsuario');
+emailValidar.addEventListener('blur',enviarEmail,false);
+var emailExistente=false;
+var conexion;
+function enviarEmail(){
+	//console.log(emailValidar.value);
+	var datosEmail = new FormData();
+	datosEmail.append("email",emailValidar.value);
+	conexion = new XMLHttpRequest();;
+	conexion.onreadystatechange=respEmailAjax;
+	conexion.open("POST","views/modules/validacionCrearUsuarioAjax.php",true);
+	conexion.send(datosEmail);
+}
+function respEmailAjax(){
+	if (conexion.readyState==4) {
+		if (conexion.status==200) {
+			if (conexion.responseText=="existe") {
+				//console.log(conexion.responseText);
+				emailExistente=true;
+				var avisoEmail = document.getElementById('avisoEmailCrearUsuario');
+			 	avisoEmail.innerHTML="El email ya existe!";
+			   	avisoEmail.style.display="inline";
+				swal({
+				  type: 'error',
+				  title: 'Oops...',
+				  text: 'El email ya existe',
+				})
+			}else{
+				var avisoEmail = document.getElementById('avisoEmailCrearUsuario');
+			   	avisoEmail.style.display="none";
+			}
+		}
+	}
+}
 // FIN VALIDACION DE EMAIL REPETIDO CON AJAX EN EL FORM DE CREAR USUARIO
 
 
@@ -397,6 +432,7 @@ function validarPassword(){
 	  	 	return false;
 	  	 }
 
+
 	  	 /**
 	  	  *
 	  	  * FIN DE VALIDAR USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR EL SUBMIT
@@ -404,7 +440,23 @@ function validarPassword(){
 	  	  */
 	  	 
 	  	
-	 
+	 	/**
+	 	 *
+	 	 * VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
+	 	 *
+	 	 */
+	 	
+
+	 	if (emailExistente) {
+	  	 	return false;
+	  	 }
+
+	  	/**
+	  	 *
+	  	 * FIN DE VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX SUBMIT
+	  	 *
+	  	 */
+	  	
 	
 
 	return true;

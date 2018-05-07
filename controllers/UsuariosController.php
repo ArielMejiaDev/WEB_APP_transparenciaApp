@@ -146,7 +146,19 @@ class UsuariosController{
 
 	public function validarUsuarioAjaxController($datos){
 		$respuesta = UsuariosModel::validarUsuarioAjaxModel($datos,"usuarios");
-		if ($respuesta>0) {
+		//var_dump($respuesta);
+		$existe=(int)$respuesta['existencia'];
+		//var_dump($existe);
+		if ($existe>0) {
+			return 'existe';
+		}
+	}
+
+
+	public function validarEmailAjaxController($datos){
+		$respuesta = UsuariosModel::validarEmailAjaxModel($datos,"usuarios");
+		$existe=(int)$respuesta['existencia'];
+		if ($existe>0) {
 			return 'existe';
 		}
 	}

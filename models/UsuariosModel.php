@@ -22,9 +22,17 @@ class UsuariosModel extends Conexion{
 	}
 
 	public function validarUsuarioAjaxModel($datos,$tabla){
-		$sql = "SELECT COUNT(*) FROM $tabla WHERE usuario=:usuario";
+		$sql = "SELECT COUNT(*) AS existencia FROM $tabla WHERE usuario = :usuario ";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':usuario',$_POST['usuario'],PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
+	public function validarEmailAjaxModel($datos,$tabla){
+		$sql = "SELECT COUNT(*) AS existencia FROM $tabla WHERE email=:email";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':email',$_POST['email'],PDO::PARAM_STR);
 		$stmt->execute();
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
