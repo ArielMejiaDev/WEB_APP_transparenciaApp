@@ -20,4 +20,12 @@ class UsuariosModel extends Conexion{
 			return 'error';
 		}
 	}
+
+	public function validarUsuarioAjaxModel($datos,$tabla){
+		$sql = "SELECT COUNT(*) FROM $tabla WHERE usuario=:usuario";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':usuario',$_POST['usuario'],PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
 }

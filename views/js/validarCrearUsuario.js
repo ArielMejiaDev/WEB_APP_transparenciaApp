@@ -46,7 +46,41 @@ function sugerirEmail(){
 	sugerenciaEmail.value=sugerenciaUsuario+dominio;
 }
 
-
+//VALIDACION DE EXISTENCIA DE USUARIO CON AJAX
+var usuario = document.getElementById('usuarioCrearUsuario');
+var usuarioExistente = false;
+usuario.addEventListener('blur',obtenerUsuario,false);
+var conexion;
+function obtenerUsuario(){
+	console.log(usuario.value);
+	var datos = new FormData();
+	datos.append("usuario",usuario.value);
+	conexion = new XMLHttpRequest();
+	conexion.onreadystatechange=respAjax;
+	conexion.open("POST","views/modules/validacionCrearUsuarioAjax.php",true);
+	conexion.send(datos);
+}
+function respAjax(){
+	if (conexion.readyState==4) {
+		if (conexion.status==200) {
+			//console.log(conexion.responseText);
+			if (conexion.responseText=="existe") {
+				usuarioExistente=true;
+				var avisoUsuario = document.getElementById('avisoUsuarioCrearUsuario');
+			 	avisoUsuario.innerHTML="El usuario ya existe!";
+			 	avisoUsuario.style.display="inline";
+				swal({
+				  type: 'error',
+				  title: 'Oops...',
+				  text: 'El usuario ya existe',
+				})
+			}
+		}
+	}else{
+		console.log("Cargando...");
+	}
+}
+//FIN DE VALIDACION DE EXISTENCIA DE USUARIO CON AJAX
 
 // VALIDACION DEL PASSWORD
 function validarPassword(){
@@ -333,6 +367,23 @@ function validarPassword(){
 	  	 * FIN VALIDAR RESPUESTA SECRETA
 	  	 *
 	  	 */
+	  	
+	  	/**
+	  	 *
+	  	 * VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
+	  	 *
+	  	 */
+
+	  	 if (usuarioExistente) {
+	  	 	return false;
+	  	 }
+
+	  	 /**
+	  	  *
+	  	  * FIN DE VALIDAR USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR EL SUBMIT
+	  	  *
+	  	  */
+	  	 
 	  	
 	 
 	

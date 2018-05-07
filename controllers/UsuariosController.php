@@ -143,4 +143,11 @@ class UsuariosController{
 			}//VALIDACION DE QUE EXISTAN LAS VARIABLES POST QUE SE RECIBEN
 		}//VALIDACION INICIAL PARA COMPROBAR QUE ESTE SETEADO EL PRIMER VALOR
 	}// FIN DEL METODO CREAR USUARIO CONTROLLER PARA INSERTAR USUARIOS EN LA BASE DE DATOS
+
+	public function validarUsuarioAjaxController($datos){
+		$respuesta = UsuariosModel::validarUsuarioAjaxModel($datos,"usuarios");
+		if ($respuesta>0) {
+			return 'existe';
+		}
+	}
 }
