@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="views/lib/jquery.vectormap/jquery-jvectormap-1.2.2.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/jqvmap/jqvmap.min.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="views/lib/datatables/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" href="views/css/style.css" type="text/css"/>
   </head>
   <body>
@@ -28,6 +29,21 @@
     <script src="views/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- <script src="assets/lib/jquery.gritter/js/jquery.gritter.js" type="text/javascript"></script>
     <script src="assets/js/app-ui-notifications.js" type="text/javascript"></script> -->
+    
+
+
+    <script src="views/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="views/lib/datatables/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    <script src="views/lib/datatables/plugins/buttons/js/dataTables.buttons.js" type="text/javascript"></script>
+    <script src="views/lib/datatables/plugins/buttons/js/buttons.html5.js" type="text/javascript"></script>
+    <script src="views/lib/datatables/plugins/buttons/js/buttons.flash.js" type="text/javascript"></script>
+    <script src="views/lib/datatables/plugins/buttons/js/buttons.print.js" type="text/javascript"></script>
+    <script src="views/lib/datatables/plugins/buttons/js/buttons.colVis.js" type="text/javascript"></script>
+    <script src="views/lib/datatables/plugins/buttons/js/buttons.bootstrap.js" type="text/javascript"></script>
+    <script src="views/js/app-tables-datatables.js" type="text/javascript"></script>
+
+
+
     <script src="views/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
     <script src="views/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
     <script src="views/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
@@ -42,6 +58,11 @@
 
     <script src="views/js/validarNuevoPassword.js"></script>
     <script src="views/js/validarCrearUsuario.js"></script>
+
+
+    
+
+
     <script type="text/javascript">
       $(document).ready(function(){
       	//initialize the javascript

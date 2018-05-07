@@ -11,7 +11,7 @@
               <ul class="sub-menu">
                 <li><a href="index.php?action=crearUsuario"><i class="icon mdi mdi-account-add"></i> Crear usuario</a>
                 </li>
-                <li><a href="charts-sparkline.html"><i class="icon mdi mdi-accounts"></i> Lista de usuarios</a>
+                <li><a href="index.php?action=listarUsuarios"><i class="icon mdi mdi-accounts"></i> Lista de usuarios</a>
                 </li>
               </ul>
             </li>

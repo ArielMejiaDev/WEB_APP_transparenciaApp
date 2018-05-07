@@ -59,6 +59,10 @@ class UsuariosController{
 										$_POST['urlFotoCrearUsuario'] = "views/images/avatar.png";
 									}
 
+									if (empty($_POST['rolCrearUsuario'])) {
+										$_POST['rolCrearUsuario'] = "usuario";
+									}
+
 									$datos = array(
 									"nombres"=>$_POST['nombresCrearUsuario'],
 									"apellidos"=>$_POST['apellidosCrearUsuario'],
