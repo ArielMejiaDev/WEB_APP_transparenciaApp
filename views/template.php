@@ -9,10 +9,8 @@
      <link rel="shortcut icon" href="views/images/favicon.ico" type="image/x-icon">
     <title>App</title>
     <link rel="stylesheet" type="text/css" href="views/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
-    <link rel="stylesheet" type="text/css" href="views/lib/material-design-icons/css/material-design-iconic-font.min.css"/><!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="views/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
+    <script src="views/js/sweetalert2.all.js"></script>
     <link rel="stylesheet" type="text/css" href="views/lib/jquery.vectormap/jquery-jvectormap-1.2.2.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/jqvmap/jqvmap.min.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
@@ -23,6 +21,7 @@
   $enlace = new EnlacesController();
   $enlace->loadEnlaces();
 ?>  
+    
     <script src="views/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="views/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
     <script src="views/js/main.js" type="text/javascript"></script>
@@ -40,6 +39,7 @@
     <script src="views/lib/jqvmap/jquery.vmap.min.js" type="text/javascript"></script>
     <script src="views/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
     <script src="views/js/app-dashboard.js" type="text/javascript"></script>
+
     <script src="views/js/validarNuevoPassword.js"></script>
     <script src="views/js/validarCrearUsuario.js"></script>
     <script type="text/javascript">

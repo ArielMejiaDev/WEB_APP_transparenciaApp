@@ -5,7 +5,20 @@ if (!$_SESSION['verificar']) {
 }
 $crearUsuario = new UsuariosController();
 $crearUsuario->CrearUsuarioController();
-?>  
+if (isset($_GET['not'])) {
+	if ($_GET['not']=='success') {
+		echo "	<script>
+					swal({
+					  position: 'top-end',
+					  type: 'success',
+					  title: 'Usuario grabado exitosamente!',
+					  showConfirmButton: false,
+					  timer: 1500
+					})
+				</script>";
+	}
+}
+?>
 <div class="be-wrapper be-fixed-sidebar">
       <div class="be-content">
         <div class="main-content container-fluid">

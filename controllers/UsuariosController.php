@@ -6,34 +6,36 @@ class UsuariosController{
 			//empezamos a validar
 			//que no vayan vacios y que no sean expresiones regulares
 			if (isset(
-				$_POST['nombresCrearUsuario']) && 
-				isset($_POST['apellidosCrearUsuario']) && 
-				isset($_POST['usuarioCrearUsuario']) && 
-				isset($_POST['passwordCrearUsuario']) && 
-				isset($_POST['repPasswordCrearUsuario']) && 
-				isset($_POST['emailCrearUsuario']) && 
-				isset($_POST['urlFotoCrearUsuario']) && 
-				isset($_POST['rolCrearUsuario']) && 
-				isset($_POST['preguntaSeguridadCrearUsuario']) && 
+				$_POST['nombresCrearUsuario']) || 
+				isset($_POST['apellidosCrearUsuario']) || 
+				isset($_POST['usuarioCrearUsuario']) || 
+				isset($_POST['passwordCrearUsuario']) || 
+				isset($_POST['repPasswordCrearUsuario']) || 
+				isset($_POST['emailCrearUsuario']) || 
+				isset($_POST['urlFotoCrearUsuario']) || 
+				isset($_POST['rolCrearUsuario']) || 
+				isset($_POST['preguntaSeguridadCrearUsuario']) || 
 				isset($_POST['respuestaSeguridadCrearUsuario'])) {
 				
 
 
 				if (!empty(
-				$_POST['nombresCrearUsuario']) && 
-				!empty($_POST['apellidosCrearUsuario']) && 
-				!empty($_POST['usuarioCrearUsuario']) && 
-				!empty($_POST['passwordCrearUsuario']) && 
-				!empty($_POST['repPasswordCrearUsuario']) && 
-				!empty($_POST['emailCrearUsuario']) && 
-				!empty($_POST['rolCrearUsuario']) && 
-				!empty($_POST['preguntaSeguridadCrearUsuario']) && 
+				$_POST['nombresCrearUsuario']) || 
+				!empty($_POST['apellidosCrearUsuario']) || 
+				!empty($_POST['usuarioCrearUsuario']) || 
+				!empty($_POST['passwordCrearUsuario']) || 
+				!empty($_POST['repPasswordCrearUsuario']) || 
+				!empty($_POST['emailCrearUsuario']) || 
+				!empty($_POST['rolCrearUsuario']) || 
+				!empty($_POST['preguntaSeguridadCrearUsuario']) || 
 				!empty($_POST['respuestaSeguridadCrearUsuario'])) {
 
 					//validar que no se reciban expresiones regulares
 
+					// $expRegNombres = '/^(?![ .]+$)[a-zA-Z .]*$/';
 					$expRegNombres = '/^(?![ .]+$)[a-zA-Z .]*$/';
 					$expRegCamposTexto = '/^[a-zA-Z0-9]*$/';
+					// $expRegCamposTexto = '/^[a-zA-Z0-9]*$/';
 					$expRegPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/';
 					$expRegEmail = '/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/';
 
@@ -44,8 +46,6 @@ class UsuariosController{
 					&&	preg_match($expRegCamposTexto, $_POST['rolCrearUsuario']) 
 					&&	preg_match($expRegCamposTexto, $_POST['preguntaSeguridadCrearUsuario']) 
 					&&	preg_match($expRegCamposTexto, $_POST['respuestaSeguridadCrearUsuario'])) {
-						
-
 						//que cumplan con los requerimientos de las contraseñas y que sean iguales
 						
 						if (preg_match($expRegPassword, $_POST['passwordCrearUsuario']) 
@@ -73,80 +73,73 @@ class UsuariosController{
 									//echo "<pre>",print_r($datos),"</pre>";
 									$respuesta = UsuariosModel::CrearUsuarioModel($datos,"usuarios");
 									if ($respuesta=='success') {
-										header('Location:index.php?action=dashboard');
+										header('Location:index.php?action=crearUsuario&not=success');
 									}else{
-										echo '	<div class="col-sm-6 col-sm-offset-3">
-												<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
-											    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-											        <div class="message">
-											          <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> No se pudo insertar el nuevo usuario.
-											        </div>
-											  	</div>
-											</div>';
+										echo "	<script>
+													swal({
+													  type: 'error',
+													  title: 'Oops...',
+													  text: 'No se pudo crear el nuevo usuario',
+													})
+												</script>";
 									}
 								
 								}else{
-									echo '	<div class="col-sm-6 col-sm-offset-3">
-												<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
-											    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-											        <div class="message">
-											          <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> Por favor ingresar un correo electronico valido.
-											        </div>
-											  	</div>
-											</div>';
+									echo "	<script>
+											swal({
+											  type: 'error',
+											  title: 'Oops...',
+											  text: 'Por favor ingrese un correo elecronico valido',
+											})
+										</script>";
 								}//VALIDACION DEL EMAIL	
 
 							}else{
-								echo '	<div class="col-sm-6 col-sm-offset-3">
-												<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
-											    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-											        <div class="message">
-											          <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> Las contraseñas no coinciden.
-											        </div>
-											  	</div>
-											</div>';
+								echo "	<script>
+											swal({
+											  type: 'error',
+											  title: 'Alerta...',
+											  text: 'Las contraseñas no coinciden',
+											})
+										</script>";
 							}//VALIDACION DE QUE LOS PASSWORDS SEAN IGUALES
 
 													
 						}else{
-							echo '	<div class="col-sm-6 col-sm-offset-3">
-										<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
-									    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-									        <div class="message">
-									          <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> La contraseña debe incluir 1 Mayuscula, 1 minuscula y 1 número como minimo.
-									        </div>
-									  	</div>
-									</div>';
+							echo "	<script>
+										swal({
+										  type: 'error',
+										  title: 'Alerta...',
+										  text: 'Las contraseñas deben contener 1 mayuscula, 1 minuscula y 1 número minimo y NO DEBE CONTENER CARACTERES ESPECIALES',
+										})
+									</script>";
 						}//VALIDACION DE LOS PASSWORDS
 					}else{
-						echo '	<div class="col-sm-6 col-sm-offset-3">
-									<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
-								    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-								        <div class="message">
-								          <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> No esta permitido el ingreso de caracteres especiales.
-								        </div>
-								  	</div>
-								</div>';
+						echo "	<script>
+										swal({
+										  type: 'error',
+										  title: 'Alerta...',
+										  text: 'No esta permitido el ingreso de caracteres especiales',
+										})
+									</script>";
 					}//VALIDACION DE CAMPOS TEXTO PARA EVITAR EXPRESIONES REGULARES
 				}else{
-					echo '	<div class="col-sm-6 col-sm-offset-3">
-								<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
-							    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-							        <div class="message">
-							          <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> No puede quedar ningun campo vacio a excepcion de la foto.
-							        </div>
-							  	</div>
-							</div>';
+					echo "	<script>
+								swal({
+								  type: 'error',
+								  title: 'Alerta...',
+								  text: 'No puede quedar ningun campo vacio a excepcion de la foto',
+								})
+							</script>";
 				}//VALIDACION DE QUE LOS CAMPOS NO ESTEN VACIOS
 			}else{
-				echo '	<div class="col-sm-6 col-sm-offset-3">
-							<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
-						    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-						        <div class="message">
-						          <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> No puede quedar vacio ningun campo a excepcion de la foto.
-						        </div>
-						  	</div>
-						</div>';
+				echo "	<script>
+							swal({
+							  type: 'error',
+							  title: 'Alerta...',
+							  text: 'No puede quedar ningun campo vacio a excepcion de la foto',
+							})
+						</script>";
 			}//VALIDACION DE QUE EXISTAN LAS VARIABLES POST QUE SE RECIBEN
 		}//VALIDACION INICIAL PARA COMPROBAR QUE ESTE SETEADO EL PRIMER VALOR
 	}// FIN DEL METODO CREAR USUARIO CONTROLLER PARA INSERTAR USUARIOS EN LA BASE DE DATOS
