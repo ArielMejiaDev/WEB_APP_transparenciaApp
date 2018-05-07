@@ -46,7 +46,7 @@ function sugerirEmail(){
 	sugerenciaEmail.value=sugerenciaUsuario+dominio;
 }
 
-//VALIDACION DE EXISTENCIA DE USUARIO CON AJAX
+//VALIDACION DE EXISTENCIA DE USUARIO EN EL FORM DE CREAR USUARIO CON AJAX
 var usuario = document.getElementById('usuarioCrearUsuario');
 var usuarioExistente = false;
 usuario.addEventListener('blur',obtenerUsuario,false);
@@ -81,6 +81,25 @@ function respAjax(){
 	}
 }
 //FIN DE VALIDACION DE EXISTENCIA DE USUARIO CON AJAX
+
+
+
+
+
+
+
+
+//VALIDACION DE EMAIL REPETIDO CON AJAX EN EL FORM DE CREAR USUARIO
+
+
+// FIN VALIDACION DE EMAIL REPETIDO CON AJAX EN EL FORM DE CREAR USUARIO
+
+
+
+
+
+
+
 
 // VALIDACION DEL PASSWORD
 function validarPassword(){
