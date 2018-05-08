@@ -84,11 +84,11 @@ if (isset($_GET['not'])) {
 	</div>
 </div>
 
-    
-    <script type="text/javascript">
-      $(document).ready(function(){
-      	//initialize the javascript
-      	App.init();
-      	App.dataTables();
-      });
-    </script>
+<script src="views/lib/jquery/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+  	//initialize the javascript
+  	App.init();
+  	App.dataTables();
+  });
+</script>
