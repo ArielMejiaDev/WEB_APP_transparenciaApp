@@ -35,8 +35,12 @@
     <script src="views/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="views/lib/datatables/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/dataTables.buttons.js" type="text/javascript"></script>
+    <script src="views/lib/datatables/plugins/buttons/js/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
     <script src="views/lib/datatables/plugins/buttons/js/buttons.html5.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/buttons.flash.js" type="text/javascript"></script>
+
     <script src="views/lib/datatables/plugins/buttons/js/buttons.print.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/buttons.colVis.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/buttons.bootstrap.js" type="text/javascript"></script>

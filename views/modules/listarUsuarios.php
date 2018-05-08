@@ -35,7 +35,7 @@ if (isset($_GET['not'])) {
 	              <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
 	            </div>
             	<div class="panel-body">
-	              	<table id="table1" class="table table-striped table-hover table-fw-widget">
+	              	<table id="usuarios" class="table table-striped table-hover table-fw-widget">
 	                    <thead>
 	                      <tr>
 	                        <th>Usuario</th>
