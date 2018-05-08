@@ -83,10 +83,7 @@ if (isset($_GET['not'])) {
 	  	</div>
 	</div>
 </div>
-<script src="views/lib/jquery/jquery.min.js" type="text/javascript"></script>
-    <script src="views/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
-    <script src="views/js/main.js" type="text/javascript"></script>
-    <script src="views/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+
     
     <script type="text/javascript">
       $(document).ready(function(){

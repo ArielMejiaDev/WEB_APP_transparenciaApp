@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="views/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/datatables/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" href="views/css/style.css" type="text/css"/>
+    <script src="views/lib/jquery/jquery.min.js" type="text/javascript"></script>
   </head>
   <body>
 <?php  
@@ -23,7 +24,7 @@
   $enlace->loadEnlaces();
 ?>  
     
-    <script src="views/lib/jquery/jquery.min.js" type="text/javascript"></script>
+    
     <script src="views/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
     <script src="views/js/main.js" type="text/javascript"></script>
     <script src="views/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
