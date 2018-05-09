@@ -360,10 +360,5 @@ if (!$_SESSION['verificar']) {
 	  </div>
   </div>
 </div>
-<script type="text/javascript">
-  $(document).ready(function(){
-    //initialize the javascript
-    App.init();
-    App.dataTables();
-  });
-</script>
+
+

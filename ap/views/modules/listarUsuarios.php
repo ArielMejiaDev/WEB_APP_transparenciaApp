@@ -39,7 +39,7 @@ if (isset($_GET['not'])) {
 			          </div>
 			        </div>
 			        <div class="panel-body">
-			        	<table id="table3" class="table table-striped table-hover table-fw-widget">
+			        	<table id="table6" class="table table-striped table-hover table-fw-widget">
 	                    <thead>
 	                      <tr>
 	                        <th>Usuario</th>
@@ -84,11 +84,3 @@ if (isset($_GET['not'])) {
 		</div>
 	</div>
 </div>
-<script src="views/lib/jquery/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    //initialize the javascript
-    App.init();
-    App.dashboard();
-  });
-</script>
