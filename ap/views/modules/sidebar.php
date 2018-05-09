@@ -49,10 +49,10 @@
         </div>
         <div class="progress-widget">
           <div class="progress-data">
-            <span class="progress-value">60%</span><span class="name">Current Project</span>
+            <span class="progress-value">25</span><span class="name">Archivos Subidos</span>
           </div>
           <div class="progress">
-            <div style="width: 60%;" class="progress-bar progress-bar-primary"></div>
+            <div style="width: 25%;" class="progress-bar progress-bar-primary"></div>
           </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/img/logo-fav.png">
+    <link rel="shortcut icon" href="views/images/favicon.ico">
     <title>Transparencia App</title>
     <link rel="stylesheet" type="text/css" href="views/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
@@ -89,10 +89,7 @@
                             App.dashboard();
                           });
                         </script>';
-            }
-
-
-            if ($_GET['action'] == 'listarUsuarios') {
+            }else{
                 echo '  <script>
                           $(document).ready(function(){
                             //initialize the javascript
@@ -101,28 +98,6 @@
                           });
                         </script>';
             }
-
-            if ($_GET['action'] == 'crearUsuario') {
-                echo '  <script>
-                          $(document).ready(function(){
-                            //initialize the javascript
-                            App.init();
-                            App.dataTables();
-                          });
-                        </script>';
-            }
-
-            if ($_GET['action'] == 'subirArchivos') {
-                echo '  <script>
-                          $(document).ready(function(){
-                            //initialize the javascript
-                            App.init();
-                            App.dataTables();
-                          });
-                        </script>';
-            }
-
-        
     ?>
         
 

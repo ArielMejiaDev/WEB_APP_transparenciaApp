@@ -8248,7 +8248,8 @@ canvas {
   line-height: 60px;
   height: 60px;
   width: 230px;
-  background-image: url("../img/logo.png");
+  background-image: url("../../views/images/favicon.ico");
+  background-size: 50px 50px;
   background-repeat: no-repeat;
   background-position: 20px center;
   padding: 0 20px;
@@ -8256,8 +8257,8 @@ canvas {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
   .be-top-header .navbar-header .navbar-brand {
-    background-image: url("../img/logo-xx.png");
-    background-size: 102px 27px;
+    background-image: url("../../views/images/favicon.ico");
+    background-size: 50px 50px;
   }
 }
 @media (max-width: 767px) {
