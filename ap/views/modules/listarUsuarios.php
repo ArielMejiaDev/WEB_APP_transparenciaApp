@@ -3,21 +3,7 @@ session_start();
 if (!$_SESSION['verificar']) {
   header('Location:index.php');
 }
-$crearUsuario = new UsuariosController();
-$crearUsuario->CrearUsuarioController();
-if (isset($_GET['not'])) {
-	if ($_GET['not']=='success') {
-		echo "	<script>
-					swal({
-					  position: 'top-end',
-					  type: 'success',
-					  title: 'Usuario grabado exitosamente!',
-					  showConfirmButton: false,
-					  timer: 1500
-					})
-				</script>";
-	}
-}
+
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/img/logo-fav.png">
-    <title>Beagle</title>
+    <title>Transparencia App</title>
     <link rel="stylesheet" type="text/css" href="views/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
 
@@ -34,7 +34,7 @@
     <script src="views/js/main.js" type="text/javascript"></script>
     <script src="views/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 
-    <script src="views/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <!-- <script src="views/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="views/lib/datatables/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/dataTables.buttons.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/buttons.html5.js" type="text/javascript"></script>
@@ -42,7 +42,7 @@
     <script src="views/lib/datatables/plugins/buttons/js/buttons.print.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/buttons.colVis.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/buttons.bootstrap.js" type="text/javascript"></script>
-    <script src="views/js/app-tables-datatables.js" type="text/javascript"></script>
+    <script src="views/js/app-tables-datatables.js" type="text/javascript"></script> -->
 
     
     
@@ -63,7 +63,7 @@
 
 
     <!-- DASHBOARD -->
-    <!-- <script src="views/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
+    <script src="views/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
     <script src="views/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
     <script src="views/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
     <script src="views/lib/jquery-flot/plugins/jquery.flot.orderBars.js" type="text/javascript"></script>
@@ -73,29 +73,25 @@
     <script src="views/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="views/lib/jqvmap/jquery.vmap.min.js" type="text/javascript"></script>
     <script src="views/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-    <script src="views/js/app-dashboard.js" type="text/javascript"></script> -->
-    
-    
+    <script src="views/js/app-dashboard.js" type="text/javascript"></script> 
     
 
-    
+
     <?php  
         
-        if ($_GET['action'] == 'dashboard') {
-            echo '  <script type="text/javascript">
-                      $(document).ready(function(){
-                        //initialize the javascript
-                        App.init();
-                        App.dashboard();
-                      });
-                    </script>';
-        }
-
-    ?>
 
 
-    <?php  
-        if (isset($_GET['action'])) {
+            if ($_GET['action'] == 'dashboard') {
+                echo '  <script type="text/javascript">
+                          $(document).ready(function(){
+                            //initialize the javascript
+                            App.init();
+                            App.dashboard();
+                          });
+                        </script>';
+            }
+
+
             if ($_GET['action'] == 'listarUsuarios') {
                 echo '  <script>
                           $(document).ready(function(){
@@ -105,7 +101,28 @@
                           });
                         </script>';
             }
-        }
+
+            if ($_GET['action'] == 'crearUsuario') {
+                echo '  <script>
+                          $(document).ready(function(){
+                            //initialize the javascript
+                            App.init();
+                            App.dataTables();
+                          });
+                        </script>';
+            }
+
+            if ($_GET['action'] == 'subirArchivos') {
+                echo '  <script>
+                          $(document).ready(function(){
+                            //initialize the javascript
+                            App.init();
+                            App.dataTables();
+                          });
+                        </script>';
+            }
+
+        
     ?>
         
 

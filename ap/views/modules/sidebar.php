@@ -21,7 +21,7 @@
                         </li>
                         <li class="parent"><a href="#"><i class="icon mdi mdi-collection-text"></i><span>Archivos</span></a>
                           <ul class="sub-menu">
-                            <li><a href="form-elements.html"><i class="icon mdi mdi-cloud-upload"></i> Subir archivos</a>
+                            <li><a href="index.php?action=subirArchivos"><i class="icon mdi mdi-cloud-upload"></i> Subir archivos</a>
                             </li>
                             <li><a href="form-validation.html"><i class="icon mdi mdi-check-all"></i> Publicar archivos</a>
                             </li>

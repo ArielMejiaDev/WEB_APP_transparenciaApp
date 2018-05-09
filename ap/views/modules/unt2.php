@@ -18,13 +18,13 @@ if (isset($_GET['not'])) {
 				</script>";
 	}
 }
-include_once "navbar.php";
-include_once "sidebar.php";
 ?>
 <div class="be-wrapper be-fixed-sidebar">
       <div class="be-content">
         <div class="main-content container-fluid">
-          
+          <div class="row">
+          	<?php include_once "views/modules/header.php"; ?>
+        	<?php include_once "views/modules/sidebar.php"; ?>
         	<div class="row">
 	            <div class="col-md-12">
 	              <div class="panel panel-default panel-border-color panel-border-color-primary">
@@ -128,6 +128,7 @@ include_once "sidebar.php";
 	              </div>
 	            </div>
           	</div>
+      	</div>
     </div>
   </div>
 </div>

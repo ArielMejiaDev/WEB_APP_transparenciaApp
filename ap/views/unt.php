@@ -18,19 +18,28 @@ if (isset($_GET['not'])) {
 				</script>";
 	}
 }
-include_once "navbar.php";
-include_once "sidebar.php";
 ?>
-<div class="be-wrapper be-fixed-sidebar">
-      <div class="be-content">
-        <div class="main-content container-fluid">
-          
-        	<div class="row">
-	            <div class="col-md-12">
-	              <div class="panel panel-default panel-border-color panel-border-color-primary">
-	                <div class="panel-heading panel-heading-divider"><i class="icon mdi mdi-account-add"></i> Crear Usuario<span class="panel-subtitle">Crea una nueva cuenta de usuario.</span></div>
-	                <div class="panel-body">
-	                  	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarPassword()" method="post">
+<?php require_once "navbar.php"; ?>
+<?php require_once "sidebar.php"; ?>
+<div class="be-content">
+	<div class="page-head">
+	  <h2 class="page-head-title">Data Tables</h2>
+	  <ol class="breadcrumb page-head-nav">
+	    <li><a href="#">Home</a></li>
+	    <li><a href="#">Tables</a></li>
+	    <li class="active">Data Tables</li>
+	  </ol>
+	</div>
+	<div class="main-content container-fluid">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default panel-table">
+					<div class="panel-heading">Escritorio
+			          <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span>
+			          </div>
+			        </div>
+			        <div class="panel-body">
+			        	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarPassword()" method="post">
 		                    <div class="form-group">
 		                      <label class="col-sm-3 control-label" for="nombresCrearUsuario">Nombres</label>
 		                      <div class="col-sm-6">
@@ -124,10 +133,9 @@ include_once "sidebar.php";
 		                    	</div>
 		                    </div>
 	                  	</form>
-	                </div>
-	              </div>
-	            </div>
-          	</div>
-    </div>
-  </div>
+			        </div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
