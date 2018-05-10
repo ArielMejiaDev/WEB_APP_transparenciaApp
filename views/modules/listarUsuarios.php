@@ -3,39 +3,42 @@ session_start();
 if (!$_SESSION['verificar']) {
   header('Location:index.php');
 }
-$crearUsuario = new UsuariosController();
-$crearUsuario->CrearUsuarioController();
 if (isset($_GET['not'])) {
 	if ($_GET['not']=='success') {
-		echo "	<script>
-					swal({
-					  position: 'top-end',
-					  type: 'success',
-					  title: 'Usuario grabado exitosamente!',
-					  showConfirmButton: false,
-					  timer: 1500
-					})
-				</script>";
+		echo "
+		<script>
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Usuario Eliminado!',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
+		</script>";
 	}
 }
 ?>
-<div class="be-wrapper be-fixed-sidebar">
-	<div class="be-content">
-	    <div class="main-content container-fluid">
-			<div class="row">
-	          	<?php include_once "views/modules/header.php"; ?>
-	        	<?php include_once "views/modules/sidebar.php"; ?>
-	        	<div class="row">
-	<div class="col-sm-12">
-	  	<div class="panel panel-default panel-border-color panel-border-color-primary">
-	        <div class="panel-heading panel-heading-divider"><i class="icon mdi mdi-accounts"></i> Usuarios		<span class="panel-subtitle">lista de usuarios.</span>
-	        </div>
-    		<div class="panel panel-default panel-table">
-	            <div class="panel-heading">Default
-	              <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
-	            </div>
-            	<div class="panel-body">
-	              	<table id="usuarios" class="table table-striped table-hover table-fw-widget">
+<?php require_once "navbar.php"; ?>
+<?php require_once "sidebar.php"; ?>
+<div class="be-content">
+	<div class="page-head">
+	  <h2 class="page-head-title">Usuarios</h2>
+	  <ol class="breadcrumb page-head-nav">
+	    <li><a href="#">Inicio</a></li>
+	    <li><a href="#">Usuarios</a></li>
+	    <li class="active">Lista Usuarios</li>
+	  </ol>
+	</div>
+	<div class="main-content container-fluid">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default panel-table">
+					<div class="panel-heading">Escritorio
+			          <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span>
+			          </div>
+			        </div>
+			        <div class="panel-body">
+			        	<table id="table6" class="table table-striped table-hover table-fw-widget">
 	                    <thead>
 	                      <tr>
 	                        <th>Usuario</th>
@@ -44,51 +47,78 @@ if (isset($_GET['not'])) {
 	                        <th>Eliminar</th>
 	                      </tr>
 	                    </thead>
-	                    <tbody>
-							<tr class="odd gradeX">
-								<td>Trident</td>
-								<td>
-								  Internet
-								  Explorer 4.0
-								</td>
-								<td>Win 95+</td>
-								<td class="center"> 4</td>
-							</tr>
-							<tr class="odd gradeA">
-								<td>Trident</td>
-								<td>Internet Explorer 7</td>
-								<td>Win XP SP2+</td>
-								<td class="center">7</td>
-							</tr>
-							<tr class="even gradeA">
-								<td>Trident</td>
-								<td>AOL browser (AOL desktop)</td>
-								<td>Win XP</td>
-								<td class="center">6</td>
-							</tr>
-							<tr class="gradeA">
-								<td>Gecko</td>
-								<td>Firefox 1.0</td>
-								<td>Win 98+ / OSX.2+</td>
-								<td class="center">1.7</td>
-							</tr>
-	                    </tbody>
-	              	</table>
-            	</div>
-        	</div>
+	                    	<tbody>
+	                    		<div id="botones">
+	                    		<?php  
+									$usuarios = new UsuariosController();
+									$usuarios->listarUsuariosController();
+									$usuarios->eliminarUsuariosController();
+								?>
+	                    		</div>
+							</tbody>
+	              		</table>
+			       	</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-	    	</div>
-	  	</div>
-	</div>
-</div>
-
-<script src="views/lib/jquery/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-  	//initialize the javascript
-  	App.init();
-  	App.dataTables();
-  });
+</div>';
+<script>
+	var botonesEliminar = document.getElementsByClassName("btn btn-danger");
+	//console.log(botonesEliminar);
+	for (var i = 0; i < botonesEliminar.length; i++) {
+		botonesEliminar[i].addEventListener('click',capturarEvento,false);
+	}
+	function capturarEvento(e){
+		e.preventDefault();
+		var id = e.target.getAttribute('href');
+		var usuario = e.target.getAttribute('usuario');
+		console.log(id);
+		mostrarMensaje(id,usuario);
+	}
+	function mostrarMensaje(id,usuario){
+		swal({
+		  title: 'Deseas eliminar al usuario '+usuario,
+		  text: "Este paso no se puede revertir!",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Si, eliminar'
+		}).then((result) => {
+		  if (result.value) {
+		    window.location="index.php?action=listarUsuarios&eliminar="+id;
+		  }else if (
+			    // Read more about handling dismissals
+			    result.dismiss === swal.DismissReason.cancel
+			  ) {
+			    swal(
+			      'Cancelado',
+			      'No se elimino ningun registro',
+			      'error'
+			    )
+			  }
+		})
+	}
 </script>
+<!-- <div id="mod-danger" tabindex="-1" role="dialog" class="modal fade" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="mdi mdi-close"></span></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="text-danger"><span class="modal-main-icon mdi mdi-close-circle-o"></span></div>
+          <h3>Danger!</h3>
+          <p>Desea eliminar al usuario: <br><?php echo $id; ?></p>
+          <div class="xs-mt-50">
+            <button type="button" data-dismiss="modal" class="btn btn-space btn-default">Cancel</button>
+            <button type="button" data-dismiss="modal" class="btn btn-space btn-danger">Proceed</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div> -->

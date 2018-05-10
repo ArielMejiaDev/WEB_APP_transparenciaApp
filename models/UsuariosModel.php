@@ -36,4 +36,22 @@ class UsuariosModel extends Conexion{
 		$stmt->execute();
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
+
+	public function listarUsuariosModel($tabla){
+		$sql = "SELECT * FROM $tabla";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function eliminarUsuariosModel($dato,$tabla){
+		$sql = "DELETE FROM $tabla WHERE id = :id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		if ($stmt->execute()) {
+			return 'success';
+		}else{
+			return 'error';
+		}
+	}
 }

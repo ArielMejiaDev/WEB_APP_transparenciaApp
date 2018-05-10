@@ -6,38 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
-     <link rel="shortcut icon" href="views/images/favicon.ico" type="image/x-icon">
-    <title>App</title>
+    <link rel="shortcut icon" href="views/images/favicon.ico">
+    <title>Transparencia App</title>
     <link rel="stylesheet" type="text/css" href="views/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
+
     <script src="views/js/sweetalert2.all.js"></script>
     <link rel="stylesheet" type="text/css" href="views/lib/jquery.vectormap/jquery-jvectormap-1.2.2.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/jqvmap/jqvmap.min.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+
     <link rel="stylesheet" type="text/css" href="views/lib/datatables/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" href="views/css/style.css" type="text/css"/>
+    
   </head>
   <body>
-<?php  
-  $enlace = new EnlacesController();
-  $enlace->loadEnlaces();
-?>  
-    
+    <div class="be-wrapper">
+      
+      <?php  
+        $enlace = new EnlacesController();
+        $enlace->loadEnlaces();
+      ?>  
+      
+    </div>
     <script src="views/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="views/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
     <script src="views/js/main.js" type="text/javascript"></script>
     <script src="views/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- <script src="assets/lib/jquery.gritter/js/jquery.gritter.js" type="text/javascript"></script>
-    <script src="assets/js/app-ui-notifications.js" type="text/javascript"></script> -->
-    
-
 
     <script src="views/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="views/lib/datatables/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/dataTables.buttons.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="views/lib/datatables/plugins/buttons/js/pdfmake.min.js"></script>
+    <script src="views/lib/datatables/plugins/buttons/js/vfs_fonts.js"></script>
     <script src="views/lib/datatables/plugins/buttons/js/buttons.html5.js" type="text/javascript"></script>
     <script src="views/lib/datatables/plugins/buttons/js/buttons.flash.js" type="text/javascript"></script>
 
@@ -46,8 +48,7 @@
     <script src="views/lib/datatables/plugins/buttons/js/buttons.bootstrap.js" type="text/javascript"></script>
     <script src="views/js/app-tables-datatables.js" type="text/javascript"></script>
 
-
-
+    <!-- DASHBOARD -->
     <script src="views/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
     <script src="views/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
     <script src="views/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
@@ -58,21 +59,35 @@
     <script src="views/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="views/lib/jqvmap/jquery.vmap.min.js" type="text/javascript"></script>
     <script src="views/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-    <script src="views/js/app-dashboard.js" type="text/javascript"></script>
+    <script src="views/js/app-dashboard.js" type="text/javascript"></script> 
 
+    <?php  
+        
+
+
+            if ($_GET['action'] == 'dashboard') {
+                echo '  <script type="text/javascript">
+                          $(document).ready(function(){
+                            //initialize the javascript
+                            App.init();
+                            App.dashboard();
+                          });
+                        </script>';
+            }else{
+                echo '  <script>
+                          $(document).ready(function(){
+                            //initialize the javascript
+                            App.init();
+                            App.dataTables();
+                          });
+                        </script>';
+            }
+    ?>
+        
+
+    <!-- MODULOS PERSONALIZADOS -->
     <script src="views/js/validarNuevoPassword.js"></script>
     <script src="views/js/validarCrearUsuario.js"></script>
-
-
-    
-
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-      	//initialize the javascript
-      	App.init();
-      	App.dashboard();
-      });
-    </script>
+    <!-- FIN DE MODULOS PERSONALIZADOS -->
   </body>
 </html>

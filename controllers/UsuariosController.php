@@ -166,4 +166,37 @@ class UsuariosController{
 			return 'existe';
 		}
 	}
+
+	public function listarUsuariosController(){
+		$respuesta = UsuariosModel::listarUsuariosModel("usuarios");
+		//echo '<pre>',print_r($respuesta),'</pre>';
+		$i=0;
+		foreach ($respuesta as $key => $value) {
+			echo   '<tr class="odd gradeX">
+						<td>'.$value["usuario"].'</td>
+						<td>'.$value["rol"].'</td>
+						<td>
+							<a href="index.php?action=editarUsuario" class="btn btn-primary"><i class="icon mdi mdi-edit"></i>
+							</a>
+						</td>
+						<td>
+							<button href="'.$value['id'].'" usuario="'.$value['usuario'].'" id="eliminar'.$value['id'].'" class="btn btn-danger">Eliminar
+							</button>
+						</td>
+					</tr>';	
+			$i++;              
+		}
+	}
+
+	public function eliminarUsuariosController(){
+		if (isset($_GET['eliminar'])) {
+			$dato = $_GET['eliminar'];
+			$respuesta = UsuariosModel::eliminarUsuariosModel($dato,"usuarios");
+			if ($respuesta =='success') {
+				echo "	<script>
+							window.location='index.php?action=listarUsuarios&not=success';
+						</script>";
+			}
+		}
+	}
 }
