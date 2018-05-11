@@ -17,6 +17,19 @@ if (isset($_GET['not'])) {
 		</script>";
 	}
 }
+if (isset($_GET['not'])) {
+  if ($_GET['not']=='success2') {
+    echo "  <script>
+          swal({
+            position: 'top-end',
+            type: 'success',
+            title: 'Usuario editado exitosamente!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        </script>";
+  }
+}
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>

@@ -63,4 +63,24 @@ class UsuariosModel extends Conexion{
 			return $stmt->fetch(PDO::FETCH_ASSOC);
 		}
 	}
+
+	public function actualizarUsuarioModel($datos,$tabla){
+		$sql = "UPDATE $tabla SET nombres=:nombres,apellidos=:apellidos,usuario=:usuario,password=:password,email=:email,foto=:foto,rol=:rol,pregunta_seguridad=:pregunta_seguridad,respuesta_seguridad=:respuesta_seguridad WHERE id=:id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$datos['id'],PDO::PARAM_INT);
+		$stmt->bindParam(':nombres',$datos['nombres'],PDO::PARAM_STR);
+		$stmt->bindParam(':apellidos',$datos['apellidos'],PDO::PARAM_STR);
+		$stmt->bindParam(':usuario',$datos['usuario'],PDO::PARAM_STR);
+		$stmt->bindParam(':password',$datos['password'],PDO::PARAM_STR);
+		$stmt->bindParam(':email',$datos['email'],PDO::PARAM_STR);
+		$stmt->bindParam(':foto',$datos['urlFoto'],PDO::PARAM_STR);
+		$stmt->bindParam(':rol',$datos['rol'],PDO::PARAM_STR);
+		$stmt->bindParam(':pregunta_seguridad',$datos['preguntaSecreta'],PDO::PARAM_STR);
+		$stmt->bindParam(':respuesta_seguridad',$datos['respuestaSecreta'],PDO::PARAM_STR);
+		if ($stmt->execute()) {
+			return 'success';
+		}else{
+			return 'error';
+		}
+	}
 }

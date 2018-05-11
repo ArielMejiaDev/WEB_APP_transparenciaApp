@@ -4,14 +4,14 @@ if (!$_SESSION['verificar']) {
   header('Location:index.php');
 }
 $editarUsuario = new UsuariosController();
-
+$editarUsuario->actualizarUsuarioController();
 if (isset($_GET['not'])) {
   if ($_GET['not']=='success') {
     echo "  <script>
           swal({
             position: 'top-end',
             type: 'success',
-            title: 'Usuario grabado exitosamente!',
+            title: 'Usuario editado exitosamente!',
             showConfirmButton: false,
             timer: 1500
           })
@@ -29,7 +29,8 @@ include_once "sidebar.php";
           <div class="panel panel-default panel-border-color panel-border-color-primary">
             <div class="panel-heading panel-heading-divider"><i class="icon mdi mdi-edit"></i> Editar Usuario<span class="panel-subtitle">Edita la cuenta de un usuario.</span></div>
             <div class="panel-body">
-                <?php $editarUsuario->crearFormEditarUsuarioController(); ?>
+                <?php $editarUsuario->crearFormEditarUsuarioController(); 
+                ?>
             </div>
           </div>
         </div>
