@@ -367,6 +367,34 @@ function validarPassword(){
 	  	 */
 
 
+
+	  	 /**
+	  	  *
+	  	  * VALIDACION DEL ROL
+	  	  *
+	  	  */
+	  	 
+	  	  var rol = document.getElementsByClassName('radioButton');
+	  	  var avisorol = document.getElementById('avisoRolCrearUsuario');
+	  	  for (var i = 0; i < rol.length; i++) {
+	  	  	if (rol[i].checked) {
+	  	  		return true;
+	  	  	}else{
+	  	  		avisorol.innerHTML="Por favor elija un rol para el usuario";
+	  	  		avisorol.style.display="inline";
+	  	  		return false;
+	  	  	}
+	  	  }
+
+	  	  /**
+	  	   *
+	  	   * FIN DE VALIDACION DEL ROL
+	  	   *
+	  	   */
+	  	  
+
+
+
 	  	/**
 	  	 *
 	  	 * VALIDACION DE PREGUNTA SECRETA

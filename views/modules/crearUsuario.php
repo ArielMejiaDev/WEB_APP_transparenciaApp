@@ -111,6 +111,7 @@ include_once "sidebar.php";
 									<input type="radio" class="radioButton" id="rol3" name="rolCrearUsuario" value="admin">Admin
 								</label>
 	                          </div>
+	                          <p id="avisoRolCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 	                        </div>
 		                    <div class="form-group">
 		                      <label class="col-sm-3 control-label" for="preguntaSeguridadCrearUsuario">Escribe tu pregunta de seguridad</label>
