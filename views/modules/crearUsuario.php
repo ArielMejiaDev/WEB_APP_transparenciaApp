@@ -81,7 +81,7 @@ include_once "sidebar.php";
 		                        <p id="avisoUrlFotoCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 		                      </div>
 		                    </div>
-		                    <div class="form-group">
+		                    <!-- <div class="form-group">
 		                      <label class="col-sm-3 control-label">Rol</label>
 		                      <div class="col-sm-6">
 		                        <div class="be-radio inline">
@@ -97,7 +97,21 @@ include_once "sidebar.php";
 		                          <label for="rol3">Admin</label>
 		                        </div>
 		                      </div>
-		                    </div>
+		                    </div> -->
+		                    <div class="form-group">
+	                          <label class="col-sm-3 control-label">Rol</label>
+	                          <div class="col-sm-6">
+								<label class="radio-inline">
+									<input type="radio" class="radioButton" id="rol1" name="rolCrearUsuario" value="usuario">Usuario
+								</label>
+								<label class="radio-inline">
+									<input type="radio" class="radioButton" id="rol2" name="rolCrearUsuario" value="editor">Editor
+								</label>
+								<label class="radio-inline">
+									<input type="radio" class="radioButton" id="rol3" name="rolCrearUsuario" value="admin">Admin
+								</label>
+	                          </div>
+	                        </div>
 		                    <div class="form-group">
 		                      <label class="col-sm-3 control-label" for="preguntaSeguridadCrearUsuario">Escribe tu pregunta de seguridad</label>
 		                      <div class="col-sm-6">

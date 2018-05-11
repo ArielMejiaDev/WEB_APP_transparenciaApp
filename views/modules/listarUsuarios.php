@@ -38,6 +38,7 @@ if (isset($_GET['not'])) {
 			          </div>
 			        </div>
 			        <div class="panel-body">
+			        	
 			        	<table id="table6" class="table table-striped table-hover table-fw-widget">
 	                    <thead>
 	                      <tr>
@@ -62,7 +63,9 @@ if (isset($_GET['not'])) {
 			</div>
 		</div>
 	</div>
-</div>';
+</div>
+
+
 <script>
 	var botonesEliminar = document.getElementsByClassName("btn btn-danger");
 	//console.log(botonesEliminar);

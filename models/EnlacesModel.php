@@ -12,6 +12,7 @@ class EnlacesModel extends Conexion{
 			$enlace == "formCambiarPassword" ||
 			$enlace == "crearUsuario" ||
 			$enlace == "listarUsuarios"||
+			$enlace == "editarUsuario"||
 			$enlace == "subirArchivos") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){

@@ -171,12 +171,13 @@ class UsuariosController{
 		$respuesta = UsuariosModel::listarUsuariosModel("usuarios");
 		//echo '<pre>',print_r($respuesta),'</pre>';
 		$i=0;
+		//$nombres = $respuesta['nombres'];
 		foreach ($respuesta as $key => $value) {
 			echo   '<tr class="odd gradeX">
 						<td>'.$value["usuario"].'</td>
 						<td>'.$value["rol"].'</td>
 						<td>
-							<a href="index.php?action=editarUsuario" class="btn btn-primary"><i class="icon mdi mdi-edit"></i>
+							<a href="index.php?action=editarUsuario&id='.$value['id'].'" class="btn btn-primary">Editar
 							</a>
 						</td>
 						<td>
@@ -197,6 +198,106 @@ class UsuariosController{
 							window.location='index.php?action=listarUsuarios&not=success';
 						</script>";
 			}
+		}
+	}
+
+	public function crearFormEditarUsuarioController(){
+		if (isset($_GET['id'])) {
+				$dato = $_GET['id']; 
+				$respuesta = UsuariosModel::crearFormEditarUsuarioModel($dato,"usuarios");
+				//echo '<pre>',print_r($respuesta),'</pre>';
+				echo '<input type="hidden" id="valorRol" value="'.utf8_encode($respuesta['rol']).'">';
+				echo '	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarPassword()" method="post">
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label" for="nombresCrearUsuario">Nombres</label>
+	                          <div class="col-sm-6">
+	                            <input type="text" class="form-control" id="nombresCrearUsuario" name="nombresCrearUsuario" autofocus value="'.utf8_encode($respuesta['nombres']).'">
+	                            <p id="avisoNombresCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                          </div>
+	                          <label id="avisoNombresCrearUsuario" class="text-muted text-danger"></label>
+	                        </div>
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label" for="apellidosCrearUsuario">Apellidos</label>
+	                          <div class="col-sm-6">
+	                            <input type="text" class="form-control" id="apellidosCrearUsuario" name="apellidosCrearUsuario" value="'.utf8_encode($respuesta['apellidos']).'">
+	                            <p id="avisoApellidosCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                          </div>
+	                        </div>
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label" for="usuarioCrearUsuario">Usuario</label>
+	                          <div class="col-sm-6">
+	                            <input type="text" class="form-control" id="usuarioCrearUsuario" name="usuarioCrearUsuario" value="'.utf8_encode($respuesta['usuario']).'" >
+	                            <p id="avisoUsuarioCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                          </div>
+	                        </div>
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label" for="passwordCrearUsuario">Password</label>
+	                          <div class="col-sm-6">
+	                            <input type="password" class="form-control" id="passwordCrearUsuario" name="passwordCrearUsuario" placeholder="Aquí puede cambiar su contraseña" value="'.utf8_encode($respuesta['password']).'">
+	                            <p id="avisoPasswordCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                          </div>
+	                        </div>
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label" for="repPasswordCrearUsuario">Repita password</label>
+	                          <div class="col-sm-6">
+	                            <input type="password" class="form-control" id="repPasswordCrearUsuario" name="repPasswordCrearUsuario" placeholder="Aquí debe confirmar su contraseña">
+	                            <p id="avisoRepPasswordCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                          </div>
+	                        </div>
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label" for="emailCrearUsuario">Email</label>
+	                          <div class="col-sm-6">
+	                            <input type="email" class="form-control" id="emailCrearUsuario" name="emailCrearUsuario" value="'.utf8_encode($respuesta['email']).'">
+	                            <p id="avisoEmailCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                          </div>
+	                        </div>
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label" for="urlFotoCrearUsuario">Url Foto</label>
+	                          <div class="col-sm-6">
+	                            <input type="text" class="form-control" id="urlFotoCrearUsuario" name="urlFotoCrearUsuario">
+	                            <p id="avisoUrlFotoCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                          </div>
+	                        </div>
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label">Rol</label>
+	                          <div class="col-sm-6">
+								<label class="radio-inline">
+									<input type="radio" class="radioButton" id="rol1" name="rolCrearUsuario" value="usuario">Usuario
+								</label>
+								<label class="radio-inline">
+									<input type="radio" class="radioButton" id="rol2" name="rolCrearUsuario" value="editor">Editor
+								</label>
+								<label class="radio-inline">
+									<input type="radio" class="radioButton" id="rol3" name="rolCrearUsuario" value="admin">Admin
+								</label>
+	                          </div>
+	                        </div>
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label" for="preguntaSeguridadCrearUsuario">Escribe tu pregunta de seguridad</label>
+	                          <div class="col-sm-6">
+	                            <div class="input-group xs-mb-15"><span class="input-group-addon">¿</span>
+	                              <input type="text" class="form-control" id="preguntaSeguridadCrearUsuario" name="preguntaSeguridadCrearUsuario" value="'.utf8_encode($respuesta['pregunta_seguridad']).'"><span class="input-group-addon">?</span>
+	                            </div>
+	                          </div>
+	                        </div>
+	                        <div class="form-group" style="display: none" id="contenedorAvisoPreguntaSeguridadCrearUsuario">
+	                          <div class="col-sm-6 col-sm-offset-3">
+	                            <p id="avisoPreguntaSeguridadCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                          </div>
+	                        </div>
+	                        <div class="form-group">
+	                          <label class="col-sm-3 control-label" for="respuestaSeguridadCrearUsuario">Escribe tu respuesta de seguridad</label>
+	                          <div class="col-sm-6">
+	                            <input type="password" class="form-control" id="respuestaSeguridadCrearUsuario" name="respuestaSeguridadCrearUsuario" value="'.utf8_encode($respuesta['respuesta_seguridad']).'">
+	                            <p id="avisoRespuestaSeguridadCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                          </div>
+	                        </div>
+	                        <div class="form-group">
+	                          <div class="col-sm-6 col-md-offset-3">
+	                            <button type="submit" class="btn btn-info"><i class="icon mdi mdi-account-add"></i> Crear Usuario</button>
+	                          </div>
+	                        </div>
+	                    </form>';
 		}
 	}
 }

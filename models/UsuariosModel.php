@@ -54,4 +54,13 @@ class UsuariosModel extends Conexion{
 			return 'error';
 		}
 	}
+
+	public function crearFormEditarUsuarioModel($dato,$tabla){
+		$sql ="SELECT * FROM $tabla WHERE id =:id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		if ($stmt->execute()) {
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+	}
 }
