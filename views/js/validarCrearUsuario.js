@@ -1,16 +1,12 @@
-//sugerir usuario
+//INICIO DE SCRIPT PARA SUGERIR USUARIO 
 var usuario = document.getElementById('usuarioCrearUsuario');
 usuario.addEventListener('focus',sugerirUsuario,false);
 function sugerirUsuario(){
 	var nombreUsuario = document.getElementById('nombresCrearUsuario').value;
 	var inicial = nombreUsuario.charAt(0).toLowerCase();
-
 	var apellidoUsuario = document.getElementById('apellidosCrearUsuario').value;
 	var stringArray = apellidoUsuario.split(" ");
-
-
 	var usuarioSugerido = inicial+stringArray[0];
-
 
 	// validar si el apellido es "de"
 	if (stringArray[0]=="de") {
@@ -26,16 +22,14 @@ function sugerirUsuario(){
 	if (stringArray[1]=="la") {
 		var usuarioSugerido = inicial+stringArray[0]+stringArray[1]+stringArray[2];
 	}
-	
-	
 
 	var usuario = document.getElementById('usuarioCrearUsuario');
 	usuario.value=usuarioSugerido.toLowerCase();
 
 }
-
-
-//SUGERIR EMAIL
+// FINAL DE SCRIPT PARA SUGERIR USUARIO
+//-----------------------------------------------------------------------------------
+//INICIO SCRIPT PARA SUGERIR EMAIL
 var sugerenciaEmail = document.getElementById('emailCrearUsuario');
 sugerenciaEmail.addEventListener('focus',sugerirEmail,false);
 
@@ -45,8 +39,10 @@ function sugerirEmail(){
 	var dominio = "@ipm.org.gt";
 	sugerenciaEmail.value=sugerenciaUsuario+dominio;
 }
+//FINAL DE SCRIPT PARA SUGERIR EMAIL
+//-----------------------------------------------------------------------------------
 
-//VALIDACION DE EXISTENCIA DE USUARIO EN EL FORM DE CREAR USUARIO CON AJAX
+//INICIO DE SCRIPT PARA VALIDACION DE EXISTENCIA DE USUARIO EN EL FORM DE CREAR USUARIO CON AJAX
 var usuario = document.getElementById('usuarioCrearUsuario');
 var usuarioExistente = false;
 usuario.addEventListener('blur',obtenerUsuario,false);
@@ -83,16 +79,10 @@ function respAjax(){
 		console.log("Cargando...");
 	}
 }
-//FIN DE VALIDACION DE EXISTENCIA DE USUARIO CON AJAX
+//FIN DE SCRIPT DE VALIDACION DE EXISTENCIA DE USUARIO CON AJAX
+//---------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-//VALIDACION DE EMAIL REPETIDO CON AJAX EN EL FORM DE CREAR USUARIO
+//INICIO DE SCRIPT DE VALIDACION DE EMAIL REPETIDO CON AJAX EN EL FORM DE CREAR USUARIO
 var emailValidar = document.getElementById('emailCrearUsuario');
 emailValidar.addEventListener('blur',enviarEmail,false);
 var emailExistente=false;
@@ -127,23 +117,12 @@ function respEmailAjax(){
 		}
 	}
 }
-// FIN VALIDACION DE EMAIL REPETIDO CON AJAX EN EL FORM DE CREAR USUARIO
+// FIN DE SCRIPT VALIDACION DE EMAIL REPETIDO CON AJAX EN EL FORM DE CREAR USUARIO
+//----------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-// VALIDACION DEL PASSWORD
+//INICIO DE SCRIPT DE VALIDACION DEL PASSWORD
 function validarPassword(){
-	/**
-	 *
-	 * VALIDANDO NOMBRES
-	 *
-	 */
-	
+	//INICIO SCRIPT VALIDANDO NOMBRE
 	var nombres = document.getElementById('nombresCrearUsuario').value;
 	if (nombres!="") {
 		var caracteresNombres = nombres.length;
@@ -167,21 +146,9 @@ function validarPassword(){
 		alertaNombres.style.display="inline";
 		return false;
 	}
-
-	/**
-	 *
-	 * FIN DE VALIDACION DE NOMBRES
-	 *
-	 */
-	
-
-	/**
-	 *
-	 * VALIDACION APELLIDOS
-	 *
-	 */
-
-
+	// FIN DE SCRIPT VALIDANDO NOMBRE
+//------------------------------------------------------------------------------------
+	// INICIO SCRIPT VALIDANDO APELLIDOS
 	var apellidos = document.getElementById('apellidosCrearUsuario').value;
 	if (apellidos!="") {
 		var caracteresApellidos = apellidos.length;
@@ -203,23 +170,10 @@ function validarPassword(){
 		alertaApellidos.style.display="inline";
 		return false;
 	}
+	// FIN DE SCRIPT VALIDANDO APELLIDOS
+//---------------------------------------------------------------------------------------
 
-	/**
-	 *
-	 * FIN DE VALIDAR APELLIDOS
-	 *
-	 */
-	
-
-
-
-	/**
-	 *
-	 * VALIDAR USUARIO SIN AJAX
-	 *
-	 */
-
-
+	//INICIO SCRIPT VALIDANDO USUARIO SIN AJAX
 	 var usuario = document.getElementById('usuarioCrearUsuario').value;
 	 if (usuario!="") {
 	 	var avisoUsuario = document.getElementById('avisoUsuarioCrearUsuario');
@@ -243,107 +197,71 @@ function validarPassword(){
 	 	avisoUsuario.style.display="inline";
 	 	return false;
 	 }
+	//FIN DE SCRIPT VALIDANDO USUARIO SIN AJAX
+//----------------------------------------------------------------------------------
+		//INICIO DE SCRIPT VALIDANDO PASSWORD
+		var password1 = document.getElementById('passwordCrearUsuario').value;
+		var avisoPassword = document.getElementById('avisoPasswordCrearUsuario');
+		var regExpPassword= /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/;
+		avisoPassword.style.display="none";
+		alertaApellidos.style.display="none";
+		alertaNombres.style.display="none";
+		avisoUsuario.style.display="none";
 
-	 /**
-	  *
-	  * FIN DE VALIDAR USUARIO SIN AJAX
-	  *
-	  */
-
-
-	  /**
-	   *
-	   * VALIDACION PASSWORD
-	   *
-	   */
-	  
-	 
-	   var password1 = document.getElementById('passwordCrearUsuario').value;
-	   var avisoPassword = document.getElementById('avisoPasswordCrearUsuario');
-	   var regExpPassword= /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/;
-	   avisoPassword.style.display="none";
-	   alertaApellidos.style.display="none";
-	   alertaNombres.style.display="none";
-	   avisoUsuario.style.display="none";
-
-	   if (password1!="") {
-	   		var caracteresPassword1 = password1.length;
-	   		if (caracteresPassword1<8) {
-	   			avisoPassword.innerHTML="Se require un minimo de 8 digitos para la contraseña";
+		if (password1!="") {
+				var caracteresPassword1 = password1.length;
+				if (caracteresPassword1<8) {
+					avisoPassword.innerHTML="Se require un minimo de 8 digitos para la contraseña";
 		   		avisoPassword.style.display="inline";
 		   		return false;
-	   		}
-	   		if (!regExpPassword.test(password1)) {
-	   			avisoPassword.innerHTML="No estan permitidos los caracteres especiales";
+				}
+				if (!regExpPassword.test(password1)) {
+					avisoPassword.innerHTML="No estan permitidos los caracteres especiales";
 		   		avisoPassword.style.display="inline";
 		   		return false;
-	   		}
-	   }else{
-	   		avisoPassword.innerHTML="No se puede quedar vacio";
-	   		avisoPassword.style.display="inline";
-	   		return false;
-	   }
+				}
+		}else{
+				avisoPassword.innerHTML="No se puede quedar vacio";
+				avisoPassword.style.display="inline";
+				return false;
+		}
+		//FIN DE SCRIPT VALIDANDO PASSWORD
 
-
-	 /**
-	  *
-	  * FIN VALIDACION PASSWORD
-	  *
-	  */
-
-	  /**
-	   *
-	   * VALIDACION DE CONFIRMACION DE PASSWORD
-	   *
-	   */
+	  	//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE PASSWORD
 	  
-	   var password2 = document.getElementById('repPasswordCrearUsuario').value;
-	   var avisoPassword2 = document.getElementById('avisoRepPasswordCrearUsuario');
-
-	   avisoPassword2.style.display="none";
-	   avisoPassword.style.display="none";
-	   alertaApellidos.style.display="none";
-	   alertaNombres.style.display="none";
-	   avisoUsuario.style.display="none";
-	   if (password2!="") {
-	   	
-	   		var caracteresPassword2 = password2.length;
-	   		if (caracteresPassword2<8) {
-	   			avisoPassword2.innerHTML="Se require un minimo de 8 digitos para la contraseña";
+		var password2 = document.getElementById('repPasswordCrearUsuario').value;
+		var avisoPassword2 = document.getElementById('avisoRepPasswordCrearUsuario');
+		avisoPassword2.style.display="none";
+		avisoPassword.style.display="none";
+		alertaApellidos.style.display="none";
+		alertaNombres.style.display="none";
+		avisoUsuario.style.display="none";
+		if (password2!="") {
+			
+				var caracteresPassword2 = password2.length;
+				if (caracteresPassword2<8) {
+					avisoPassword2.innerHTML="Se require un minimo de 8 digitos para la contraseña";
 		   		avisoPassword2.style.display="inline";
 		   	 	return false;
-	   		}
-	   		if (!regExpPassword.test(password2)) {
-	   			avisoPassword2.innerHTML="No estan permitidos los caracteres especiales";
+				}
+				if (!regExpPassword.test(password2)) {
+					avisoPassword2.innerHTML="No estan permitidos los caracteres especiales";
 		   		avisoPassword2.style.display="inline";
 		   	 	return false;
-	   		}
-	   		if (password1!==password2) {
-	   			avisoPassword2.innerHTML="No coinciden las contraseñas";
+				}
+				if (password1!==password2) {
+					avisoPassword2.innerHTML="No coinciden las contraseñas";
 		   		avisoPassword2.style.display="inline";
 		   	 	return false;
-	   		}
-	   }else{
-	   	 	avisoPassword2.innerHTML="No se puede quedar vacio";
-	   		avisoPassword2.style.display="inline";
-	   	 	return false;
-	   }
-
-	  /**
-	   *
-	   * FIN DE VALIDACION DE CONFIRMACION DE PASSWORD
-	   *
-	   */
-
-
-
-	   /**
-	    *
-	    * VALIDACION DEL EMAIL
-	    *
-	    */
-	   	
-
+				}
+		}else{
+			 	avisoPassword2.innerHTML="No se puede quedar vacio";
+				avisoPassword2.style.display="inline";
+			 	return false;
+		}
+		//FIN DE SCRIPT VALIDANDO CONFIRMACION DE PASSWORD
+//------------------------------------------------------------------------------------
+	   //INICIO DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
 	   	var email = document.getElementById('emailCrearUsuario').value;
 	   	var avisoEmail = document.getElementById('avisoEmailCrearUsuario');
 	   	var expRegEmail =/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
@@ -358,51 +276,23 @@ function validarPassword(){
 	   		avisoEmail.style.display="inline";
 	   		return false;
 	   	}
-	  	
-
-	  	/**
-	  	 *
-	  	 * FIN VALIDACION DEL EMAIL
-	  	 *
-	  	 */
-
-
-
-	  	 /**
-	  	  *
-	  	  * VALIDACION DEL ROL
-	  	  *
-	  	  */
-	  	 
-	  	  var rol = document.getElementsByClassName('radioButton');
-	  	  var avisorol = document.getElementById('avisoRolCrearUsuario');
-	  	  for (var i = 0; i < rol.length; i++) {
-	  	  	if (rol[i].checked) {
-	  	  		return true;
-	  	  	}else{
-	  	  		avisorol.innerHTML="Por favor elija un rol para el usuario";
-	  	  		avisorol.style.display="inline";
-	  	  		return false;
-	  	  	}
-	  	  }
-
-	  	  /**
-	  	   *
-	  	   * FIN DE VALIDACION DEL ROL
-	  	   *
-	  	   */
-	  	  
-
-
-
-	  	/**
-	  	 *
-	  	 * VALIDACION DE PREGUNTA SECRETA
-	  	 *
-	  	 */
-	  	
-	  	
-
+	  	//FIN DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
+//----------------------------------------------------------------------------------
+		//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE ROL
+		var rol = document.getElementsByClassName('radioButton');
+		var avisorol = document.getElementById('avisoRolCrearUsuario');
+		for (var i = 0; i < rol.length; i++) {
+		  	if (rol[i].checked) {
+		  		return true;
+		  	}else{
+		  		avisorol.innerHTML="Por favor elija un rol para el usuario";
+		  		avisorol.style.display="inline";
+		  		return false;
+		  	}
+		}
+		//FIN DE SCRIPT VALIDANDO CONFIRMACION DE ROL
+//-----------------------------------------------------------------------------------------------
+	  	//INICIO DE SCRIPT VALIDANDO PREGUNTA SECRETA
 	  	var preguntaSecreta = document.getElementById('preguntaSeguridadCrearUsuario').value;
 	  	var avisoPreguntaSecreta = document.getElementById('avisoPreguntaSeguridadCrearUsuario');
 	  	var contenedor = document.getElementById('contenedorAvisoPreguntaSeguridadCrearUsuario');
@@ -416,23 +306,10 @@ function validarPassword(){
 	  		contenedor.style.display="inline";
 	  		return false;
 	  	}
+		//FIN DE SCRIPT VALIDANDO PREGUNTA SECRETA
+//----------------------------------------------------------------------------------------------
 
-
-
-	  	/**
-	  	 *
-	  	 * FIN VALIDACION DE PREGUNTA SECRETA
-	  	 *
-	  	 */
-
-
-	  	 /**
-	  	  *
-	  	  * VALIDAR RESPUESTA SECRETA
-	  	  *
-	  	  */
-	  	 
-	  	
+	  	//INICIO DE SCRIPT VALIDANDO RESPUESTA SECRETA
 		var respuestaSecreta = document.getElementById('respuestaSeguridadCrearUsuario').value;
 		var avisoRespuestaSecreta = document.getElementById('avisoRespuestaSeguridadCrearUsuario');
 		if (respuestaSecreta!="") {
@@ -442,50 +319,18 @@ function validarPassword(){
 			avisoRespuestaSecreta.style.display="inline";
 			return false;
 		}
-
-
-	  	/**
-	  	 *
-	  	 * FIN VALIDAR RESPUESTA SECRETA
-	  	 *
-	  	 */
-	  	
-	  	/**
-	  	 *
-	  	 * VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
-	  	 *
-	  	 */
-
-	  	 if (usuarioExistente) {
-	  	 	return false;
-	  	 }
-
-
-	  	 /**
-	  	  *
-	  	  * FIN DE VALIDAR USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR EL SUBMIT
-	  	  *
-	  	  */
-	  	 
-	  	
-	 	/**
-	 	 *
-	 	 * VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
-	 	 *
-	 	 */
-	 	
-
+		//FIN DE SCRIPT VALIDANDO RESPUESTA SECRETA
+//--------------------------------------------------------------------------------------------------------
+		//INICIO DE SCRIPT PARA VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
+		if (usuarioExistente) {
+			return false;
+		}
+	  	 //FIN DE SCRIPT PARA VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
+//--------------------------------------------------------------------------------------------------------  	 
+	  	//INICIO DE SCRIPT PARA VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
 	 	if (emailExistente) {
 	  	 	return false;
 	  	 }
-
-	  	/**
-	  	 *
-	  	 * FIN DE VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX SUBMIT
-	  	 *
-	  	 */
-	  	
-	
-
+	  	//FIN DE SCRIPT PARA VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
 	return true;
 }

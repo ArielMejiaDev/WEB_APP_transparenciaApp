@@ -44,8 +44,8 @@ class UsuariosController{
 					&&	preg_match($expRegCamposTexto, $_POST['usuarioCrearUsuario']) 
 					&&	preg_match($expRegCamposTexto, $_POST['urlFotoCrearUsuario']) 
 					&&	preg_match($expRegCamposTexto, $_POST['rolCrearUsuario']) 
-					&&	preg_match($expRegCamposTexto, $_POST['preguntaSeguridadCrearUsuario']) 
-					&&	preg_match($expRegCamposTexto, $_POST['respuestaSeguridadCrearUsuario'])) {
+					&&	preg_match($expRegNombres, $_POST['preguntaSeguridadCrearUsuario']) 
+					&&	preg_match($expRegNombres, $_POST['respuestaSeguridadCrearUsuario'])) {
 						//que cumplan con los requerimientos de las contraseñas y que sean iguales
 						
 						if (preg_match($expRegPassword, $_POST['passwordCrearUsuario']) 
@@ -348,8 +348,8 @@ class UsuariosController{
 					&&	preg_match($expRegCamposTexto, $_POST['usuarioCrearUsuario']) 
 					&&	preg_match($expRegCamposTexto, $_POST['urlFotoCrearUsuario']) 
 					&&	preg_match($expRegCamposTexto, $_POST['rolCrearUsuario']) 
-					&&	preg_match($expRegCamposTexto, $_POST['preguntaSeguridadCrearUsuario']) 
-					&&	preg_match($expRegCamposTexto, $_POST['respuestaSeguridadCrearUsuario'])) {
+					&&	preg_match($expRegNombres, $_POST['preguntaSeguridadCrearUsuario']) 
+					&&	preg_match($expRegNombres, $_POST['respuestaSeguridadCrearUsuario'])) {
 						//que cumplan con los requerimientos de las contraseñas y que sean iguales
 						
 						if (preg_match($expRegPassword, $_POST['passwordCrearUsuario']) 
