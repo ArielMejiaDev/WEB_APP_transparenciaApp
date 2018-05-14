@@ -77,7 +77,7 @@ class UsuariosController{
 									//echo "<pre>",print_r($datos),"</pre>";
 									$respuesta = UsuariosModel::CrearUsuarioModel($datos,"usuarios");
 									if ($respuesta=='success') {
-										header('Location:index.php?action=crearUsuario&not=success');
+										header('Location:notCrearUsuarioOk');
 									}else{
 										echo "	<script>
 													swal({
@@ -194,9 +194,10 @@ class UsuariosController{
 			$dato = $_GET['eliminar'];
 			$respuesta = UsuariosModel::eliminarUsuariosModel($dato,"usuarios");
 			if ($respuesta =='success') {
-				echo "	<script>
-							window.location='index.php?action=listarUsuarios&not=success';
-						</script>";
+				// echo "	<script>
+				// 			window.location.replace='notEliminarUsuarioOk';
+				// 		</script>";
+				echo header("Location:notEliminarUsuarioOk");
 			}
 		}
 	}
@@ -382,7 +383,7 @@ class UsuariosController{
 									//echo "<pre>",print_r($datos),"</pre>";
 									$respuesta = UsuariosModel::actualizarUsuarioModel($datos,"usuarios");
 									if ($respuesta=='success') {
-										header('Location:index.php?action=listarUsuarios&not=success2');
+										header('Location:notEditarUsuarioOk');
 									}else{
 										echo "	<script>
 													swal({

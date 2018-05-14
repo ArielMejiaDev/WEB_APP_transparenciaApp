@@ -16,13 +16,13 @@ class IngresoController{
 							session_start();
 							$_SESSION['verificar'] = true;
 							$_SESSION['usuario'] = $_POST['usuarioIngreso'];
-							header('Location:index.php?action=dashboard');
+							header('Location:dashboard');
 
 						}else{
 							++$intentos;
 							$datosActulizarIntentos = array("usuario"=>$_POST['usuarioIngreso'], "intentos"=>$intentos);
 							$respuestaActualizarIntentos = IngresoModel::actualizarIntentosModel($datosActulizarIntentos);
-							header('Location:index.php?action=errorIngreso');
+							header('Location:errorIngreso');
 						}
 					}else{
 							$intentos = 0;

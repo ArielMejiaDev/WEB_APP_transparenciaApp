@@ -98,7 +98,7 @@ $datos = $datosUsuario->getDatosUsuarioController();
             </li>
             <li><a href="#"><span class="icon mdi mdi-face"></span> Cuenta</a></li>
             <li><a href="#"><span class="icon mdi mdi-settings"></span> Ajustes</a></li>
-            <li><a href="index.php?action=cerrarSesion"><span class="icon mdi mdi-power"></span> Cerrar Sesión</a></li>
+            <li><a href="cerrarSesion"><span class="icon mdi mdi-power"></span> Cerrar Sesión</a></li>
           </ul>
         </li>
       </ul>

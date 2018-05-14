@@ -1,0 +1,5 @@
+#impide que se vean los directorios que no esten en la lista blanca
+Options All -Indexes
+#URL AMIGABLES
+RewriteEngine On
+RewriteRule ^(\w+)$ index.php?action=$1

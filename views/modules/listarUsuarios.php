@@ -3,8 +3,8 @@ session_start();
 if (!$_SESSION['verificar']) {
   header('Location:index.php');
 }
-if (isset($_GET['not'])) {
-	if ($_GET['not']=='success') {
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notEliminarUsuarioOk') {
 		echo "
 		<script>
 			swal({
@@ -17,8 +17,8 @@ if (isset($_GET['not'])) {
 		</script>";
 	}
 }
-if (isset($_GET['not'])) {
-  if ($_GET['not']=='success2') {
+if (isset($_GET['action'])) {
+  if ($_GET['action']=='notEditarUsuarioOk') {
     echo "  <script>
           swal({
             position: 'top-end',
@@ -30,6 +30,8 @@ if (isset($_GET['not'])) {
         </script>";
   }
 }
+$usuarios = new UsuariosController();
+$usuarios->eliminarUsuariosController();
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>
@@ -51,26 +53,25 @@ if (isset($_GET['not'])) {
 			          </div>
 			        </div>
 			        <div class="panel-body">
-			        	
-			        	<table id="table6" class="table table-striped table-hover table-fw-widget">
-	                    <thead>
-	                      <tr>
-	                        <th>Usuario</th>
-	                        <th>Rol</th>
-	                        <th>Editar</th>
-	                        <th>Eliminar</th>
-	                      </tr>
-	                    </thead>
-	                    	<tbody>
-	                    		<div id="botones">
-	                    		<?php  
-									$usuarios = new UsuariosController();
-									$usuarios->listarUsuariosController();
-									$usuarios->eliminarUsuariosController();
-								?>
-	                    		</div>
-							</tbody>
+			        	<div class="table-responsive">
+			        		<table id="table6" class="table table-striped table-hover table-fw-widget">
+			                    <thead>
+			                      <tr>
+			                        <th>Usuario</th>
+			                        <th>Rol</th>
+			                        <th>Editar</th>
+			                        <th>Eliminar</th>
+			                      </tr>
+			                    </thead>
+			                	<tbody>
+			                		<div id="botones">
+			                		<?php  
+										$usuarios->listarUsuariosController();
+									?>
+			                		</div>
+								</tbody>
 	              		</table>
+			        	</div>
 			       	</div>
 				</div>
 			</div>
@@ -116,6 +117,8 @@ if (isset($_GET['not'])) {
 			  }
 		})
 	}
+	var hora = new Date();
+	document.title="Usuarios";
 </script>
 <!-- <div id="mod-danger" tabindex="-1" role="dialog" class="modal fade" style="display: none;">
   <div class="modal-dialog">

@@ -19,6 +19,12 @@ class EnlacesModel extends Conexion{
 			$url = 'views/modules/ingreso.php';
 		}else if($enlace == "errorTresFallosIngreso"){
 			$url = 'views/modules/ingreso.php';
+		}else if($enlace == "notCrearUsuarioOk"){
+			$url = 'views/modules/crearUsuario.php';
+		}else if($enlace == "notEliminarUsuarioOk"){
+			$url = 'views/modules/listarUsuarios.php';
+		}else if($enlace == "notEditarUsuarioOk"){
+			$url = 'views/modules/listarUsuarios.php';
 		}else{
 			$url = 'views/modules/ingreso.php';
 		}

@@ -5,8 +5,8 @@ if (!$_SESSION['verificar']) {
 }
 $crearUsuario = new UsuariosController();
 $crearUsuario->CrearUsuarioController();
-if (isset($_GET['not'])) {
-	if ($_GET['not']=='success') {
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notCrearUsuarioOk') {
 		echo "	<script>
 					swal({
 					  position: 'top-end',

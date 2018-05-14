@@ -125,7 +125,9 @@ var App = (function () {
     ],
       "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
       "filter":true,
-      dom:  "<'row be-datatable-header'<'col-sm-6'B><'col-sm-3 text-left'l><'col-sm-3 text-right'f>>" +
+      dom:  "<'row be-datatable-header'<'hidden-xs col-sm-6'B><'hidden-xs col-sm-3 text-left'l><'hidden-xs col-sm-3 text-right'f>>" +
+      "<'hidden-sm hidden-md hidden-lg hidden-xl row be-datatable-header'<'hidden-sm hidden-md hidden-lg hidden-xl col-xs-12 text-center btn-block'B>>" +
+      "<'hidden-sm hidden-md hidden-lg hidden-xl row be-datatable-header'<'hidden-sm hidden-md hidden-lg hidden-xl col-sm-3 text-center 'f>>" +
             "<'row be-datatable-body'<'col-sm-12'tr>>" +
             "<'row be-datatable-footer'<'col-sm-5'i><'col-sm-7'p>>"
     });
