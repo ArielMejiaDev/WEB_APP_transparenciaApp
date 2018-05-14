@@ -13,7 +13,10 @@ class EnlacesModel extends Conexion{
 			$enlace == "crearUsuario" ||
 			$enlace == "listarUsuarios"||
 			$enlace == "editarUsuario"||
-			$enlace == "subirArchivos") {
+			$enlace == "subirArchivos"||
+			$enlace == "crearDepartamento"||
+			$enlace == "editarDepartamento"||
+			$enlace == "listarDepartamentos") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
 			$url = 'views/modules/ingreso.php';
@@ -25,6 +28,8 @@ class EnlacesModel extends Conexion{
 			$url = 'views/modules/listarUsuarios.php';
 		}else if($enlace == "notEditarUsuarioOk"){
 			$url = 'views/modules/listarUsuarios.php';
+		}else if($enlace == "notCrearDeptoOk"){
+			$url = 'views/modules/listarDepartamentos.php';
 		}else{
 			$url = 'views/modules/ingreso.php';
 		}

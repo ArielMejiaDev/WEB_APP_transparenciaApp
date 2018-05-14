@@ -37,7 +37,7 @@
                         </li>
                         <li class="parent"><a href="#"><i class="icon mdi mdi-layers"></i><span>Departamentos</span></a>
                           <ul class="sub-menu">
-                            <li><a href="#"><i class="icon mdi mdi-plus-circle"></i> Crear Depto</a>
+                            <li><a href="crearDepartamento"><i class="icon mdi mdi-plus-circle"></i> Crear Depto</a>
                             </li>
                             <li><a href="#"><i class="icon mdi mdi-assignment-o"></i> Permisos</a>
                             </li>

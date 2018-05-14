@@ -89,6 +89,7 @@
     <script src="views/js/validarNuevoPassword.js"></script>
     <script src="views/js/validarCrearUsuario.js"></script>
     <script src="views/js/automatizarActulizarUsuario.js"></script>
+    <script src="views/js/validarCrearDepartamento.js"></script>
     <!-- FIN DE MODULOS PERSONALIZADOS -->
   </body>
 </html>
