@@ -3,13 +3,14 @@ require_once "Conexion.php";
 class UsuariosModel extends Conexion{
 	//INSERTAR USUARIO EN LA BASE DE DATOS
 	public function CrearUsuarioModel($datos,$tabla){
-		$sql = "INSERT INTO $tabla (nombres, apellidos, usuario, password, email, foto, rol,pregunta_seguridad, respuesta_seguridad) VALUES (:nombres, :apellidos, :usuario, :password, :email, :foto, :rol, :pregunta_seguridad, :respuesta_seguridad)";
+		$sql = "INSERT INTO usuarios(nombres, apellidos, usuario, password, email, foto, rol, pregunta_seguridad, respuesta_seguridad, id_departamento) VALUES (:nombres, :apellidos, :usuario, :password, :email, :foto, :rol, :pregunta_seguridad, :respuesta_seguridad, :id_departamento)";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':nombres',$datos['nombres'],PDO::PARAM_STR);
 		$stmt->bindParam(':apellidos',$datos['apellidos'],PDO::PARAM_STR);
 		$stmt->bindParam(':usuario',$datos['usuario'],PDO::PARAM_STR);
 		$stmt->bindParam(':password',$datos['password'],PDO::PARAM_STR);
 		$stmt->bindParam(':email',$datos['email'],PDO::PARAM_STR);
+		$stmt->bindParam(':id_departamento',$datos['departamento'],PDO::PARAM_STR);
 		$stmt->bindParam(':foto',$datos['urlFoto'],PDO::PARAM_STR);
 		$stmt->bindParam(':rol',$datos['rol'],PDO::PARAM_STR);
 		$stmt->bindParam(':pregunta_seguridad',$datos['preguntaSecreta'],PDO::PARAM_STR);
@@ -55,8 +56,8 @@ class UsuariosModel extends Conexion{
 		}
 	}
 
-	public function crearFormEditarUsuarioModel($dato,$tabla){
-		$sql ="SELECT * FROM $tabla WHERE id =:id";
+	public function crearFormEditarUsuarioModel($dato,$tabla1,$tabla2){
+		$sql = "SELECT * FROM usuarios INNER JOIN departamentos ON $tabla1.id_departamento WHERE $tabla1.id=:id AND $tabla1.id_departamento=$tabla2.id";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
 		if ($stmt->execute()) {
@@ -83,4 +84,13 @@ class UsuariosModel extends Conexion{
 			return 'error';
 		}
 	}
+
+	//CREA UNA LISTA PARA EL SELECT DE ELEGIR DEPTO EN EL FORM DE CREAR USUARIO
+	public function crearSelectDeptosModel($tabla){
+		$sql = "SELECT * FROM $tabla";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
+
 }

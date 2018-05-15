@@ -70,11 +70,12 @@ class UsuariosController{
 									"password"=>$_POST['passwordCrearUsuario'],
 									"confirmacionPassword"=>$_POST['repPasswordCrearUsuario'],
 									"email"=>$_POST['emailCrearUsuario'],
+									"departamento"=>$_POST['deptoCrearUsuario'],
 									"urlFoto"=>$_POST['urlFotoCrearUsuario'],
 									"rol"=>$_POST['rolCrearUsuario'],
 									"preguntaSecreta"=>$_POST['preguntaSeguridadCrearUsuario'],
 									"respuestaSecreta"=>$_POST['respuestaSeguridadCrearUsuario']);
-									//echo "<pre>",print_r($datos),"</pre>";
+									echo "<pre>",print_r($datos),"</pre>";
 									$respuesta = UsuariosModel::CrearUsuarioModel($datos,"usuarios");
 									if ($respuesta=='success') {
 										header('Location:notCrearUsuarioOk');
@@ -83,7 +84,7 @@ class UsuariosController{
 													swal({
 													  type: 'error',
 													  title: 'Oops...',
-													  text: 'No se pudo crear el nuevo usuario',
+													  text: 'No se pudo crear el nuevo usuario *server*',
 													})
 												</script>";
 									}
@@ -205,7 +206,9 @@ class UsuariosController{
 	public function crearFormEditarUsuarioController(){
 		if (isset($_GET['id'])) {
 				$dato = $_GET['id']; 
-				$respuesta = UsuariosModel::crearFormEditarUsuarioModel($dato,"usuarios");
+				$respuesta = UsuariosModel::crearFormEditarUsuarioModel($dato,"usuarios","departamentos");
+				
+
 				//echo '<pre>',print_r($respuesta),'</pre>';
 				echo '	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarPassword()" method="post">
 							<input type="hidden" id="valorRol" value="'.utf8_encode($respuesta['rol']).'" name="valorRol">
@@ -253,6 +256,14 @@ class UsuariosController{
 	                            <p id="avisoEmailCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
+	                        <div class="form-group">
+							  <label class="col-sm-3 control-label" for="deptoCrearUsuario">Departamento:</label>
+							  <div class="col-sm-6">
+							    <select class="form-control" id="deptoCrearUsuario" name="deptoCrearUsuario">
+							      <option value="'.$respuesta['id_departamento'].'">'.$respuesta['nombres'].'</option>
+							    </select>
+							  </div>
+							</div>
 	                        <div class="form-group">
 	                          <label class="col-sm-3 control-label" for="urlFotoCrearUsuario">Url Foto</label>
 	                          <div class="col-sm-6">
@@ -453,4 +464,16 @@ class UsuariosController{
 			}//VALIDACION DE QUE EXISTAN LAS VARIABLES POST QUE SE RECIBEN
 		}//VALIDACION INICIAL PARA COMPROBAR QUE ESTE SETEADO EL PRIMER VALOR
 	}// FIN DEL METODO CREAR USUARIO CONTROLLER PARA INSERTAR USUARIOS EN LA BASE DE DATOS
+
+	//Crea un select para elegir el depto en el formulario de crear usuario
+	public function crearSelectDeptosController(){
+		$respuesta = UsuariosModel::crearSelectDeptosModel("departamentos");
+		//echo "<pre>",print_r($respuesta),"</pre>";
+		foreach ($respuesta as $key => $value) {
+			echo '<option value="'.$value['id'].'">'.$value['nombres'].'</option>';
+		}
+	}
+
+
+
 }

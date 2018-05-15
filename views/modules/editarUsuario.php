@@ -38,3 +38,35 @@ include_once "sidebar.php";
     </div>
   </div>
 </div>
+<script>
+addEventListener('load',inicializarEventos,false);
+function inicializarEventos(){
+var select = document.getElementById('deptoCrearUsuario');
+var opt ='<option value="1">Informatica</option><option value="2">UDAF</option>';
+select.innerHTML+=opt;
+// opt = document.createElement('option');
+//     opt.value = "informatica";
+//     opt.innerHTML = 1;
+//     select.appendChild(opt);
+
+// opt = document.createElement('option');
+//     opt.value = "UDAF";
+//     opt.innerHTML = 2;
+//     select.appendChild(opt);
+
+// var min = 1,
+//     max = 3,
+//     select = document.getElementById('deptoCrearUsuario');
+
+// for (var i = min; i<=max; i++){
+//     var opt = document.createElement('option');
+//     opt.value = i;
+//     opt.innerHTML = i;
+//     select.appendChild(opt);
+
+// }
+
+
+}
+
+</script>

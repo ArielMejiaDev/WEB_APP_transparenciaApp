@@ -74,6 +74,15 @@ include_once "sidebar.php";
 		                        <p id="avisoEmailCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 		                      </div>
 		                    </div>
+							<div class="form-group">
+							  <label class="col-sm-3 control-label" for="deptoCrearUsuario">Departamento:</label>
+							  <div class="col-sm-6">
+							    <select class="form-control" id="deptoCrearUsuario" name="deptoCrearUsuario">
+							      <option value="">Seleccione un departamento</option>
+							      <?php $crearUsuario->crearSelectDeptosController(); ?>
+							    </select>
+							  </div>
+							</div>
 		                    <div class="form-group">
 		                      <label class="col-sm-3 control-label" for="urlFotoCrearUsuario">Url Foto</label>
 		                      <div class="col-sm-6">
@@ -81,23 +90,6 @@ include_once "sidebar.php";
 		                        <p id="avisoUrlFotoCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 		                      </div>
 		                    </div>
-		                    <!-- <div class="form-group">
-		                      <label class="col-sm-3 control-label">Rol</label>
-		                      <div class="col-sm-6">
-		                        <div class="be-radio inline">
-		                          <input type="radio" name="rolCrearUsuario" id="rol1" class="radio" value="usuario">
-		                          <label for="rol1">Usuario</label>
-		                        </div>
-		                        <div class="be-radio inline">
-		                          <input type="radio" name="rolCrearUsuario" id="rol2" class="radio" value="editor">
-		                          <label for="rol2">Editor</label>
-		                        </div>
-		                        <div class="be-radio inline">
-		                          <input type="radio" name="rolCrearUsuario" id="rol3" class="radio" value="admin">
-		                          <label for="rol3">Admin</label>
-		                        </div>
-		                      </div>
-		                    </div> -->
 		                    <div class="form-group">
 	                          <label class="col-sm-3 control-label">Rol</label>
 	                          <div class="col-sm-6">

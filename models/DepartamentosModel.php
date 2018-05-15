@@ -3,7 +3,7 @@ require_once "Conexion.php";
 class DepartamentosModel extends Conexion{
 	//crear departamento
 	public function crearDepartamentoModel($dato,$tabla){
-		$sql = "INSERT INTO $tabla (nombre) VALUES (:nombreDepto)";
+		$sql = "INSERT INTO $tabla (nombres) VALUES (:nombreDepto)";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':nombreDepto',$dato,PDO::PARAM_STR);
 		if ($stmt->execute()) {
@@ -30,7 +30,7 @@ class DepartamentosModel extends Conexion{
 
 	//actualizar departamento
 	public function actualizarDepartamentoModel($datos,$tabla){
-		$sql = "UPDATE $tabla SET nombre=:nombreDepto WHERE id=:id";
+		$sql = "UPDATE $tabla SET nombres=:nombreDepto WHERE id=:id";
 		$stmt=Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':id',$datos['id'],PDO::PARAM_INT);
 		$stmt->bindParam(':nombreDepto',$datos['nombreDepto'],PDO::PARAM_STR);

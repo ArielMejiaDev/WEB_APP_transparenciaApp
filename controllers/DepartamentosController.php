@@ -34,13 +34,13 @@ class DepartamentosController{
 		$respuesta = DepartamentosModel::listarDepartamentosModel("departamentos");
 		foreach ($respuesta as $key => $value) {
 			echo   '<tr class="odd gradeX">
-						<td>'.$value["nombre"].'</td>
+						<td>'.$value["nombres"].'</td>
 						<td>
 							<a href="index.php?action=editarDepartamento&id='.$value['id'].'" class="btn btn-primary">Editar
 							</a>
 						</td>
 						<td>
-							<button href="'.$value['id'].'" depto="'.$value['nombre'].'" id="eliminar'.$value['id'].'" class="btn btn-danger">Eliminar
+							<button href="'.$value['id'].'" depto="'.$value['nombres'].'" id="eliminar'.$value['id'].'" class="btn btn-danger">Eliminar
 							</button>
 						</td>
 					</tr>';
@@ -57,7 +57,7 @@ class DepartamentosController{
 			                    	<input type="hidden" class="form-control" id="idDepartamentoCrearDepto" name="idDepartamentoCrearDepto" value="'.$respuesta['id'].'">
 			                      <label class="col-sm-3 control-label" for="nombreDepartamentoCrearDepto">Departamento:</label>
 			                      <div class="col-sm-6">
-			                        <input type="text" class="form-control" id="nombreDepartamentoCrearDepto" name="nombreDepartamentoCrearDepto" value="'.$respuesta['nombre'].'">
+			                        <input type="text" class="form-control" id="nombreDepartamentoCrearDepto" name="nombreDepartamentoCrearDepto" value="'.$respuesta['nombres'].'">
 			                        <p id="avisoNombreDepartamentoCrearDepto" class="text-danger text-muted" style="display: none"></p>
 			                      </div>
 			                    </div>

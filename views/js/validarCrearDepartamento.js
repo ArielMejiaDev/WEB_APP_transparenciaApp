@@ -1,6 +1,8 @@
 var depto = document.getElementById('nombreDepartamentoCrearDepto');
 var avisoDepto = document.getElementById('avisoNombreDepartamentoCrearDepto');
 var deptoExistente = false;
+var expRegNombres = /^(?![ .]+$)[a-zA-Z .]*$/;
+var regExp=/^[a-zA-Z0-9]*$/;
 depto.addEventListener('blur',obtenerDepto,false);
 function obtenerDepto(){
 	var datoDepto = depto.value;
@@ -38,14 +40,25 @@ function respAjax(){
 }
 //valida el submit en el formulario
 function validarDepartamentoForm(){
-	if (!depto.value=="") {
-		return true;
-	}else{
+	var deptoValor = depto.value;
+	
+
+	if (deptoValor=="") {
 		avisoDepto.innerHTML="El departamento no puede quedar vacio";
 		avisoDepto.style.display="inline";
+		return false;
 	}
+
+	if (!expRegNombres.test(deptoValor)) {
+		avisoDepto.innerHTML="No es valido el uso de caracteres especiales";
+		avisoDepto.style.display="inline";
+		return false;
+	}
+
 	if (deptoExistente) {
-			return false;
-		}
-	return false;
+		return false;
+	}
+
+
+	return true;
 }
