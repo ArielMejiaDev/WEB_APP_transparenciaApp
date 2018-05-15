@@ -4,6 +4,7 @@ if (!$_SESSION['verificar']) {
   header('Location:index.php');
 }
 $editarDepto = new DepartamentosController();
+$editarDepto->actualizarDepartamentoController();
 if (isset($_GET['action'])) {
 	if ($_GET['action']=='notCrearDeptoOk') {
 		echo "	<script>

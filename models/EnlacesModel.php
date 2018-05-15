@@ -30,6 +30,10 @@ class EnlacesModel extends Conexion{
 			$url = 'views/modules/listarUsuarios.php';
 		}else if($enlace == "notCrearDeptoOk"){
 			$url = 'views/modules/listarDepartamentos.php';
+		}else if($enlace == "notEliminarDeptoOk"){
+			$url = 'views/modules/listarDepartamentos.php';
+		}else if($enlace == "notActualizarDeptoOk"){
+			$url = 'views/modules/listarDepartamentos.php';
 		}else{
 			$url = 'views/modules/ingreso.php';
 		}

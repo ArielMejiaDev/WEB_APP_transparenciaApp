@@ -40,7 +40,7 @@ class DepartamentosController{
 							</a>
 						</td>
 						<td>
-							<button href="'.$value['id'].'" id="'.$value['id'].'" id="eliminar'.$value['id'].'" class="btn btn-danger">Eliminar
+							<button href="'.$value['id'].'" depto="'.$value['nombre'].'" id="eliminar'.$value['id'].'" class="btn btn-danger">Eliminar
 							</button>
 						</td>
 					</tr>';
@@ -54,9 +54,10 @@ class DepartamentosController{
 			$respuesta = DepartamentosModel::crearEditarDepartamentoFormModel($dato,"departamentos");
 			echo '<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarDepartamentoForm()" method="post">
 			                    <div class="form-group">
+			                    	<input type="hidden" class="form-control" id="idDepartamentoCrearDepto" name="idDepartamentoCrearDepto" value="'.$respuesta['id'].'">
 			                      <label class="col-sm-3 control-label" for="nombreDepartamentoCrearDepto">Departamento:</label>
 			                      <div class="col-sm-6">
-			                        <input type="text" class="form-control" id="nombreDepartamentoCrearDepto" name="nombreDepartamentoCrearDepto" autofocus value="'.$respuesta['nombre'].'">
+			                        <input type="text" class="form-control" id="nombreDepartamentoCrearDepto" name="nombreDepartamentoCrearDepto" value="'.$respuesta['nombre'].'">
 			                        <p id="avisoNombreDepartamentoCrearDepto" class="text-danger text-muted" style="display: none"></p>
 			                      </div>
 			                    </div>
@@ -66,6 +67,37 @@ class DepartamentosController{
 			                    	</div>
 			                    </div>
 		                  	</form>';
+		}
+	}
+
+	//actualizar departamento
+	public function actualizarDepartamentoController(){
+		if (isset($_POST['idDepartamentoCrearDepto'])) {
+			$datos = array('id'=>$_POST['idDepartamentoCrearDepto'],'nombreDepto'=>$_POST['nombreDepartamentoCrearDepto']);
+			$respuesta = DepartamentosModel::actualizarDepartamentoModel($datos,'departamentos');
+			if ($respuesta=='success') {
+				header('Location:notActualizarDeptoOk');
+			}
+		}
+	}
+
+	//verificar que no existan otros deptos con el mismo nombre
+	public function validarDepartamentoAjaxController($dato){
+		$respuesta = DepartamentosModel::validarDepartamentoAjaxModel($dato,"departamentos");
+		$existencia = (int)$respuesta['existencia'];
+		if ($existencia>0) {
+			return "existe";
+		}
+	}
+
+	//eliminar departamento
+	public function eliminarDepartamentoController(){
+		if (isset($_GET['eliminar'])) {
+			$dato = $_GET['eliminar'];
+			$respuesta = DepartamentosModel::eliminarDepartamentoModel($dato,"departamentos");
+			if ($respuesta == 'success') {
+				header('Location:notEliminarDeptoOk');
+			}
 		}
 	}
 }

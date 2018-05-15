@@ -18,12 +18,26 @@ if (isset($_GET['action'])) {
 	}
 }
 if (isset($_GET['action'])) {
-  if ($_GET['action']=='notEditarUsuarioOk') {
+  if ($_GET['action']=='notEliminarDeptoOk') {
     echo "  <script>
           swal({
             position: 'top-end',
             type: 'success',
-            title: 'Usuario editado exitosamente!',
+            title: 'Departamento eliminado exitosamente!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        </script>";
+  }
+}
+
+if (isset($_GET['action'])) {
+  if ($_GET['action']=='notActualizarDeptoOk') {
+    echo "  <script>
+          swal({
+            position: 'top-end',
+            type: 'success',
+            title: 'Departamento actualizado exitosamente!',
             showConfirmButton: false,
             timer: 1500
           })
@@ -31,6 +45,7 @@ if (isset($_GET['action'])) {
   }
 }
 $depto = new DepartamentosController();
+$depto ->eliminarDepartamentoController();
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>
@@ -87,13 +102,13 @@ $depto = new DepartamentosController();
 	function capturarEvento(e){
 		e.preventDefault();
 		var id = e.target.getAttribute('href');
-		var usuario = e.target.getAttribute('usuario');
-		console.log(id);
-		mostrarMensaje(id,usuario);
+		var depto = e.target.getAttribute('depto');
+		console.log(id+depto);
+		mostrarMensaje(id,depto);
 	}
-	function mostrarMensaje(id,usuario){
+	function mostrarMensaje(id,depto){
 		swal({
-		  title: 'Deseas eliminar al usuario '+usuario,
+		  title: 'Deseas eliminar el departamento de '+depto,
 		  text: "Este paso no se puede revertir!",
 		  type: 'warning',
 		  showCancelButton: true,
@@ -102,21 +117,21 @@ $depto = new DepartamentosController();
 		  confirmButtonText: 'Si, eliminar'
 		}).then((result) => {
 		  if (result.value) {
-		    window.location="index.php?action=listarUsuarios&eliminar="+id;
+		    window.location="index.php?action=listarDepartamentos&eliminar="+id;
 		  }else if (
 			    // Read more about handling dismissals
 			    result.dismiss === swal.DismissReason.cancel
 			  ) {
 			    swal(
 			      'Cancelado',
-			      'No se elimino ningun registro',
+			      'No se elimino ningun departamento',
 			      'error'
 			    )
 			  }
 		})
 	}
 	var hora = new Date();
-	document.title="Usuarios";
+	document.title="Departamentos";
 </script>
 <!-- <div id="mod-danger" tabindex="-1" role="dialog" class="modal fade" style="display: none;">
   <div class="modal-dialog">
