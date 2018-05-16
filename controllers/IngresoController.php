@@ -9,27 +9,30 @@ class IngresoController{
 					$maximoIntentos = 2;
 					$intentos = $respuesta['intentos'];//trae el numero de la bd de intentos
 						if ($intentos<$maximoIntentos) {
-							if ($respuesta['usuario'] == $_POST['usuarioIngreso'] && $respuesta['password'] == $_POST['passwordIngreso']) {
-							$intentos = 0;
-							$datosActulizarIntentos = array("usuario"=>$_POST['usuarioIngreso'], "intentos"=>$intentos);
-							$respuestaActualizarIntentos = IngresoModel::actualizarIntentosModel($datosActulizarIntentos);
-							session_start();
-							$_SESSION['verificar'] = true;
-							$_SESSION['usuario'] = $_POST['usuarioIngreso'];
-							header('Location:dashboard');
+							if ($respuesta['usuario'] == $_POST['usuarioIngreso']) {
+								if (password_verify($_POST['passwordIngreso'],$respuesta['password'])) {
+									$intentos = 0;
+									$datosActulizarIntentos = array("usuario"=>$_POST['usuarioIngreso'], "intentos"=>$intentos);
+									$respuestaActualizarIntentos = IngresoModel::actualizarIntentosModel($datosActulizarIntentos);
+									session_start();
+									$_SESSION['verificar'] = true;
+									$_SESSION['usuario'] = $_POST['usuarioIngreso'];
+									header('Location:dashboard');
 
+								}else{
+									++$intentos;
+									$datosActulizarIntentos = array("usuario"=>$_POST['usuarioIngreso'], "intentos"=>$intentos);
+									$respuestaActualizarIntentos = IngresoModel::actualizarIntentosModel($datosActulizarIntentos);
+									header('Location:errorIngreso');
+								}
+							}
+								
 						}else{
-							++$intentos;
-							$datosActulizarIntentos = array("usuario"=>$_POST['usuarioIngreso'], "intentos"=>$intentos);
-							$respuestaActualizarIntentos = IngresoModel::actualizarIntentosModel($datosActulizarIntentos);
-							header('Location:errorIngreso');
+								$intentos = 0;
+								$datosActulizarIntentos = array("usuario"=>$_POST['usuarioIngreso'], "intentos"=>$intentos);
+								$respuestaActualizarIntentos = IngresoModel::actualizarIntentosModel($datosActulizarIntentos);
+								header('Location:index.php?action=preguntaSecreta&preguntaSeguridad='.$respuesta["pregunta_seguridad"].'&usuario='.$respuesta['usuario'].' ');
 						}
-					}else{
-							$intentos = 0;
-							$datosActulizarIntentos = array("usuario"=>$_POST['usuarioIngreso'], "intentos"=>$intentos);
-							$respuestaActualizarIntentos = IngresoModel::actualizarIntentosModel($datosActulizarIntentos);
-							header('Location:index.php?action=preguntaSecreta&preguntaSeguridad='.$respuesta["pregunta_seguridad"].'&usuario='.$respuesta['usuario'].' ');
-					}
 					
 				}else{
 					// SI ENVIA DATOS VACIOS

@@ -70,7 +70,7 @@ class UsuariosController{
 										"nombres"=>$_POST['nombresCrearUsuario'],
 										"apellidos"=>$_POST['apellidosCrearUsuario'],
 										"usuario"=>$_POST['usuarioCrearUsuario'],
-										"password"=>$_POST['passwordCrearUsuario'],
+										"password"=>password_hash($_POST['passwordCrearUsuario'],PASSWORD_DEFAULT),
 										"confirmacionPassword"=>$_POST['repPasswordCrearUsuario'],
 										"email"=>$_POST['emailCrearUsuario'],
 										"departamento"=>$_POST['deptoCrearUsuario'],
@@ -227,7 +227,7 @@ class UsuariosController{
 	                        <div class="form-group">
 	                          <label class="col-sm-3 control-label" for="nombresCrearUsuario">Nombres</label>
 	                          <div class="col-sm-6">
-	                            <input type="text" class="form-control" id="nombresCrearUsuario" name="nombresCrearUsuario" autofocus value="'.utf8_encode($respuesta['nombres']).'">
+	                            <input type="text" class="form-control" id="nombresCrearUsuario" name="nombresCrearUsuario" autofocus value="'.utf8_encode($respuesta['usuariosNombres']).'">
 	                            <p id="avisoNombresCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                          <label id="avisoNombresCrearUsuario" class="text-muted text-danger"></label>

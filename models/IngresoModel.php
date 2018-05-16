@@ -28,8 +28,9 @@ class IngresoModel extends Conexion{
 	public function cambiarContraseñaModel($datos,$tabla){
 		$sql = "UPDATE $tabla SET password =:password WHERE usuario=:usuario";
 		$stmt = Conexion::conectar()->prepare($sql);
+		$pswHash = password_hash($datos['password'],PASSWORD_DEFAULT);
 		$stmt->bindParam(':usuario',$datos['usuario'],PDO::PARAM_STR);
-		$stmt->bindParam(':password',$datos['password'],PDO::PARAM_STR);
+		$stmt->bindParam(':password',$pswHash,PDO::PARAM_STR);
 		if ($stmt->execute()) {
 			return 'success';
 		}else{

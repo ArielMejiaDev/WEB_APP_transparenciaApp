@@ -57,7 +57,7 @@ class UsuariosModel extends Conexion{
 	}
 
 	public function crearFormEditarUsuarioModel($dato,$tabla1,$tabla2){
-		$sql = "SELECT * FROM usuarios INNER JOIN departamentos ON $tabla1.id_departamento WHERE $tabla1.id=:id AND $tabla1.id_departamento=$tabla2.id";
+		$sql = "SELECT usuarios.id, usuarios.nombres AS usuariosNombres, usuarios.apellidos, usuarios.usuario, usuarios.password, usuarios.email, usuarios.foto, usuarios.rol, usuarios.pregunta_seguridad, usuarios.respuesta_seguridad, usuarios.id_departamento, departamentos.nombres FROM usuarios INNER JOIN departamentos ON $tabla1.id_departamento WHERE $tabla1.id=:id AND $tabla1.id_departamento=$tabla2.id";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
 		if ($stmt->execute()) {
@@ -68,11 +68,12 @@ class UsuariosModel extends Conexion{
 	public function actualizarUsuarioModel($datos,$tabla){
 		$sql = "UPDATE $tabla SET nombres=:nombres,apellidos=:apellidos,usuario=:usuario,password=:password,email=:email,foto=:foto,rol=:rol,pregunta_seguridad=:pregunta_seguridad,respuesta_seguridad=:respuesta_seguridad WHERE id=:id";
 		$stmt = Conexion::conectar()->prepare($sql);
+		$pswHash=password_hash($datos['password'],PASSWORD_DEFAULT);
 		$stmt->bindParam(':id',$datos['id'],PDO::PARAM_INT);
 		$stmt->bindParam(':nombres',$datos['nombres'],PDO::PARAM_STR);
 		$stmt->bindParam(':apellidos',$datos['apellidos'],PDO::PARAM_STR);
 		$stmt->bindParam(':usuario',$datos['usuario'],PDO::PARAM_STR);
-		$stmt->bindParam(':password',$datos['password'],PDO::PARAM_STR);
+		$stmt->bindParam(':password',$pswHash,PDO::PARAM_STR);
 		$stmt->bindParam(':email',$datos['email'],PDO::PARAM_STR);
 		$stmt->bindParam(':foto',$datos['urlFoto'],PDO::PARAM_STR);
 		$stmt->bindParam(':rol',$datos['rol'],PDO::PARAM_STR);
