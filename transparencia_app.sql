@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2018 a las 00:37:02
+-- Tiempo de generación: 17-05-2018 a las 00:38:43
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -39,7 +39,7 @@ CREATE TABLE `departamentos` (
 
 INSERT INTO `departamentos` (`id`, `nombres`) VALUES
 (1, 'Informatica'),
-(2, 'udaf');
+(5, 'UDAF');
 
 -- --------------------------------------------------------
 
@@ -67,9 +67,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `email`, `foto`, `rol`, `intentos`, `pregunta_seguridad`, `respuesta_seguridad`, `id_departamento`) VALUES
-(9, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', 'Mvcpoophp7', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendí esa ...', 'referencia', 1),
-(14, 'Roberto', 'Martinez', 'rmartinez', 'Mm123456', 'rmartinez@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'hola', 'mundo', 1),
-(30, 'Cesar', 'Vargas', 'cvargas', 'Cv123456', 'cvargas@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'hola', 'mundo', 1);
+(48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$U/afUXE.ojVgcX3FED9s5uoBcgyWAMPBVNzqBWByTLOfhYTJsPHQ6', 'asalvador@ipm.org.gt', 'views/images/avatar.png', 'admin', 0, 'entendi la ...', 'referencia', 1);
 
 --
 -- Índices para tablas volcadas
@@ -96,13 +94,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Restricciones para tablas volcadas
