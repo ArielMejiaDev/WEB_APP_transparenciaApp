@@ -8,20 +8,20 @@ function obtenerDepto(){
 	var datoDepto = depto.value;
 	enviarParametro(datoDepto);
 }
-var conexion;
+var conexionDepto;
 function enviarParametro(datoDepto){
 	var dato = new FormData();
 	dato.append('depto',datoDepto);
-	conexion = new XMLHttpRequest();
-	conexion.onreadystatechange=respAjax;
-	conexion.open('POST',"views/modules/validacionCrearDepartamentoAjax.php",true);
-	conexion.send(dato);
+	conexionDepto = new XMLHttpRequest();
+	conexionDepto.onreadystatechange=respAjaxDepto;
+	conexionDepto.open('POST',"views/modules/validacionCrearDepartamentoAjax.php",true);
+	conexionDepto.send(dato);
 }
-function respAjax(){
-	if (conexion.readyState==4) {
-		if (conexion.status==200) {
-			console.log(conexion.responseText);
-			if (conexion.responseText=="existe") {
+function respAjaxDepto(){
+	if (conexionDepto.readyState==4) {
+		if (conexionDepto.status==200) {
+			console.log(conexionDepto.responseText);
+			if (conexionDepto.responseText=="existe") {
 				deptoExistente=true;
 			 	avisoDepto.innerHTML="El departamento ya existe!";
 			 	avisoDepto.style.display="inline";

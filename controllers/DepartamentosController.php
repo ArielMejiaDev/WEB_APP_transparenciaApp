@@ -90,7 +90,7 @@ class DepartamentosController{
 		}
 	}
 
-	//eliminar departamento
+	//eliminar departamento *OJO NO SE ELIMINARA UN DEPTO AL QUE YA ESTEN ASIGNADOS USUARIOS*
 	public function eliminarDepartamentoController(){
 		if (isset($_GET['eliminar'])) {
 			$dato = $_GET['eliminar'];

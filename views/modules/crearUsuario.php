@@ -5,19 +5,6 @@ if (!$_SESSION['verificar']) {
 }
 $crearUsuario = new UsuariosController();
 $crearUsuario->CrearUsuarioController();
-if (isset($_GET['action'])) {
-	if ($_GET['action']=='notCrearUsuarioOk') {
-		echo "	<script>
-					swal({
-					  position: 'top-end',
-					  type: 'success',
-					  title: 'Usuario grabado exitosamente!',
-					  showConfirmButton: false,
-					  timer: 1500
-					})
-				</script>";
-	}
-}
 include_once "navbar.php";
 include_once "sidebar.php";
 ?>

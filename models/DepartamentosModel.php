@@ -43,7 +43,7 @@ class DepartamentosModel extends Conexion{
 
 	//verificar que no exista un depto con el mismo nombre
 	public function validarDepartamentoAjaxModel($dato,$tabla){
-		$sql = "SELECT COUNT(*) AS existencia FROM $tabla WHERE nombre = :nombreDepto ";
+		$sql = "SELECT COUNT(*) AS existencia FROM $tabla WHERE nombres = :nombreDepto ";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':nombreDepto',$dato,PDO::PARAM_STR);
 		$stmt->execute();

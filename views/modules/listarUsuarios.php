@@ -30,6 +30,19 @@ if (isset($_GET['action'])) {
         </script>";
   }
 }
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notCrearUsuarioOk') {
+		echo "	<script>
+					swal({
+					  position: 'top-end',
+					  type: 'success',
+					  title: 'Usuario grabado exitosamente!',
+					  showConfirmButton: false,
+					  timer: 1500
+					})
+				</script>";
+	}
+}
 $usuarios = new UsuariosController();
 $usuarios->eliminarUsuariosController();
 ?>

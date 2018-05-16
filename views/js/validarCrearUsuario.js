@@ -52,16 +52,17 @@ function obtenerUsuario(){
 	var datos = new FormData();
 	datos.append("usuario",usuario.value);
 	conexion = new XMLHttpRequest();
-	conexion.onreadystatechange=respAjax;
+	conexion.onreadystatechange=respAjaxUsuario;
 	conexion.open("POST","views/modules/validacionCrearUsuarioAjax.php",true);
 	conexion.send(datos);
 }
-function respAjax(){
+function respAjaxUsuario(){
 	if (conexion.readyState==4) {
 		if (conexion.status==200) {
-			//console.log(conexion.responseText);
+			console.log(conexion.responseText);
 			if (conexion.responseText=="existe") {
 				usuarioExistente=true;
+				console.log(conexion.responseText);
 				var avisoUsuario = document.getElementById('avisoUsuarioCrearUsuario');
 			 	avisoUsuario.innerHTML="El usuario ya existe!";
 			 	avisoUsuario.style.display="inline";
@@ -147,7 +148,7 @@ function validarPassword(){
 		return false;
 	}
 	// FIN DE SCRIPT VALIDANDO NOMBRE
-//------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------
 	// INICIO SCRIPT VALIDANDO APELLIDOS
 	var apellidos = document.getElementById('apellidosCrearUsuario').value;
 	if (apellidos!="") {
@@ -171,7 +172,7 @@ function validarPassword(){
 		return false;
 	}
 	// FIN DE SCRIPT VALIDANDO APELLIDOS
-//---------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------
 
 	//INICIO SCRIPT VALIDANDO USUARIO SIN AJAX
 	 var usuario = document.getElementById('usuarioCrearUsuario').value;
@@ -198,7 +199,7 @@ function validarPassword(){
 	 	return false;
 	 }
 	//FIN DE SCRIPT VALIDANDO USUARIO SIN AJAX
-//----------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------
 		//INICIO DE SCRIPT VALIDANDO PASSWORD
 		var password1 = document.getElementById('passwordCrearUsuario').value;
 		var avisoPassword = document.getElementById('avisoPasswordCrearUsuario');
@@ -260,8 +261,8 @@ function validarPassword(){
 			 	return false;
 		}
 		//FIN DE SCRIPT VALIDANDO CONFIRMACION DE PASSWORD
-//------------------------------------------------------------------------------------
-	   //INICIO DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
+			//------------------------------------------------------------------------------------
+	   	//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
 	   	var email = document.getElementById('emailCrearUsuario').value;
 	   	var avisoEmail = document.getElementById('avisoEmailCrearUsuario');
 	   	var expRegEmail =/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
@@ -277,7 +278,7 @@ function validarPassword(){
 	   		return false;
 	   	}
 	  	//FIN DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
-//----------------------------------------------------------------------------------
+			//----------------------------------------------------------------------------------
 		//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE ROL
 		var rol = document.getElementsByClassName('radioButton');
 		var avisorol = document.getElementById('avisoRolCrearUsuario');
@@ -291,7 +292,7 @@ function validarPassword(){
 		  	}
 		}
 		//FIN DE SCRIPT VALIDANDO CONFIRMACION DE ROL
-//-----------------------------------------------------------------------------------------------
+			//-----------------------------------------------------------------------------------------------
 	  	//INICIO DE SCRIPT VALIDANDO PREGUNTA SECRETA
 	  	var preguntaSecreta = document.getElementById('preguntaSeguridadCrearUsuario').value;
 	  	var avisoPreguntaSecreta = document.getElementById('avisoPreguntaSeguridadCrearUsuario');
@@ -307,7 +308,7 @@ function validarPassword(){
 	  		return false;
 	  	}
 		//FIN DE SCRIPT VALIDANDO PREGUNTA SECRETA
-//----------------------------------------------------------------------------------------------
+			//----------------------------------------------------------------------------------------------
 
 	  	//INICIO DE SCRIPT VALIDANDO RESPUESTA SECRETA
 		var respuestaSecreta = document.getElementById('respuestaSeguridadCrearUsuario').value;
@@ -320,13 +321,13 @@ function validarPassword(){
 			return false;
 		}
 		//FIN DE SCRIPT VALIDANDO RESPUESTA SECRETA
-//--------------------------------------------------------------------------------------------------------
+			//--------------------------------------------------------------------------------------------------------
 		//INICIO DE SCRIPT PARA VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
 		if (usuarioExistente) {
 			return false;
 		}
 	  	 //FIN DE SCRIPT PARA VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
-//--------------------------------------------------------------------------------------------------------  	 
+			//--------------------------------------------------------------------------------------------------------  	 
 	  	//INICIO DE SCRIPT PARA VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
 	 	if (emailExistente) {
 	  	 	return false;
