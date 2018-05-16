@@ -128,6 +128,7 @@ function validarPassword(){
 	if (nombres!="") {
 		var caracteresNombres = nombres.length;
 		var expRegNombres = /^(?![ .]+$)[a-zA-Z .]*$/;
+		var expRegDepto = /^(?![ .]+$)[0-9 .]*$/;
 		var regExp=/^[a-zA-Z0-9]*$/;
 		var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
 		alertaNombres.style.display="none";
@@ -266,6 +267,14 @@ function validarPassword(){
 	   	var email = document.getElementById('emailCrearUsuario').value;
 	   	var avisoEmail = document.getElementById('avisoEmailCrearUsuario');
 	   	var expRegEmail =/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+
+	   	avisoPassword2.style.display="none";
+		avisoPassword.style.display="none";
+		alertaApellidos.style.display="none";
+		alertaNombres.style.display="none";
+		avisoUsuario.style.display="none";
+		avisoEmail.style.display="none";
+
 	   	if (email!="") {
 	   		if (!expRegEmail.test(email)) {
 	   			avisoEmail.innerHTML="Debe ingrear un email valido";
@@ -277,6 +286,32 @@ function validarPassword(){
 	   		avisoEmail.style.display="inline";
 	   		return false;
 	   	}
+
+	   	//INICIO DE SCRIPT VALIDANDO DEPARTAMENTO
+	   	var depto = document.getElementById('deptoCrearUsuario');
+	   	var avisoDepto = document.getElementById('avisoDeptoCrearUsuario');
+
+	   	avisoPassword2.style.display="none";
+		avisoPassword.style.display="none";
+		alertaApellidos.style.display="none";
+		alertaNombres.style.display="none";
+		avisoUsuario.style.display="none";
+		avisoEmail.style.display="none";
+	   	avisoDepto.style.display="none";
+
+	   	if (depto!="") {
+	   		if (depto.value==0) {
+	   			avisoDepto.innerHTML="Debe seleccionar un departamento";
+		   		avisoDepto.style.display="inline";
+		   		return false;
+	   		}
+	   		if (!expRegDepto.test(depto.value)) {
+	   			avisoDepto.innerHTML="Debe seleccionar un departamento";
+		   		avisoDepto.style.display="inline";
+		   		return false;
+	   		}
+	   	}
+	   	//FIN DE SCRIPT VALIDANDO DEPARTAMENTO
 	  	//FIN DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
 			//----------------------------------------------------------------------------------
 		//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE ROL

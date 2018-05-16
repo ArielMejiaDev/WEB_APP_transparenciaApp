@@ -12,6 +12,7 @@ class UsuariosController{
 				isset($_POST['passwordCrearUsuario']) || 
 				isset($_POST['repPasswordCrearUsuario']) || 
 				isset($_POST['emailCrearUsuario']) || 
+				isset($_POST['deptoCrearUsuario']) ||
 				isset($_POST['urlFotoCrearUsuario']) || 
 				isset($_POST['rolCrearUsuario']) || 
 				isset($_POST['preguntaSeguridadCrearUsuario']) || 
@@ -25,7 +26,8 @@ class UsuariosController{
 				!empty($_POST['usuarioCrearUsuario']) || 
 				!empty($_POST['passwordCrearUsuario']) || 
 				!empty($_POST['repPasswordCrearUsuario']) || 
-				!empty($_POST['emailCrearUsuario']) || 
+				!empty($_POST['emailCrearUsuario']) ||
+				!empty($_POST['deptoCrearUsuario']) || 
 				!empty($_POST['rolCrearUsuario']) || 
 				!empty($_POST['preguntaSeguridadCrearUsuario']) || 
 				!empty($_POST['respuestaSeguridadCrearUsuario'])) {
@@ -41,7 +43,7 @@ class UsuariosController{
 
 					if (preg_match($expRegNombres, $_POST['nombresCrearUsuario'])
 					&&	preg_match($expRegNombres, $_POST['apellidosCrearUsuario'])  
-					&&	preg_match($expRegCamposTexto, $_POST['usuarioCrearUsuario']) 
+					&&	preg_match($expRegCamposTexto, $_POST['usuarioCrearUsuario'])
 					&&	preg_match($expRegCamposTexto, $_POST['urlFotoCrearUsuario']) 
 					&&	preg_match($expRegCamposTexto, $_POST['rolCrearUsuario']) 
 					&&	preg_match($expRegNombres, $_POST['preguntaSeguridadCrearUsuario']) 
@@ -55,40 +57,49 @@ class UsuariosController{
 								
 								if (preg_match($expRegEmail, $_POST['emailCrearUsuario'])) {
 
-									if (empty($_POST['urlFotoCrearUsuario'])) {
-										$_POST['urlFotoCrearUsuario'] = "views/images/avatar.png";
-									}
+									if ($_POST['deptoCrearUsuario']!=0) {
+										if (empty($_POST['urlFotoCrearUsuario'])) {
+											$_POST['urlFotoCrearUsuario'] = "views/images/avatar.png";
+										}
 
-									if (empty($_POST['rolCrearUsuario'])) {
-										$_POST['rolCrearUsuario'] = "usuario";
-									}
+										if (empty($_POST['rolCrearUsuario'])) {
+											$_POST['rolCrearUsuario'] = "usuario";
+										}
 
-									$datos = array(
-									"nombres"=>$_POST['nombresCrearUsuario'],
-									"apellidos"=>$_POST['apellidosCrearUsuario'],
-									"usuario"=>$_POST['usuarioCrearUsuario'],
-									"password"=>$_POST['passwordCrearUsuario'],
-									"confirmacionPassword"=>$_POST['repPasswordCrearUsuario'],
-									"email"=>$_POST['emailCrearUsuario'],
-									"departamento"=>$_POST['deptoCrearUsuario'],
-									"urlFoto"=>$_POST['urlFotoCrearUsuario'],
-									"rol"=>$_POST['rolCrearUsuario'],
-									"preguntaSecreta"=>$_POST['preguntaSeguridadCrearUsuario'],
-									"respuestaSecreta"=>$_POST['respuestaSeguridadCrearUsuario']);
-									echo "<pre>",print_r($datos),"</pre>";
-									$respuesta = UsuariosModel::CrearUsuarioModel($datos,"usuarios");
-									if ($respuesta=='success') {
-										header('Location:notCrearUsuarioOk');
+										$datos = array(
+										"nombres"=>$_POST['nombresCrearUsuario'],
+										"apellidos"=>$_POST['apellidosCrearUsuario'],
+										"usuario"=>$_POST['usuarioCrearUsuario'],
+										"password"=>$_POST['passwordCrearUsuario'],
+										"confirmacionPassword"=>$_POST['repPasswordCrearUsuario'],
+										"email"=>$_POST['emailCrearUsuario'],
+										"departamento"=>$_POST['deptoCrearUsuario'],
+										"urlFoto"=>$_POST['urlFotoCrearUsuario'],
+										"rol"=>$_POST['rolCrearUsuario'],
+										"preguntaSecreta"=>$_POST['preguntaSeguridadCrearUsuario'],
+										"respuestaSecreta"=>$_POST['respuestaSeguridadCrearUsuario']);
+										//echo "<pre>",print_r($datos),"</pre>";
+										$respuesta = UsuariosModel::CrearUsuarioModel($datos,"usuarios");
+										if ($respuesta=='success') {
+											header('Location:notCrearUsuarioOk');
+										}else{
+											echo "	<script>
+														swal({
+														  type: 'error',
+														  title: 'Oops...',
+														  text: 'No se pudo crear el nuevo usuario *revisar respuesta del servidor',
+														})
+													</script>";
+										}
 									}else{
-										echo "	<script>
-													swal({
-													  type: 'error',
-													  title: 'Oops...',
-													  text: 'No se pudo crear el nuevo usuario *server*',
-													})
-												</script>";
-									}
-								
+									echo "	<script>
+											swal({
+											  type: 'error',
+											  title: 'Oops...',
+											  text: 'Por favor debe seleccionar un departamento para el usuario',
+											})
+										</script>";
+								}//VALIDACION DEL DEPARTAMENTO
 								}else{
 									echo "	<script>
 											swal({
