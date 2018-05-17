@@ -35,7 +35,7 @@ class UsuariosController{
 					//validar que no se reciban expresiones regulares
 
 					// $expRegNombres = '/^(?![ .]+$)[a-zA-Z .]*$/';
-					$expRegNombres = '/^(?![ .]+$)[a-zA-Z .]*$/';
+					$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
 					$expRegCamposTexto = '/^[a-zA-Z0-9]*$/';
 					// $expRegCamposTexto = '/^[a-zA-Z0-9]*$/';
 					$expRegPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/';
@@ -67,8 +67,8 @@ class UsuariosController{
 										}
 
 										$datos = array(
-										"nombres"=>$_POST['nombresCrearUsuario'],
-										"apellidos"=>$_POST['apellidosCrearUsuario'],
+										"nombres"=>utf8_decode($_POST['nombresCrearUsuario']),
+										"apellidos"=>utf8_decode($_POST['apellidosCrearUsuario']),
 										"usuario"=>$_POST['usuarioCrearUsuario'],
 										"password"=>password_hash($_POST['passwordCrearUsuario'],PASSWORD_DEFAULT),
 										"confirmacionPassword"=>$_POST['repPasswordCrearUsuario'],
@@ -76,9 +76,9 @@ class UsuariosController{
 										"departamento"=>$_POST['deptoCrearUsuario'],
 										"urlFoto"=>$_POST['urlFotoCrearUsuario'],
 										"rol"=>$_POST['rolCrearUsuario'],
-										"preguntaSecreta"=>$_POST['preguntaSeguridadCrearUsuario'],
-										"respuestaSecreta"=>$_POST['respuestaSeguridadCrearUsuario']);
-										//echo "<pre>",print_r($datos),"</pre>";
+										"preguntaSecreta"=>utf8_decode($_POST['preguntaSeguridadCrearUsuario']),
+										"respuestaSecreta"=>utf8_decode($_POST['respuestaSeguridadCrearUsuario']));
+										echo "<pre>",print_r($datos),"</pre>";
 										$respuesta = UsuariosModel::CrearUsuarioModel($datos,"usuarios");
 										if ($respuesta=='success') {
 											header('Location:notCrearUsuarioOk');
@@ -286,13 +286,13 @@ class UsuariosController{
 	                          <label class="col-sm-3 control-label">Rol</label>
 	                          <div class="col-sm-6">
 								<label class="radio-inline">
-									<input type="radio" class="radioButton" id="rol1" name="rolCrearUsuario" value="usuario">Usuario
+									<input type="radio" class="radioButton" id="usuario" name="rolCrearUsuario" value="usuario">Usuario
 								</label>
 								<label class="radio-inline">
-									<input type="radio" class="radioButton" id="rol2" name="rolCrearUsuario" value="editor">Editor
+									<input type="radio" class="radioButton" id="editor" name="rolCrearUsuario" value="editor">Editor
 								</label>
 								<label class="radio-inline">
-									<input type="radio" class="radioButton" id="rol3" name="rolCrearUsuario" value="admin">Admin
+									<input type="radio" class="radioButton" id="admin" name="rolCrearUsuario" value="admin">Admin
 								</label>
 	                          </div>
 	                        </div>

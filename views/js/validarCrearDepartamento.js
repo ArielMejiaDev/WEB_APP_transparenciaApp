@@ -1,7 +1,7 @@
 var depto = document.getElementById('nombreDepartamentoCrearDepto');
 var avisoDepto = document.getElementById('avisoNombreDepartamentoCrearDepto');
 var deptoExistente = false;
-var expRegNombres = /^(?![ .]+$)[a-zA-Z .]*$/;
+var expRegNombres = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
 var regExp=/^[a-zA-Z0-9]*$/;
 depto.addEventListener('blur',obtenerDepto,false);
 function obtenerDepto(){

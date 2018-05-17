@@ -23,8 +23,36 @@ function sugerirUsuario(){
 		var usuarioSugerido = inicial+stringArray[0]+stringArray[1]+stringArray[2];
 	}
 
+	
+
+	var frase=usuarioSugerido; 
+
+		
+	for (var i=0;i<frase.length;i++){ 
+	//Sustituye "á é í ó ú" 
+	if (frase.charAt(i)=="á") frase = frase.replace(/á/,"a"); 
+	if (frase.charAt(i)=="é") frase = frase.replace(/é/,"e"); 
+	if (frase.charAt(i)=="í") frase = frase.replace(/í/,"i"); 
+	if (frase.charAt(i)=="ó") frase = frase.replace(/ó/,"o"); 
+	if (frase.charAt(i)=="ú") frase = frase.replace(/ú/,"u"); 
+	} 
 	var usuario = document.getElementById('usuarioCrearUsuario');
-	usuario.value=usuarioSugerido.toLowerCase();
+	usuario.value=frase.toLowerCase();
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+
+
 
 }
 // FINAL DE SCRIPT PARA SUGERIR USUARIO
@@ -127,7 +155,7 @@ function validarPassword(){
 	var nombres = document.getElementById('nombresCrearUsuario').value;
 	if (nombres!="") {
 		var caracteresNombres = nombres.length;
-		var expRegNombres = /^(?![ .]+$)[a-zA-Z .]*$/;
+		var expRegNombres = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
 		var expRegDepto = /^(?![ .]+$)[0-9 .]*$/;
 		var regExp=/^[a-zA-Z0-9]*$/;
 		var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
@@ -162,7 +190,7 @@ function validarPassword(){
 		alertaApellidos.style.display="none";
 
 		if (!expRegNombres.test(apellidos)) {
-		alertaApellidos.innerHTML="No estan permitidos los caracteres especiales";
+		alertaApellidos.innerHTML="No estan permitidos los caracteres especiale2";
 		alertaApellidos.style.display="inline";
 		return false;
 		}
@@ -315,16 +343,21 @@ function validarPassword(){
 	  	//FIN DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
 			//----------------------------------------------------------------------------------
 		//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE ROL
-		var rol = document.getElementsByClassName('radioButton');
+		var usuario = document.getElementById('usuario').checked;
+		var editor = document.getElementById('editor').checked;
+		var admin = document.getElementById('admin').checked;
+		avisoPassword2.style.display="none";
+		avisoPassword.style.display="none";
+		alertaApellidos.style.display="none";
+		alertaNombres.style.display="none";
+		avisoUsuario.style.display="none";
+		avisoEmail.style.display="none";
+	   	avisoDepto.style.display="none";
 		var avisorol = document.getElementById('avisoRolCrearUsuario');
-		for (var i = 0; i < rol.length; i++) {
-		  	if (rol[i].checked) {
-		  		return true;
-		  	}else{
-		  		avisorol.innerHTML="Por favor elija un rol para el usuario";
-		  		avisorol.style.display="inline";
-		  		return false;
-		  	}
+		if (usuario=="" && editor =="" && admin=="") {
+		  	avisorol.innerHTML="Por favor elija un rol para el usuario";
+	  		avisorol.style.display="inline";
+	  		return false;
 		}
 		//FIN DE SCRIPT VALIDANDO CONFIRMACION DE ROL
 			//-----------------------------------------------------------------------------------------------
@@ -334,6 +367,13 @@ function validarPassword(){
 	  	var contenedor = document.getElementById('contenedorAvisoPreguntaSeguridadCrearUsuario');
 	  	avisoPreguntaSecreta.style.display="none";
 	  	contenedor.style.display="none";
+	  	avisoPassword2.style.display="none";
+		avisoPassword.style.display="none";
+		alertaApellidos.style.display="none";
+		alertaNombres.style.display="none";
+		avisoUsuario.style.display="none";
+		avisoEmail.style.display="none";
+	   	avisoDepto.style.display="none";
 	  	if (preguntaSecreta!="") {
 
 	  	}else{
@@ -342,12 +382,28 @@ function validarPassword(){
 	  		contenedor.style.display="inline";
 	  		return false;
 	  	}
+	  	if (!expRegNombres.test(preguntaSecreta)) {
+	   			avisoPreguntaSecreta.innerHTML="No esta permitido ingresar caracteres especiales";
+		   		avisoPreguntaSecreta.style.display="inline";
+		   		contenedor.style.display="inline";
+		   		return false;
+	   		}
 		//FIN DE SCRIPT VALIDANDO PREGUNTA SECRETA
 			//----------------------------------------------------------------------------------------------
 
 	  	//INICIO DE SCRIPT VALIDANDO RESPUESTA SECRETA
 		var respuestaSecreta = document.getElementById('respuestaSeguridadCrearUsuario').value;
 		var avisoRespuestaSecreta = document.getElementById('avisoRespuestaSeguridadCrearUsuario');
+		avisoRespuestaSecreta.style.display="none";
+		avisoPreguntaSecreta.style.display="none";
+	  	contenedor.style.display="none";
+	  	avisoPassword2.style.display="none";
+		avisoPassword.style.display="none";
+		alertaApellidos.style.display="none";
+		alertaNombres.style.display="none";
+		avisoUsuario.style.display="none";
+		avisoEmail.style.display="none";
+	   	avisoDepto.style.display="none";
 		if (respuestaSecreta!="") {
 
 		}else{
@@ -355,6 +411,11 @@ function validarPassword(){
 			avisoRespuestaSecreta.style.display="inline";
 			return false;
 		}
+		if (!expRegNombres.test(respuestaSecreta)) {
+	   			avisoRespuestaSecreta.innerHTML="No esta permitido ingresar caracteres especiales";
+		   		avisoRespuestaSecreta.style.display="inline";
+		   		return false;
+	   		}
 		//FIN DE SCRIPT VALIDANDO RESPUESTA SECRETA
 			//--------------------------------------------------------------------------------------------------------
 		//INICIO DE SCRIPT PARA VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
