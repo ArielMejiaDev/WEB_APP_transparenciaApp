@@ -38,22 +38,6 @@ function sugerirUsuario(){
 	} 
 	var usuario = document.getElementById('usuarioCrearUsuario');
 	usuario.value=frase.toLowerCase();
-
-
-
-
-
-
-
-
-
-
-
-
-	 
-
-
-
 }
 // FINAL DE SCRIPT PARA SUGERIR USUARIO
 //-----------------------------------------------------------------------------------
@@ -151,55 +135,58 @@ function respEmailAjax(){
 
 //INICIO DE SCRIPT DE VALIDACION DEL PASSWORD
 function validarPassword(){
+
 	//INICIO SCRIPT VALIDANDO NOMBRE
-	var nombres = document.getElementById('nombresCrearUsuario').value;
-	if (nombres!="") {
-		var caracteresNombres = nombres.length;
-		var expRegNombres = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
-		var expRegDepto = /^(?![ .]+$)[0-9 .]*$/;
-		var regExp=/^[a-zA-Z0-9]*$/;
-		var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
-		alertaNombres.style.display="none";
-
-		var alertaApellidos = document.getElementById('avisoApellidosCrearUsuario');
-		alertaApellidos.style.display="none";
-
-		if (!expRegNombres.test(nombres)) {
+		var nombres = document.getElementById('nombresCrearUsuario').value;
+		if (nombres!="") {
+			var caracteresNombres = nombres.length;
+			var expRegNombres = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
+			// var expRegNombres = /^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/;
+			var expRegDepto = /^(?![ .]+$)[0-9 .]*$/;
+			var regExp=/^[a-zA-Z0-9]*$/;
 			var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
-			alertaNombres.innerHTML="No estan permitidos caracteres especiales";
+			alertaNombres.style.display="none";
+
+			var alertaApellidos = document.getElementById('avisoApellidosCrearUsuario');
+			alertaApellidos.style.display="none";
+
+			if (!expRegNombres.test(nombres)) {
+				var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
+				alertaNombres.innerHTML="No estan permitidos caracteres especiales";
+				alertaNombres.style.display="inline";
+				return false;
+			}
+		}else{
+			var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
+			alertaNombres.innerHTML="No puede quedar vacio";
 			alertaNombres.style.display="inline";
 			return false;
 		}
-	}else{
-		var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
-		alertaNombres.innerHTML="No puede quedar vacio";
-		alertaNombres.style.display="inline";
-		return false;
-	}
 	// FIN DE SCRIPT VALIDANDO NOMBRE
-	//------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------
+
 	// INICIO SCRIPT VALIDANDO APELLIDOS
-	var apellidos = document.getElementById('apellidosCrearUsuario').value;
-	if (apellidos!="") {
-		var caracteresApellidos = apellidos.length;
-		
-		var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
-		alertaNombres.style.display="none";
+		var apellidos = document.getElementById('apellidosCrearUsuario').value;
+		if (apellidos!="") {
+			var caracteresApellidos = apellidos.length;
+			
+			var alertaNombres = document.getElementById('avisoNombresCrearUsuario');
+			alertaNombres.style.display="none";
 
-		var alertaApellidos = document.getElementById('avisoApellidosCrearUsuario');
-		alertaApellidos.style.display="none";
+			var alertaApellidos = document.getElementById('avisoApellidosCrearUsuario');
+			alertaApellidos.style.display="none";
 
-		if (!expRegNombres.test(apellidos)) {
-		alertaApellidos.innerHTML="No estan permitidos los caracteres especiale2";
-		alertaApellidos.style.display="inline";
-		return false;
+			if (!expRegNombres.test(apellidos)) {
+			alertaApellidos.innerHTML="No estan permitidos los caracteres especiale2";
+			alertaApellidos.style.display="inline";
+			return false;
+			}
+
+		}else{
+			alertaApellidos.innerHTML="No puede quedar vacio";
+			alertaApellidos.style.display="inline";
+			return false;
 		}
-
-	}else{
-		alertaApellidos.innerHTML="No puede quedar vacio";
-		alertaApellidos.style.display="inline";
-		return false;
-	}
 	// FIN DE SCRIPT VALIDANDO APELLIDOS
 	//---------------------------------------------------------------------------------------
 
@@ -228,8 +215,9 @@ function validarPassword(){
 	 	return false;
 	 }
 	//FIN DE SCRIPT VALIDANDO USUARIO SIN AJAX
-	//----------------------------------------------------------------------------------
-		//INICIO DE SCRIPT VALIDANDO PASSWORD
+	//---------------------------------------------------------------------------------------
+
+	//INICIO DE SCRIPT VALIDANDO PASSWORD
 		var password1 = document.getElementById('passwordCrearUsuario').value;
 		var avisoPassword = document.getElementById('avisoPasswordCrearUsuario');
 		var regExpPassword= /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/;
@@ -242,22 +230,23 @@ function validarPassword(){
 				var caracteresPassword1 = password1.length;
 				if (caracteresPassword1<8) {
 					avisoPassword.innerHTML="Se require un minimo de 8 digitos para la contraseña";
-		   		avisoPassword.style.display="inline";
-		   		return false;
+			   		avisoPassword.style.display="inline";
+			   		return false;
 				}
-				if (!regExpPassword.test(password1)) {
-					avisoPassword.innerHTML="No estan permitidos los caracteres especiales";
-		   		avisoPassword.style.display="inline";
-		   		return false;
-				}
+				
 		}else{
 				avisoPassword.innerHTML="No se puede quedar vacio";
 				avisoPassword.style.display="inline";
 				return false;
 		}
-		//FIN DE SCRIPT VALIDANDO PASSWORD
-
-	  	//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE PASSWORD
+		if (!regExpPassword.test(password1)) {
+					avisoPassword.innerHTML="No estan permitidos los caracteres especiales";
+		   			avisoPassword.style.display="inline";
+		   			return false;
+			}
+	//FIN DE SCRIPT VALIDANDO PASSWORD
+	//---------------------------------------------------------------------------------------
+	//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE PASSWORD
 	  
 		var password2 = document.getElementById('repPasswordCrearUsuario').value;
 		var avisoPassword2 = document.getElementById('avisoRepPasswordCrearUsuario');
@@ -289,9 +278,10 @@ function validarPassword(){
 				avisoPassword2.style.display="inline";
 			 	return false;
 		}
-		//FIN DE SCRIPT VALIDANDO CONFIRMACION DE PASSWORD
-			//------------------------------------------------------------------------------------
-	   	//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
+	//FIN DE SCRIPT VALIDANDO CONFIRMACION DE PASSWORD
+	//---------------------------------------------------------------------------------------
+
+	//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
 	   	var email = document.getElementById('emailCrearUsuario').value;
 	   	var avisoEmail = document.getElementById('avisoEmailCrearUsuario');
 	   	var expRegEmail =/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
@@ -314,8 +304,10 @@ function validarPassword(){
 	   		avisoEmail.style.display="inline";
 	   		return false;
 	   	}
+	//FIN DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
+	//---------------------------------------------------------------------------------------
 
-	   	//INICIO DE SCRIPT VALIDANDO DEPARTAMENTO
+	//INICIO DE SCRIPT VALIDANDO DEPARTAMENTO
 	   	var depto = document.getElementById('deptoCrearUsuario');
 	   	var avisoDepto = document.getElementById('avisoDeptoCrearUsuario');
 
@@ -339,10 +331,10 @@ function validarPassword(){
 		   		return false;
 	   		}
 	   	}
-	   	//FIN DE SCRIPT VALIDANDO DEPARTAMENTO
-	  	//FIN DE SCRIPT VALIDANDO CONFIRMACION DE EMAIL
-			//----------------------------------------------------------------------------------
-		//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE ROL
+	//FIN DE SCRIPT VALIDANDO DEPARTAMENTO
+	//---------------------------------------------------------------------------------------
+
+	//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE ROL
 		var usuario = document.getElementById('usuario').checked;
 		var editor = document.getElementById('editor').checked;
 		var admin = document.getElementById('admin').checked;
@@ -359,9 +351,10 @@ function validarPassword(){
 	  		avisorol.style.display="inline";
 	  		return false;
 		}
-		//FIN DE SCRIPT VALIDANDO CONFIRMACION DE ROL
-			//-----------------------------------------------------------------------------------------------
-	  	//INICIO DE SCRIPT VALIDANDO PREGUNTA SECRETA
+	//FIN DE SCRIPT VALIDANDO CONFIRMACION DE ROL
+	//---------------------------------------------------------------------------------------
+
+	//INICIO DE SCRIPT VALIDANDO PREGUNTA SECRETA
 	  	var preguntaSecreta = document.getElementById('preguntaSeguridadCrearUsuario').value;
 	  	var avisoPreguntaSecreta = document.getElementById('avisoPreguntaSeguridadCrearUsuario');
 	  	var contenedor = document.getElementById('contenedorAvisoPreguntaSeguridadCrearUsuario');
@@ -374,6 +367,7 @@ function validarPassword(){
 		avisoUsuario.style.display="none";
 		avisoEmail.style.display="none";
 	   	avisoDepto.style.display="none";
+	   	avisorol.style.display="none";
 	  	if (preguntaSecreta!="") {
 
 	  	}else{
@@ -388,10 +382,10 @@ function validarPassword(){
 		   		contenedor.style.display="inline";
 		   		return false;
 	   		}
-		//FIN DE SCRIPT VALIDANDO PREGUNTA SECRETA
-			//----------------------------------------------------------------------------------------------
+	//FIN DE SCRIPT VALIDANDO PREGUNTA SECRETA
+	//---------------------------------------------------------------------------------------
 
-	  	//INICIO DE SCRIPT VALIDANDO RESPUESTA SECRETA
+	//INICIO DE SCRIPT VALIDANDO RESPUESTA SECRETA
 		var respuestaSecreta = document.getElementById('respuestaSeguridadCrearUsuario').value;
 		var avisoRespuestaSecreta = document.getElementById('avisoRespuestaSeguridadCrearUsuario');
 		avisoRespuestaSecreta.style.display="none";
@@ -404,6 +398,7 @@ function validarPassword(){
 		avisoUsuario.style.display="none";
 		avisoEmail.style.display="none";
 	   	avisoDepto.style.display="none";
+	   	avisorol.style.display="none";
 		if (respuestaSecreta!="") {
 
 		}else{
@@ -416,18 +411,21 @@ function validarPassword(){
 		   		avisoRespuestaSecreta.style.display="inline";
 		   		return false;
 	   		}
-		//FIN DE SCRIPT VALIDANDO RESPUESTA SECRETA
-			//--------------------------------------------------------------------------------------------------------
-		//INICIO DE SCRIPT PARA VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
+	//FIN DE SCRIPT VALIDANDO RESPUESTA SECRETA
+	//---------------------------------------------------------------------------------------
+
+	//INICIO DE SCRIPT PARA VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
 		if (usuarioExistente) {
 			return false;
 		}
-	  	 //FIN DE SCRIPT PARA VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
-			//--------------------------------------------------------------------------------------------------------  	 
-	  	//INICIO DE SCRIPT PARA VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
+	//FIN DE SCRIPT PARA VALIDAR QUE NO EXISTA USUARIOS REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
+	//---------------------------------------------------------------------------------------
+
+	//INICIO DE SCRIPT PARA VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
 	 	if (emailExistente) {
 	  	 	return false;
 	  	 }
-	  	//FIN DE SCRIPT PARA VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
+	//FIN DE SCRIPT PARA VALIDAR QUE NO EXISTA EMAIL REPETIDOS CON AJAX PARA BLOQUEAR SUBMIT
+	//---------------------------------------------------------------------------------------
 	return true;
 }

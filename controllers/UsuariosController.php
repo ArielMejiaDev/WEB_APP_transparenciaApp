@@ -217,8 +217,7 @@ class UsuariosController{
 	public function crearFormEditarUsuarioController(){
 		if (isset($_GET['id'])) {
 				$dato = $_GET['id']; 
-				$respuesta = UsuariosModel::crearFormEditarUsuarioModel($dato,"usuarios","departamentos");
-				
+				$respuesta = UsuariosModel::crearFormEditarUsuarioModel($dato,"usuarios","departamentos");			
 
 				//echo '<pre>',print_r($respuesta),'</pre>';
 				echo '	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarPassword()" method="post">
@@ -312,7 +311,7 @@ class UsuariosController{
 	                        <div class="form-group">
 	                          <label class="col-sm-3 control-label" for="respuestaSeguridadCrearUsuario">Escribe tu respuesta de seguridad</label>
 	                          <div class="col-sm-6">
-	                            <input type="password" class="form-control" id="respuestaSeguridadCrearUsuario" name="respuestaSeguridadCrearUsuario" value="'.utf8_encode($respuesta['respuesta_seguridad']).'">
+	                            <input type="text" class="form-control" id="respuestaSeguridadCrearUsuario" name="respuestaSeguridadCrearUsuario" value="'.utf8_encode($respuesta['respuesta_seguridad']).'">
 	                            <p id="avisoRespuestaSeguridadCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
@@ -359,7 +358,7 @@ class UsuariosController{
 					//validar que no se reciban expresiones regulares
 
 					// $expRegNombres = '/^(?![ .]+$)[a-zA-Z .]*$/';
-					$expRegNombres = '/^(?![ .]+$)[a-zA-Z .]*$/';
+					$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
 					$expRegCamposTexto = '/^[a-zA-Z0-9]*$/';
 					// $expRegCamposTexto = '/^[a-zA-Z0-9]*$/';
 					$expRegPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/';
@@ -392,16 +391,16 @@ class UsuariosController{
 
 									$datos = array(
 									"id"=>$_POST['idCrearUsuario'],
-									"nombres"=>$_POST['nombresCrearUsuario'],
-									"apellidos"=>$_POST['apellidosCrearUsuario'],
+									"nombres"=>utf8_decode($_POST['nombresCrearUsuario']),
+									"apellidos"=>utf8_decode($_POST['apellidosCrearUsuario']),
 									"usuario"=>$_POST['usuarioCrearUsuario'],
 									"password"=>$_POST['passwordCrearUsuario'],
 									"confirmacionPassword"=>$_POST['repPasswordCrearUsuario'],
 									"email"=>$_POST['emailCrearUsuario'],
 									"urlFoto"=>$_POST['urlFotoCrearUsuario'],
 									"rol"=>$_POST['rolCrearUsuario'],
-									"preguntaSecreta"=>$_POST['preguntaSeguridadCrearUsuario'],
-									"respuestaSecreta"=>$_POST['respuestaSeguridadCrearUsuario']);
+									"preguntaSecreta"=>utf8_decode($_POST['preguntaSeguridadCrearUsuario']),
+									"respuestaSecreta"=>utf8_decode($_POST['respuestaSeguridadCrearUsuario']));
 									//echo "<pre>",print_r($datos),"</pre>";
 									$respuesta = UsuariosModel::actualizarUsuarioModel($datos,"usuarios");
 									if ($respuesta=='success') {
