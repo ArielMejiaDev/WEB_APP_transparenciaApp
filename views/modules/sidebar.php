@@ -27,9 +27,9 @@
                             </li>
                           </ul>
                         </li>
-                        <li class="parent"><a href="#"><i class="icon mdi mdi-view-module"></i><span> Modulos</span></a>
+                        <li class="parent"><a href="#"><i class="icon mdi mdi-view-module"></i><span> Númerales</span></a>
                           <ul class="sub-menu">
-                            <li><a href="#"><i class="icon mdi mdi-collection-plus"></i> Crear Modulo</a>
+                            <li><a href="crearNumerales"><i class="icon mdi mdi-collection-plus"></i> Crear Númeral</a>
                             </li>
                             <li><a href="#"><i class="icon mdi mdi-plus-circle-o-duplicate"></i> Crear categoria</a>
                             </li>

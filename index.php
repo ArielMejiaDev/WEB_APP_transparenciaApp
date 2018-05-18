@@ -6,6 +6,7 @@
   include_once "controllers/DatosUsuarioController.php";
   include_once "controllers/UsuariosController.php";
   include_once "controllers/DepartamentosController.php";
+  include_once "controllers/NumeralController.php";
 // MODELS
   include_once "models/Conexion.php";
   include_once "models/EnlacesModel.php";
@@ -13,6 +14,7 @@
   include_once "models/DatosUsuarioModel.php";
   include_once "models/UsuariosModel.php";
   include_once "models/DepartamentosModel.php";
+  include_once "models/NumeralModel.php";
 
   $template = new TemplateController();
   $template->includeTemplateController();

@@ -16,6 +16,7 @@ class EnlacesModel extends Conexion{
 			$enlace == "subirArchivos"||
 			$enlace == "crearDepartamento"||
 			$enlace == "editarDepartamento"||
+			$enlace == "crearNumerales"||
 			$enlace == "listarDepartamentos") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
