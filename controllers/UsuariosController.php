@@ -220,7 +220,7 @@ class UsuariosController{
 				$respuesta = UsuariosModel::crearFormEditarUsuarioModel($dato,"usuarios","departamentos");			
 
 				//echo '<pre>',print_r($respuesta),'</pre>';
-				echo '	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarPassword()" method="post">
+				echo '	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarEditarUsuario()" method="post">
 							<input type="hidden" id="valorRol" value="'.utf8_encode($respuesta['rol']).'" name="valorRol">
 							<input type="hidden" id="idCrearUsuario" value="'.utf8_encode($respuesta['id']).'" name="idCrearUsuario">
 	                        <div class="form-group">
@@ -272,12 +272,13 @@ class UsuariosController{
 							    <select class="form-control" id="deptoCrearUsuario" name="deptoCrearUsuario">
 							      <option value="'.$respuesta['id_departamento'].'">'.$respuesta['nombres'].'</option>
 							    </select>
+							    <p id="avisoDeptoCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 							  </div>
 							</div>
 	                        <div class="form-group">
 	                          <label class="col-sm-3 control-label" for="urlFotoCrearUsuario">Url Foto</label>
 	                          <div class="col-sm-6">
-	                            <input type="text" class="form-control" id="urlFotoCrearUsuario" name="urlFotoCrearUsuario">
+	                            <input type="text" class="form-control" id="urlFotoCrearUsuario" name="urlFotoCrearUsuario" value="'.$respuesta['foto'].'">
 	                            <p id="avisoUrlFotoCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
@@ -363,12 +364,13 @@ class UsuariosController{
 					// $expRegCamposTexto = '/^[a-zA-Z0-9]*$/';
 					$expRegPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/';
 					$expRegEmail = '/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/';
+					$expRegUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
 					if (preg_match($expRegCamposTexto, $_POST['idCrearUsuario'])
 					&&	preg_match($expRegNombres, $_POST['nombresCrearUsuario'])
 					&&	preg_match($expRegNombres, $_POST['apellidosCrearUsuario'])  
 					&&	preg_match($expRegCamposTexto, $_POST['usuarioCrearUsuario']) 
-					&&	preg_match($expRegCamposTexto, $_POST['urlFotoCrearUsuario']) 
+					&&	preg_match($expRegUrl, $_POST['urlFotoCrearUsuario']) 
 					&&	preg_match($expRegCamposTexto, $_POST['rolCrearUsuario']) 
 					&&	preg_match($expRegNombres, $_POST['preguntaSeguridadCrearUsuario']) 
 					&&	preg_match($expRegNombres, $_POST['respuestaSeguridadCrearUsuario'])) {
