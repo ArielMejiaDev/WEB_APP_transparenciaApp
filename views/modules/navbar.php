@@ -145,18 +145,17 @@ $datos = $datosUsuario->getDatosUsuarioController();
               <div class="list">
                 <div class="content">
                   <div class="row">
-                    <div class="col-xs-4"><a target="_blank" href="https://www.ipm.org.gt/situ" class="connection-item"><img src="views/images/icono situ 2.png" alt="Github"><span>SITU</span></a></div>
-                    <div class="col-xs-4"><a target="_blank" href="https://www.ipm.org.gt/sag" class="connection-item"><img src="views/images/icono Sie 2.png" alt="Bitbucket"><span>SIE</span></a></div>
-                    <div class="col-xs-4"><a target="_blank" href="index.php" class="connection-item"><img src="views/images/icono Sip 1.png" alt="Slack"><span>SIP</span></a></div>
+                    <div class="col-xs-4"><a target="_blank" href="https://www.ipm.org.gt/situ" class="connection-item"><img src="views/images/situ.png" alt="SITU"><span>SITU</span></a></div>
+                    <div class="col-xs-4"><a target="_blank" href="https://www.ipm.org.gt/sag" class="connection-item"><img src="views/images/sie.png" alt="SIE"><span>SIE</span></a></div>
+                    <div class="col-xs-4"><a target="_blank" href="index.php" class="connection-item"><img src="views/images/sip.png" alt="SIP"><span>SIP</span></a></div>
                   </div>
                   <div class="row">
-                    <div class="col-xs-4"><a target="_blank" href="https://www.ipm.org.gt" class="connection-item"><img src="views/images/favicon.ico" alt="Dribbble"><span>Portal IPM</span></a></div>
-                    <div class="col-xs-4"><a href="#" class="connection-item"><img src="assets/img/mail_chimp.png" alt="Mail Chimp"><span>Mail Chimp</span></a></div>
-                    <div class="col-xs-4"><a href="#" class="connection-item"><img src="assets/img/dropbox.png" alt="Dropbox"><span>Dropbox</span></a></div>
+                    <div class="col-xs-4"><a target="_blank" href="https://www.ipm.org.gt" class="connection-item"><img src="views/images/portal.png" alt="Portal IPM"><span>Portal IPM</span></a></div>
+                    <div class="col-xs-4"><a target="_blank" href="https://sistema.ipm.org.gt" class="connection-item"><img src="views/images/sistemaIPM.png" alt="Sistema IPM"><span>Sistema IPM</span></a></div>
                   </div>
                 </div>
               </div>
-              <div class="footer"> <a href="#">More</a></div>
+              <div class="footer"> <a href="#">Mas</a></div>
             </li>
           </ul>
         </li>
