@@ -2,18 +2,30 @@
 class DepartamentosController{
 	//crear departamento
 	public function crearDepartamentoController(){
+		$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
+
 		if (isset($_POST['nombreDepartamentoCrearDepto'])) {
 			if (!empty($_POST['nombreDepartamentoCrearDepto'])) {
-				$dato = $_POST['nombreDepartamentoCrearDepto'];
-				$respuesta = DepartamentosModel::crearDepartamentoModel($dato,"departamentos");
-				if ($respuesta=='success') {
-					header('Location:notCrearDeptoOk');
+				if (preg_match($expRegNombres, $_POST['nombreDepartamentoCrearDepto'])) {
+					$dato = $_POST['nombreDepartamentoCrearDepto'];
+					$respuesta = DepartamentosModel::crearDepartamentoModel($dato,"departamentos");
+					if ($respuesta=='success') {
+						header('Location:notCrearDeptoOk');
+					}else{
+						echo "	<script>
+								swal({
+								  type: 'error',
+								  title: 'Alerta...',
+								  text: 'Érror no se pudo crear el departamento',
+								})
+							</script>";
+					}
 				}else{
 					echo "	<script>
 							swal({
 							  type: 'error',
 							  title: 'Alerta...',
-							  text: 'Érror no se pudo crear el departamento',
+							  text: 'No esta permitido el uso de caracteres especiales',
 							})
 						</script>";
 				}
@@ -72,12 +84,32 @@ class DepartamentosController{
 
 	//actualizar departamento
 	public function actualizarDepartamentoController(){
-		if (isset($_POST['idDepartamentoCrearDepto'])) {
-			$datos = array('id'=>$_POST['idDepartamentoCrearDepto'],'nombreDepto'=>$_POST['nombreDepartamentoCrearDepto']);
-			$respuesta = DepartamentosModel::actualizarDepartamentoModel($datos,'departamentos');
-			if ($respuesta=='success') {
-				header('Location:notActualizarDeptoOk');
+		if (isset($_POST['idDepartamentoCrearDepto']) && isset($_POST['nombreDepartamentoCrearDepto']) ) {
+			$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
+			if (preg_match($expRegNombres, $_POST['nombreDepartamentoCrearDepto']) && 
+				preg_match($expRegNombres, $_POST['idDepartamentoCrearDepto'])) {
+				$datos = array('id'=>$_POST['idDepartamentoCrearDepto'],'nombreDepto'=>$_POST['nombreDepartamentoCrearDepto']);
+				$respuesta = DepartamentosModel::actualizarDepartamentoModel($datos,'departamentos');
+				if ($respuesta=='success') {
+					header('Location:notActualizarDeptoOk');
+				}
+			}else{
+				echo "	<script>
+						swal({
+						  type: 'error',
+						  title: 'Oops...',
+						  text: 'No esta permitido el uso de caracteres especiales',
+						})
+					</script>";
 			}
+		}else{
+			echo "	<script>
+						swal({
+						  type: 'error',
+						  title: 'Oops...',
+						  text: 'No puede quedar vacio el departamento',
+						})
+					</script>";
 		}
 	}
 

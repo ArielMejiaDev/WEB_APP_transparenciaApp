@@ -36,17 +36,17 @@ $datos = $datosUsuario->getDatosUsuarioController();
                       <li class="notification notification-unread"><a href="#">
                           <div class="image"><img src="assets/img/avatar2.png" alt="Avatar"></div>
                           <div class="notification-info">
-                            <div class="text"><span class="user-name">Jessica Caruso</span> accepted your invitation to join the team.</div><span class="date">2 min ago</span>
+                            <div class="text"><span class="user-name">Karen Celada</span> Subió un archivo.</div><span class="date">hace 2 minutos</span>
                           </div></a></li>
                       <li class="notification"><a href="#">
                           <div class="image"><img src="assets/img/avatar3.png" alt="Avatar"></div>
                           <div class="notification-info">
-                            <div class="text"><span class="user-name">Joel King</span> is now following you</div><span class="date">2 days ago</span>
+                            <div class="text"><span class="user-name">Stuardo Perez</span> Subió un archivo</div><span class="date">hace 3 horas</span>
                           </div></a></li>
                       <li class="notification"><a href="#">
                           <div class="image"><img src="assets/img/avatar4.png" alt="Avatar"></div>
                           <div class="notification-info">
-                            <div class="text"><span class="user-name">John Doe</span> is watching your main repository</div><span class="date">2 days ago</span>
+                            <div class="text"><span class="user-name">David de la Cruz</span> Agregó un nuevo usuario</div><span class="date">hace 2 dias</span>
                           </div></a></li>
                       <li class="notification"><a href="#">
                           <div class="image"><img src="assets/img/avatar5.png" alt="Avatar"></div>
@@ -108,7 +108,7 @@ $datos = $datosUsuario->getDatosUsuarioController();
         <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><span class="icon mdi mdi-notifications"></span><span class="indicator"></span></a>
           <ul class="dropdown-menu be-notifications">
             <li>
-              <div class="title">Notifications<span class="badge">3</span></div>
+              <div class="title">Notificaciones<span class="badge">3</span></div>
               <div class="list">
                 <div class="be-scroller">
                   <div class="content">
@@ -116,26 +116,26 @@ $datos = $datosUsuario->getDatosUsuarioController();
                       <li class="notification notification-unread"><a href="#">
                           <div class="image"><img src="assets/img/avatar2.png" alt="Avatar"></div>
                           <div class="notification-info">
-                            <div class="text"><span class="user-name">Jessica Caruso</span> accepted your invitation to join the team.</div><span class="date">2 min ago</span>
+                            <div class="text"><span class="user-name">Karen Celada</span> Subió un archivo.</div><span class="date">hace 2 minutos</span>
                           </div></a></li>
                       <li class="notification"><a href="#">
                           <div class="image"><img src="assets/img/avatar3.png" alt="Avatar"></div>
                           <div class="notification-info">
-                            <div class="text"><span class="user-name">Joel King</span> is now following you</div><span class="date">2 days ago</span>
+                            <div class="text"><span class="user-name">Jefe de RRHH</span> Aprobo un documento</div><span class="date">hace 2 horas</span>
                           </div></a></li>
                       <li class="notification"><a href="#">
                           <div class="image"><img src="assets/img/avatar4.png" alt="Avatar"></div>
                           <div class="notification-info">
-                            <div class="text"><span class="user-name">John Doe</span> is watching your main repository</div><span class="date">2 days ago</span>
-                          </div></a></li>
+                            <div class="text"><span class="user-name">David de la Cruz</span> Creó un nuevo usuario</div><span class="date">hace 2 dias</span>
+                          </div></a></li><!-- 
                       <li class="notification"><a href="#">
                           <div class="image"><img src="assets/img/avatar5.png" alt="Avatar"></div>
-                          <div class="notification-info"><span class="text"><span class="user-name">Emily Carter</span> is now following you</span><span class="date">5 days ago</span></div></a></li>
+                          <div class="notification-info"><span class="text"><span class="user-name">Emily Carter</span> is now following you</span><span class="date">5 days ago</span></div></a></li> -->
                     </ul>
                   </div>
                 </div>
               </div>
-              <div class="footer"> <a href="#">View all notifications</a></div>
+              <div class="footer"> <a href="#">Ver todas las notificaciones</a></div>
             </li>
           </ul>
         </li>

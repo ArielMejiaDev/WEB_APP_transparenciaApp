@@ -91,6 +91,7 @@
     <script src="views/js/validarEditarUsuario.js"></script>
     <script src="views/js/automatizarActulizarUsuario.js"></script>
     <script src="views/js/validarCrearDepartamento.js"></script>
+<!--     <script src="views/js/validarEditarNumeral.js"></script> -->
     <!-- FIN DE MODULOS PERSONALIZADOS -->
   </body>
 </html>

@@ -17,7 +17,9 @@ class EnlacesModel extends Conexion{
 			$enlace == "crearDepartamento"||
 			$enlace == "editarDepartamento"||
 			$enlace == "crearNumerales"||
-			$enlace == "listarDepartamentos") {
+			$enlace == "listarNumerales"||
+			$enlace == "listarDepartamentos"||
+			$enlace == "editarNumeral") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
 			$url = 'views/modules/ingreso.php';
@@ -35,6 +37,10 @@ class EnlacesModel extends Conexion{
 			$url = 'views/modules/listarDepartamentos.php';
 		}else if($enlace == "notActualizarDeptoOk"){
 			$url = 'views/modules/listarDepartamentos.php';
+		}else if($enlace == "notCrearNumeralesOk"){
+			$url = 'views/modules/listarNumerales.php';
+		}else if($enlace == "notEditarNumeralOk"){
+			$url = 'views/modules/listarNumerales.php';
 		}else{
 			$url = 'views/modules/ingreso.php';
 		}
