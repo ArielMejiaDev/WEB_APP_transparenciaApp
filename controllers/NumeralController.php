@@ -58,7 +58,7 @@ class NumeralController{
 			$dato = $_GET['id'];
 			$respuesta = NumeralModel::crearEditarNumeralFormModel($dato,"numerales");
 			//var_dump($respuesta);
-			echo '<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarNumeralForm()" method="post">
+			echo '<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarEditarNumeral()" method="post">
 			                    <div class="form-group">
 			                    	<input type="hidden" class="form-control" id="idEditarNumeral" name="idEditarNumeral" value="'.$respuesta['id'].'">
 			                      <label class="col-sm-3 control-label" for="descripcionEditarNumeral">Numeral:</label>

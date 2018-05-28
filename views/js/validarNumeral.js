@@ -1,4 +1,4 @@
-function validarNumeralForm(){
+function validarEditarNumeral(){
 	var numeral = document.getElementById("descripcionEditarNumeral");
 	var avisoNumeral = document.getElementById("avisoDescripcionEditarNumeral");
 	var expRegNombres = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
