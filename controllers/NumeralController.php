@@ -78,14 +78,24 @@ class NumeralController{
 
 	//editar numeral
 	public function actualizarNumeralController(){
-		if (isset($_POST['idEditarNumeral'])) {
-			$datos = array('id'=>$_POST['idEditarNumeral'],'descripcion'=>utf8_decode($_POST['descripcionEditarNumeral']));
-			//echo '<pre>',print_r($datos),'<pre>';
-			//var_dump($datos);
-			$respuesta = NumeralModel::actualizarNumeralModel($datos,"numerales");
-			if ($respuesta == 'success') {
-				header('Location:notEditarNumeralOk');
+		if (isset($_POST['idEditarNumeral']) && isset($_POST['descripcionEditarNumeral']) ) {
+			if (!empty($_POST['idEditarNumeral']) && !empty($_POST['descripcionEditarNumeral'])) {
+				$datos = array('id'=>$_POST['idEditarNumeral'],'descripcion'=>utf8_decode($_POST['descripcionEditarNumeral']));
+				//echo '<pre>',print_r($datos),'<pre>';
+				//var_dump($datos);
+				$respuesta = NumeralModel::actualizarNumeralModel($datos,"numerales");
+				if ($respuesta == 'success') {
+					header('Location:notEditarNumeralOk');
+				}
 			}
 		}
+	}
+
+	//validar que no exista el numeral al crearlo con ajax
+	public function validarCrearNumeralAjaxController($dato){
+		$respuesta = NumeralModel::validarCrearNumeralAjaxModel($dato,"numerales");
+		//echo $dato;
+		$existencia = (int)$respuesta['cuentaNumeral'];
+		var_dump($existencia);
 	}
 }

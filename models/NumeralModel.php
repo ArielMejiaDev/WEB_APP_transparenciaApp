@@ -43,4 +43,13 @@ class NumeralModel extends Conexion{
 			return 'error';
 		}
 	}
+
+	//validar con ajax que no exista el numeral a crear
+	public function validarCrearNumeralAjaxModel($dato,$tabla){
+		$sql = "SELECT COUNT(*) AS cuentaNumeral FROM $tabla WHERE descripcion=:descripcion";
+		$stmt=Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':descripcion',$dato,PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
 }
