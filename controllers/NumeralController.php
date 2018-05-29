@@ -45,7 +45,7 @@ class NumeralController{
 							</a>
 						</td>
 						<td>
-							<button href="'.$value['id'].'" depto="'.$value['descripcion'].'" id="eliminar'.$value['id'].'" class="btn btn-danger">Eliminar
+							<button href="'.$value['id'].'" numeral="'.utf8_encode($value['descripcion']).'" id="eliminar'.$value['id'].'" class="btn btn-danger">Eliminar
 							</button>
 						</td>
 					</tr>';
@@ -96,6 +96,19 @@ class NumeralController{
 		$respuesta = NumeralModel::validarCrearNumeralAjaxModel($dato,"numerales");
 		//echo $dato;
 		$existencia = (int)$respuesta['cuentaNumeral'];
-		var_dump($existencia);
+		if ($existencia>0) {
+			return 'Existe';
+		}
+	}
+
+	//eliminar numeral
+	public function eliminarNumeralController(){
+		if (isset($_GET['eliminar'])) {
+			$dato = $_GET['eliminar'];
+			$respuesta = NumeralModel::eliminarNumeralModel($dato,"numerales");
+			if ($respuesta=='success') {
+				header('Location:notEliminarNumeralOk');
+			}
+		}
 	}
 }

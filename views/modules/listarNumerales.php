@@ -17,8 +17,6 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
-
-
 if (isset($_GET['action'])) {
 	if ($_GET['action']=='notEditarNumeralOk') {
 		echo "
@@ -33,54 +31,22 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
-
-
-
-
-
-
 if (isset($_GET['action'])) {
-	if ($_GET['action']=='notCrearDeptoOk') {
+	if ($_GET['action']=='notEliminarNumeralOk') {
 		echo "
 		<script>
 			swal({
 			  position: 'top-end',
 			  type: 'success',
-			  title: 'Departamento Creado exitosamente!',
+			  title: 'Numeral Eliminado exitosamente!',
 			  showConfirmButton: false,
 			  timer: 1500
 			})
 		</script>";
 	}
 }
-if (isset($_GET['action'])) {
-  if ($_GET['action']=='notEliminarDeptoOk') {
-    echo "  <script>
-          swal({
-            position: 'top-end',
-            type: 'success',
-            title: 'Departamento eliminado exitosamente!',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        </script>";
-  }
-}
-
-if (isset($_GET['action'])) {
-  if ($_GET['action']=='notActualizarDeptoOk') {
-    echo "  <script>
-          swal({
-            position: 'top-end',
-            type: 'success',
-            title: 'Departamento actualizado exitosamente!',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        </script>";
-  }
-}
 $listarNumerales = new NumeralController();
+$listarNumerales->eliminarNumeralController();
 //$listarNumerales->listarNumeralesController();
 ?>
 <?php require_once "navbar.php"; ?>
@@ -138,13 +104,13 @@ $listarNumerales = new NumeralController();
 	function capturarEvento(e){
 		e.preventDefault();
 		var id = e.target.getAttribute('href');
-		var depto = e.target.getAttribute('depto');
-		console.log(id+depto);
-		mostrarMensaje(id,depto);
+		var numeral = e.target.getAttribute('numeral');
+		console.log(id+numeral);
+		mostrarMensaje(id,numeral);
 	}
-	function mostrarMensaje(id,depto){
+	function mostrarMensaje(id,numeral){
 		swal({
-		  title: 'Deseas eliminar el departamento de '+depto,
+		  title: 'Deseas eliminar el numeral de '+numeral,
 		  text: "Este paso no se puede revertir!",
 		  type: 'warning',
 		  showCancelButton: true,
@@ -153,14 +119,14 @@ $listarNumerales = new NumeralController();
 		  confirmButtonText: 'Si, eliminar'
 		}).then((result) => {
 		  if (result.value) {
-		    window.location="index.php?action=listarDepartamentos&eliminar="+id;
+		    window.location="index.php?action=listarNumerales&eliminar="+id;
 		  }else if (
 			    // Read more about handling dismissals
 			    result.dismiss === swal.DismissReason.cancel
 			  ) {
 			    swal(
 			      'Cancelado',
-			      'No se elimino ningun departamento',
+			      'No se elimino ningun numeral',
 			      'error'
 			    )
 			  }
@@ -169,24 +135,3 @@ $listarNumerales = new NumeralController();
 	var hora = new Date();
 	document.title="Numerales";
 </script>
-<!-- <div id="mod-danger" tabindex="-1" role="dialog" class="modal fade" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="mdi mdi-close"></span></button>
-      </div>
-      <div class="modal-body">
-        <div class="text-center">
-          <div class="text-danger"><span class="modal-main-icon mdi mdi-close-circle-o"></span></div>
-          <h3>Danger!</h3>
-          <p>Desea eliminar al usuario: <br><?php echo $id; ?></p>
-          <div class="xs-mt-50">
-            <button type="button" data-dismiss="modal" class="btn btn-space btn-default">Cancel</button>
-            <button type="button" data-dismiss="modal" class="btn btn-space btn-danger">Proceed</button>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer"></div>
-    </div>
-  </div>
-</div> -->

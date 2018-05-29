@@ -41,6 +41,8 @@ class EnlacesModel extends Conexion{
 			$url = 'views/modules/listarNumerales.php';
 		}else if($enlace == "notEditarNumeralOk"){
 			$url = 'views/modules/listarNumerales.php';
+		}else if($enlace == "notEliminarNumeralOk"){
+			$url = 'views/modules/listarNumerales.php';
 		}else{
 			$url = 'views/modules/ingreso.php';
 		}

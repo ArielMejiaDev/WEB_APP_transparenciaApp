@@ -52,4 +52,16 @@ class NumeralModel extends Conexion{
 		$stmt->execute();
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
+
+	//ELIMINAR NUMERAL
+	public function eliminarNumeralModel($dato,$tabla){
+		$sql = "DELETE FROM $tabla WHERE id =:id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		if ($stmt->execute()) {
+			return 'success';
+		}else{
+			return 'false';
+		}
+	}
 }
