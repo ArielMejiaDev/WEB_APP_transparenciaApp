@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2018 a las 00:28:37
+-- Tiempo de generación: 31-05-2018 a las 00:33:14
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -53,11 +53,19 @@ CREATE TABLE `departamentos` (
 
 INSERT INTO `departamentos` (`id`, `nombres`) VALUES
 (1, 'Informatica'),
-(5, 'UDAF'),
-(6, 'Compras'),
-(7, 'Auditoria'),
-(8, 'Bienestar Social'),
-(9, 'Prestaciones');
+(6, 'Inversiones'),
+(7, 'EstadÃ­stica'),
+(8, 'Prestaciones'),
+(9, 'Legal'),
+(10, 'Bienestar Social'),
+(11, 'Auditoria'),
+(12, 'Administrativo'),
+(13, 'Inversiones'),
+(14, 'Recursos Humanos'),
+(15, 'PlanificaciÃ³n'),
+(16, 'Proveeduria'),
+(17, 'UDAF'),
+(18, 'IngenierÃ­a');
 
 -- --------------------------------------------------------
 
@@ -72,7 +80,9 @@ CREATE TABLE `documentos` (
   `año` int(11) NOT NULL,
   `mes` int(11) NOT NULL,
   `url_doc` int(11) NOT NULL,
-  `n_doc` int(11) NOT NULL
+  `n_doc` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `justificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -106,8 +116,8 @@ CREATE TABLE `numerales` (
 --
 
 INSERT INTO `numerales` (`id`, `descripcion`, `status`, `aviso`) VALUES
-(5, 'ESTRUCTURA ORGÁNICA Y FUNCIONES', 0, ''),
-(6, 'DIRECCIÓN Y TELÉFONOS DE LA ENTIDAD', 0, ''),
+(5, 'ESTRUCTURA ORGÁNICA Y FUNCIONES', 1, 'El instituto de Previsión Militar es una entidad'),
+(6, 'DIRECCIÓN Y TELÉFONOS DE LA ENTIDAD', 1, 'Regla nueva'),
 (7, 'DIRECTORIO DE EMPLEADOS Y SERVIDORES PÚBLICOS', 0, ''),
 (11, 'NÚMERO Y NOMBRE DE FUNCIONARIOS', 0, '');
 
@@ -141,20 +151,8 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `em
 (51, 'Oscar Ruben', 'Colindres Ochoa', 'ocolindres', '$2y$10$WAoJbSFrXZPbPzknSYell.lXsenkQx7U0JDvEt3aUninIXlJSSBba', 'ocolindres@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'encargadodesoftware', 1),
 (52, 'Kevin Andre', 'Carcamo Raudales', 'kcarcamo', '$2y$10$VpRcxYAizGzhC5w.ln2.EeRGJRiFSaqUFmZc1jscCpL4ZIXlsmv9m', 'kcarcamo@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'programador', 1),
 (53, 'Oscar', 'Pacheco Tzorin', 'opacheco', '$2y$10$3hXb856l9JqQ.Y8lNC7CRe7SgMDvcR1WUZPI8a3QoW/FqAn2F90.W', 'opacheco@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'dba', 1),
-(54, 'Alina Cristabe', 'Juarez Argueta', 'ajuarez', '$2y$10$uVRzXwrspnN4KA6ZLFqCSeTWFiSkdMDBdCEdgmfryC3ViSxQwMARe', 'ajuarez@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'encargado de software', 1),
 (55, 'Cesar', 'Vargas', 'cvargas', '$2y$10$1I2qx5sKWoHHOU3fkCbIE.HwJ4oZi.QhsDZLPPC7R9RF2T41YoQgG', 'cvargas@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'programador', 1),
-(63, 'Marlon Baldemar', 'Martínez Zuñiga', 'mmartinez', '$2y$10$0vrC8JmjS1Wbuy7Qya5jM.3YshP2ybJfatTlkhPbWP0A5VuO4AKV2', 'mmartinez@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'Puesto', 'Programador', 1),
-(64, 'Pedro Joé', 'Gomez', 'pgomez', '$2y$10$drPlL23nkLGw8A5BpG5Gt.tEJYc2h0z0La.c/wWhT4dkKHkSLBIrq', 'pgomez2@ipm.org.gt', 'https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg', 'usuario', 0, 'Puesto', 'Programador', 1),
-(65, 'Ana Veronica', 'Martínez Abadia', 'amartinez', '$2y$10$UZlpj.XPBBWotxzvICRSceudHv9S6cCOBaVgNuV/qAjPHXGMOGh9e', 'amartinez@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'le digo', 'bonita', 1),
-(66, 'Astrid', 'Chiguichon', 'achiguichon', '$2y$10$YhI7BjvB0T9HdvpMkkot4utoo1dVRG2mfjDez7ZyAPmQTTPXFwtcS', 'achiguichon@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'rrhh', 1),
-(67, 'Tota', 'Ruby', 'truby', '$2y$10$0pQYSpdYhNnm5jmBvguRV.KjnTA5ecuVs3hKftz0YOWKJ/5kz8bxS', 'truby@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'ref', 'tota', 1),
-(68, 'Kevin', 'Martínez', 'kmartinez', '$2y$10$6ePGWK06F5pjhYyABm/ndO.v4elgEV1T7TJboPxpnchNj8ImK0wMK', 'kmartinez@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'ref', 'kevin', 1),
-(69, 'Jiory', 'Pacheco', 'jpacheco', '$2y$10$/Z/JH1Y/CczwW2xUtnkuE.31S7XvK3aCmy5SMYpOKohrM3v2qGjcC', 'jpacheco@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'ref', 'pachecochitas', 1),
-(70, 'Yoda', 'Colindres', 'ycolindres', '$2y$10$w/Ugu9X/esn2yblXs4PVKelK/P0E8Nt8RDGjsnBRggUwWy2E01CTC', 'ycolindres@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'ref', 'yoda', 5),
-(71, 'Yolanda', 'Be Cool', 'ybe', '$2y$10$IEn/2E.GarxLtljJ1RWR9OwgV3anU9pODy/poWH3n6vR/wdkXLOSa', 'ybe@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'ref', 'panamericano', 5),
-(72, 'Albertine', 'Alber', 'aalber', '$2y$10$EEYcWbkloTZ.0QNjptfQW.kajIHCHBrtj8IUEudouCeaBxbfVqoOO', 'aalber@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'ref', 'albertine', 5),
-(73, 'Karla', 'Arriaga', 'karriaga', '$2y$10$k9snF9cZ43ZEOYgZbsZ.MeyU6ofbckomhN4du97vBkaBgxk477kUS', 'karriaga@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'ref', 'karla', 5),
-(74, 'Lorelei', 'Gomez', 'lgomez', '$2y$10$TI0BtwaQ06TfNGNot2A1zO07mriXawo2vyzOAWfzdnKEdfelCmxDu', 'lgomez@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'ref', 'lorelei', 5);
+(63, 'Marlon Baldemar', 'Martínez Zuñiga', 'mmartinez', '$2y$10$0vrC8JmjS1Wbuy7Qya5jM.3YshP2ybJfatTlkhPbWP0A5VuO4AKV2', 'mmartinez@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'Puesto', 'Programador', 1);
 
 -- --------------------------------------------------------
 
@@ -235,7 +233,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `documentos`
@@ -253,7 +251,7 @@ ALTER TABLE `mensajes`
 -- AUTO_INCREMENT de la tabla `numerales`
 --
 ALTER TABLE `numerales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
