@@ -2,6 +2,59 @@
 $user = $_SESSION['usuario'];
 $datosUsuario = new DatosUsuarioController();
 $datos = $datosUsuario->getDatosUsuarioController();
+
+if (isset($_GET['action'])) {
+  //validar ingerso en crear usuarios
+    if ($_GET['action']=='crearUsuario') {
+        if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingerso en crear usuarios
+
+  //validar ingreso en listar usuarios
+    if ($_GET['action']=='listarUsuarios') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en listar usuarios
+
+  //validar ingreso en crear numerales
+    if ($_GET['action']=='crearNumerales') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en crear numerales
+
+  //validar ingreso en listar numerales
+    if ($_GET['action']=='listarNumerales') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en listar numerales  
+
+  //validar ingreso en crear departamentos
+    if ($_GET['action']=='crearDepartamento') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en crear departamentos
+
+  //validar ingreso en listar departamentos
+    if ($_GET['action']=='listarDepartamentos') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en listar departamentos 
+
+  //SUBIR ARCHIVOS NO PORQUE TODOS VAN A PODER SUBIR ARCHIVOS
+  
+}
 ?>
 <nav class="navbar navbar-default navbar-fixed-top be-top-header">
   <div class="container-fluid">

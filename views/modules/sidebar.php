@@ -9,6 +9,9 @@
                             <a href="dashboard"><i class="icon mdi mdi-home"></i><span>Escritorio</span>
                             </a>
                         </li>
+                        <?php 
+                            if ($datos['rol']=='admin') {
+                            ?>
                         <li class="parent"><a href="#"><i class="icon mdi mdi-account-circle"></i><span>Usuarios</span></a>
                             <ul class="sub-menu">
                                 <li>
@@ -18,14 +21,6 @@
                                     <a href="listarUsuarios"><i class="icon mdi mdi-accounts"></i> Lista de usuarios</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="parent"><a href="#"><i class="icon mdi mdi-collection-text"></i><span>Archivos</span></a>
-                          <ul class="sub-menu">
-                            <li><a href="subirArchivos"><i class="icon mdi mdi-cloud-upload"></i> Subir archivos</a>
-                            </li>
-                            <li><a href="#"><i class="icon mdi mdi-check-all"></i> Publicar archivos</a>
-                            </li>
-                          </ul>
                         </li>
                         <li class="parent"><a href="#"><i class="icon mdi mdi-view-module"></i><span> Númerales</span></a>
                           <ul class="sub-menu">
@@ -42,6 +37,25 @@
                             <li><a href="crearDepartamento"><i class="icon mdi mdi-plus-circle"></i> Crear Depto</a>
                                 <li><a href="listarDepartamentos"><i class="icon mdi mdi-plus-circle-o-duplicate"></i> Lista Departamentos</a>
                             </li>
+                          </ul>
+                        </li>
+                        <?php
+                            }
+                        ?>
+                        <li class="parent"><a href="#"><i class="icon mdi mdi-collection-text"></i><span>Archivos</span></a>
+                          <ul class="sub-menu">
+                            <li><a href="subirArchivos"><i class="icon mdi mdi-cloud-upload"></i> Subir archivos</a>
+                            </li>
+                            <?php  
+                                if ($datos['rol']!='usuario') {
+                                ?>
+                            <li><a href="#"><i class="icon mdi mdi-long-arrow-up"></i> Publicar archivos</a>
+                            </li>
+                            <li><a href="#"><i class="icon mdi mdi-check-all"></i> Validar archivos</a>
+                            </li>
+                            <?php 
+                                }
+                            ?>
                           </ul>
                         </li>
                     </ul>
