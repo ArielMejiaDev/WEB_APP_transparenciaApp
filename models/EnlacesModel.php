@@ -19,7 +19,8 @@ class EnlacesModel extends Conexion{
 			$enlace == "crearNumerales"||
 			$enlace == "listarNumerales"||
 			$enlace == "listarDepartamentos"||
-			$enlace == "editarNumeral") {
+			$enlace == "editarNumeral"||
+			$enlace == "agregarReglaNumeral") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
 			$url = 'views/modules/ingreso.php';
@@ -42,6 +43,8 @@ class EnlacesModel extends Conexion{
 		}else if($enlace == "notEditarNumeralOk"){
 			$url = 'views/modules/listarNumerales.php';
 		}else if($enlace == "notEliminarNumeralOk"){
+			$url = 'views/modules/listarNumerales.php';
+		}else if($enlace == "notAgregarReglaNumeralOk"){
 			$url = 'views/modules/listarNumerales.php';
 		}else{
 			$url = 'views/modules/ingreso.php';

@@ -64,4 +64,17 @@ class NumeralModel extends Conexion{
 			return 'false';
 		}
 	}
+
+	//AGREGAR REGLA AL NUMERAL Y ACTUALIZAR STATUS
+	public function agregarReglaNumeralModel($datos,$tabla){
+		$sql = "UPDATE $tabla SET status=1 , aviso=:aviso WHERE id=:id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$datos['id'],PDO::PARAM_INT);
+		$stmt->bindParam(':aviso',$datos['aviso'],PDO::PARAM_STR);
+		if ($stmt->execute()) {
+			return 'success';
+		}else{
+			return 'error';
+		}
+	}
 }

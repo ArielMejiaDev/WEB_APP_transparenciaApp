@@ -41,6 +41,14 @@ class NumeralController{
 			echo   '<tr class="odd gradeX">
 						<td>'.utf8_encode($value["descripcion"]).'</td>
 						<td>
+							<a href="index.php?action=agregarReglaNumeral&id='.$value['id'].'" class="btn btn-warning">Agregar/Editar Regla
+							</a>
+						</td>
+						<td>
+							<button href="'.$value['id'].'" numeral="El aviso" id="eliminarRegla'.$value['id'].'" class="btn btn-danger">Eliminar Regla
+							</button>
+						</td>
+						<td>
 							<a href="index.php?action=editarNumeral&id='.$value['id'].'" class="btn btn-primary">Editar
 							</a>
 						</td>
@@ -111,4 +119,25 @@ class NumeralController{
 			}
 		}
 	}
+
+	//actualizar status del numeral e insertar regla
+	public function agregarReglaNumeralController(){
+		$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
+		$expRegNum = '/^[0-9]*$/';
+		if (isset($_POST['idAgregarReglaNumeral']) && isset($_POST['avisoAgregarReglaNumeral']) ) {
+			if (!empty($_POST['idAgregarReglaNumeral']) && !empty($_POST['avisoAgregarReglaNumeral']) ) {
+				if (preg_match($expRegNombres, $_POST['avisoAgregarReglaNumeral']) || preg_match($expRegNum, $_POST['idAgregarReglaNumeral']) ) {
+					$datos = array('id'=>$_POST['idAgregarReglaNumeral'], 'aviso'=>utf8_decode($_POST['avisoAgregarReglaNumeral']));
+					//var_dump($datos);
+					$respuesta = NumeralModel::agregarReglaNumeralModel($datos,"numerales");
+					if ($respuesta=='success') {
+						header('Location:notAgregarReglaNumeralOk');
+					}
+				}//si esta vacio
+			}
+		}
+	}
+
+	//eliminar una regla (ACTUALIZA EL STATUS A 0 Y BORRA LA REGLA)
+	// public function 
 }

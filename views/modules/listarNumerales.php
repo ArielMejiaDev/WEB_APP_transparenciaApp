@@ -45,6 +45,20 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notAgregarReglaNumeralOk') {
+		echo "
+		<script>
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Nueva Regla establecida exitosamente!',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
+		</script>";
+	}
+}
 $listarNumerales = new NumeralController();
 $listarNumerales->eliminarNumeralController();
 //$listarNumerales->listarNumeralesController();
@@ -74,6 +88,8 @@ $listarNumerales->eliminarNumeralController();
 			                    <thead>
 			                      <tr>
 			                        <th>Numerales</th>
+			                        <th>Agregar Regla</th>
+			                        <th>Eliminar Regla</th>
 			                        <th>Editar</th>
 			                        <th>Eliminar</th>
 			                      </tr>

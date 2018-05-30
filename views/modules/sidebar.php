@@ -22,20 +22,22 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="parent"><a href="#"><i class="icon mdi mdi-layers"></i><span>Departamentos</span></a>
+                          <ul class="sub-menu">
+                            <li><a href="crearDepartamento"><i class="icon mdi mdi-plus-circle"></i> Crear Depto</a>
+                                <li><a href="listarDepartamentos"><i class="icon mdi mdi-plus-circle-o-duplicate"></i> Lista Departamentos</a>
+                            </li>
+                          </ul>
+                        </li>
                         <li class="parent"><a href="#"><i class="icon mdi mdi-view-module"></i><span> Númerales</span></a>
                           <ul class="sub-menu">
                             <li><a href="crearNumerales"><i class="icon mdi mdi-collection-plus"></i> Crear Númeral</a>
                             </li>
                             <li><a href="listarNumerales"><i class="icon mdi mdi-collection-text"></i> Listar numeral</a>
                             </li>
-                            <li><a href="listarNumerales"><i class="icon mdi mdi-plus-circle-o-duplicate"></i> Crear categoria</a>
+                            <li><a href="listarNumerales"><i class="icon mdi mdi-plus-circle"></i> Crear categoria</a>
                             </li>
-                          </ul>
-                        </li>
-                        <li class="parent"><a href="#"><i class="icon mdi mdi-layers"></i><span>Departamentos</span></a>
-                          <ul class="sub-menu">
-                            <li><a href="crearDepartamento"><i class="icon mdi mdi-plus-circle"></i> Crear Depto</a>
-                                <li><a href="listarDepartamentos"><i class="icon mdi mdi-plus-circle-o-duplicate"></i> Lista Departamentos</a>
+                            <li><a href="listarNumerales"><i class="icon mdi mdi-plus-circle-o-duplicate"></i> Listar categoria</a>
                             </li>
                           </ul>
                         </li>
