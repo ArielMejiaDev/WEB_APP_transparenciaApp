@@ -85,31 +85,33 @@ class DepartamentosController{
 	//actualizar departamento
 	public function actualizarDepartamentoController(){
 		if (isset($_POST['idDepartamentoCrearDepto']) && isset($_POST['nombreDepartamentoCrearDepto']) ) {
-			$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
-			if (preg_match($expRegNombres, $_POST['nombreDepartamentoCrearDepto']) && 
-				preg_match($expRegNombres, $_POST['idDepartamentoCrearDepto'])) {
-				$datos = array('id'=>$_POST['idDepartamentoCrearDepto'],'nombreDepto'=>$_POST['nombreDepartamentoCrearDepto']);
-				$respuesta = DepartamentosModel::actualizarDepartamentoModel($datos,'departamentos');
-				if ($respuesta=='success') {
-					header('Location:notActualizarDeptoOk');
+			if (!empty($_POST['idDepartamentoCrearDepto']) && !empty($_POST['nombreDepartamentoCrearDepto']) ) {
+				$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
+				if (preg_match($expRegNombres, $_POST['nombreDepartamentoCrearDepto']) && 
+					preg_match($expRegNombres, $_POST['idDepartamentoCrearDepto'])) {
+					$datos = array('id'=>$_POST['idDepartamentoCrearDepto'],'nombreDepto'=>$_POST['nombreDepartamentoCrearDepto']);
+					$respuesta = DepartamentosModel::actualizarDepartamentoModel($datos,'departamentos');
+					if ($respuesta=='success') {
+						header('Location:notActualizarDeptoOk');
+					}
+				}else{
+					echo "	<script>
+							swal({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'No esta permitido el uso de caracteres especiales',
+							})
+						</script>";
 				}
 			}else{
 				echo "	<script>
-						swal({
-						  type: 'error',
-						  title: 'Oops...',
-						  text: 'No esta permitido el uso de caracteres especiales',
-						})
-					</script>";
+							swal({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'No puede quedar vacio el departamento',
+							})
+						</script>";
 			}
-		}else{
-			echo "	<script>
-						swal({
-						  type: 'error',
-						  title: 'Oops...',
-						  text: 'No puede quedar vacio el departamento',
-						})
-					</script>";
 		}
 	}
 
