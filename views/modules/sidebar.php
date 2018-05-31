@@ -35,9 +35,9 @@
                             </li>
                             <li><a href="listarNumerales"><i class="icon mdi mdi-collection-text"></i> Listar numeral</a>
                             </li>
-                            <li><a href="listarNumerales"><i class="icon mdi mdi-plus-circle"></i> Crear categoria</a>
+                            <li><a href="crearCategoria"><i class="icon mdi mdi-plus-circle"></i> Crear categoria</a>
                             </li>
-                            <li><a href="listarNumerales"><i class="icon mdi mdi-plus-circle-o-duplicate"></i> Listar categoria</a>
+                            <li><a href="listarCategorias"><i class="icon mdi mdi-plus-circle-o-duplicate"></i> Listar categoria</a>
                             </li>
                           </ul>
                         </li>

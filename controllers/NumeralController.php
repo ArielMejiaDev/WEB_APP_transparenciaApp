@@ -41,11 +41,11 @@ class NumeralController{
 			echo   '<tr class="odd gradeX">
 						<td>'.utf8_encode($value["descripcion"]).'</td>
 						<td>
-							<a href="index.php?action=agregarReglaNumeral&id='.$value['id'].'" class="btn btn-warning">Agregar/Editar Regla
+							<a href="index.php?action=agregarReglaNumeral&id='.$value['id'].'" class="btn btn-color btn-twitter">Agregar/Editar Regla
 							</a>
 						</td>
 						<td>
-							<button href="'.$value['id'].'" aviso="El aviso" numeral="'.utf8_encode($value['descripcion']).'" id="eliminarRegla'.$value['id'].'" class="btn btn-danger">Eliminar Regla
+							<button href="'.$value['id'].'" aviso="El aviso" numeral="'.utf8_encode($value['descripcion']).'" id="eliminarRegla'.$value['id'].'" class="btn btn-warning">Eliminar Regla
 							</button>
 						</td>
 						<td>

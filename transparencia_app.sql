@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2018 a las 00:33:14
+-- Tiempo de generación: 01-06-2018 a las 00:42:12
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -35,6 +35,13 @@ CREATE TABLE `categorias` (
   `status` int(11) NOT NULL,
   `aviso` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `id_numeral`, `descripcion`, `status`, `aviso`) VALUES
+(23, 7, 'yooodaaaa', 0, '');
 
 -- --------------------------------------------------------
 
@@ -116,8 +123,8 @@ CREATE TABLE `numerales` (
 --
 
 INSERT INTO `numerales` (`id`, `descripcion`, `status`, `aviso`) VALUES
-(5, 'ESTRUCTURA ORGÁNICA Y FUNCIONES', 1, 'El instituto de Previsión Militar es una entidad'),
-(6, 'DIRECCIÓN Y TELÉFONOS DE LA ENTIDAD', 1, 'Regla nueva'),
+(5, 'ESTRUCTURA ORGÁNICA Y FUNCIONES', 0, ''),
+(6, 'DIRECCIÓN Y TELÉFONOS DE LA ENTIDAD', 0, ''),
 (7, 'DIRECTORIO DE EMPLEADOS Y SERVIDORES PÚBLICOS', 0, ''),
 (11, 'NÚMERO Y NOMBRE DE FUNCIONARIOS', 0, '');
 
@@ -227,7 +234,7 @@ ALTER TABLE `vitacora`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `departamentos`
@@ -257,7 +264,7 @@ ALTER TABLE `numerales`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT de la tabla `vitacora`
