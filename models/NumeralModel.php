@@ -77,4 +77,16 @@ class NumeralModel extends Conexion{
 			return 'error';
 		}
 	}
+
+	//ELIMINAR (ACTUALIZAR STATUS A 0 Y ACTUALIZAR AVISO A ESPACIO VACIO).
+	public function eliminarAvisoNumeralModel($dato,$tabla){
+		$sql = "UPDATE $tabla SET status = 0, aviso ='' WHERE id=:id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		if ($stmt->execute()) {
+			return 'success';
+		}else{
+			return 'error';
+		}
+	}
 }

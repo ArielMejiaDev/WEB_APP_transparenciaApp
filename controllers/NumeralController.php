@@ -45,7 +45,7 @@ class NumeralController{
 							</a>
 						</td>
 						<td>
-							<button href="'.$value['id'].'" numeral="El aviso" id="eliminarRegla'.$value['id'].'" class="btn btn-danger">Eliminar Regla
+							<button href="'.$value['id'].'" aviso="El aviso" numeral="'.utf8_encode($value['descripcion']).'" id="eliminarRegla'.$value['id'].'" class="btn btn-danger">Eliminar Regla
 							</button>
 						</td>
 						<td>
@@ -139,5 +139,16 @@ class NumeralController{
 	}
 
 	//eliminar una regla (ACTUALIZA EL STATUS A 0 Y BORRA LA REGLA)
-	// public function 
+	public function eliminarAvisoNumeralController(){
+		if (isset($_GET['eliminarAviso'])) {
+			if (!empty($_GET['eliminarAviso'])) {
+				$dato = $_GET['eliminarAviso'];
+				echo $dato;
+				$respuesta = NumeralModel::eliminarAvisoNumeralModel($dato,"numerales");
+				if ($respuesta=='success') {
+					header('Location:notEliminarAvisoNumeralOk');
+				}
+			}
+		}
+	} 
 }

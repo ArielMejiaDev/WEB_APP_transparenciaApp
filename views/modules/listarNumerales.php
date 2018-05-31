@@ -59,8 +59,23 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notEliminarAvisoNumeralOk') {
+		echo "
+		<script>
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Regla eliminada exitosamente!',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
+		</script>";
+	}
+}
 $listarNumerales = new NumeralController();
 $listarNumerales->eliminarNumeralController();
+$listarNumerales->eliminarAvisoNumeralController();
 //$listarNumerales->listarNumeralesController();
 ?>
 <?php require_once "navbar.php"; ?>
@@ -121,10 +136,16 @@ $listarNumerales->eliminarNumeralController();
 		e.preventDefault();
 		var id = e.target.getAttribute('href');
 		var numeral = e.target.getAttribute('numeral');
-		console.log(id+numeral);
-		mostrarMensaje(id,numeral);
+		var aviso = e.target.getAttribute('aviso');
+		if (aviso) {
+			console.log(id+numeral);
+			mostrarMensajeAviso(id,numeral);
+		}else{
+			console.log(id+numeral);
+			mostrarMensajeNumeral(id,numeral);
+		}
 	}
-	function mostrarMensaje(id,numeral){
+	function mostrarMensajeNumeral(id,numeral){
 		swal({
 		  title: 'Deseas eliminar el numeral de '+numeral,
 		  text: "Este paso no se puede revertir!",
@@ -136,6 +157,30 @@ $listarNumerales->eliminarNumeralController();
 		}).then((result) => {
 		  if (result.value) {
 		    window.location="index.php?action=listarNumerales&eliminar="+id;
+		  }else if (
+			    // Read more about handling dismissals
+			    result.dismiss === swal.DismissReason.cancel
+			  ) {
+			    swal(
+			      'Cancelado',
+			      'No se elimino ningun numeral',
+			      'error'
+			    )
+			  }
+		})
+	}
+	function mostrarMensajeAviso(id,numeral){
+		swal({
+		  title: 'Deseas eliminar el aviso del Numeral '+numeral,
+		  text: "Este paso no se puede revertir!",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Si, eliminar'
+		}).then((result) => {
+		  if (result.value) {
+		    window.location="index.php?action=listarNumerales&eliminarAviso="+id;
 		  }else if (
 			    // Read more about handling dismissals
 			    result.dismiss === swal.DismissReason.cancel
