@@ -23,8 +23,8 @@ class CategoriaModel extends Conexion{
 	}
 
 	//LISTAR CATEGORIAS 
-	public function listarCategoriaModel($tabla){
-		$sql = "SELECT * FROM $tabla";
+	public function listarCategoriaModel($tabla1,$tabla2){
+		$sql = "SELECT $tabla2.descripcion AS descripcionNumeral, $tabla1.id, $tabla1.id_numeral, $tabla1.descripcion, $tabla1.status, $tabla1.aviso FROM $tabla1 INNER JOIN $tabla2 ON $tabla1.id_numeral=$tabla2.id";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -57,5 +57,19 @@ class CategoriaModel extends Conexion{
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	//ACTUALIZAR CATEGORIA
+	public function actualizarCategoriaModel($datos,$tabla){
+		$sql = "UPDATE $tabla SET id_numeral=:idNumeral,descripcion=:descripcionCategoria WHERE id=:idCategoria";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':idNumeral',$datos['idNumeral'],PDO::PARAM_INT);
+		$stmt->bindParam(':descripcionCategoria',$datos['descripcionCategoria'],PDO::PARAM_STR);
+		$stmt->bindParam(':idCategoria',$datos['idCategoria'],PDO::PARAM_STR);		
+		if ($stmt->execute()) {
+			return 'success';
+		}else{
+			return 'error';
+		}
 	}
 }

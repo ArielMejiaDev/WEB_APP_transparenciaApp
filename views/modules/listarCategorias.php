@@ -60,7 +60,8 @@ $listarCategoria->eliminarCategoriaController();
 			        		<table id="table6" class="table table-striped table-hover table-fw-widget">
 			                    <thead>
 			                      <tr>
-			                        <th>Numerales</th>
+			                        <th>Numeral</th>
+			                        <th>Categoria</th>
 			                        <th>Agregar Regla</th>
 			                        <th>Eliminar Regla</th>
 			                        <th>Editar</th>

@@ -31,10 +31,11 @@ class CategoriaController{
 
 	//LISTAR CATEGORIAS
 	public function listarCategoriasController(){
-		$respuesta = CategoriaModel::listarCategoriaModel("categorias");
+		$respuesta = CategoriaModel::listarCategoriaModel('categorias','numerales');
 		//var_dump($respuesta);
 		foreach ($respuesta as $key => $value) {
 			echo   '<tr class="odd gradeX">
+						<td>'.utf8_encode($value["descripcionNumeral"]).'</td>
 						<td>'.utf8_encode($value["descripcion"]).'</td>
 						<td>
 							<a href="index.php?action=agregarReglaNumeral&id='.$value['id'].'" class="btn btn-color btn-twitter">Agregar/Editar Regla
@@ -120,13 +121,15 @@ class CategoriaController{
 	public function actualizarCategoriaController(){
 		$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
 		$expRegNum = '/^[0-9]*$/';
-		$idNumeral = $_POST['idNumeralEditarCategoria'];
-		$idCategoria = $_POST['idEditarCategoria'];
-		$descripcionCategoria = $_POST['descripcionEditarCategoria'];
-		if (isset($idNumeral) && isset($idCategoria) && isset($descripcionCategoria) ) {
-			if (!empty($idNumeral) && !empty($idCategoria) && !empty($descripcionCategoria) ) {
-				if (preg_match($expRegNum, $idNumeral) || preg_match($expRegNum, $idCategoria) || preg_match($expRegNombres, $descripcionCategoria)) {
-					echo "actualizar";
+		if (isset($_POST['idNumeralEditarCategoria']) && isset($_POST['idEditarCategoria']) && isset($_POST['descripcionEditarCategoria']) ) {
+			if (!empty($_POST['idNumeralEditarCategoria']) && !empty($_POST['idEditarCategoria']) && !empty($_POST['descripcionEditarCategoria']) ) {
+				if (preg_match($expRegNum, $_POST['idNumeralEditarCategoria']) || preg_match($expRegNum, $_POST['idEditarCategoria']) || preg_match($expRegNombres, $_POST['descripcionEditarCategoria'])) {
+					$datos = array('idNumeral'=>$_POST['idNumeralEditarCategoria'],'idCategoria'=>$_POST['idEditarCategoria'],'descripcionCategoria'=>$_POST['descripcionEditarCategoria']);
+					//var_dump($datos);
+					$respuesta = CategoriaModel::actualizarCategoriaModel($datos,'categorias');
+					if ($respuesta=='success') {
+						header('Location:listarCategorias');
+					}
 				}
 			}
 		}
