@@ -38,11 +38,11 @@ class CategoriaController{
 						<td>'.utf8_encode($value["descripcionNumeral"]).'</td>
 						<td>'.utf8_encode($value["descripcion"]).'</td>
 						<td>
-							<a href="index.php?action=agregarReglaNumeral&id='.$value['id'].'" class="btn btn-color btn-twitter">Agregar/Editar Regla
+							<a href="index.php?action=agregarReglaCategoria&id='.$value['id'].'" class="btn btn-color btn-twitter">Agregar/Editar Regla
 							</a>
 						</td>
 						<td>
-							<button href="'.$value['id'].'" aviso="El aviso" numeral="'.utf8_encode($value['descripcion']).'" id="eliminarRegla'.$value['id'].'" class="btn btn-warning">Eliminar Regla
+							<button href="'.$value['id'].'" aviso="El aviso" categoria="'.utf8_encode($value['descripcion']).'" id="eliminarRegla'.$value['id'].'" class="btn btn-danger">Eliminar Regla
 							</button>
 						</td>
 						<td>
@@ -128,7 +128,41 @@ class CategoriaController{
 					//var_dump($datos);
 					$respuesta = CategoriaModel::actualizarCategoriaModel($datos,'categorias');
 					if ($respuesta=='success') {
-						header('Location:listarCategorias');
+						header('Location:notActualizarCategoriaOk');
+					}
+				}
+			}
+		}
+	}
+
+	//AGREGAR AVISO A UNA CATEGORIA
+	public function agregarReglaCategoriaController(){
+		$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
+		$expRegNum = '/^[0-9]*$/';
+		if (isset($_POST['idAgregarReglaCategoria']) && isset($_POST['avisoAgregarReglaCategoria']) ) {
+			if (!empty($_POST['idAgregarReglaCategoria']) && !empty($_POST['avisoAgregarReglaCategoria']) ) {
+				if (preg_match($expRegNum, $_POST['idAgregarReglaCategoria']) || preg_match($expRegNombres,$_POST['avisoAgregarReglaCategoria'])) {
+					$datos = array('idCategoria'=>$_POST['idAgregarReglaCategoria'],'avisoCategoria'=>$_POST['avisoAgregarReglaCategoria']);
+					//echo '<pre>',print_r($datos),'</pre>';
+					$respuesta = CategoriaModel::agregarReglaCategoriaModel($datos,'categorias');
+					if ($respuesta=='success') {
+						header('Location:notCrearAvisoCategoriaOk');
+					}
+				}
+			}
+		}
+	}
+
+	//ELIMINAR AVISO (ACTUALIZAR STATUS A 0 Y ACTUALIZAR AVISO A BORRADO)
+	public function eliminarAvisoCategoriaController(){
+		$expRegNum = '/^[0-9]*$/';
+		if (isset($_GET['eliminarAviso'])) {
+			if (!empty($_GET['eliminarAviso'])) {
+				if (preg_match($expRegNum, $_GET['eliminarAviso'])) {
+					$dato = $_GET['eliminarAviso'];
+					$respuesta = CategoriaModel::eliminarAvisoCategoriaModel($dato,'categorias');
+					if ($respuesta=='success') {
+						header('Location:notEliminarAvisoCategoriaOk');
 					}
 				}
 			}

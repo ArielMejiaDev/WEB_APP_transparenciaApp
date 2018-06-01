@@ -50,7 +50,49 @@ if (isset($_GET['action'])) {
           header('Location:index.php');
         }
     }
-  //fin validar ingreso en listar departamentos 
+  //fin validar ingreso en listar departamentos
+
+  //validar ingreso en agregarReglaNumeral
+    if ($_GET['action']=='agregarReglaNumeral') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en agregarReglaNumeral
+
+  //validar ingreso en crearCategoria
+    if ($_GET['action']=='crearCategoria') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en crearCategoria  
+
+  //validar ingreso en editarCategoria
+    if ($_GET['action']=='editarCategoria') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en editarCategoria
+
+  //validar ingreso en agregarReglaCategoria
+    if ($_GET['action']=='agregarReglaCategoria') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en agregarReglaCategoria
+
+  //validar ingreso en agregarReglaCategoria
+    if ($_GET['action']=='listarCategorias') {
+      if ($datos['rol']!='admin') {
+          header('Location:index.php');
+        }
+    }
+  //fin validar ingreso en agregarReglaCategoria
+
+
 
   //SUBIR ARCHIVOS NO PORQUE TODOS VAN A PODER SUBIR ARCHIVOS
   

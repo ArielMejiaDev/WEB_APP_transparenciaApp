@@ -45,7 +45,7 @@ class NumeralController{
 							</a>
 						</td>
 						<td>
-							<button href="'.$value['id'].'" aviso="El aviso" numeral="'.utf8_encode($value['descripcion']).'" id="eliminarRegla'.$value['id'].'" class="btn btn-warning">Eliminar Regla
+							<button href="'.$value['id'].'" aviso="El aviso" numeral="'.utf8_encode($value['descripcion']).'" id="eliminarRegla'.$value['id'].'" class="btn btn-danger">Eliminar Regla
 							</button>
 						</td>
 						<td>

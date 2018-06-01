@@ -23,7 +23,8 @@ class EnlacesModel extends Conexion{
 			$enlace == "agregarReglaNumeral"||
 			$enlace == "crearCategoria"||
 			$enlace == "listarCategorias"||
-			$enlace == "editarCategoria") {
+			$enlace == "editarCategoria"||
+			$enlace == "agregarReglaCategoria") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
 			$url = 'views/modules/ingreso.php';
@@ -54,6 +55,12 @@ class EnlacesModel extends Conexion{
 		}else if($enlace == "notCrearCategoriaOk"){
 			$url = 'views/modules/listarCategorias.php';
 		}else if($enlace == "notEliminarCategoriaOk"){
+			$url = 'views/modules/listarCategorias.php';
+		}else if($enlace == "notActualizarCategoriaOk"){
+			$url = 'views/modules/listarCategorias.php';
+		}else if($enlace == "notCrearAvisoCategoriaOk"){
+			$url = 'views/modules/listarCategorias.php';
+		}else if($enlace == "notEliminarAvisoCategoriaOk"){
 			$url = 'views/modules/listarCategorias.php';
 		}else{
 			$url = 'views/modules/ingreso.php';

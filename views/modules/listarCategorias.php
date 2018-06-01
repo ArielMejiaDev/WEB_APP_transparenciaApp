@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
 			swal({
 			  position: 'top-end',
 			  type: 'success',
-			  title: 'Categoria Creado exitosamente!',
+			  title: 'Categoria Creada exitosamente!',
 			  showConfirmButton: false,
 			  timer: 1500
 			})
@@ -31,10 +31,51 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notActualizarCategoriaOk') {
+		echo "
+		<script>
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Categoria Actualizada exitosamente!',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
+		</script>";
+	}
+}
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notCrearAvisoCategoriaOk') {
+		echo "
+		<script>
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Aviso creado exitosamente!',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
+		</script>";
+	}
+}
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notEliminarAvisoCategoriaOk') {
+		echo "
+		<script>
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Aviso Eliminado exitosamente!',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
+		</script>";
+	}
+}
 $listarCategoria = new CategoriaController();
 $listarCategoria->eliminarCategoriaController();
-// $listarCategoria->eliminarAvisoNumeralController();
-//$listarNumerales->listarNumeralesController();
+$listarCategoria->eliminarAvisoCategoriaController();
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>
@@ -83,8 +124,6 @@ $listarCategoria->eliminarCategoriaController();
 		</div>
 	</div>
 </div>
-
-
 <script>
 	var botonesEliminar = document.getElementsByClassName("btn btn-danger");
 	//console.log(botonesEliminar);
@@ -128,9 +167,9 @@ $listarCategoria->eliminarCategoriaController();
 			  }
 		})
 	}
-	function mostrarMensajeAviso(id,numeral){
+	function mostrarMensajeAviso(id,categoria){
 		swal({
-		  title: 'Deseas eliminar el aviso del Numeral '+numeral,
+		  title: 'Deseas eliminar el aviso del Numeral '+categoria,
 		  text: "Este paso no se puede revertir!",
 		  type: 'warning',
 		  showCancelButton: true,
@@ -139,7 +178,7 @@ $listarCategoria->eliminarCategoriaController();
 		  confirmButtonText: 'Si, eliminar'
 		}).then((result) => {
 		  if (result.value) {
-		    window.location="index.php?action=listarNumerales&eliminarAviso="+id;
+		    window.location="index.php?action=listarCategorias&eliminarAviso="+id;
 		  }else if (
 			    // Read more about handling dismissals
 			    result.dismiss === swal.DismissReason.cancel

@@ -72,4 +72,29 @@ class CategoriaModel extends Conexion{
 			return 'error';
 		}
 	}
+
+	//AGREGAR UN AVISO A LA CATEGORIA
+	public function agregarReglaCategoriaModel($datos,$tabla){
+		$sql = "UPDATE $tabla SET status=1, aviso=:aviso WHERE id=:id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$datos['idCategoria'],PDO::PARAM_INT);
+		$stmt->bindParam(':aviso',$datos['avisoCategoria'],PDO::PARAM_STR);
+		if ($stmt->execute()) {
+			return 'success';
+		}else{
+			return 'error';
+		}
+	}
+
+	//ELIMINAR AVISO (ACTUALIZAR EL STATUS A 0 Y ACTUALIZAR EL AVISO A UN ESPACIO EN BLANCO)
+	public function eliminarAvisoCategoriaModel($dato,$tabla){
+		$sql = "UPDATE $tabla SET status=0, aviso='' WHERE id = :id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		if ($stmt->execute()) {
+			return 'success';
+		}else{
+			return 'error';
+		}
+	}
 }
