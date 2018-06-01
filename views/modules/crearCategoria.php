@@ -18,14 +18,14 @@ include_once "sidebar.php";
 		                	<i class="icon mdi mdi-plus"></i> Crear Categoria<span class="panel-subtitle">Crea un nueva categoria.</span>
 		                </div>
 		                <div class="panel-body">
-		                  	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post">
+		                  	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarCrearCategoria()" method="post">
 		                  		<div class="form-group">
-			                      <label class="col-sm-3 control-label" for="descripcionCrearCategoria">Numeral</label>
+			                      <label class="col-sm-3 control-label" for="idNumeralCrearCategoria">Numeral</label>
 			                      <div class="col-sm-6">
 			                        <select name="idNumeralCrearCategoria" id="idNumeralCrearCategoria" class="form-control">
 			                        	<?php $crearCategoria->cargarSelectNumeralesController() ?>
 			                        </select>
-			                        <p id="avisoDescripcionCrearCategoria" class="text-danger text-muted" style="display: none"></p>
+			                        <p id="avisoIdNumeralCrearCategoria" class="text-danger text-muted" style="display: none"></p>
 			                      </div>
 			                    </div>
 			                    <div class="form-group">

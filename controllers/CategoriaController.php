@@ -6,17 +6,31 @@ class CategoriaController{
 		$expRegNum = '/^[0-9]*$/';
 		if (isset($_POST['descripcionCrearCategoria']) && isset($_POST['idNumeralCrearCategoria'])) {
 			if (!empty($_POST['descripcionCrearCategoria']) && !empty($_POST['idNumeralCrearCategoria'])) {
-				if (preg_match($expRegNombres, $_POST['descripcionCrearCategoria']) || preg_match($expRegNum, $_POST['idNumeralCrearCategoria'])) {
+				if (preg_match($expRegNombres, $_POST['descripcionCrearCategoria']) && preg_match($expRegNum, $_POST['idNumeralCrearCategoria'])) {
 					$datos = array('idNumeral'=>$_POST['idNumeralCrearCategoria'],'descripcion'=>$_POST['descripcionCrearCategoria']);
-					echo '<pre>',print_r($datos),'</pre>';
+					//echo '<pre>',print_r($datos),'</pre>';
 					$respuesta = CategoriaModel::crearCategoriaModel($datos,"categorias");
 					if ($respuesta=='success') {
 						header('Location:notCrearCategoriaOk');
-					}else{
-						var_dump($respuesta);
 					}
-				}//no acepta expresiones regulares
-			}//que no vaya vacio
+				}else{
+					echo "	<script>
+								swal({
+								  type: 'error',
+								  title: 'Oops...',
+								  text: 'No esta permitido el uso de caracteres especiales',
+								})
+							</script>";
+				}
+			}else{
+				echo "	<script>
+							swal({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'No se puede crear una categoria vacia',
+							})
+						</script>";
+			}
 		}
 	}
 
@@ -66,6 +80,14 @@ class CategoriaController{
 				if ($respuesta=='success') {
 					header('Location:notEliminarCategoriaOk');
 				}
+			}else{
+				echo "	<script>
+							swal({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'No se puede eliminar una categoria vacia',
+							})
+						</script>";
 			}
 		}
 	}
@@ -79,19 +101,19 @@ class CategoriaController{
 					$dato = $_GET['id'];
 					$respuesta = CategoriaModel::crearEditarCategoriaFormModel($dato,"categorias","numerales");
 					//var_dump($respuesta);
-					echo '<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarEditarNumeral()" method="post">
+					echo '<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarEditarCategoria()" method="post">
 										<div class="form-group">
 					                      <label class="col-sm-3 control-label" for="descripcionCrearCategoria">Numeral</label>
 					                      <div class="col-sm-6">
 					                        <select name="idNumeralEditarCategoria" id="idNumeralEditarCategoria" class="form-control">
 					                        	<option value="'.$respuesta['numeralesId'].'">'.utf8_encode($respuesta['numeralesDescripcion']).'</option>
 					                        </select>
-					                        <p id="avisoDescripcionCrearCategoria" class="text-danger text-muted" style="display: none"></p>
+					                        <p id="avisoIdNumeralEditarCategoria" class="text-danger text-muted" style="display: none"></p>
 					                      </div>
 					                    </div>
 					                    <div class="form-group">
 					                    	<input type="hidden" class="form-control" id="idEditarCategoria" name="idEditarCategoria" value="'.$respuesta['id'].'">
-					                      <label class="col-sm-3 control-label" for="descripcionEditarCategoria">Numeral:</label>
+					                      <label class="col-sm-3 control-label" for="descripcionEditarCategoria">Categoria:</label>
 					                      <div class="col-sm-6">
 					                        <input type="text" class="form-control" id="descripcionEditarCategoria" name="descripcionEditarCategoria" value="'.utf8_encode($respuesta['descripcion']).'">
 					                        <p id="avisoDescripcionEditarCategoria" class="text-danger text-muted" style="display: none"></p>
@@ -103,7 +125,23 @@ class CategoriaController{
 					                    	</div>
 					                    </div>
 				                  	</form>';
+				}else{
+					echo "	<script>
+								swal({
+								  type: 'error',
+								  title: 'Oops...',
+								  text: 'No esta permitido el uso de caracteres especiales',
+								})
+							</script>";
 				}
+			}else{
+				echo "	<script>
+							swal({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'No se puede editar una categoria vacia',
+							})
+						</script>";
 			}
 		}
 	}
@@ -123,14 +161,30 @@ class CategoriaController{
 		$expRegNum = '/^[0-9]*$/';
 		if (isset($_POST['idNumeralEditarCategoria']) && isset($_POST['idEditarCategoria']) && isset($_POST['descripcionEditarCategoria']) ) {
 			if (!empty($_POST['idNumeralEditarCategoria']) && !empty($_POST['idEditarCategoria']) && !empty($_POST['descripcionEditarCategoria']) ) {
-				if (preg_match($expRegNum, $_POST['idNumeralEditarCategoria']) || preg_match($expRegNum, $_POST['idEditarCategoria']) || preg_match($expRegNombres, $_POST['descripcionEditarCategoria'])) {
+				if (preg_match($expRegNum, $_POST['idNumeralEditarCategoria']) && preg_match($expRegNum, $_POST['idEditarCategoria']) && preg_match($expRegNombres, $_POST['descripcionEditarCategoria'])) {
 					$datos = array('idNumeral'=>$_POST['idNumeralEditarCategoria'],'idCategoria'=>$_POST['idEditarCategoria'],'descripcionCategoria'=>$_POST['descripcionEditarCategoria']);
 					//var_dump($datos);
 					$respuesta = CategoriaModel::actualizarCategoriaModel($datos,'categorias');
 					if ($respuesta=='success') {
 						header('Location:notActualizarCategoriaOk');
 					}
+				}else{
+					echo "	<script>
+								swal({
+								  type: 'error',
+								  title: 'Oops...',
+								  text: 'No esta permitido el uso de caracteres especiales',
+								})
+							</script>";
 				}
+			}else{
+				echo "	<script>
+							swal({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'No se puede actualizar una categoria vacia',
+							})
+						</script>";
 			}
 		}
 	}
@@ -141,14 +195,30 @@ class CategoriaController{
 		$expRegNum = '/^[0-9]*$/';
 		if (isset($_POST['idAgregarReglaCategoria']) && isset($_POST['avisoAgregarReglaCategoria']) ) {
 			if (!empty($_POST['idAgregarReglaCategoria']) && !empty($_POST['avisoAgregarReglaCategoria']) ) {
-				if (preg_match($expRegNum, $_POST['idAgregarReglaCategoria']) || preg_match($expRegNombres,$_POST['avisoAgregarReglaCategoria'])) {
+				if (preg_match($expRegNum, $_POST['idAgregarReglaCategoria']) && preg_match($expRegNombres,$_POST['avisoAgregarReglaCategoria'])) {
 					$datos = array('idCategoria'=>$_POST['idAgregarReglaCategoria'],'avisoCategoria'=>$_POST['avisoAgregarReglaCategoria']);
 					//echo '<pre>',print_r($datos),'</pre>';
 					$respuesta = CategoriaModel::agregarReglaCategoriaModel($datos,'categorias');
 					if ($respuesta=='success') {
 						header('Location:notCrearAvisoCategoriaOk');
 					}
+				}else{
+					echo "	<script>
+								swal({
+								  type: 'error',
+								  title: 'Oops...',
+								  text: 'No esta permitido el uso de caracteres especiales',
+								})
+							</script>";
 				}
+			}else{
+				echo "	<script>
+							swal({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'No se puede crear una regla para la categoria vacia',
+							})
+						</script>";
 			}
 		}
 	}
@@ -164,8 +234,24 @@ class CategoriaController{
 					if ($respuesta=='success') {
 						header('Location:notEliminarAvisoCategoriaOk');
 					}
+				}else{
+					echo "	<script>
+								swal({
+								  type: 'error',
+								  title: 'Oops...',
+								  text: 'No esta permitido el uso de caracteres especiales',
+								})
+							</script>";
 				}
-			}
+			}else{
+				echo "	<script>
+							swal({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'No se puede eliminar un aviso de categoria vacia',
+							})
+						</script>";
+				}
 		}
 	}
 }

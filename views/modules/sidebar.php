@@ -51,9 +51,9 @@
                             <?php  
                                 if ($datos['rol']!='usuario') {
                                 ?>
-                            <li><a href="#"><i class="icon mdi mdi-long-arrow-up"></i> Publicar archivos</a>
-                            </li>
                             <li><a href="#"><i class="icon mdi mdi-check-all"></i> Validar archivos</a>
+                            </li>
+                            <li><a href="#"><i class="icon mdi mdi-long-arrow-up"></i> Publicar archivos</a>
                             </li>
                             <?php 
                                 }

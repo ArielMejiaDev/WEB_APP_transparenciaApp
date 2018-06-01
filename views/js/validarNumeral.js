@@ -7,12 +7,14 @@ function validarEditarNumeral(){
 		avisoNumeral.style.display="inline";
 		avisoNumeral.innerHTML="No puede quedar vacio el númeral";
 		return false;
-	}
-	if (!expRegNombres.test(numeral.value)) {
+	}else{
+		if (!expRegNombres.test(numeral.value)) {
 		avisoNumeral.style.display="inline";
 		avisoNumeral.innerHTML="No esta permitido el uso de caracteres especiales";
 		return false;
 	}
+	}
+	
 	//VALIDAR QUE NO SEA NINGUNA EXPRESION REGULAR
 	return true;
 }

@@ -93,6 +93,7 @@
     <script src="views/js/validarCrearDepartamento.js"></script>
     <script src="views/js/validarEditarDepartamento.js"></script>
     <script src="views/js/validarNumeral.js"></script>
+    <script src="views/js/validarCategoria.js"></script>
     <!-- FIN DE MODULOS PERSONALIZADOS -->
   </body>
 </html>

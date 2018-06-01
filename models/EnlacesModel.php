@@ -24,7 +24,8 @@ class EnlacesModel extends Conexion{
 			$enlace == "crearCategoria"||
 			$enlace == "listarCategorias"||
 			$enlace == "editarCategoria"||
-			$enlace == "agregarReglaCategoria") {
+			$enlace == "agregarReglaCategoria"||
+			$enlace == "subirArchivos") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
 			$url = 'views/modules/ingreso.php';

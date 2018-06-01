@@ -18,13 +18,13 @@ include_once "sidebar.php";
 	                		<i class="icon mdi mdi-edit"></i> Agregar Regla la categoria<span class="panel-subtitle">Valida una regla especial para la categoria respectivo.</span>
 	                	</div>
 		                <div class="panel-body">
-		                  	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post">
+		                  	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarAgregarAvisoCategoria()" method="post">
 			                    <div class="form-group">
-			                    	<input type="text" class="form-control" id="idAgregarReglaCategoria" name="idAgregarReglaCategoria" value=" <?php echo $_GET['id'] ?> ">
+			                    	<input type="hidden" class="form-control" id="idAgregarReglaCategoria" name="idAgregarReglaCategoria" value="<?php echo $_GET['id'] ?>">
 			                      <label class="col-sm-3 control-label" for="avisoAgregarReglaCategoria">Regla para la categoria:</label>
 			                      <div class="col-sm-6">
 			                        <input type="text" class="form-control" id="avisoAgregarReglaCategoria" name="avisoAgregarReglaCategoria">
-			                        <p id="avisoAgregarReglaCategoria" class="text-danger text-muted" style="display: none"></p>
+			                        <p id="avisoAvisoAgregarReglaCategoria" class="text-danger text-muted" style="display: none"></p>
 			                      </div>
 			                    </div>
 			                    <div class="form-group">

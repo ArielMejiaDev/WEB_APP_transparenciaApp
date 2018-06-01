@@ -126,14 +126,30 @@ class NumeralController{
 		$expRegNum = '/^[0-9]*$/';
 		if (isset($_POST['idAgregarReglaNumeral']) && isset($_POST['avisoAgregarReglaNumeral']) ) {
 			if (!empty($_POST['idAgregarReglaNumeral']) && !empty($_POST['avisoAgregarReglaNumeral']) ) {
-				if (preg_match($expRegNombres, $_POST['avisoAgregarReglaNumeral']) || preg_match($expRegNum, $_POST['idAgregarReglaNumeral']) ) {
+				if (preg_match($expRegNombres, $_POST['avisoAgregarReglaNumeral']) && preg_match($expRegNum, $_POST['idAgregarReglaNumeral']) ) {
 					$datos = array('id'=>$_POST['idAgregarReglaNumeral'], 'aviso'=>utf8_decode($_POST['avisoAgregarReglaNumeral']));
 					//var_dump($datos);
 					$respuesta = NumeralModel::agregarReglaNumeralModel($datos,"numerales");
 					if ($respuesta=='success') {
 						header('Location:notAgregarReglaNumeralOk');
 					}
-				}//si esta vacio
+				}else{
+					echo "	<script>
+								swal({
+								  type: 'error',
+								  title: 'Oops...',
+								  text: 'No es permitido el uso de caracteres especiales',
+								})
+							</script>";
+				}
+			}else{
+				echo "	<script>
+							swal({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'No se puede agregar un aviso de numeral vacio',
+							})
+						</script>";
 			}
 		}
 	}
