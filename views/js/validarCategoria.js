@@ -1,3 +1,42 @@
+//CAPTURAR EVENTO CON AJAX
+	var categoriaEditarAjax = document.getElementById('descripcionEditarCategoria');
+	categoriaEditarAjax.addEventListener('blur',enviarDatosValidarEditarCategoriaAjax,false);
+	var conexionValidarEditarCategoriaAjax;
+	var conexionValidarDescripcionEditarCategoriaAjax;
+	var catEditarExiste = false;
+//FIN CAPTURAR EVENTO CON AJAX
+//CAPTURAR EVENTO CON AJAX
+	var categoriaAjax = document.getElementById('descripcionCrearCategoria');
+	categoriaAjax.addEventListener('blur',enviarDatosValidarCrearCategoriaAjax,false);
+	var conexionValidarCrearCategoriaAjax;
+	var catExiste = false;
+//FIN CAPTURAR EVENTO CON AJAX
+function enviarDatosValidarCrearCategoriaAjax(){
+	//console.log(categoriaAjax.value);
+	var dato = new FormData();
+	dato.append('categoria',categoriaAjax.value);
+	conexionValidarCrearCategoriaAjax = new XMLHttpRequest();
+	conexionValidarCrearCategoriaAjax.onreadystatechange=respAjaxValCrearCatAjax;
+	conexionValidarCrearCategoriaAjax.open('POST',"views/modules/validarCrearCategoriaAjax.php",true);
+	conexionValidarCrearCategoriaAjax.send(dato);
+}
+function respAjaxValCrearCatAjax(){
+	if (conexionValidarCrearCategoriaAjax.readyState==4) {
+		if (conexionValidarCrearCategoriaAjax.status==200) {
+			console.log(conexionValidarCrearCategoriaAjax.responseText);
+			if (conexionValidarCrearCategoriaAjax.responseText=='existe') {
+				catExiste = true;
+				swal({
+				  type: 'error',
+				  title: 'Oops...',
+				  text: 'La categoria ya existe, por favor cambia la descripción de la categoria o revisa en la lista de categorias',
+				})	
+			}
+		}else{
+			console.log('cargando...');
+		}
+	}
+}
 function validarCrearCategoria(){
 	//VALIDAR DESCRIPCION DE LA CATEGORIA
 		var categoria = document.getElementById('descripcionCrearCategoria');
@@ -31,7 +70,56 @@ function validarCrearCategoria(){
 			}
 		}				
 	//FIN VALIDAR ID DEL NUMERAL
+	//SI EXISTE LA CATEGORIA REVISION CON AJAX
+		if (catExiste) {			
+			return false;
+		}
+	//FIN EXISTE LA CATEGORIA REVISION CON AJAX
 	return true;
+}
+function enviarDatosValidarEditarCategoriaAjax(){
+	var idEditarCat = document.getElementById('idEditarCategoria').value;
+	var data = new FormData();
+	data.append('idEditarCat',idEditarCat);
+	conexionValidarEditarCategoriaAjax = new XMLHttpRequest();
+	conexionValidarEditarCategoriaAjax.onreadystatechange=respAjaxValEditarCategoria;
+	conexionValidarEditarCategoriaAjax.open('POST','views/modules/validarCrearCategoriaAjax.php',true);
+	conexionValidarEditarCategoriaAjax.send(data);
+}
+function respAjaxValEditarCategoria(){
+	if (conexionValidarEditarCategoriaAjax.readyState==4) {
+		if (conexionValidarEditarCategoriaAjax.status==200) {
+			//console.log(conexionValidarEditarCategoriaAjax.responseText);
+			if (categoriaEditarAjax.value!=conexionValidarEditarCategoriaAjax.responseText) {
+				enviarDescripcionValidarEditarCategoriaAjax();
+			}
+		}
+	}
+}
+function enviarDescripcionValidarEditarCategoriaAjax(){
+	conexionValidarDescripcionEditarCategoriaAjax = new XMLHttpRequest();
+	conexionValidarDescripcionEditarCategoriaAjax.onreadystatechange = respAjaxValDescripcionEditarCategoria;
+	var data = new FormData();
+	data.append('descripcion',categoriaEditarAjax.value);
+	conexionValidarDescripcionEditarCategoriaAjax.open('POST','views/modules/validarCrearCategoriaAjax.php',true);
+	conexionValidarDescripcionEditarCategoriaAjax.send(data);
+}
+function respAjaxValDescripcionEditarCategoria(){
+	if (conexionValidarDescripcionEditarCategoriaAjax.readyState==4) {
+		if (conexionValidarDescripcionEditarCategoriaAjax.status==200) {
+			console.log(conexionValidarDescripcionEditarCategoriaAjax.responseText);
+			if (conexionValidarDescripcionEditarCategoriaAjax.responseText=='existe') {
+				catEditarExiste = true;
+				swal({
+				  type: 'error',
+				  title: 'Oops...',
+				  text: 'La categoria ya existe, por favor cambia la descripción de la categoria o revisa en la lista de categorias',
+				})
+			}else{
+				catEditarExiste = false;
+			}
+		}
+	}
 }
 function validarEditarCategoria(){
 	var expRegNombres = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
@@ -82,6 +170,11 @@ function validarEditarCategoria(){
 			}
 		}
 	//FIN VALIDAR DESCRIPCION CATEGORIA
+	//VALIDAR AJAX NO REPETIR OTRA CATEGORIA
+		if (catEditarExiste) {
+			return false;
+		}
+	//FIN VALIDAR AJAX NO REPETIR OTRA CATEGORIA
 	return true;
 }
 function validarAgregarAvisoCategoria(){

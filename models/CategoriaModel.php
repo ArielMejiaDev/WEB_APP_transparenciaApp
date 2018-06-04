@@ -97,4 +97,31 @@ class CategoriaModel extends Conexion{
 			return 'error';
 		}
 	}
+
+	//VALIDAR CATEGORIA PARA NO REPETIR CATEGORIA CON AJAX
+	public function validarCrearCategoriaAjaxModel($dato,$tabla){
+		$sql = "SELECT COUNT(*) AS cuenta FROM $tabla WHERE categorias.descripcion=:descripcion";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':descripcion',$dato,PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
+	//VALIDAR EDITAR CATEGORIA 1ERO DEVOLVER LA DESCRIPCION SEGUN EL ID ENVIADO
+	public function validarEditarCategoriaAjaxModel($dato,$tabla){
+		$sql = "SELECT descripcion FROM $tabla WHERE id=:id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
+	//VALIDAR EDITAR CATEGORIA 2NDO DEVUELVE EL CONTEO DE LA SELECCION DE LA DESCRIPCION
+	public function validarDescripcionEditarCategoriaAjaxModel($dato,$tabla){
+		$sql = "SELECT COUNT(descripcion) AS cuenta FROM $tabla WHERE descripcion=:descripcion";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':descripcion',$dato,PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
 }

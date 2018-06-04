@@ -44,7 +44,7 @@ include_once "sidebar.php";
 				var select = document.getElementById('idNumeralEditarCategoria');
 				var opt = conexionCargarNumerales.responseText;
 				select.innerHTML+=opt;
-				console.log(opt);
+				//console.log(opt);
 			}
 		}
 	}

@@ -7,7 +7,7 @@ class CategoriaController{
 		if (isset($_POST['descripcionCrearCategoria']) && isset($_POST['idNumeralCrearCategoria'])) {
 			if (!empty($_POST['descripcionCrearCategoria']) && !empty($_POST['idNumeralCrearCategoria'])) {
 				if (preg_match($expRegNombres, $_POST['descripcionCrearCategoria']) && preg_match($expRegNum, $_POST['idNumeralCrearCategoria'])) {
-					$datos = array('idNumeral'=>$_POST['idNumeralCrearCategoria'],'descripcion'=>$_POST['descripcionCrearCategoria']);
+					$datos = array('idNumeral'=>$_POST['idNumeralCrearCategoria'],'descripcion'=>utf8_decode($_POST['descripcionCrearCategoria']) );
 					//echo '<pre>',print_r($datos),'</pre>';
 					$respuesta = CategoriaModel::crearCategoriaModel($datos,"categorias");
 					if ($respuesta=='success') {
@@ -56,7 +56,7 @@ class CategoriaController{
 							</a>
 						</td>
 						<td>
-							<button href="'.$value['id'].'" aviso="El aviso" categoria="'.utf8_encode($value['descripcion']).'" id="eliminarRegla'.$value['id'].'" class="btn btn-danger">Eliminar Regla
+							<button href="'.$value['id'].'" aviso="El aviso" categoria="'.utf8_decode($value['descripcion']).'" id="eliminarRegla'.$value['id'].'" class="btn btn-danger">Eliminar Regla
 							</button>
 						</td>
 						<td>
@@ -162,7 +162,7 @@ class CategoriaController{
 		if (isset($_POST['idNumeralEditarCategoria']) && isset($_POST['idEditarCategoria']) && isset($_POST['descripcionEditarCategoria']) ) {
 			if (!empty($_POST['idNumeralEditarCategoria']) && !empty($_POST['idEditarCategoria']) && !empty($_POST['descripcionEditarCategoria']) ) {
 				if (preg_match($expRegNum, $_POST['idNumeralEditarCategoria']) && preg_match($expRegNum, $_POST['idEditarCategoria']) && preg_match($expRegNombres, $_POST['descripcionEditarCategoria'])) {
-					$datos = array('idNumeral'=>$_POST['idNumeralEditarCategoria'],'idCategoria'=>$_POST['idEditarCategoria'],'descripcionCategoria'=>$_POST['descripcionEditarCategoria']);
+					$datos = array('idNumeral'=>$_POST['idNumeralEditarCategoria'],'idCategoria'=>$_POST['idEditarCategoria'],'descripcionCategoria'=>utf8_decode($_POST['descripcionEditarCategoria']));
 					//var_dump($datos);
 					$respuesta = CategoriaModel::actualizarCategoriaModel($datos,'categorias');
 					if ($respuesta=='success') {
@@ -252,6 +252,31 @@ class CategoriaController{
 							})
 						</script>";
 				}
+		}
+	}
+
+	//VALIDAR QUE NO EXISTA UNA CATEGORIA REPETIDA CON AJAX
+	public function validarCrearCategoriaAjaxController($dato){
+		$respuesta = CategoriaModel::validarCrearCategoriaAjaxModel($dato,'categorias');
+		$cuenta = $respuesta['cuenta'];
+		if ($cuenta>0) {
+			echo 'existe';
+		}
+	}
+
+	//VALIDAR EDITAR CATEGORIA 1ERO DEVOLVER LA DESCRIPCION CORRESPONDIENTE AL ID RECIBIDO
+	public function validarEditarCategoriaAjaxController($dato){
+		$respuesta = CategoriaModel::validarEditarCategoriaAjaxModel($dato,'categorias');
+		$descripcion = $respuesta['descripcion'];
+		echo $descripcion;
+	}
+
+	//VALIDAR EDITAR CATEGORIA 2NDO DEVUELVE EL CONTEO DE LA DESCRIPCION
+	public function validarDescripcionEditarCategoriaAjaxController($dato){
+		$respuesta = CategoriaModel::validarDescripcionEditarCategoriaAjaxModel($dato,'categorias');
+		$cuenta = $respuesta['cuenta'];
+		if ($cuenta>0) {
+			echo 'existe';
 		}
 	}
 }
