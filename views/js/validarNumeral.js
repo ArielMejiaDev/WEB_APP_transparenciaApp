@@ -1,3 +1,47 @@
+
+var numeralEditar = document.getElementById('descripcionEditarNumeral');
+var numeralEditarExiste;
+var conexionAjaxNumeralEditar;
+var conexionAjaxDescripcionNumeralEditar;
+numeralEditar.addEventListener('blur',enviarId,false);
+function enviarId(){
+	var id = document.getElementById('idEditarNumeral').value;
+	var dato = new FormData();
+	dato.append('id',id);
+	conexionAjaxNumeralEditar = new XMLHttpRequest();
+	conexionAjaxNumeralEditar.onreadystatechange = respAjaxEnviarIdEditarNumeral;
+	conexionAjaxNumeralEditar.open('POST',"views/modules/validacionCrearNumeralAjax.php",true);
+	conexionAjaxNumeralEditar.send(dato);
+
+}
+function respAjaxEnviarIdEditarNumeral(){
+	if (conexionAjaxNumeralEditar.readyState==4) {
+		if (conexionAjaxNumeralEditar.status==200) {
+			//console.log(conexionAjaxNumeralEditar.responseText);
+			if (numeralEditar.value!=conexionAjaxNumeralEditar.responseText) {
+				enviarDescripcionEditarNumeral();
+			}
+		}
+	}
+}
+
+function enviarDescripcionEditarNumeral(){
+	conexionAjaxDescripcionNumeralEditar = new XMLHttpRequest();
+	conexionAjaxDescripcionNumeralEditar.onreadystatechange = respEnviarDescripcionEditarNumeral;
+	var dato = new FormData();
+	dato.append('descripcionEditarNumeral',numeralEditar.value);
+	conexionAjaxDescripcionNumeralEditar.open('POST','views/modules/validacionCrearNumeralAjax.php',true);
+	conexionAjaxDescripcionNumeralEditar.send(dato);
+}
+
+function respEnviarDescripcionEditarNumeral(){
+	if (conexionAjaxDescripcionNumeralEditar.readyState==4) {
+		if (conexionAjaxDescripcionNumeralEditar.status==200) {
+			console.log(conexionAjaxDescripcionNumeralEditar.responseText);
+		}
+	}
+}
+
 function validarEditarNumeral(){
 	var numeral = document.getElementById("descripcionEditarNumeral");
 	var avisoNumeral = document.getElementById("avisoDescripcionEditarNumeral");

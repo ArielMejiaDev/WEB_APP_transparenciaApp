@@ -89,4 +89,22 @@ class NumeralModel extends Conexion{
 			return 'error';
 		}
 	}
+
+	//VALIDAR NUMERAL CON AJAX PARA NO REPETIR NUMERAL
+	public function validarEditarNumeralAjaxController($dato,$tabla){
+		$sql = "SELECT descripcion FROM $tabla WHERE id=:id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
+	//VALIDAR NUMERAL CON AJAX PARA NO REPETIR NUMERAL EVALUANDO LA DESCRIPCION
+	public function validarEditarDescripcionNumeralAjaxModel($dato,$tabla){
+		$sql = "SELECT COUNT(descripcion) AS cuentaDos FROM $tabla WHERE descripcion = :dato";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':dato',$dato,PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
 }

@@ -167,4 +167,21 @@ class NumeralController{
 			}
 		}
 	} 
+
+	//VALIDAR EDITAR NUMERAL PARA QUE NO SE REPITA NUMERAL CON AJAX
+	public function validarEditarNumeralAjaxController($dato){
+		$respuesta = NumeralModel::validarEditarNumeralAjaxController($dato,"numerales");
+		$descripcion = $respuesta['descripcion'];
+		echo utf8_encode($descripcion);
+	}
+
+	//VALIDAR EDITAR DESCRIPCION DEL NUMERAL PARA NO REPETIR NUMERAL CON AJAX
+	public function validarEditarDescripcionNumeralAjaxController($dato){
+		$respuesta = NumeralModel::validarEditarDescripcionNumeralAjaxModel($dato,"numerales");
+		//$existencia = $respuesta['cuentaDos'];
+		// if ($existencia>0) {
+		// 	echo 'existe';
+		// }
+		var_dump($respuesta);
+	}
 }
