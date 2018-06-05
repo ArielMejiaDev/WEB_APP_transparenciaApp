@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2018 a las 00:42:12
+-- Tiempo de generación: 06-06-2018 a las 00:31:28
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -41,7 +41,8 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `id_numeral`, `descripcion`, `status`, `aviso`) VALUES
-(23, 7, 'yooodaaaa', 0, '');
+(26, 13, 'Normativo', 0, ''),
+(31, 5, 'situación', 0, '');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,9 @@ INSERT INTO `numerales` (`id`, `descripcion`, `status`, `aviso`) VALUES
 (5, 'ESTRUCTURA ORGÁNICA Y FUNCIONES', 0, ''),
 (6, 'DIRECCIÓN Y TELÉFONOS DE LA ENTIDAD', 0, ''),
 (7, 'DIRECTORIO DE EMPLEADOS Y SERVIDORES PÚBLICOS', 0, ''),
-(11, 'NÚMERO Y NOMBRE DE FUNCIONARIOS', 0, '');
+(11, 'NÚMERO Y NOMBRE DE FUNCIONARIOS', 0, ''),
+(12, 'MISIÓN Y OBJETIVOS DE LA INSTITUCIÓN', 0, ''),
+(13, 'MANUALES DE PROCEDIMIENTOS', 0, '');
 
 -- --------------------------------------------------------
 
@@ -155,11 +158,13 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `email`, `foto`, `rol`, `intentos`, `pregunta_seguridad`, `respuesta_seguridad`, `id_departamento`) VALUES
 (48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$TEdQe7HI5NzIq5pJkBect.ZPpSRWl59pfGfvonT..Nu8AdP4L5H52', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendi la ...', 'referencia', 1),
-(51, 'Oscar Ruben', 'Colindres Ochoa', 'ocolindres', '$2y$10$WAoJbSFrXZPbPzknSYell.lXsenkQx7U0JDvEt3aUninIXlJSSBba', 'ocolindres@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'encargadodesoftware', 1),
-(52, 'Kevin Andre', 'Carcamo Raudales', 'kcarcamo', '$2y$10$VpRcxYAizGzhC5w.ln2.EeRGJRiFSaqUFmZc1jscCpL4ZIXlsmv9m', 'kcarcamo@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'programador', 1),
-(53, 'Oscar', 'Pacheco Tzorin', 'opacheco', '$2y$10$3hXb856l9JqQ.Y8lNC7CRe7SgMDvcR1WUZPI8a3QoW/FqAn2F90.W', 'opacheco@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'dba', 1),
-(55, 'Cesar', 'Vargas', 'cvargas', '$2y$10$1I2qx5sKWoHHOU3fkCbIE.HwJ4oZi.QhsDZLPPC7R9RF2T41YoQgG', 'cvargas@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'puesto', 'programador', 1),
-(63, 'Marlon Baldemar', 'Martínez Zuñiga', 'mmartinez', '$2y$10$0vrC8JmjS1Wbuy7Qya5jM.3YshP2ybJfatTlkhPbWP0A5VuO4AKV2', 'mmartinez@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'Puesto', 'Programador', 1);
+(51, 'Oscar Ruben', 'Colindres Ochoa', 'ocolindres', '$2y$10$WAoJbSFrXZPbPzknSYell.lXsenkQx7U0JDvEt3aUninIXlJSSBba', 'ocolindres@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'encargadodesoftware', 1),
+(52, 'Kevin Andre', 'Carcamo Raudales', 'kcarcamo', '$2y$10$VpRcxYAizGzhC5w.ln2.EeRGJRiFSaqUFmZc1jscCpL4ZIXlsmv9m', 'kcarcamo@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'programador', 1),
+(53, 'Oscar', 'Pacheco Tzorin', 'opacheco', '$2y$10$3hXb856l9JqQ.Y8lNC7CRe7SgMDvcR1WUZPI8a3QoW/FqAn2F90.W', 'opacheco@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'dba', 1),
+(55, 'Cesar', 'Vargas', 'cvargas', '$2y$10$1I2qx5sKWoHHOU3fkCbIE.HwJ4oZi.QhsDZLPPC7R9RF2T41YoQgG', 'cvargas@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'programador', 1),
+(63, 'Marlon Baldemar', 'Martínez Zuñiga', 'mmartinez', '$2y$10$0vrC8JmjS1Wbuy7Qya5jM.3YshP2ybJfatTlkhPbWP0A5VuO4AKV2', 'mmartinez@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'Puesto', 'Programador', 1),
+(64, 'Edgar', 'Urizar', 'eurizar', '$2y$10$CUsJKzvgnszOmhS2ojqmKe2QQtnwyrIOuHBNWp7kHt70Lqq4Nkf.W', 'eurizar@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'Puesto', 'Jefe de Recursos Humanos', 14),
+(65, 'Nelson', 'Boche', 'nboche', '$2y$10$MSuL/9Tj50UK/kALpdEt2eliLjw94HdVWGZ2.O3uasgbH5jpxtmZO', 'nboche@ipm.org.gt', 'views/images/avatar.png', 'jefeRedaccion', 0, 'Puesto', 'Sub jefe de Informatica', 1);
 
 -- --------------------------------------------------------
 
@@ -234,7 +239,7 @@ ALTER TABLE `vitacora`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `departamentos`
@@ -258,13 +263,13 @@ ALTER TABLE `mensajes`
 -- AUTO_INCREMENT de la tabla `numerales`
 --
 ALTER TABLE `numerales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `vitacora`
