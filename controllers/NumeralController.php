@@ -177,11 +177,13 @@ class NumeralController{
 
 	//VALIDAR EDITAR DESCRIPCION DEL NUMERAL PARA NO REPETIR NUMERAL CON AJAX
 	public function validarEditarDescripcionNumeralAjaxController($dato){
-		$respuesta = NumeralModel::validarEditarDescripcionNumeralAjaxModel($dato,"numerales");
-		//$existencia = $respuesta['cuentaDos'];
-		// if ($existencia>0) {
-		// 	echo 'existe';
-		// }
-		var_dump($respuesta);
+		$respuesta = NumeralModel::validarEditarDescripcionNumeralAjaxModel(utf8_decode($dato),"numerales");
+		//var_dump($dato);
+		$cuenta = $respuesta['cuenta'];
+		if ($cuenta>0) {
+			echo 'existe';
+		}else{
+			echo 'no existe';
+		}
 	}
 }

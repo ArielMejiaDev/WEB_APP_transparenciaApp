@@ -101,9 +101,9 @@ class NumeralModel extends Conexion{
 
 	//VALIDAR NUMERAL CON AJAX PARA NO REPETIR NUMERAL EVALUANDO LA DESCRIPCION
 	public function validarEditarDescripcionNumeralAjaxModel($dato,$tabla){
-		$sql = "SELECT COUNT(descripcion) AS cuentaDos FROM $tabla WHERE descripcion = :dato";
+		$sql = "SELECT COUNT(descripcion) AS cuenta FROM $tabla WHERE descripcion=:descripcion";
 		$stmt = Conexion::conectar()->prepare($sql);
-		$stmt->bindParam(':dato',$dato,PDO::PARAM_STR);
+		$stmt->bindParam(':descripcion',$dato,PDO::PARAM_STR);
 		$stmt->execute();
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}

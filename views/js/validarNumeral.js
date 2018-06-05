@@ -37,7 +37,17 @@ function enviarDescripcionEditarNumeral(){
 function respEnviarDescripcionEditarNumeral(){
 	if (conexionAjaxDescripcionNumeralEditar.readyState==4) {
 		if (conexionAjaxDescripcionNumeralEditar.status==200) {
-			console.log(conexionAjaxDescripcionNumeralEditar.responseText);
+			//console.log(conexionAjaxDescripcionNumeralEditar.responseText);
+			if (conexionAjaxDescripcionNumeralEditar.responseText=='existe') {
+				numeralEditarExiste = true;
+				swal({
+				  type: 'error',
+				  title: 'Oops...',
+				  text: 'La categoria ya existe, por favor cambia la descripción de la categoria o revisa en la lista de categorias',
+				})
+			}else{
+				numeralEditarExiste = false;
+			}
 		}
 	}
 }
@@ -56,10 +66,16 @@ function validarEditarNumeral(){
 		avisoNumeral.style.display="inline";
 		avisoNumeral.innerHTML="No esta permitido el uso de caracteres especiales";
 		return false;
-	}
+		}
 	}
 	
 	//VALIDAR QUE NO SEA NINGUNA EXPRESION REGULAR
+
+	//VALIDACION AJAX PARA NO REPETIR OTRO NUMERAL QUE NO SEA EL QUE SE ELIGIO PARA EDITAR
+		if (numeralEditarExiste) {
+			return false;
+		}
+	//FIN VALIDACION AJAX PARA NO REPETIR OTRO NUMERAL QUE NO SEA EL QUE SE ELIGIO PARA EDITAR
 	return true;
 }
 
