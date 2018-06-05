@@ -1,9 +1,40 @@
-var usuarioAjax = document.getElementById('usuarioEditarUsuario');
-var idAjax = document.getElementById('idEditarUsuario');
-usuarioAjax.addEventListener('blur',enviarIdAjax,false);
-var conexionValIdEditarUsuarioAjax;
-var conexionValUsuarioEditarUsuarioAjax;
-var usuarioExiste=false;
+//VALIDACION AJAX PARA USUARIO
+	var usuarioAjax = document.getElementById('usuarioEditarUsuario');
+	var idAjax = document.getElementById('idEditarUsuario');
+	usuarioAjax.addEventListener('blur',enviarIdAjax,false);
+	var conexionValIdEditarUsuarioAjax;
+	var conexionValUsuarioEditarUsuarioAjax;
+	var usuarioExiste=false;
+//FIN VALIDACION AJAX PARA USUARIO
+//VALIDACION AJAX EMAIL
+	var emailAjax = document.getElementById('emailEditarUsuario');
+	emailAjax.addEventListener('blur',enviarIdMailAjax,false);
+	var conexionValIdMailEditarUsuarioAjax;
+//FIN VALIDACION AJAX EMAIL
+function enviarIdMailAjax(){
+	var data = new FormData();
+	data.append('idEditarUsuarioMail',idAjax.value);
+	conexionValIdMailEditarUsuarioAjax = new XMLHttpRequest();
+	conexionValIdMailEditarUsuarioAjax.onreadystatechange = respEnviarIdMailAjax;
+	conexionValIdMailEditarUsuarioAjax.open('POST','views/modules/validacionCrearUsuarioAjax.php',true);
+	conexionValIdMailEditarUsuarioAjax.send(data);
+}
+function respEnviarIdMailAjax(){
+	if (conexionValIdMailEditarUsuarioAjax.readyState==4) {
+		if (conexionValIdMailEditarUsuarioAjax.status==200) {
+			console.log(conexionValIdMailEditarUsuarioAjax.responseText);
+			if (emailAjax.value!=conexionValIdMailEditarUsuarioAjax.responseText) {
+				enviarMailAjax();
+			}
+		}else{
+			console.log('Cargando...');
+		}
+	}
+}
+function enviarMailAjax(){
+	alert('buscar si existe alguna coincidencia en la bd');
+}
+
 function enviarIdAjax(){
 	var data = new FormData();
 	data.append('idEditarUsuario',idAjax.value);

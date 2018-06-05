@@ -507,4 +507,11 @@ class UsuariosController{
 		}
 	}
 
+	//VALIDAR ID PARA MAIL CON AJAX
+	public function validarIdMailEditarUsuarioAjaxController($dato){
+		$respuesta = UsuariosModel::validarIdMailEditarUsuarioAjaxModel($dato,'usuarios');
+		$email = $respuesta['email'];
+		echo $email;
+	}
+
 }

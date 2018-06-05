@@ -112,4 +112,13 @@ class UsuariosModel extends Conexion{
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 
+	//
+	public function validarIdMailEditarUsuarioAjaxModel($dato,$tabla){
+		$sql = "SELECT email FROM $tabla WHERE id = :id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
 }
