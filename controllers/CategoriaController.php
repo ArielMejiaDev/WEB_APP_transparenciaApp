@@ -273,7 +273,7 @@ class CategoriaController{
 
 	//VALIDAR EDITAR CATEGORIA 2NDO DEVUELVE EL CONTEO DE LA DESCRIPCION
 	public function validarDescripcionEditarCategoriaAjaxController($dato){
-		$respuesta = CategoriaModel::validarDescripcionEditarCategoriaAjaxModel($dato,'categorias');
+		$respuesta = CategoriaModel::validarDescripcionEditarCategoriaAjaxModel(utf8_decode($dato),'categorias');
 		$cuenta = $respuesta['cuenta'];
 		if ($cuenta>0) {
 			echo 'existe';

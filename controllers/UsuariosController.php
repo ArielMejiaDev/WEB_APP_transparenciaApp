@@ -185,9 +185,10 @@ class UsuariosController{
 		$i=0;
 		//$nombres = $respuesta['nombres'];
 		foreach ($respuesta as $key => $value) {
+			$rol = ($value["rol"]=='jefeRedaccion') ? "Jefe de Redacción" : $value["rol"];
 			echo   '<tr class="odd gradeX">
 						<td>'.$value["usuario"].'</td>
-						<td>'.$value["rol"].'</td>
+						<td>'.$rol.'</td>
 						<td>
 							<a href="index.php?action=editarUsuario&id='.$value['id'].'" class="btn btn-primary">Editar
 							</a>
@@ -286,7 +287,10 @@ class UsuariosController{
 	                          <label class="col-sm-3 control-label">Rol</label>
 	                          <div class="col-sm-6">
 								<label class="radio-inline">
-									<input type="radio" class="radioButton" id="usuario" name="rolCrearUsuario" value="usuario">Usuario
+									<input type="radio" class="radioButton" id="redactor" name="rolCrearUsuario" value="redactor">Redactor
+								</label>
+								<label class="radio-inline">
+									<input type="radio" class="radioButton" id="jefeRedaccion" name="rolCrearUsuario" value="jefeRedaccion">Jefe de Redacción
 								</label>
 								<label class="radio-inline">
 									<input type="radio" class="radioButton" id="editor" name="rolCrearUsuario" value="editor">Editor

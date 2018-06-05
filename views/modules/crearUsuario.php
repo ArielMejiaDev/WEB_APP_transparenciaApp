@@ -83,7 +83,10 @@ include_once "sidebar.php";
 		                          <label class="col-sm-3 control-label">Rol</label>
 		                          <div class="col-sm-6">
 									<label class="radio-inline">
-										<input type="radio" class="radioButton" id="usuario" name="rolCrearUsuario" value="usuario">Usuario
+										<input type="radio" class="radioButton" id="redactor" name="rolCrearUsuario" value="redactor">Redactor
+									</label>
+									<label class="radio-inline">
+										<input type="radio" class="radioButton" id="jefeRedaccion" name="rolCrearUsuario" value="jefeRedaccion">Jefe de redacción
 									</label>
 									<label class="radio-inline">
 										<input type="radio" class="radioButton" id="editor" name="rolCrearUsuario" value="editor">Editor
