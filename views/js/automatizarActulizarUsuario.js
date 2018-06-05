@@ -1,7 +1,7 @@
   addEventListener('load',copiarPassword,false);
   function copiarPassword(){
-    var password = document.getElementById('passwordCrearUsuario');
-    var confirmacionPassword = document.getElementById('repPasswordCrearUsuario');
+    var password = document.getElementById('passwordEditarUsuario');
+    var confirmacionPassword = document.getElementById('repPasswordEditarUsuario');
     confirmacionPassword.value = password.value;
   }
   var rol = document.getElementById('valorRol');

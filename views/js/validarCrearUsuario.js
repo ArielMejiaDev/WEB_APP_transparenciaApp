@@ -335,7 +335,8 @@ function validarPassword(){
 	//---------------------------------------------------------------------------------------
 
 	//INICIO DE SCRIPT VALIDANDO CONFIRMACION DE ROL
-		var usuario = document.getElementById('usuario').checked;
+		var redactor = document.getElementById('redactor').checked;
+		var jefeRedaccion = document.getElementById('jefeRedaccion').checked;
 		var editor = document.getElementById('editor').checked;
 		var admin = document.getElementById('admin').checked;
 		avisoPassword2.style.display="none";
@@ -346,7 +347,7 @@ function validarPassword(){
 		avisoEmail.style.display="none";
 	   	avisoDepto.style.display="none";
 		var avisorol = document.getElementById('avisoRolCrearUsuario');
-		if (usuario=="" && editor =="" && admin=="") {
+		if ( (redactor=="") && (jefeRedaccion=="") && (editor =="") && (admin=="") ) {
 		  	avisorol.innerHTML="Por favor elija un rol para el usuario";
 	  		avisorol.style.display="inline";
 	  		return false;

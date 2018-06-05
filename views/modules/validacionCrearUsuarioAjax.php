@@ -4,6 +4,8 @@ require_once "../../models/UsuariosModel.php";
 class Ajax{
 	public $usuario;
 	public $email;
+	public $idEditar;
+	public $usuarioEditar;
 	public function validarUsuarioAjax(){
 		$datos = $this->usuario;
 		$respuesta = UsuariosController::validarUsuarioAjaxController($datos);
@@ -17,6 +19,16 @@ class Ajax{
 		$respuesta = UsuariosController::validarEmailAjaxController($datos);
 		echo $respuesta;
 	}
+	public function validarIdEditarUsuarioAjax(){
+		$dato = $this->idEditar;
+		$respuesta = UsuariosController::validarIdEditarUsuarioAjaxController($dato);
+		echo $respuesta;
+	}
+	public function validarUsuarioEditarUsuarioAjax(){
+		$dato = $this->usuarioEditar;
+		$respuesta = UsuariosController::validarUsuarioEditarUsuarioAjaxController($dato);
+		echo $respuesta;
+	}
 }
 if (isset($_POST['usuario'])) {
 	$ajax = new Ajax();
@@ -28,4 +40,14 @@ if (isset($_POST['email'])) {
 	$validarEmail = new Ajax();
 	$validarEmail->email=$_POST['email'];
 	$validarEmail->validarEmailAjax();
+}
+if (isset($_POST['idEditarUsuario'])) {
+	$validarIdEditarUsuario = new Ajax();
+	$validarIdEditarUsuario->idEditar = $_POST['idEditarUsuario'];
+	$validarIdEditarUsuario->validarIdEditarUsuarioAjax();
+}
+if (isset($_POST['usuarioEditarUsuario'])) {
+	$validarUsuarioEditarUsuario = new Ajax();
+	$validarUsuarioEditarUsuario->usuarioEditar = $_POST['usuarioEditarUsuario'];
+	$validarUsuarioEditarUsuario->validarUsuarioEditarUsuarioAjax();
 }

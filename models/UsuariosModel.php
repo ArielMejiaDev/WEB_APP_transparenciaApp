@@ -94,4 +94,22 @@ class UsuariosModel extends Conexion{
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	//VALIDAR QUE EL USUARIO DEL ID ENVIADO SEA IGUAL NO SEA IGUAL AL CAMPO USUARIO
+	public function validarIdEditarUsuarioAjaxModel($dato,$tabla){
+		$sql = "SELECT usuario FROM $tabla WHERE id=:id";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
+	//VALIDAR QUE EL USUARIO QUE NO PUEDE SER IGUAL AL QUE CORRESPONDE AL ID ENVIADO NO ESTE YA EN LA BD
+	public function validarUsuarioEditarUsuarioAjaxModel($dato,$tabla){
+		$sql = "SELECT COUNT(usuario) AS cuenta FROM $tabla WHERE usuario = :descripcion ";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':descripcion',$dato,PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
 }

@@ -63,7 +63,7 @@ class UsuariosController{
 										}
 
 										if (empty($_POST['rolCrearUsuario'])) {
-											$_POST['rolCrearUsuario'] = "usuario";
+											$_POST['rolCrearUsuario'] = "redactor";
 										}
 
 										$datos = array(
@@ -223,101 +223,102 @@ class UsuariosController{
 				//echo '<pre>',print_r($respuesta),'</pre>';
 				echo '	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarEditarUsuario()" method="post">
 							<input type="hidden" id="valorRol" value="'.utf8_encode($respuesta['rol']).'" name="valorRol">
-							<input type="hidden" id="idCrearUsuario" value="'.utf8_encode($respuesta['id']).'" name="idCrearUsuario">
+							<input type="hidden" id="idEditarUsuario" value="'.utf8_encode($respuesta['id']).'" name="idEditarUsuario">
 	                        <div class="form-group">
-	                          <label class="col-sm-3 control-label" for="nombresCrearUsuario">Nombres</label>
+	                          <label class="col-sm-3 control-label" for="nombresEditarUsuario">Nombres</label>
 	                          <div class="col-sm-6">
-	                            <input type="text" class="form-control" id="nombresCrearUsuario" name="nombresCrearUsuario" autofocus value="'.utf8_encode($respuesta['usuariosNombres']).'">
-	                            <p id="avisoNombresCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                            <input type="text" class="form-control" id="nombresEditarUsuario" name="nombresEditarUsuario" autofocus value="'.utf8_encode($respuesta['usuariosNombres']).'">
+	                            <p id="avisoNombresEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                          <label id="avisoNombresCrearUsuario" class="text-muted text-danger"></label>
 	                        </div>
 	                        <div class="form-group">
-	                          <label class="col-sm-3 control-label" for="apellidosCrearUsuario">Apellidos</label>
+	                          <label class="col-sm-3 control-label" for="apellidosEditarUsuario">Apellidos</label>
 	                          <div class="col-sm-6">
-	                            <input type="text" class="form-control" id="apellidosCrearUsuario" name="apellidosCrearUsuario" value="'.utf8_encode($respuesta['apellidos']).'">
-	                            <p id="avisoApellidosCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                            <input type="text" class="form-control" id="apellidosEditarUsuario" name="apellidosEditarUsuario" value="'.utf8_encode($respuesta['apellidos']).'">
+	                            <p id="avisoApellidosEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
 	                        <div class="form-group">
-	                          <label class="col-sm-3 control-label" for="usuarioCrearUsuario">Usuario</label>
+	                          <label class="col-sm-3 control-label" for="usuarioEditarUsuario">Usuario</label>
 	                          <div class="col-sm-6">
-	                            <input type="text" class="form-control" id="usuarioCrearUsuario" name="usuarioCrearUsuario" value="'.utf8_encode($respuesta['usuario']).'" >
-	                            <p id="avisoUsuarioCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                            <input type="text" class="form-control" id="usuarioEditarUsuario" name="usuarioEditarUsuario" value="'.utf8_encode($respuesta['usuario']).'" >
+	                            <p id="avisoUsuarioEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
 	                        <div class="form-group">
-	                          <label class="col-sm-3 control-label" for="passwordCrearUsuario">Password</label>
+	                          <label class="col-sm-3 control-label" for="passwordEditarUsuario">Password</label>
 	                          <div class="col-sm-6">
-	                            <input type="password" class="form-control" id="passwordCrearUsuario" name="passwordCrearUsuario" placeholder="Aquí puede cambiar su contraseña" value="'.utf8_encode($respuesta['password']).'">
-	                            <p id="avisoPasswordCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                            <input type="password" class="form-control" id="passwordEditarUsuario" name="passwordEditarUsuario" placeholder="Aquí puede cambiar su contraseña" value="'.utf8_encode($respuesta['password']).'">
+	                            <p id="avisoPasswordEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
 	                        <div class="form-group">
-	                          <label class="col-sm-3 control-label" for="repPasswordCrearUsuario">Repita password</label>
+	                          <label class="col-sm-3 control-label" for="repPasswordEditarUsuario">Repita password</label>
 	                          <div class="col-sm-6">
-	                            <input type="password" class="form-control" id="repPasswordCrearUsuario" name="repPasswordCrearUsuario" placeholder="Aquí debe confirmar su contraseña">
-	                            <p id="avisoRepPasswordCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                            <input type="password" class="form-control" id="repPasswordEditarUsuario" name="repPasswordEditarUsuario" placeholder="Aquí debe confirmar su contraseña">
+	                            <p id="avisoRepPasswordEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
 	                        <div class="form-group">
-	                          <label class="col-sm-3 control-label" for="emailCrearUsuario">Email</label>
+	                          <label class="col-sm-3 control-label" for="emailEditarUsuario">Email</label>
 	                          <div class="col-sm-6">
-	                            <input type="email" class="form-control" id="emailCrearUsuario" name="emailCrearUsuario" value="'.utf8_encode($respuesta['email']).'">
-	                            <p id="avisoEmailCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                            <input type="email" class="form-control" id="emailEditarUsuario" name="emailEditarUsuario" value="'.utf8_encode($respuesta['email']).'">
+	                            <p id="avisoEmailEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
 	                        <div class="form-group">
-							  <label class="col-sm-3 control-label" for="deptoCrearUsuario">Departamento:</label>
+							  <label class="col-sm-3 control-label" for="deptoEditarUsuario">Departamento:</label>
 							  <div class="col-sm-6">
-							    <select class="form-control" id="deptoCrearUsuario" name="deptoCrearUsuario">
+							    <select class="form-control" id="deptoEditarUsuario" name="deptoEditarUsuario">
 							      <option value="'.$respuesta['id_departamento'].'">'.$respuesta['nombres'].'</option>
 							    </select>
-							    <p id="avisoDeptoCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+							    <p id="avisoDeptoEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 							  </div>
 							</div>
 	                        <div class="form-group">
-	                          <label class="col-sm-3 control-label" for="urlFotoCrearUsuario">Url Foto</label>
+	                          <label class="col-sm-3 control-label" for="urlFotoEditarUsuario">Url Foto</label>
 	                          <div class="col-sm-6">
-	                            <input type="text" class="form-control" id="urlFotoCrearUsuario" name="urlFotoCrearUsuario" value="'.$respuesta['foto'].'">
-	                            <p id="avisoUrlFotoCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                            <input type="text" class="form-control" id="urlFotoEditarUsuario" name="urlFotoEditarUsuario" value="'.$respuesta['foto'].'">
+	                            <p id="avisoUrlFotoEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
 	                        <div class="form-group">
 	                          <label class="col-sm-3 control-label">Rol</label>
 	                          <div class="col-sm-6">
 								<label class="radio-inline">
-									<input type="radio" class="radioButton" id="redactor" name="rolCrearUsuario" value="redactor">Redactor
+									<input type="radio" class="radioButton" id="redactor" name="rolEditarUsuario" value="redactor">Redactor
 								</label>
 								<label class="radio-inline">
-									<input type="radio" class="radioButton" id="jefeRedaccion" name="rolCrearUsuario" value="jefeRedaccion">Jefe de Redacción
+									<input type="radio" class="radioButton" id="jefeRedaccion" name="rolEditarUsuario" value="jefeRedaccion">Jefe de Redacción
 								</label>
 								<label class="radio-inline">
-									<input type="radio" class="radioButton" id="editor" name="rolCrearUsuario" value="editor">Editor
+									<input type="radio" class="radioButton" id="editor" name="rolEditarUsuario" value="editor">Editor
 								</label>
 								<label class="radio-inline">
-									<input type="radio" class="radioButton" id="admin" name="rolCrearUsuario" value="admin">Admin
+									<input type="radio" class="radioButton" id="admin" name="rolEditarUsuario" value="admin">Admin
 								</label>
 	                          </div>
+	                          <p id="avisoRolEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                        </div>
 	                        <div class="form-group">
-	                          <label class="col-sm-3 control-label" for="preguntaSeguridadCrearUsuario">Escribe tu pregunta de seguridad</label>
+	                          <label class="col-sm-3 control-label" for="preguntaSeguridadEditarUsuario">Escribe tu pregunta de seguridad</label>
 	                          <div class="col-sm-6">
 	                            <div class="input-group xs-mb-15"><span class="input-group-addon">¿</span>
-	                              <input type="text" class="form-control" id="preguntaSeguridadCrearUsuario" name="preguntaSeguridadCrearUsuario" value="'.utf8_encode($respuesta['pregunta_seguridad']).'"><span class="input-group-addon">?</span>
+	                              <input type="text" class="form-control" id="preguntaSeguridadEditarUsuario" name="preguntaSeguridadEditarUsuario" value="'.utf8_encode($respuesta['pregunta_seguridad']).'"><span class="input-group-addon">?</span>
 	                            </div>
 	                          </div>
 	                        </div>
-	                        <div class="form-group" style="display: none" id="contenedorAvisoPreguntaSeguridadCrearUsuario">
+	                        <div class="form-group" style="display: none" id="contenedorAvisoPreguntaSeguridadEditarUsuario">
 	                          <div class="col-sm-6 col-sm-offset-3">
-	                            <p id="avisoPreguntaSeguridadCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                            <p id="avisoPreguntaSeguridadEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
 	                        <div class="form-group">
-	                          <label class="col-sm-3 control-label" for="respuestaSeguridadCrearUsuario">Escribe tu respuesta de seguridad</label>
+	                          <label class="col-sm-3 control-label" for="respuestaSeguridadEditarUsuario">Escribe tu respuesta de seguridad</label>
 	                          <div class="col-sm-6">
-	                            <input type="text" class="form-control" id="respuestaSeguridadCrearUsuario" name="respuestaSeguridadCrearUsuario" value="'.utf8_encode($respuesta['respuesta_seguridad']).'">
-	                            <p id="avisoRespuestaSeguridadCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+	                            <input type="text" class="form-control" id="respuestaSeguridadEditarUsuario" name="respuestaSeguridadEditarUsuario" value="'.utf8_encode($respuesta['respuesta_seguridad']).'">
+	                            <p id="avisoRespuestaSeguridadEditarUsuario" class="text-danger text-muted" style="display: none"></p>
 	                          </div>
 	                        </div>
 	                        <div class="form-group">
@@ -330,35 +331,35 @@ class UsuariosController{
 	}
 
 	public function actualizarUsuarioController(){
-		if (isset($_POST['nombresCrearUsuario'])) {
+		if (isset($_POST['nombresEditarUsuario'])) {
 			//empezamos a validar
 			//que no vayan vacios y que no sean expresiones regulares
 			if (isset(
-				$_POST['idCrearUsuario']) ||
-				isset($_POST['nombresCrearUsuario']) || 
-				isset($_POST['apellidosCrearUsuario']) || 
-				isset($_POST['usuarioCrearUsuario']) || 
-				isset($_POST['passwordCrearUsuario']) || 
-				isset($_POST['repPasswordCrearUsuario']) || 
-				isset($_POST['emailCrearUsuario']) || 
-				isset($_POST['urlFotoCrearUsuario']) || 
-				isset($_POST['rolCrearUsuario']) || 
-				isset($_POST['preguntaSeguridadCrearUsuario']) || 
-				isset($_POST['respuestaSeguridadCrearUsuario'])) {
+				$_POST['idEditarUsuario']) ||
+				isset($_POST['nombresEditarUsuario']) || 
+				isset($_POST['apellidosEditarUsuario']) || 
+				isset($_POST['usuarioEditarUsuario']) || 
+				isset($_POST['passwordEditarUsuario']) || 
+				isset($_POST['repPasswordEditarUsuario']) || 
+				isset($_POST['emailEditarUsuario']) || 
+				isset($_POST['urlFotoEditarUsuario']) || 
+				isset($_POST['roEditarrUsuario']) || 
+				isset($_POST['preguntaSeguridadEditarUsuario']) || 
+				isset($_POST['respuestaSeguridadEditarUsuario'])) {
 				
 
 
 				if (
-				!empty($_POST['idCrearUsuario']) ||
-				!empty($_POST['nombresCrearUsuario']) || 
-				!empty($_POST['apellidosCrearUsuario']) || 
-				!empty($_POST['usuarioCrearUsuario']) || 
-				!empty($_POST['passwordCrearUsuario']) || 
-				!empty($_POST['repPasswordCrearUsuario']) || 
-				!empty($_POST['emailCrearUsuario']) || 
-				!empty($_POST['rolCrearUsuario']) || 
-				!empty($_POST['preguntaSeguridadCrearUsuario']) || 
-				!empty($_POST['respuestaSeguridadCrearUsuario'])) {
+				!empty($_POST['idEditarUsuario']) ||
+				!empty($_POST['nombresEditarUsuario']) || 
+				!empty($_POST['apellidosEditarUsuario']) || 
+				!empty($_POST['usuarioEditarUsuario']) || 
+				!empty($_POST['passwordEditarUsuario']) || 
+				!empty($_POST['repPasswordEditarUsuario']) || 
+				!empty($_POST['emailEditarUsuario']) || 
+				!empty($_POST['rolEditarUsuario']) || 
+				!empty($_POST['preguntaSeguridadEditarUsuario']) || 
+				!empty($_POST['respuestaSeguridadEditarUsuario'])) {
 
 					//validar que no se reciban expresiones regulares
 
@@ -368,45 +369,46 @@ class UsuariosController{
 					// $expRegCamposTexto = '/^[a-zA-Z0-9]*$/';
 					$expRegPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/';
 					$expRegEmail = '/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/';
-					$expRegUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+					$expRegUrl = '/([a-zA-Z]:(\\w+)*\\[a-zA-Z0_9]+)?.png|jpg/';
+					// $expRegUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
-					if (preg_match($expRegCamposTexto, $_POST['idCrearUsuario'])
-					&&	preg_match($expRegNombres, $_POST['nombresCrearUsuario'])
-					&&	preg_match($expRegNombres, $_POST['apellidosCrearUsuario'])  
-					&&	preg_match($expRegCamposTexto, $_POST['usuarioCrearUsuario']) 
-					&&	preg_match($expRegUrl, $_POST['urlFotoCrearUsuario']) 
-					&&	preg_match($expRegCamposTexto, $_POST['rolCrearUsuario']) 
-					&&	preg_match($expRegNombres, $_POST['preguntaSeguridadCrearUsuario']) 
-					&&	preg_match($expRegNombres, $_POST['respuestaSeguridadCrearUsuario'])) {
+					if (preg_match($expRegCamposTexto, $_POST['idEditarUsuario'])
+					&&	preg_match($expRegNombres, $_POST['nombresEditarUsuario'])
+					&&	preg_match($expRegNombres, $_POST['apellidosEditarUsuario'])  
+					&&	preg_match($expRegCamposTexto, $_POST['usuarioEditarUsuario']) 
+					&&	preg_match($expRegUrl, $_POST['urlFotoEditarUsuario']) 
+					&&	preg_match($expRegCamposTexto, $_POST['rolEditarUsuario']) 
+					&&	preg_match($expRegNombres, $_POST['preguntaSeguridadEditarUsuario']) 
+					&&	preg_match($expRegNombres, $_POST['respuestaSeguridadEditarUsuario'])) {
 						//que cumplan con los requerimientos de las contraseñas y que sean iguales
 						
-						if (preg_match($expRegPassword, $_POST['passwordCrearUsuario']) 
-						&& 	preg_match($expRegPassword, $_POST['repPasswordCrearUsuario']) ) {
+						if (preg_match($expRegPassword, $_POST['passwordEditarUsuario']) 
+						&& 	preg_match($expRegPassword, $_POST['repPasswordEditarUsuario']) ) {
 
-							if ($_POST['passwordCrearUsuario']==$_POST['repPasswordCrearUsuario']) {
+							if ($_POST['passwordEditarUsuario']==$_POST['repPasswordEditarUsuario']) {
 								
-								if (preg_match($expRegEmail, $_POST['emailCrearUsuario'])) {
+								if (preg_match($expRegEmail, $_POST['emailEditarUsuario'])) {
 
-									if (empty($_POST['urlFotoCrearUsuario'])) {
-										$_POST['urlFotoCrearUsuario'] = "views/images/avatar.png";
+									if (empty($_POST['urlFotoEditarUsuario'])) {
+										$_POST['urlFotoEditarUsuario'] = "views/images/avatar.png";
 									}
 
-									if (empty($_POST['rolCrearUsuario'])) {
-										$_POST['rolCrearUsuario'] = "usuario";
+									if (empty($_POST['rolEditarUsuario'])) {
+										$_POST['rolEditarUsuario'] = "usuario";
 									}
 
 									$datos = array(
-									"id"=>$_POST['idCrearUsuario'],
-									"nombres"=>utf8_decode($_POST['nombresCrearUsuario']),
-									"apellidos"=>utf8_decode($_POST['apellidosCrearUsuario']),
-									"usuario"=>$_POST['usuarioCrearUsuario'],
-									"password"=>$_POST['passwordCrearUsuario'],
-									"confirmacionPassword"=>$_POST['repPasswordCrearUsuario'],
-									"email"=>$_POST['emailCrearUsuario'],
-									"urlFoto"=>$_POST['urlFotoCrearUsuario'],
-									"rol"=>$_POST['rolCrearUsuario'],
-									"preguntaSecreta"=>utf8_decode($_POST['preguntaSeguridadCrearUsuario']),
-									"respuestaSecreta"=>utf8_decode($_POST['respuestaSeguridadCrearUsuario']));
+									"id"=>$_POST['idEditarUsuario'],
+									"nombres"=>utf8_decode($_POST['nombresEditarUsuario']),
+									"apellidos"=>utf8_decode($_POST['apellidosEditarUsuario']),
+									"usuario"=>$_POST['usuarioEditarUsuario'],
+									"password"=>$_POST['passwordEditarUsuario'],
+									"confirmacionPassword"=>$_POST['repPasswordEditarUsuario'],
+									"email"=>$_POST['emailEditarUsuario'],
+									"urlFoto"=>$_POST['urlFotoEditarUsuario'],
+									"rol"=>$_POST['rolEditarUsuario'],
+									"preguntaSecreta"=>utf8_decode($_POST['preguntaSeguridadEditarUsuario']),
+									"respuestaSecreta"=>utf8_decode($_POST['respuestaSeguridadEditarUsuario']));
 									//echo "<pre>",print_r($datos),"</pre>";
 									$respuesta = UsuariosModel::actualizarUsuarioModel($datos,"usuarios");
 									if ($respuesta=='success') {
@@ -490,6 +492,19 @@ class UsuariosController{
 		}
 	}
 
-
+	//VALIDAR QUE EL USUARIO DEL ID ENVIADO SEA IGUAL NO SEA IGUAL AL CAMPO USUARIO
+	public function validarIdEditarUsuarioAjaxController($dato){
+		$respuesta = UsuariosModel::validarIdEditarUsuarioAjaxModel($dato,'usuarios');
+		$usuario = $respuesta['usuario'];
+		echo $usuario;
+	}
+	//VALIDAR QUE EL USUARIO QUE NO PUEDE SER IGUAL AL QUE CORRESPONDE AL ID ENVIADO NO ESTE YA EN LA BD
+	public function validarUsuarioEditarUsuarioAjaxController($dato){
+		$respuesta = UsuariosModel::validarUsuarioEditarUsuarioAjaxModel(utf8_decode($dato),'usuarios');
+		$existencia = (int)$respuesta['cuenta'];
+		if ($existencia>0) {
+			echo 'existe';
+		}
+	}
 
 }

@@ -58,7 +58,7 @@ function obtenerOptions(){
 function respAjaxCargarOptions(){
   if (conexion.readyState==4) {
     if (conexion.status==200) {
-      var select = document.getElementById('deptoCrearUsuario');
+      var select = document.getElementById('deptoEditarUsuario');
       var opt = conexion.responseText;
       select.innerHTML+=opt;
       //console.log(opt);
