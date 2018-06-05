@@ -49,7 +49,7 @@
                             <li><a href="subirArchivos"><i class="icon mdi mdi-cloud-upload"></i> Subir archivos</a>
                             </li>
                             <?php  
-                                if ($datos['rol']!='usuario') {
+                                if ($datos['rol']!='redactor') {
                                 ?>
                             <li><a href="#"><i class="icon mdi mdi-check-all"></i> Validar archivos</a>
                             </li>
