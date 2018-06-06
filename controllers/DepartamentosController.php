@@ -7,7 +7,7 @@ class DepartamentosController{
 		if (isset($_POST['nombreDepartamentoCrearDepto'])) {
 			if (!empty($_POST['nombreDepartamentoCrearDepto'])) {
 				if (preg_match($expRegNombres, $_POST['nombreDepartamentoCrearDepto'])) {
-					$dato = $_POST['nombreDepartamentoCrearDepto'];
+					$dato = utf8_decode($_POST['nombreDepartamentoCrearDepto']);
 					$respuesta = DepartamentosModel::crearDepartamentoModel($dato,"departamentos");
 					if ($respuesta=='success') {
 						header('Location:notCrearDeptoOk');
@@ -46,7 +46,7 @@ class DepartamentosController{
 		$respuesta = DepartamentosModel::listarDepartamentosModel("departamentos");
 		foreach ($respuesta as $key => $value) {
 			echo   '<tr class="odd gradeX">
-						<td>'.$value["nombres"].'</td>
+						<td>'.utf8_encode($value["nombres"]).'</td>
 						<td>
 							<a href="index.php?action=editarDepartamento&id='.$value['id'].'" class="btn btn-primary">Editar
 							</a>
@@ -69,7 +69,7 @@ class DepartamentosController{
 			                    	<input type="hidden" class="form-control" id="idDepartamentoCrearDepto" name="idDepartamentoCrearDepto" value="'.$respuesta['id'].'">
 			                      <label class="col-sm-3 control-label" for="nombreDepartamentoCrearDepto">Departamento:</label>
 			                      <div class="col-sm-6">
-			                        <input type="text" class="form-control" id="nombreDepartamentoCrearDepto" name="nombreDepartamentoCrearDepto" value="'.$respuesta['nombres'].'">
+			                        <input type="text" class="form-control" id="nombreDepartamentoCrearDepto" name="nombreDepartamentoCrearDepto" value="'.utf8_encode($respuesta['nombres']).'">
 			                        <p id="avisoNombreDepartamentoCrearDepto" class="text-danger text-muted" style="display: none"></p>
 			                      </div>
 			                    </div>
@@ -89,7 +89,7 @@ class DepartamentosController{
 				$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
 				if (preg_match($expRegNombres, $_POST['nombreDepartamentoCrearDepto']) && 
 					preg_match($expRegNombres, $_POST['idDepartamentoCrearDepto'])) {
-					$datos = array('id'=>$_POST['idDepartamentoCrearDepto'],'nombreDepto'=>$_POST['nombreDepartamentoCrearDepto']);
+					$datos = array('id'=>$_POST['idDepartamentoCrearDepto'],'nombreDepto'=>utf8_decode($_POST['nombreDepartamentoCrearDepto']));
 					$respuesta = DepartamentosModel::actualizarDepartamentoModel($datos,'departamentos');
 					if ($respuesta=='success') {
 						header('Location:notActualizarDeptoOk');
