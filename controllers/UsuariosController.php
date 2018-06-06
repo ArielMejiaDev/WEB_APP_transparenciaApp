@@ -170,7 +170,6 @@ class UsuariosController{
 		}
 	}
 
-
 	public function validarEmailAjaxController($datos){
 		$respuesta = UsuariosModel::validarEmailAjaxModel($datos,"usuarios");
 		$existe=(int)$respuesta['existencia'];
@@ -514,4 +513,12 @@ class UsuariosController{
 		echo $email;
 	}
 
+	//VALIDAR QUE NO ESTE YA EL MAIL EN LA BD
+	public function validarEmailEditarUsuarioAjaxController($dato){
+		$respuesta = UsuariosModel::validarEmailEditarUsuarioAjaxModel($dato,'usuarios');
+		$cuenta = (int)$respuesta['cuenta'];
+		if ($cuenta>0) {
+			echo 'existe';
+		}
+	}
 }

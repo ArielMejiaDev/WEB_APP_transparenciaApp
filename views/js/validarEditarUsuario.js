@@ -9,7 +9,9 @@
 //VALIDACION AJAX EMAIL
 	var emailAjax = document.getElementById('emailEditarUsuario');
 	emailAjax.addEventListener('blur',enviarIdMailAjax,false);
+	var emailExiste=false;
 	var conexionValIdMailEditarUsuarioAjax;
+	var conexionValMailEditarUsuarioAjax;
 //FIN VALIDACION AJAX EMAIL
 function enviarIdMailAjax(){
 	var data = new FormData();
@@ -25,6 +27,8 @@ function respEnviarIdMailAjax(){
 			console.log(conexionValIdMailEditarUsuarioAjax.responseText);
 			if (emailAjax.value!=conexionValIdMailEditarUsuarioAjax.responseText) {
 				enviarMailAjax();
+			}else{
+				emailExiste = false;
 			}
 		}else{
 			console.log('Cargando...');
@@ -32,9 +36,30 @@ function respEnviarIdMailAjax(){
 	}
 }
 function enviarMailAjax(){
-	alert('buscar si existe alguna coincidencia en la bd');
+	var data = new FormData();
+	data.append('mailEditarUsuario',emailAjax.value);
+	conexionValMailEditarUsuarioAjax = new XMLHttpRequest();
+	conexionValMailEditarUsuarioAjax.onreadystatechange=respEnviarMailAjax;
+	conexionValMailEditarUsuarioAjax.open('POST','views/modules/validacionCrearUsuarioAjax.php',true);
+	conexionValMailEditarUsuarioAjax.send(data);
 }
-
+function respEnviarMailAjax(){
+	if (conexionValMailEditarUsuarioAjax.readyState==4) {
+		if (conexionValMailEditarUsuarioAjax.status==200) {
+			//console.log(conexionValMailEditarUsuarioAjax.responseText);
+			if (conexionValMailEditarUsuarioAjax.responseText=='existe') {
+				emailExiste = true;
+				swal({
+					type: 'error',
+					title: 'Oops...',
+					text: 'El Email ya existe',
+				  })
+			}else{
+				emailExiste = false;
+			}
+		}
+	}
+}
 function enviarIdAjax(){
 	var data = new FormData();
 	data.append('idEditarUsuario',idAjax.value);
@@ -49,6 +74,8 @@ function respAjaxenviarUsuarioAjax(){
 			console.log(conexionValIdEditarUsuarioAjax.responseText);
 			if (usuarioAjax.value!=conexionValIdEditarUsuarioAjax.responseText) {
 				enviarUsuarioAjax();
+			}else{
+				usuarioExiste = false;
 			}
 		}else{
 			console.log('Cargando...');
@@ -232,23 +259,23 @@ function validarEditarUsuario(){
 //FIN VALIDAR URL
 
 //INICIO DE SCRIPT VALIDANDO CONFIRMACION DE ROL
-	var redactor = document.getElementById('redactor').checked;
-	var jefeRedaccion = document.getElementById('jefeRedaccion').checked;
-	var editor = document.getElementById('editor').checked;
-	var admin = document.getElementById('admin').checked;
-	avisoPassword2.style.display="none";
-	avisoPassword.style.display="none";
-	alertaApellidos.style.display="none";
-	alertaNombres.style.display="none";
-	avisoUsuario.style.display="none";
-	avisoEmail.style.display="none";
-   	avisoDepto.style.display="none";
-	var avisorol = document.getElementById('avisoRolEditarUsuario');
-	if ( (redactor=="") && (jefeRedaccion=="") && (editor =="") && (admin=="") ) {
-	  	avisorol.innerHTML="Por favor elija un rol para el usuario";
-  		avisorol.style.display="inline";
-  		return false;
-	}
+	// var redactor = document.getElementById('redactor').checked;
+	// var jefeRedaccion = document.getElementById('jefeRedaccion').checked;
+	// var editor = document.getElementById('editor').checked;
+	// var admin = document.getElementById('admin').checked;
+	// avisoPassword2.style.display="none";
+	// avisoPassword.style.display="none";
+	// alertaApellidos.style.display="none";
+	// alertaNombres.style.display="none";
+	// avisoUsuario.style.display="none";
+	// avisoEmail.style.display="none";
+   	// avisoDepto.style.display="none";
+	// var avisorol = document.getElementById('avisoRolEditarUsuario');
+	// if ( (redactor=="") && (jefeRedaccion=="") && (editor =="") && (admin=="") ) {
+	//   	avisorol.innerHTML="Por favor elija un rol para el usuario";
+  	// 	avisorol.style.display="inline";
+  	// 	return false;
+	// }
 //FIN DE SCRIPT VALIDANDO CONFIRMACION DE ROL
 
 //VALIDAR PREGUNTA SECRETA
@@ -291,5 +318,11 @@ function validarEditarUsuario(){
 		return false;
 	}
 //FIN VALIDACION DE USUARIO CON AJAX
+
+//VALIDACION DE MAIL
+	if (emailExiste) {
+		return false;
+	}
+//FIN VALIDACION DE MAIL
 	return true;
 }

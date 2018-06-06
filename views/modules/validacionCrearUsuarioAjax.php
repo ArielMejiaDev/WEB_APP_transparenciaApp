@@ -7,6 +7,7 @@ class Ajax{
 	public $idEditar;
 	public $usuarioEditar;
 	public $idEditarMail;
+	public $emailEditar;
 	public function validarUsuarioAjax(){
 		$datos = $this->usuario;
 		$respuesta = UsuariosController::validarUsuarioAjaxController($datos);
@@ -36,6 +37,11 @@ class Ajax{
 		echo $respuesta;
 		//echo $dato;
 	}
+	public function validarEmailEditarUsuarioAjax(){
+		$dato = $this->emailEditar;
+		$respuesta = UsuariosController::validarEmailEditarUsuarioAjaxController($dato);
+		echo $respuesta;
+	}
 }
 if (isset($_POST['usuario'])) {
 	$ajax = new Ajax();
@@ -62,4 +68,9 @@ if (isset($_POST['idEditarUsuarioMail'])) {
 	$validarIdEditarUsuario2 = new Ajax();
 	$validarIdEditarUsuario2->idEditarMail = $_POST['idEditarUsuarioMail'];
 	$validarIdEditarUsuario2->validarIdMailEditarUsuarioAjax();
+}
+if (isset($_POST['mailEditarUsuario'])) {
+	$validarMailEditarUsuario = new Ajax();
+	$validarMailEditarUsuario->emailEditar = $_POST['mailEditarUsuario'];
+	$validarMailEditarUsuario->validarEmailEditarUsuarioAjax();
 }

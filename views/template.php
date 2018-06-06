@@ -23,7 +23,7 @@
   <body>
     <div class="be-wrapper">
       
-      <?php  
+      <?php 
         $enlace = new EnlacesController();
         $enlace->loadEnlaces();
       ?>  

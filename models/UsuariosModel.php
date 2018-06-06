@@ -112,11 +112,20 @@ class UsuariosModel extends Conexion{
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 
-	//
+	//VALIDA UN MAIL DEL ID DADO CON EL QUE ESTA EN EL CAMPO MAIL EN EL FORM
 	public function validarIdMailEditarUsuarioAjaxModel($dato,$tabla){
 		$sql = "SELECT email FROM $tabla WHERE id = :id";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
+	//VALIDAR QUE EL MAIL EDITADO NO ESTE YA REPETIDO EN LA BD
+	public function validarEmailEditarUsuarioAjaxModel($dato,$tabla){
+		$sql = "SELECT COUNT(email) AS cuenta FROM $tabla WHERE email = :email ";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':email',$dato,PDO::PARAM_STR);
 		$stmt->execute();
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
