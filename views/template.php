@@ -60,7 +60,8 @@
     <script src="views/lib/jqvmap/jquery.vmap.min.js" type="text/javascript"></script>
     <script src="views/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
     <script src="views/js/app-dashboard.js" type="text/javascript"></script> 
-
+    <script src="views/lib/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script src="views/js/app-form-elements.js" type="text/javascript"></script>
     <?php  
         
 
@@ -73,6 +74,14 @@
                             App.dashboard();
                           });
                         </script>';
+            }elseif($_GET['action'] == 'subirArchivos'){
+              echo '  <script type="text/javascript">
+                        $(document).ready(function(){
+                          //initialize the javascript
+                          App.init();
+                          App.formElements();
+                        });
+                      </script>';
             }else{
                 echo '  <script>
                           $(document).ready(function(){
@@ -94,6 +103,7 @@
     <script src="views/js/validarEditarDepartamento.js"></script>
     <script src="views/js/validarNumeral.js"></script>
     <script src="views/js/validarCategoria.js"></script>
+    <script src="views/js/validarDoc.js"></script>
     <!-- FIN DE MODULOS PERSONALIZADOS -->
   </body>
 </html>
