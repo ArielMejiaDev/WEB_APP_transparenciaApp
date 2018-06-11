@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2018 a las 00:31:28
+-- Tiempo de generación: 12-06-2018 a las 00:25:20
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -62,7 +62,7 @@ CREATE TABLE `departamentos` (
 INSERT INTO `departamentos` (`id`, `nombres`) VALUES
 (1, 'Informatica'),
 (6, 'Inversiones'),
-(7, 'EstadÃ­stica'),
+(7, 'Estadística'),
 (8, 'Prestaciones'),
 (9, 'Legal'),
 (10, 'Bienestar Social'),
@@ -70,10 +70,11 @@ INSERT INTO `departamentos` (`id`, `nombres`) VALUES
 (12, 'Administrativo'),
 (13, 'Inversiones'),
 (14, 'Recursos Humanos'),
-(15, 'PlanificaciÃ³n'),
+(15, 'Planificación'),
 (16, 'Proveeduria'),
 (17, 'UDAF'),
-(18, 'IngenierÃ­a');
+(18, 'Ingeniería'),
+(22, 'situación');
 
 -- --------------------------------------------------------
 
@@ -85,13 +86,21 @@ CREATE TABLE `documentos` (
   `id` int(11) NOT NULL,
   `id_numeral` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
-  `año` int(11) NOT NULL,
-  `mes` int(11) NOT NULL,
-  `url_doc` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `year` int(11) NOT NULL,
+  `mes` text NOT NULL,
+  `url_doc` text NOT NULL,
   `n_doc` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  `justificacion` int(11) NOT NULL
+  `justificacion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `documentos`
+--
+
+INSERT INTO `documentos` (`id`, `id_numeral`, `id_categoria`, `fecha`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`) VALUES
+(92, 5, 26, '0000-00-00', 0, '', '', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -163,7 +172,7 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `em
 (53, 'Oscar', 'Pacheco Tzorin', 'opacheco', '$2y$10$3hXb856l9JqQ.Y8lNC7CRe7SgMDvcR1WUZPI8a3QoW/FqAn2F90.W', 'opacheco@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'dba', 1),
 (55, 'Cesar', 'Vargas', 'cvargas', '$2y$10$1I2qx5sKWoHHOU3fkCbIE.HwJ4oZi.QhsDZLPPC7R9RF2T41YoQgG', 'cvargas@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'programador', 1),
 (63, 'Marlon Baldemar', 'Martínez Zuñiga', 'mmartinez', '$2y$10$0vrC8JmjS1Wbuy7Qya5jM.3YshP2ybJfatTlkhPbWP0A5VuO4AKV2', 'mmartinez@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'Puesto', 'Programador', 1),
-(64, 'Edgar', 'Urizar', 'eurizar', '$2y$10$CUsJKzvgnszOmhS2ojqmKe2QQtnwyrIOuHBNWp7kHt70Lqq4Nkf.W', 'eurizar@ipm.org.gt', 'views/images/avatar.png', 'usuario', 0, 'Puesto', 'Jefe de Recursos Humanos', 14),
+(64, 'Edgar', 'Urizar', 'eurizar', '$2y$10$G61P2fCXwxwm3/oAOmkx5eEV4UdqQzSTBAJHvr1FbPcTfMaoOFRTa', 'eurizar@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'Puesto', 'Jefe de Recursos Humanos', 14),
 (65, 'Nelson', 'Boche', 'nboche', '$2y$10$MSuL/9Tj50UK/kALpdEt2eliLjw94HdVWGZ2.O3uasgbH5jpxtmZO', 'nboche@ipm.org.gt', 'views/images/avatar.png', 'jefeRedaccion', 0, 'Puesto', 'Sub jefe de Informatica', 1);
 
 -- --------------------------------------------------------
@@ -245,13 +254,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
@@ -269,7 +278,7 @@ ALTER TABLE `numerales`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `vitacora`
@@ -291,8 +300,7 @@ ALTER TABLE `categorias`
 -- Filtros para la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`id_numeral`) REFERENCES `numerales` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `documentos_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`id_numeral`) REFERENCES `numerales` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`

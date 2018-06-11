@@ -18,8 +18,10 @@ function respEnviarId(){
             //console.log(conexionSubirDoc.responseText);
             if (conexionSubirDoc.responseText=='No hay') {
                 formGroupCat.style.display="none";
+                numeral.removeAttribute("name");
+                numeral.setAttribute("name","idNumeral2");
             }else{
-                formGroupCat.style.display="inline";
+                formGroupCat.style.display="block";
                 categoria.innerHTML = conexionSubirDoc.responseText;
             }
         }else{

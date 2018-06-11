@@ -20,5 +20,38 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    //modelo para insertar datos del archivo subido en al tabla docs
+    public function subirArchivoConCategoriaModel($datos, $tabla)
+    {
+        $sql = "INSERT INTO $tabla(id_numeral, id_categoria, fecha, mes, url_doc, n_doc, status, year) VALUES (:id_numeral, :id_categoria, :fecha, :mes, :url_doc, :n_doc, :status, :year)";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id_numeral', $datos['idNumeral'], PDO::PARAM_INT);
+        $stmt->bindParam(':id_categoria', $datos['idCategoria'], PDO::PARAM_INT);
+        $stmt->bindParam(':fecha', $datos['fecha'], PDO::PARAM_STR);
+        $stmt->bindParam(':year', $datos['year'], PDO::PARAM_INT);
+        $stmt->bindParam(':mes', $datos['mes'], PDO::PARAM_STR);
+        $stmt->bindParam(':url_doc', $datos['url_doc'], PDO::PARAM_STR);
+        $stmt->bindParam(':n_doc', $datos['n_doc'], PDO::PARAM_STR);
+        $stmt->bindParam(':status', $datos['status'], PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            return 'success';
+        }else{
+            return 'error';
+        }
+    }
+
+    //modelo para insertar datos del documento subido cuando no tiene categoria
+    public function subirArchivoSinCategoriaModel($datos,$tabla)
+    {
+        $sql = "INSERT INTO $tabla(id_numeral) VALUES (:id_numeral)";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id_numeral', $datos['idNumeral'], PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return 'success';
+        }else{
+            return 'error';
+        }
+    }
 }
 ?>

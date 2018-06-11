@@ -24,6 +24,7 @@
     <div class="be-wrapper">
       
       <?php 
+        setlocale(LC_ALL, "es_GT.UTF-8", "es_GT", "esp");
         $enlace = new EnlacesController();
         $enlace->loadEnlaces();
       ?>  

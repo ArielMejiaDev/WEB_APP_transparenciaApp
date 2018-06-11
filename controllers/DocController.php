@@ -2,27 +2,44 @@
 class DocController{
     //SUBIR UN ARCHIVO
     public function subirArchivoController(){
-        if (isset($_POST['idNumeral']) && isset($_POST['idCategoria']) && isset($_POST['fecha']) && isset($_FILES['doc'])) {
-            if (!empty($_POST['idNumeral']) && !empty($_POST['idCategoria']) && !empty($_POST['fecha']) && !empty($_FILES['doc'])) {
-                //var_dump($_FILES['doc']);
-                $datos = array('idNumeral'=>$_POST['idNumeral'], 
-                'idCategoria'=>$_POST['idCategoria'], 
-                'fecha'=>$_POST['fecha'], 
-                'doc'=>$_FILES['doc']);
-                var_dump($datos);
-                echo 'CON CATEGORIA';
+        if (isset($_POST['idCategoria'])) {
+            if (!empty($_POST['idCategoria'])) {
+                echo "va llena";
+                $fechaDada = $_POST['fecha'];
+                $fechaFormateadaMes = strftime('%B', strtotime($fechaDada));
+                $fechaFormateadaAño = strftime('%Y', strtotime($fechaDada));
+                $urlDoc = 'public/docs/'.$_FILES['doc']['name'];
+                $nDoc = 12;
+                $status = 1;
+                $datos = array('idNumeral'=>$_POST['idNumeral'],
+                    'idCategoria'=>$_POST['idCategoria'],
+                    'fecha'=>$_POST['fecha'],
+                    'year'=>$fechaFormateadaAño,
+                    'mes'=>$fechaFormateadaMes,
+                    'url_doc'=>$urlDoc,
+                    'n_doc'=>$nDoc,
+                    'status'=>$status);
+                    var_dump($datos);
+                    $respuesta = DocModel::subirArchivoConCategoriaModel($datos,'documentos');
+                    if ($respuesta=='success') {
+                        header('Location:notSubirArchivoOk');
+                    }
             }
         }
 
-        if (isset($_POST['idNumeral']) && isset($_POST['fecha']) && isset($_FILES['doc'])) {
-            if (!empty($_POST['idNumeral']) && empty($_POST['idCategoria']) && !empty($_POST['fecha']) && !empty($_FILES['doc'])) {
-                //var_dump($_FILES['doc']);
-                $datos = array('idNumeral'=>$_POST['idNumeral'], 
-                'fecha'=>$_POST['fecha'], 
-                'doc'=>$_FILES['doc']);
-                var_dump($datos);
-                echo 'SIN CATEGORIA';
+        
+    }
+
+    //
+    public function subirArchivoSinCategoriaController(){
+        if (isset($_POST['idNumeral2'])) {
+            $datos = array('idNumeral'=>$_POST['idNumeral2'],'idCategoria'=>);
+            var_dump($datos);
+            $respuesta = DocModel::subirArchivoSinCategoriaModel($datos,'documentos');
+            if ($respuesta=='success') {
+                header('Location:notSubirArchivoOk');
             }
+            
         }
     }
 

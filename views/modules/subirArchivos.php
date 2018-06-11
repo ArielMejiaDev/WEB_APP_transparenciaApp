@@ -5,6 +5,7 @@ if (!$_SESSION['verificar']) {
 }
 $subirArchivos = new DocController();
 $subirArchivos->subirArchivoController();
+$subirArchivos->subirArchivoSinCategoriaController();
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>
@@ -33,10 +34,11 @@ $subirArchivos->subirArchivoController();
 												<p id="avisoIdNumeral" class="text-danger text-muted" style="display: none"></p>
 											</div>
 										</div>
-										<div class="form-group" id="formGroupCat" style="display: none">
+										<div class="form-group" id="formGroupCat" style="display: block">
 											<label class="col-sm-3 control-label" for="idCategoria">Categoria</label>
 											<div class="col-sm-6">
 												<select name="idCategoria" id="idCategoria" class="form-control">
+												<option value="0">Si existe categoria se cargara automaticamente</option>
 												</select>
 												<p id="avisoIdCategoria" class="text-danger text-muted" style="display: none"></p>
 											</div>
