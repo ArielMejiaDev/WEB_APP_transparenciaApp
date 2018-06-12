@@ -27,7 +27,7 @@ $subirArchivos2->subirArchivoSinCategoriaController($idUsuario, $idDeptoUsuario)
 							    <div class="panel-heading panel-heading-divider">Subir Archivos<span class="panel-subtitle">Sube el documento PDF al sistema</span>
 							    </div>
 							    <div class="panel-body">
-									<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
+									<form onsubmit="return validarDoc()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
 										<div class="form-group">
 											<label class="col-sm-3 control-label" for="idNumeral">Númeral</label>
 											<div class="col-sm-6">

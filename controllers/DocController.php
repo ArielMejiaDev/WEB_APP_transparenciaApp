@@ -49,6 +49,14 @@ class DocController{
                                     })
                                 </script>";
                 }
+            }else{
+                echo "	<script>
+                                swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'No pueden quedar campos vacios',
+                                })
+                            </script>";
             }
         }
 
@@ -111,6 +119,18 @@ class DocController{
     public function validarDocAjaxController($dato){
         $respuesta = DocModel::validarDocAjaxModel($dato,'categorias');
         return $respuesta;
+    }
+
+    //BUSCAR SI YA EXISTE EL TITULO DEL DOCUMENTO PDF
+    public function validarDocTitleAjaxController($dato){
+        $url_doc = 'views/docs/'.$dato;
+        $respuesta = DocModel::validarDocTitleAjaxModel($url_doc,'documentos');
+        $cuenta = $respuesta['cuenta'];
+        if ($cuenta>0) {
+            return 'existe';
+        }else{
+            return 'no existe';
+        }
     }
 }
 ?>

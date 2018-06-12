@@ -5,6 +5,8 @@ var formGroupCat = document.getElementById('formGroupCat');
 var conexionSubirDoc;
 var fecha = document.getElementById("fecha");
 var doc = document.getElementById("doc");
+var conexionRevisarExistenciaDoc;
+var docExiste = false;
 numeral.addEventListener('change',enviarId,false);
 function enviarId(){
     var dato = new FormData();
@@ -44,4 +46,37 @@ function respEnviarId(){
             console.log('Cargando ...');
         }
     }
+}
+doc.addEventListener('change',enviarPdfTitle,false);
+function enviarPdfTitle(){
+    var pdfTitle = doc.files[0]['name'];
+    var data = new FormData();
+    data.append('docTitle',pdfTitle);
+    conexionRevisarExistenciaDoc = new XMLHttpRequest();
+    conexionRevisarExistenciaDoc.onreadystatechange = respEnviarPdfTitle;
+    conexionRevisarExistenciaDoc.open('POST','views/modules/validarDocAjax.php',true);
+    conexionRevisarExistenciaDoc.send(data);
+}
+function respEnviarPdfTitle(){
+    if (conexionRevisarExistenciaDoc.readyState==4) {
+        if (conexionRevisarExistenciaDoc.status==200) {
+            console.log(conexionRevisarExistenciaDoc.responseText);
+            if (conexionRevisarExistenciaDoc.responseText=='existe') {
+                docExiste = true;
+                swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'El documento ya existe en el sistema',
+                })
+            }else{
+                docExiste = false;
+            }
+        }
+    }
+}
+function validarDoc(){
+    if (docExiste) {
+        return false;
+    }
+    return true;
 }
