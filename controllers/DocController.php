@@ -33,7 +33,7 @@ class DocController{
     //
     public function subirArchivoSinCategoriaController(){
         if (isset($_POST['idNumeral2'])) {
-            $datos = array('idNumeral'=>$_POST['idNumeral2'],'idCategoria'=>);
+            $datos = array('idNumeral'=>$_POST['idNumeral2']);
             var_dump($datos);
             $respuesta = DocModel::subirArchivoSinCategoriaModel($datos,'documentos');
             if ($respuesta=='success') {
