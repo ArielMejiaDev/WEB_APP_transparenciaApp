@@ -11,7 +11,7 @@ $subirArchivos = new DocController();
 $subirArchivos->subirArchivoController($idUsuario, $idDeptoUsuario);
 
 $subirArchivos2 = NEW DocController();
-$subirArchivos2->subirArchivoSinCategoriaController();
+$subirArchivos2->subirArchivoSinCategoriaController($idUsuario, $idDeptoUsuario);
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>

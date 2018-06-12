@@ -43,9 +43,9 @@ class DocController{
                 }else{
                     echo "	<script>
                                     swal({
-                                      type: 'error',
-                                      title: 'Oops...',
-                                      text: 'No esta permitido el uso de caracteres especiales, ni archivos con formatos distintos a PDF',
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'No esta permitido el uso de caracteres especiales, ni archivos con formatos distintos a PDF',
                                     })
                                 </script>";
                 }
@@ -56,7 +56,7 @@ class DocController{
     }
 
     //
-    public function subirArchivoSinCategoriaController()
+    public function subirArchivoSinCategoriaController($idUsuario, $idDeptoUsuario)
     {
         if (isset($_POST['idNumeral2']) && isset($_POST['fecha2']) && isset($_FILES['doc2']) ) {
                 if (preg_match($this->expRegNum, $_POST['idNumeral2']) &&
@@ -72,7 +72,15 @@ class DocController{
                     $idNumeral2 = $_POST['idNumeral2'];
                     $fecha2 = $_POST['fecha2'];
                     $doc2 = $_FILES['doc2']['name'];
-                    $datos2 = array("idNumeral2" => $idNumeral2, "fecha2" => $fecha2, "year2" => $fechaFormateadaAño, "mes2" => $fechaFormateadaMes, "doc2" => $urlDoc, "n_doc2" => $nDoc, "status2" => $status);
+                    $datos2 = array('idNumeral2'=> $idNumeral2,
+                    'id_usuario'=>$idUsuario,
+                    'id_departamento'=>$idDeptoUsuario,
+                    'fecha2' => $fecha2,
+                    'year2' => $fechaFormateadaAño,
+                    'mes2' => $fechaFormateadaMes,
+                    'doc2' => $urlDoc,
+                    'n_doc2' => $nDoc,
+                    'status2' => $status);
                     var_dump($datos2);
                     $respuesta = DocModel::subirArchivoSinCategoriaModel($datos2,'documentos');
                     if ($respuesta =='success') {
