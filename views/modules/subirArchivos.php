@@ -5,7 +5,10 @@ if (!$_SESSION['verificar']) {
 }
 $subirArchivos = new DocController();
 $subirArchivos->subirArchivoController();
-$subirArchivos->subirArchivoSinCategoriaController();
+
+$subirArchivos2 = NEW DocController();
+$subirArchivos2->subirArchivoSinCategoriaController();
+
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>

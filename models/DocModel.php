@@ -44,9 +44,18 @@ class DocModel{
     //modelo para insertar datos del documento subido cuando no tiene categoria
     public function subirArchivoSinCategoriaModel($datos,$tabla)
     {
-        $sql = "INSERT INTO $tabla(id_numeral) VALUES (:id_numeral)";
+        $sql = "INSERT INTO $tabla";
+        $sql .= "(id_numeral, fecha, year, mes, url_doc, n_doc, status )";
+        $sql .= " VALUES ";
+        $sql .= "(:id_numeral2, :fecha2, :year2, :mes2, :doc2, :n_doc2, :status2)";
         $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(':id_numeral', $datos['idNumeral'], PDO::PARAM_INT);
+        $stmt->bindParam(':id_numeral2', $datos['idNumeral2'], PDO::PARAM_INT);
+        $stmt->bindParam(':fecha2', $datos['fecha2'], PDO::PARAM_STR);
+        $stmt->bindParam(':year2', $datos['year2'], PDO::PARAM_INT);
+        $stmt->bindParam(':mes2', $datos['mes2'], PDO::PARAM_STR);
+        $stmt->bindParam(':doc2', $datos['doc2'], PDO::PARAM_STR);
+        $stmt->bindParam(':n_doc2', $datos['n_doc2'], PDO::PARAM_STR);
+        $stmt->bindParam(':status2', $datos['status2'], PDO::PARAM_STR);
         if ($stmt->execute()) {
             return 'success';
         }else{
