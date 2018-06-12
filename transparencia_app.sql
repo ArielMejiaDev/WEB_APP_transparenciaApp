@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2018 a las 00:25:20
+-- Tiempo de generación: 12-06-2018 a las 19:49:51
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -84,6 +84,8 @@ INSERT INTO `departamentos` (`id`, `nombres`) VALUES
 
 CREATE TABLE `documentos` (
   `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_departamento` int(11) NOT NULL,
   `id_numeral` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `fecha` date NOT NULL,
@@ -94,13 +96,6 @@ CREATE TABLE `documentos` (
   `status` int(11) NOT NULL,
   `justificacion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `documentos`
---
-
-INSERT INTO `documentos` (`id`, `id_numeral`, `id_categoria`, `fecha`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`) VALUES
-(92, 5, 26, '0000-00-00', 0, '', '', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -212,7 +207,9 @@ ALTER TABLE `departamentos`
 ALTER TABLE `documentos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_numeral` (`id_numeral`),
-  ADD KEY `id_categoria` (`id_categoria`);
+  ADD KEY `id_categoria` (`id_categoria`),
+  ADD KEY `id_departamento` (`id_departamento`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `mensajes`
@@ -260,7 +257,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
@@ -300,7 +297,9 @@ ALTER TABLE `categorias`
 -- Filtros para la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`id_numeral`) REFERENCES `numerales` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`id_numeral`) REFERENCES `numerales` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `documentos_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `documentos_ibfk_3` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`

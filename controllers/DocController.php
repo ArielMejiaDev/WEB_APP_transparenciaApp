@@ -77,12 +77,12 @@ class DocController{
                     }
                 }else{
                     echo "	<script>
-                                    swal({
-                                      type: 'error',
-                                      title: 'Oops...',
-                                      text: 'No esta permitido el uso de caracteres especiales, ni archivos con formatos distintos a PDF',
-                                    })
-                                </script>";
+                                swal({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'No esta permitido el uso de caracteres especiales, ni archivos con formatos distintos a PDF',
+                                })
+                            </script>";
                 }
             }
     }
