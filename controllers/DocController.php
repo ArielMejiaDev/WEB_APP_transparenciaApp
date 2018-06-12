@@ -5,7 +5,8 @@ class DocController{
     public $expRegDate = '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/';
     public $expRegPdfFile = '/^.+\.((?:[pP][dD][fF]))$/';
     public $expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
-    public function subirArchivoController(){
+    public function subirArchivoController($idUsuario, $idDeptoUsuario)
+    {
         if (isset($_POST['idNumeral']) && isset($_POST['fecha']) 
             && isset($_POST['idCategoria']) && isset($_FILES['doc'])) 
         {
@@ -24,6 +25,8 @@ class DocController{
                     $nDoc = 12;
                     $status = 1;
                     $datos = array('idNumeral'=>$_POST['idNumeral'],
+                        'id_usuario'=>$idUsuario,
+                        'id_departamento'=>$idDeptoUsuario,
                         'idCategoria'=>$_POST['idCategoria'],
                         'fecha'=>$_POST['fecha'],
                         'year'=>$fechaFormateadaAño,

@@ -24,9 +24,15 @@ class DocModel{
     //modelo para insertar datos del archivo subido en al tabla docs
     public function subirArchivoConCategoriaModel($datos, $tabla)
     {
-        $sql = "INSERT INTO $tabla(id_numeral, id_categoria, fecha, mes, url_doc, n_doc, status, year) VALUES (:id_numeral, :id_categoria, :fecha, :mes, :url_doc, :n_doc, :status, :year)";
+        $sql = "INSERT INTO $tabla(id_numeral, id_usuario,";
+        $sql .= " id_departamento, id_categoria, fecha,";
+        $sql .= " mes, url_doc, n_doc, status, year)";
+        $sql .= " VALUES(:id_numeral, :id_usuario, :id_departamento, :id_categoria,";
+        $sql .= " :fecha, :mes, :url_doc, :n_doc, :status, :year)";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':id_numeral', $datos['idNumeral'], PDO::PARAM_INT);
+        $stmt->bindParam(':id_usuario', $datos['id_usuario'], PDO::PARAM_INT);
+        $stmt->bindParam(':id_departamento', $datos['id_departamento'], PDO::PARAM_INT);
         $stmt->bindParam(':id_categoria', $datos['idCategoria'], PDO::PARAM_INT);
         $stmt->bindParam(':fecha', $datos['fecha'], PDO::PARAM_STR);
         $stmt->bindParam(':year', $datos['year'], PDO::PARAM_INT);
