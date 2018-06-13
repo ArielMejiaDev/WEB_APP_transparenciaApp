@@ -5,7 +5,7 @@ var categoria = document.getElementById('idCategoria');
 var avisoCategoria = document.getElementById('avisoIdCategoria');
 var formGroupCat = document.getElementById('formGroupCat');
 var conexionSubirDoc;
-var fecha = document.getElementById("fecha");
+var fecha_doc = document.getElementById("fecha_doc");
 var avisoFecha = document.getElementById("avisoFecha");
 var doc = document.getElementById("doc");
 var avisoDoc = document.getElementById("avisoDoc");
@@ -33,8 +33,8 @@ function respEnviarId(){
                 numeral.removeAttribute("name");
                 numeral.setAttribute("name","idNumeral2");
                 
-                fecha.removeAttribute("name");
-                fecha.setAttribute("name","fecha2");
+                fecha_doc.removeAttribute("name");
+                fecha_doc.setAttribute("name","fecha_doc2");
                 
                 doc.removeAttribute("name");
                 doc.setAttribute("name","doc2");
@@ -43,8 +43,8 @@ function respEnviarId(){
                 numeral.removeAttribute("name");
                 numeral.setAttribute("name","idNumeral");
                 
-                fecha.removeAttribute("name");
-                fecha.setAttribute("name","fecha");
+                fecha_doc.removeAttribute("name");
+                fecha_doc.setAttribute("name","fecha_doc");
                 
                 doc.removeAttribute("name");
                 doc.setAttribute("name","doc");

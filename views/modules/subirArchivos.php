@@ -53,7 +53,7 @@ $subirArchivos2->subirArchivoSinCategoriaController($idUsuario, $idDeptoUsuario)
 											<label class="col-sm-3 control-label" for="fecha"> Fecha </label>
 											<div class="col-md-3 col-xs-7">
 												<div data-min-view="2" data-date-format="yyyy-mm-dd" class="input-group date datetimepicker">
-												<input id="fecha" name="fecha" size="16" type="text" value="" class="form-control"><span class="input-group-addon btn btn-primary"><i class="icon-th mdi mdi-calendar"></i></span>
+												<input id="fecha_doc" name="fecha_doc" size="16" type="text" value="" class="form-control"><span class="input-group-addon btn btn-primary"><i class="icon-th mdi mdi-calendar"></i></span>
 												</div>
 												<p id="avisoFecha" class="text-danger text-muted" style="display: none;"></p>
 											</div>

@@ -26,7 +26,8 @@ class EnlacesModel extends Conexion{
 			$enlace == "editarCategoria"||
 			$enlace == "agregarReglaCategoria"||
 			$enlace == "subirArchivos"||
-			$enlace == "listarArchivosRedactores") {
+			$enlace == "listarArchivosRedactores"||
+			$enlace == "listarArchivosSubidosGeneral") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
 			$url = 'views/modules/ingreso.php';
@@ -65,7 +66,7 @@ class EnlacesModel extends Conexion{
 		}else if($enlace == "notEliminarAvisoCategoriaOk"){
 			$url = 'views/modules/listarCategorias.php';
 		}else if($enlace == "notSubirArchivoOk"){
-			$url = 'views/modules/listarArchivosRedactores.php';
+			$url = 'views/modules/listarArchivosSubidosGeneral.php';
 		}else{
 			$url = 'views/modules/ingreso.php';
 		}
