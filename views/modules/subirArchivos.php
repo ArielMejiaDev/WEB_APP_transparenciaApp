@@ -44,7 +44,7 @@ $subirArchivos2->subirArchivoSinCategoriaController($idUsuario, $idDeptoUsuario)
 											<label class="col-sm-3 control-label" for="idCategoria">Categoria</label>
 											<div class="col-sm-6">
 												<select name="idCategoria" id="idCategoria" class="form-control">
-												<option value="0">Si existe categoria se cargara automaticamente</option>
+												<option value="">Si existe categoria se cargara automaticamente</option>
 												</select>
 												<p id="avisoIdCategoria" class="text-danger text-muted" style="display: none"></p>
 											</div>
@@ -55,15 +55,16 @@ $subirArchivos2->subirArchivoSinCategoriaController($idUsuario, $idDeptoUsuario)
 												<div data-min-view="2" data-date-format="yyyy-mm-dd" class="input-group date datetimepicker">
 												<input id="fecha" name="fecha" size="16" type="text" value="" class="form-control"><span class="input-group-addon btn btn-primary"><i class="icon-th mdi mdi-calendar"></i></span>
 												</div>
+												<p id="avisoFecha" class="text-danger text-muted" style="display: none;"></p>
 											</div>
 										</div>
 										<div class="form-group">
-										<div class="col-sm-6 col-md-offset-3">
-											<label class="btn btn-rounded btn-space btn-warning btn-lg" for="doc"><i class="icon icon-left mdi mdi-collection-pdf"></i> Subir Archivo PDF</label>
-										</div>
+											<div class="col-sm-6 col-md-offset-3">
+												<label class="btn btn-rounded btn-space btn-warning btn-lg" for="doc"><i class="icon icon-left mdi mdi-collection-pdf"></i> Subir Archivo PDF</label>
+												<p id="avisoDoc" class="text-danger text-muted" style="display: none;"></p>
+											</div>
 											<div class="col-sm-6">
 												<input style="display: none" type="file" id="doc" name="doc">
-												<p id="avisoIdCategoria" class="text-danger text-muted" style="display: none"></p>
 											</div>
 										</div>
 										<div class="form-group">
