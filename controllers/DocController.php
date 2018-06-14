@@ -150,6 +150,7 @@ class DocController{
         $respuesta = DocModel::listarDocumentosSubidosGeneralModel();
         //var_dump($respuesta);
         foreach ($respuesta as $key => $value) {
+            $etiquetaCategorias = ($value["categoriaDesc"]!="") ? '<td>'.utf8_encode($value["categoriaDesc"]).'</td>' : '<td>No tiene</td>' ;
             if ($value["status"]==1) {
                 $descStatus = '<td class="text-warning">Pendiente</td>';
             }elseif ($value["status"]==2) {
@@ -164,7 +165,7 @@ class DocController{
             $descCat = ($value["idCategoria"]!=0) ? '<td>'.$value["idCategoria"].'</td>' : '<td class="text-warning">No tiene</td>' ;
             echo   '<tr class="odd gradeX">
                         <td>'.utf8_encode($value["numeralDesc"]).'</td>
-                        <td>'.utf8_encode($value["categoriaDesc"]).'</td>
+                        '.$etiquetaCategorias.'
                         <td>'.substr($value["url_doc"], 11).'</td>
                         <td>'.$value["n_doc"].'</td>
                         '.$descStatus.'
