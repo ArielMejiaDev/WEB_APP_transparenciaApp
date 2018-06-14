@@ -1,8 +1,14 @@
 <?php
 require_once 'Conexion.php';
 class DocModel{
-    //subir archivos
-    
+    //CONTAR NUMERALES DE ARCHIVOS SUBIDOS AL SERVIDOR
+    public function contarNumeralesDocsSubidosModel($dato,$tabla){
+        $sql = "SELECT COUNT(id_numeral) AS cuenta FROM $tabla WHERE id_numeral=:id_numeral AND status != 5";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id_numeral',$dato,PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     //CARGAR OPTIONS CON ID Y DESCRIPCION DE LOS NUMERALES
     public function cargarOptionsNumeralesModel($tabla){

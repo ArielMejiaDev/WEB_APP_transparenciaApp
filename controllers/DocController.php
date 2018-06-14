@@ -5,6 +5,11 @@ class DocController{
     public $expRegDate = '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/';
     public $expRegPdfFile = '/^.+\.((?:[pP][dD][fF]))$/';
     public $expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
+    public function contarNumeralesDocsSubidosController($dato){
+        $respuesta = DocModel::contarNumeralesDocsSubidosModel($dato,'documentos');
+        $cuenta = $respuesta['cuenta'] + 1;
+        return $cuenta;
+    }
     public function subirArchivoController($idUsuario, $idDeptoUsuario){
         if (isset($_POST['idNumeral']) && isset($_POST['fecha_doc']) 
             && isset($_POST['idCategoria']) && isset($_FILES['doc'])) 
@@ -27,7 +32,8 @@ class DocController{
                     $fechaFormateadaMes = strftime('%B', strtotime($fechaDada));
                     $fechaFormateadaAño = strftime('%Y', strtotime($fechaDada));
                     $urlDoc = 'views/docs/'.$_FILES['doc']['name'];
-                    $nDoc = 12;
+                    
+                    $nDoc = $_POST['idNumeral'].'-'.$this->contarNumeralesDocsSubidosController($_POST['idNumeral']).'-'.date('Y');
                     $status = (date('Y-m-d') < $fechaPublicacion)? 1 : 5 ;
                     $datos = array('idNumeral'=>$_POST['idNumeral'],
                         'id_usuario'=>$idUsuario,
@@ -86,7 +92,7 @@ class DocController{
                     $fechaFormateadaMes = strftime('%B', strtotime($fechaDada));
                     $fechaFormateadaAño = strftime('%Y', strtotime($fechaDada));
                     $urlDoc = 'views/docs/'.$_FILES['doc2']['name'];
-                    $nDoc = 12;
+                    $nDoc = $_POST['idNumeral2'].'-'.$this->contarNumeralesDocsSubidosController($_POST['idNumeral2']).'-'.date('Y');
                     $status = (date('Y-m-d') < $fechaPublicacion2)? 1 : 5 ; 
                     $idNumeral2 = $_POST['idNumeral2'];
                     $fecha_doc2 = $_POST['fecha_doc2'];
