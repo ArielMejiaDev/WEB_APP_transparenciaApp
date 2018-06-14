@@ -27,6 +27,7 @@ class EnlacesModel extends Conexion{
 			$enlace == "agregarReglaCategoria"||
 			$enlace == "subirArchivos"||
 			$enlace == "listarArchivosRedactores"||
+			$enlace == "editarDoc"||
 			$enlace == "listarArchivosSubidosGeneral") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){

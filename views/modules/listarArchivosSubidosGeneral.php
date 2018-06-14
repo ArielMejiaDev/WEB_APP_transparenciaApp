@@ -56,30 +56,30 @@ $listarArchivosSubidosGeneral->publicarDocController();
 			        <div class="panel-body">
 			        	<div class="table-responsive">
 			        		<table id="table6" class="table table-striped table-hover table-fw-widget">
-			                    <thead>
-			                      <tr>
-			                        <th>Numeral</th>
-			                        <th>Categoria</th>
-			                        <th>Documento</th>
-                                    <th># Documento</th>
-                                    <th>Status</th>
-			                        <th>Fecha del Doc</th>
-			                        <th>Depto</th>
-                                    <th>Usuario</th>
-                                    <th>Publicar</th>
-                                    <th>Rechazar</th>
-			                        <th>Editar</th>
-                                    <th>Ver en Linea</th>
-			                      </tr>
-			                    </thead>
-			                	<tbody>
-			                		<div id="botones">
-			                		<?php  
-										$listarArchivosSubidosGeneral->listarDocumentosSubidosGeneralController();
-									?>
-			                		</div>
-								</tbody>
-	              		</table>
+										<thead>
+											<tr>
+												<th>Numeral</th>
+												<th>Categoria</th>
+												<th>Documento</th>
+															<th># Documento</th>
+															<th>Status</th>
+												<th>Fecha del Doc</th>
+												<th>Depto</th>
+															<th>Usuario</th>
+															<th>Ver en Linea</th>
+															<th>Editar</th>
+															<th>Publicar</th>
+															<th>Rechazar</th>	
+												</tr>
+										</thead>
+			            	<tbody>
+											<div id="botones">
+											<?php  
+												$listarArchivosSubidosGeneral->listarDocumentosSubidosGeneralController();
+											?>
+											</div>
+										</tbody>
+	              	</table>
 			        	</div>
 			       	</div>
 				</div>

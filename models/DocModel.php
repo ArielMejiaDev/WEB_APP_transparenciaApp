@@ -123,5 +123,14 @@ class DocModel{
             return 'error';
         }
     }
+
+    //CREAR FORMULARIO
+    public function crearFormEditarDocModel($dato,$tabla){
+        $sql = "SELECT * FROM $tabla WHERE id = :id";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>
