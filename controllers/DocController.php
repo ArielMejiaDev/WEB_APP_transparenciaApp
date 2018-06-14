@@ -204,7 +204,7 @@ class DocController{
             $dato = $_GET['publicar'];
             $respuesta = DocModel::publicarDocModel($dato,'documentos');
             if ($respuesta=='success') {
-                header('Location:listarArchivosSubidosGeneral');
+                header('Location:notPublicarDocOk');
             }
         }
     }
