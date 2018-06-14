@@ -105,7 +105,8 @@ class DocModel{
         $sql .= "documentos.id_departamento = departamentos.id)";
         $sql .= " INNER JOIN numerales ON ";
         $sql .= "documentos.id_numeral = numerales.id) LEFT JOIN categorias ON ";
-        $sql .= "documentos.id_categoria = categorias.id)";
+        $sql .= "documentos.id_categoria = categorias.id) ";
+        $sql .= "WHERE documentos.status != 3";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
