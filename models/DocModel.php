@@ -111,5 +111,16 @@ class DocModel{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
+
+    public function publicarDocModel($dato,$tabla){
+        $sql = "UPDATE $tabla SET status = 3 WHERE id = :id";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return 'success';
+        }else{
+            return 'error';
+        }
+    }
 }
 ?>

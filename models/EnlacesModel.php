@@ -67,6 +67,8 @@ class EnlacesModel extends Conexion{
 			$url = 'views/modules/listarCategorias.php';
 		}else if($enlace == "notSubirArchivoOk"){
 			$url = 'views/modules/listarArchivosSubidosGeneral.php';
+		}else if($enlace == "notPublicarDocOk"){
+			$url = 'views/modules/listarArchivosSubidosGeneral.php';
 		}else{
 			$url = 'views/modules/ingreso.php';
 		}

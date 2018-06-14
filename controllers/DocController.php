@@ -187,7 +187,7 @@ class DocController{
 							</a>
                         </td>
                         <td>
-							<button href="'.$value['idDoc'].'" usuario="'.$value['idUsuario'].'" id="eliminar'.$value['idDoc'].'" class="btn btn-success">Publicar
+							<button href="'.$value['idDoc'].'" documento="'.substr($value["url_doc"], 11).'" id="eliminar'.$value['idDoc'].'" class="btn btn-success">Publicar
 							</button>
                         </td>
                         <td>
@@ -195,6 +195,17 @@ class DocController{
 							</button>
 						</td>
 					</tr>';
+        }
+    }
+
+    //cambia el status de un documento para que tenga status 3 de publicado 
+    public function publicarDocController(){
+        if (isset($_GET['publicar']) && !empty($_GET['publicar'])) {
+            $dato = $_GET['publicar'];
+            $respuesta = DocModel::publicarDocModel($dato,'documentos');
+            if ($respuesta=='success') {
+                header('Location:listarArchivosSubidosGeneral');
+            }
         }
     }
 }

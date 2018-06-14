@@ -17,7 +17,22 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notPublicarDocOk') {
+		echo "
+		<script>
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Archivo Publicado exitosamente!',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
+		</script>";
+	}
+}
 $listarArchivosSubidosGeneral = new DocController();
+$listarArchivosSubidosGeneral->publicarDocController();
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>
@@ -73,27 +88,27 @@ $listarArchivosSubidosGeneral = new DocController();
 	</div>
 </div>
 <script>
-	var botonesEliminar = document.getElementsByClassName("btn btn-danger");
+	var botonesPublicar = document.getElementsByClassName("btn btn-success");
 	//console.log(botonesEliminar);
-	for (var i = 0; i < botonesEliminar.length; i++) {
-		botonesEliminar[i].addEventListener('click',capturarEvento,false);
+	for (var i = 0; i < botonesPublicar.length; i++) {
+		botonesPublicar[i].addEventListener('click',capturarEvento,false);
 	}
 	function capturarEvento(e){
 		e.preventDefault();
 		var id = e.target.getAttribute('href');
-		var categoria = e.target.getAttribute('categoria');
+		var documento = e.target.getAttribute('documento');
 		var aviso = e.target.getAttribute('aviso');
 		if (aviso) {
 			console.log(id+categoria);
 			mostrarMensajeAviso(id,categoria);
 		}else{
-			console.log(id+categoria);
-			mostrarMensajeCategoria(id,categoria);
+			console.log(id+documento);
+			mostrarMensajeCategoria(id,documento);
 		}
 	}
-	function mostrarMensajeCategoria(id,categoria){
+	function mostrarMensajeCategoria(id,documento){
 		swal({
-		  title: 'Deseas eliminar el categoria de '+categoria,
+		  title: 'Deseas publicar el documento '+documento,
 		  text: "Este paso no se puede revertir!",
 		  type: 'warning',
 		  showCancelButton: true,
@@ -102,7 +117,7 @@ $listarArchivosSubidosGeneral = new DocController();
 		  confirmButtonText: 'Si, eliminar'
 		}).then((result) => {
 		  if (result.value) {
-		    window.location="index.php?action=listarCategorias&eliminar="+id;
+		    window.location="index.php?action=listarArchivosSubidosGeneral&publicar="+id;
 		  }else if (
 			    // Read more about handling dismissals
 			    result.dismiss === swal.DismissReason.cancel
@@ -115,6 +130,7 @@ $listarArchivosSubidosGeneral = new DocController();
 			  }
 		})
 	}
+	//ojo
 	function mostrarMensajeAviso(id,categoria){
 		swal({
 		  title: 'Deseas eliminar el aviso del Numeral '+categoria,
