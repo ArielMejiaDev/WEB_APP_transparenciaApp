@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2018 a las 00:52:12
+-- Tiempo de generación: 14-06-2018 a las 20:39:30
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -93,7 +93,7 @@ CREATE TABLE `documentos` (
   `year` int(11) NOT NULL,
   `mes` text NOT NULL,
   `url_doc` text NOT NULL,
-  `n_doc` int(11) NOT NULL,
+  `n_doc` text NOT NULL,
   `status` int(11) NOT NULL,
   `justificacion` text NOT NULL,
   `fecha_actualizado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -104,13 +104,9 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`) VALUES
-(8, 48, 1, 5, 31, '2018-06-13', '2018-06-13', 2018, 'junio', 'views/docs/el_hombre_en_busca_de_sentido_viktor_frankl.pdf', 12, 1, '', '0000-00-00 00:00:00'),
-(17, 48, 1, 5, 31, '2018-05-25', '2018-05-04', 2018, 'mayo', 'views/docs/CARATULA SEMANA 5.pdf', 12, 5, '', '2018-06-13 21:59:33'),
-(18, 48, 1, 6, 0, '1970-01-01', '2018-06-13', 2018, 'junio', 'views/docs/NuevoDocumento 2018-05-29.pdf', 12, 5, '', '2018-06-13 22:10:35'),
-(19, 48, 1, 6, 0, '2018-07-04', '2018-06-13', 2018, 'junio', 'views/docs/NuevoDocumento 2018-05-29.pdf', 12, 5, '', '2018-06-13 22:11:09'),
-(20, 48, 1, 6, 0, '2018-07-04', '2018-06-13', 2018, 'junio', 'views/docs/NuevoDocumento 2018-05-29.pdf', 12, 1, '', '2018-06-13 22:11:34'),
-(21, 48, 1, 7, 0, '2018-07-04', '2018-06-13', 2018, 'junio', 'views/docs/CARATULA SEMANA 7.pdf', 12, 1, '', '2018-06-13 22:11:57'),
-(22, 48, 1, 6, 0, '2018-07-04', '2018-06-13', 2018, 'junio', 'views/docs/Tarjetas para concierto de maderas y metales IPM.pdf', 12, 1, '', '2018-06-13 22:13:18');
+(41, 48, 1, 5, 31, '2018-07-05', '2018-06-14', 2018, 'junio', 'views/docs/Ariel SALVADOR.pdf', '5-1-2018', 1, '', '2018-06-14 18:34:44'),
+(42, 48, 1, 6, 0, '2018-07-05', '2018-06-14', 2018, 'junio', 'views/docs/CARATULA SEMANA 5.pdf', '6-1-2018', 1, '', '2018-06-14 18:36:15'),
+(43, 48, 1, 6, 0, '2018-07-05', '2018-06-14', 2018, 'junio', 'views/docs/CARATULA SEMANA 7.pdf', '6-2-2018', 1, '', '2018-06-14 18:36:46');
 
 -- --------------------------------------------------------
 
@@ -272,7 +268,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
