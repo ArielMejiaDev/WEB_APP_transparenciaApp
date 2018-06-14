@@ -110,35 +110,25 @@ function validarDoc(){
 
 //FIN VALIDAR CATEGORIA
 //VALIDAR FECHA
-    if (fecha.value!="") {
-        avisoFecha.style.display="none";
-        if (!expRegDate.test(fecha.value)) {
-            avisoFecha.style.display="inline";
-            avisoFecha.innerHTML = "No esta permitido el uso de caracteres especiales";
-            return false;
-        }else{
-            avisoFecha.style.display="none";
-        }
-    }else{
-        avisoFecha.style.display="inline";
-        avisoFecha.innerHTML = "No puede quedar vacio";
+    if (fecha_doc.value=="") {
+        avisoFecha.style.display="block";
+        avisoFecha.innerHTML = "No esta permitido el uso de caracteres especiales";
         return false;
-
+    }else{
+        avisoFecha.style.display="none";
     }
 //FIN VALIDAR FECHA
-//VALIDAR DOC CON JS
-    if (doc.value!="") {
-        avisoDoc.style.display = "none";
-    }else{
-        avisoDoc.style.display = "inline";
-        avisoDoc.innerHTML = "No puede quedar vacio";
+    if (doc.value=="") {
+        avisoDoc.innerHTML = "Seleccione un PDF";
+        avisoDoc.style.display = "block";
         return false;
     }
-//FIN VALIDAR DOC CON JS
-//VALIDAR DOC CON AJAX
     if (docExiste) {
+        avisoDoc.innerHTML = "El PDF ya existe!";
+        avisoDoc.style.display = "block";
         return false;
+    }else{
+        avisoDoc.style.display = "none";
     }
-//FIN VALIDAR DOC CON AJAX
     return true;
 }

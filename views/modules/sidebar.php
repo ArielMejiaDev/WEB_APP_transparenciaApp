@@ -48,6 +48,8 @@
                           <ul class="sub-menu">
                             <li><a href="subirArchivos"><i class="icon mdi mdi-cloud-upload"></i> Subir archivos</a>
                             </li>
+                            <li><a href="listarArchivosSubidosGeneral"><i class="icon mdi mdi-collection-text"></i> Listar archivos General</a>
+                            </li>
                             <?php  
                                 if ($datos['rol']!='redactor') {
                                 ?>

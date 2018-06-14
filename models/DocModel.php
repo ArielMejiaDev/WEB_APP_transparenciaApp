@@ -84,8 +84,22 @@ class DocModel{
     }
 
     //LISTAR ARCHIVOS SUBIDOS GENERALES PARA ROLES DE ADMIN Y JEFES DE REDACCION
-    public function listarDocumentosSubidosGeneralModel($tabla1, $tabla2, $tabla3, $tabla4, $tabla5){
-        $sql = "SELECT $tabla2.descripcion AS descNum , $tabla3.descripcion AS descCat , $tabla1.id , $tabla4.usuario, $tabla5.nombres AS nombreDepto , $tabla1.id_usuario , $tabla1.id_departamento , $tabla1.id_numeral , $tabla1.id_categoria , $tabla1.fecha_doc, $tabla1.url_doc, $tabla1.n_doc , $tabla1.status FROM (((($tabla1 INNER JOIN $tabla2 ON $tabla1.id_numeral = $tabla2.id) LEFT JOIN $tabla3 ON $tabla1.id_categoria = $tabla3.id) INNER JOIN $tabla4 ON $tabla1.id_usuario = $tabla4.id)INNER JOIN $tabla5 ON $tabla1.id_departamento = $tabla5.id )";
+    public function listarDocumentosSubidosGeneralModel(){
+        $sql = "SELECT documentos.id AS idDoc, documentos.id_usuario AS idUsuario, ";
+        $sql .= "usuarios.usuario , documentos.id_departamento AS idDepto, ";
+        $sql .= "departamentos.nombres AS nombreDepto, ";
+        $sql .= "documentos.id_numeral AS idNumeral, ";
+        $sql .= "numerales.descripcion AS numeralDesc, ";
+        $sql .= "documentos.id_categoria AS idCategoria, ";
+        $sql .= "categorias.descripcion AS categoriaDesc, ";
+        $sql .= "documentos.fecha_doc, documentos.url_doc, ";
+        $sql .= "documentos.n_doc, documentos.status FROM ";
+        $sql .= "((((documentos INNER JOIN usuarios ON ";
+        $sql .= "documentos.id_usuario=usuarios.id) INNER JOIN departamentos ON ";
+        $sql .= "documentos.id_departamento = departamentos.id)";
+        $sql .= " INNER JOIN numerales ON ";
+        $sql .= "documentos.id_numeral = numerales.id) LEFT JOIN categorias ON ";
+        $sql .= "documentos.id_categoria = categorias.id)";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

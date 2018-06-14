@@ -17,6 +17,9 @@ class DocController{
                     preg_match($this->expRegDate, $_POST['fecha_doc']) &&
                     preg_match($this->expRegPdfFile, $_FILES['doc']['name']) ) 
                 {
+                    $nuevaRuta = 'views/docs/'.$_FILES['doc']['name'];
+                    $nombreTemporal = $_FILES['doc']['tmp_name'];
+                    move_uploaded_file($nombreTemporal,$nuevaRuta);
                     $fechaPublicacion = $_POST['fecha_doc'];
                     $fechaPublicacion = strtotime(date("Y-m-d", strtotime($fechaPublicacion)) . " +21 day");//convierte a tiempo unix la fecha anterior en el formato dado en la funcion date, puede ser asi o en letras o resumido F d M y otros parametros para cambiar la salida 
                     $fechaPublicacion = date("Y-m-d", $fechaPublicacion);
@@ -73,6 +76,9 @@ class DocController{
                     preg_match($this->expRegDate, $_POST['fecha_doc2']) &&
                     preg_match($this->expRegPdfFile, $_FILES['doc2']['name'])) 
                 {
+                    $nuevaRuta = 'views/docs'.$_FILES['doc2']['name'];
+                    $archivoTemporal = $_FILES['doc2']['tmp_name'];
+                    move_uploaded_file($archivoTemporal,$nuevaRuta);
                     $fechaPublicacion2 = $_POST['fecha_doc2'];
                     $fechaPublicacion2 = strtotime(date("Y-m-d", strtotime($fechaPublicacion2)) . " +21 day");//convierte a tiempo unix la fecha anterior en el formato dado en la funcion date, puede ser asi o en letras o resumido F d M y otros parametros para cambiar la salida 
                     $fechaPublicacion2 = date("Y-m-d", $fechaPublicacion2);
@@ -141,7 +147,7 @@ class DocController{
 
     //LISTAR ARCHIVOS SUBIDOS GENERALES PARA ROL DE ADMIN O JEFE DE REDACCION
     public function listarDocumentosSubidosGeneralController(){
-        $respuesta = DocModel::listarDocumentosSubidosGeneralModel('documentos', 'numerales', 'categorias', 'usuarios', 'departamentos');
+        $respuesta = DocModel::listarDocumentosSubidosGeneralModel();
         //var_dump($respuesta);
         foreach ($respuesta as $key => $value) {
             if ($value["status"]==1) {
@@ -155,10 +161,10 @@ class DocController{
             }elseif ($value["status"]==5) {
                 $descStatus = '<td class="text-danger">Extemporaneo</td>';
             }
-            $descCat = ($value["id_categoria"]!=0) ? '<td>'.$value["id_categoria"].'</td>' : '<td class="text-warning">No tiene</td>' ;
+            $descCat = ($value["idCategoria"]!=0) ? '<td>'.$value["idCategoria"].'</td>' : '<td class="text-warning">No tiene</td>' ;
             echo   '<tr class="odd gradeX">
-                        <td>'.utf8_encode($value["descNum"]).'</td>
-                        <td>'.utf8_encode($value["descCat"]).'</td>
+                        <td>'.utf8_encode($value["numeralDesc"]).'</td>
+                        <td>'.utf8_encode($value["categoriaDesc"]).'</td>
                         <td>'.substr($value["url_doc"], 11).'</td>
                         <td>'.$value["n_doc"].'</td>
                         '.$descStatus.'
@@ -166,15 +172,15 @@ class DocController{
                         <td>'.$value["nombreDepto"].'</td>
                         <td>'.$value["usuario"].'</td>
                         <td>
-							<button href="'.$value['id'].'" usuario="'.$value['id_usuario'].'" id="eliminar'.$value['id'].'" class="btn btn-success">Publicar
+							<button href="'.$value['idDoc'].'" usuario="'.$value['idUsuario'].'" id="eliminar'.$value['idDoc'].'" class="btn btn-success">Publicar
 							</button>
 						</td>
                         <td>
-							<button href="'.$value['id'].'" usuario="'.$value['id_usuario'].'" id="eliminar'.$value['id'].'" class="btn btn-danger">Rechazar
+							<button href="'.$value['idDoc'].'" usuario="'.$value['idUsuario'].'" id="eliminar'.$value['idDoc'].'" class="btn btn-danger">Rechazar
 							</button>
 						</td>
                         <td>
-							<a href="index.php?action=editarUsuario&id='.$value['id'].'" class="btn btn-warning">Editar
+							<a href="index.php?action=editarUsuario&id='.$value['idDoc'].'" class="btn btn-warning">Editar
 							</a>
                         </td>
                         <td>
