@@ -76,7 +76,7 @@ class DocController{
                     preg_match($this->expRegDate, $_POST['fecha_doc2']) &&
                     preg_match($this->expRegPdfFile, $_FILES['doc2']['name'])) 
                 {
-                    $nuevaRuta = 'views/docs'.$_FILES['doc2']['name'];
+                    $nuevaRuta = 'views/docs/'.$_FILES['doc2']['name'];
                     $archivoTemporal = $_FILES['doc2']['tmp_name'];
                     move_uploaded_file($archivoTemporal,$nuevaRuta);
                     $fechaPublicacion2 = $_POST['fecha_doc2'];
@@ -173,20 +173,20 @@ class DocController{
                         <td>'.$value["nombreDepto"].'</td>
                         <td>'.$value["usuario"].'</td>
                         <td>
-							<button href="'.$value['idDoc'].'" usuario="'.$value['idUsuario'].'" id="eliminar'.$value['idDoc'].'" class="btn btn-success">Publicar
-							</button>
-						</td>
-                        <td>
-							<button href="'.$value['idDoc'].'" usuario="'.$value['idUsuario'].'" id="eliminar'.$value['idDoc'].'" class="btn btn-danger">Rechazar
-							</button>
-						</td>
+							<a target="_blank" href="'.$value["url_doc"].'" class="btn btn-primary">Ver en linea
+							</a>
+                        </td>
                         <td>
 							<a href="index.php?action=editarUsuario&id='.$value['idDoc'].'" class="btn btn-warning">Editar
 							</a>
                         </td>
                         <td>
-							<a target="_blank" href="'.$value["url_doc"].'" class="btn btn-primary">Ver en linea
-							</a>
+							<button href="'.$value['idDoc'].'" usuario="'.$value['idUsuario'].'" id="eliminar'.$value['idDoc'].'" class="btn btn-success">Publicar
+							</button>
+                        </td>
+                        <td>
+							<button href="'.$value['idDoc'].'" usuario="'.$value['idUsuario'].'" id="eliminar'.$value['idDoc'].'" class="btn btn-danger">Rechazar
+							</button>
 						</td>
 					</tr>';
         }
