@@ -31,6 +31,20 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
+if (isset($_GET['action'])) {
+	if ($_GET['action']=='notEditarArchivoOk') {
+		echo "
+		<script>
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Archivo Editado exitosamente!',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
+		</script>";
+	}
+}
 $listarArchivosSubidosGeneral = new DocController();
 $listarArchivosSubidosGeneral->publicarDocController();
 ?>

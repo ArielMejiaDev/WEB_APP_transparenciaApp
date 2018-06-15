@@ -126,11 +126,53 @@ class DocModel{
 
     //CREAR FORMULARIO
     public function crearFormEditarDocModel($dato,$tabla){
-        $sql = "SELECT * FROM $tabla WHERE id = :id";
+        $sql = "SELECT documentos.id, documentos.id_usuario, ";
+        $sql .= "documentos.id_departamento, documentos.id_numeral,";
+        $sql .= " numerales.descripcion AS descNumeral , documentos.id_categoria";
+        $sql .= ",categorias.descripcion AS descCategoria , ";
+        $sql .= "documentos.fecha_publicacion, documentos.fecha_doc, ";
+        $sql .= "documentos.year, documentos.mes, documentos.url_doc,";
+        $sql .= " documentos.n_doc, documentos.status, documentos.justificacion";
+        $sql .= ", documentos.fecha_actualizado FROM ";
+        $sql .= "((documentos INNER JOIN numerales ON documentos.id_numeral =";
+        $sql .= " numerales.id) INNER JOIN categorias ON ";
+        $sql .= "documentos.id_categoria = categorias.id) WHERE documentos.id = :id";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':id',$dato,PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    //listar numerales
+    public function listaNumeralesModel($tabla){
+        $sql = "SELECT id, descripcion FROM $tabla";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    //ACTULIZAR DOCUMENTOS CON CATEGORIAS
+    public function actualizarArchivoConCategoriaModel($datos, $tabla){
+        $sql = "UPDATE $tabla SET id_usuario=:id_usuario,id_departamento=:id_departamento,id_numeral=:id_numeral,id_categoria=:id_categoria,
+        fecha_publicacion=:fecha_publicacion,fecha_doc=:fecha_doc,year=:year,mes=:mes,url_doc=:url_doc,n_doc=:n_doc,status=:status WHERE id=:id";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id', $datos['idDoc'], PDO::PARAM_INT);
+        $stmt->bindParam(':id_numeral', $datos['idNumeral'], PDO::PARAM_INT);
+        $stmt->bindParam(':id_usuario', $datos['id_usuario'], PDO::PARAM_INT);
+        $stmt->bindParam(':id_departamento', $datos['id_departamento'], PDO::PARAM_INT);
+        $stmt->bindParam(':id_categoria', $datos['idCategoria'], PDO::PARAM_INT);
+        $stmt->bindParam(':fecha_publicacion', $datos['fecha_publicacion'], PDO::PARAM_STR);
+        $stmt->bindParam(':fecha_doc', $datos['fecha_doc'], PDO::PARAM_STR);
+        $stmt->bindParam(':year', $datos['year'], PDO::PARAM_INT);
+        $stmt->bindParam(':mes', $datos['mes'], PDO::PARAM_STR);
+        $stmt->bindParam(':url_doc', $datos['url_doc'], PDO::PARAM_STR);
+        $stmt->bindParam(':n_doc', $datos['n_doc'], PDO::PARAM_STR);
+        $stmt->bindParam(':status', $datos['status'], PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            return 'success';
+        }else{
+            return 'error';
+        }
     }
 }
 ?>

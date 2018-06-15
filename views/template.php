@@ -75,7 +75,7 @@
                             App.dashboard();
                           });
                         </script>';
-            }elseif($_GET['action'] == 'subirArchivos'){
+            }elseif($_GET['action'] == 'subirArchivos' || $_GET['action'] == 'editarDoc'){
               echo '  <script type="text/javascript">
                         $(document).ready(function(){
                           //initialize the javascript
@@ -105,6 +105,7 @@
     <script src="views/js/validarNumeral.js"></script>
     <script src="views/js/validarCategoria.js"></script>
     <script src="views/js/validarDoc.js"></script>
+    <script src="views/js/validarDocEditar.js"></script>
     <!-- FIN DE MODULOS PERSONALIZADOS -->
   </body>
 </html>

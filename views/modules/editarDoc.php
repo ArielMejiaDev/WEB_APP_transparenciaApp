@@ -4,6 +4,12 @@ if (!$_SESSION['verificar']) {
   header('Location:index.php');
 }
 $editarDoc = new DocController();
+$datosUsuario = new DatosUsuarioController();
+$datos = $datosUsuario->getDatosUsuarioController();
+$idUsuario = $datos['id'];
+$idDeptoUsuario = $datos['id_departamento'];
+$idDoc = $_GET['idDoc'];
+$editarDoc->actualizarDocController($idUsuario, $idDeptoUsuario);
 include_once "navbar.php";
 include_once "sidebar.php";
 ?>
@@ -18,7 +24,7 @@ include_once "sidebar.php";
 	                	</div>
 		                <div class="panel-body">
                               <?php 
-                                $editarDoc->crearFormEditarDocController();
+								$editarDoc->crearFormEditarDocController();
                               ?>
 		                </div>
 	              	</div>

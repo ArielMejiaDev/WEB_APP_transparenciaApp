@@ -209,61 +209,136 @@ class DocController{
         }
     }
 
+    public function listaNumeralesController(){
+        $respuesta = DocModel::listaNumeralesModel('numerales');
+        $lista = '';
+        foreach ($respuesta as $key => $value) {
+            $lista .= '<option value ="'.$value['id'].'">'.utf8_encode($value['descripcion']).'</option>';
+        }
+        return $lista;
+    }
+
     //Crear formulario de edicion de documento subido al servidor
     public function crearFormEditarDocController(){
         if (isset($_GET['idDoc']) && !empty($_GET['idDoc'])) {
             $dato = $_GET['idDoc'];
             $respuesta = DocModel::crearFormEditarDocModel($dato,'documentos');
-            var_dump($respuesta);
-            
-            echo '<form onsubmit="return validarDoc()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
+            //var_dump($respuesta);
+            $listaNumerales = $this->listaNumeralesController();
+            //$listaNumerales = '<option value="5">Estructura Organica</option>'.'<option value="6">Direccion y telefonos</option>';
+            echo '<form onsubmit="return validarDocEditar()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="idNumeral">Númeral</label>
+                        <label class="col-sm-3 control-label" for="idNumeralEditar">Númeral</label>
                         <div class="col-sm-6">
-                            <select name="idNumeral" id="idNumeral" class="form-control">
-                                <option>Seleccione una Categoria</option>
-                                <?php 
-                                    $subirArchivos->cargarOptionsNumeralesController(); 
-                                ?>
+                            <select name="idNumeralEditar" id="idNumeralEditar" class="form-control">
+                                <option value="'.$respuesta['id_numeral'].'">'.utf8_encode($respuesta['descNumeral']).'</option>
+                                '.$listaNumerales.'
                             </select>
-                            <p id="avisoIdNumeral" class="text-danger text-muted" style="display: none"></p>
+                            <p id="avisoIdNumeralEditar" class="text-danger text-muted" style="display: none"></p>
                         </div>
                     </div>
                     <div class="form-group" id="formGroupCat" style="display: block">
-                        <label class="col-sm-3 control-label" for="idCategoria">Categoria</label>
+                        <label class="col-sm-3 control-label" for="idCategoriaEditar">Categoria</label>
                         <div class="col-sm-6">
-                            <select name="idCategoria" id="idCategoria" class="form-control">
-                            <option value="">Si existe categoria se cargara automaticamente</option>
+                            <select name="idCategoriaEditar" id="idCategoriaEditar" class="form-control">
+                            <option value="'.$respuesta['id_categoria'].'">'.utf8_encode($respuesta['descCategoria']).'</option>
                             </select>
-                            <p id="avisoIdCategoria" class="text-danger text-muted" style="display: none"></p>
+                            <p id="avisoIdCategoriaEditar" class="text-danger text-muted" style="display: none"></p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="fecha"> Fecha </label>
+                        <label class="col-sm-3 control-label" for="fechaEditar"> Fecha </label>
                         <div class="col-md-3 col-xs-7">
                             <div data-min-view="2" data-date-format="yyyy-mm-dd" class="input-group date datetimepicker">
-                            <input id="fecha_doc" name="fecha_doc" size="16" type="text" value="" class="form-control"><span class="input-group-addon btn btn-primary"><i class="icon-th mdi mdi-calendar"></i></span>
+                            <input id="fecha_docEditar" name="fecha_docEditar" size="16" type="text" value="'.$respuesta['fecha_doc'].'" class="form-control"><span class="input-group-addon btn btn-primary"><i class="icon-th mdi mdi-calendar"></i></span>
                             </div>
-                            <p id="avisoFecha" class="text-danger text-muted" style="display: none;"></p>
+                            <p id="avisoFechaEditar" class="text-danger text-muted" style="display: none;"></p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-6 col-md-offset-3">
-                            <label class="btn btn-rounded btn-space btn-warning btn-lg" for="doc"><i class="icon icon-left mdi mdi-collection-pdf"></i> Subir Archivo PDF</label>
-                            <p id="avisoDoc" class="text-danger text-muted" style="display: none;"></p>
+                        <div class="col-sm-6 col-md-offset-3">  
+                        <label class="btn btn-rounded btn-space btn-danger btn-lg" for="docEditar"><strong><i class="icon icon-left mdi mdi-collection-pdf"></i> '.substr(utf8_encode($respuesta['url_doc']),11).'</strong></label>
+                            <p id="avisoDoc" class="text-danger text-muted" style="display: block;">Si desea cambiar el documento, presione el boton rojo</p>
                         </div>
                         <div class="col-sm-6">
-                            <input style="display: none" type="file" id="doc" name="doc">
+                            <input style="display: none" type="file" id="docEditar" name="docEditar">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-6 col-md-offset-3">
-                            <button type="submit" class="btn btn-info"><i class="icon mdi mdi-long-arrow-up"></i> Subir Documento</button>
+                            <button type="submit" class="btn btn-info"><i class="icon mdi mdi-long-arrow-up"></i> Editar Documento</button>
                         </div>
                     </div>
                 </form>';
             
         }
     }
+
+    //ACTUALIZAR DOCUMENTO
+    public function actualizarDocController($idUsuario, $idDeptoUsuario){
+            if (isset($_GET['idDoc']) && isset($_POST['idNumeral']) && isset($_POST['fecha_doc']) 
+            && isset($_POST['idCategoria']) && isset($_FILES['doc'])) 
+            {
+                if (!empty($_POST['idNumeral']) && !empty($_POST['fecha_doc']) 
+                    && !empty($_POST['idCategoria']) && !empty($_FILES['doc'])) 
+                {
+                    if (preg_match($this->expRegNum, $_POST['idNumeral']) && 
+                        preg_match($this->expRegNum, $_POST['idCategoria']) &&
+                        preg_match($this->expRegDate, $_POST['fecha_doc']) &&
+                        preg_match($this->expRegPdfFile, $_FILES['doc']['name']) ) 
+                    {
+                        $nuevaRuta = 'views/docs/'.$_FILES['doc']['name'];
+                        $nombreTemporal = $_FILES['doc']['tmp_name'];
+                        move_uploaded_file($nombreTemporal,$nuevaRuta);
+                        $fechaPublicacion = $_POST['fecha_doc'];
+                        $fechaPublicacion = strtotime(date("Y-m-d", strtotime($fechaPublicacion)) . " +21 day");//convierte a tiempo unix la fecha anterior en el formato dado en la funcion date, puede ser asi o en letras o resumido F d M y otros parametros para cambiar la salida 
+                        $fechaPublicacion = date("Y-m-d", $fechaPublicacion);
+                        $fechaDada = $_POST['fecha_doc'];
+                        $fechaFormateadaMes = strftime('%B', strtotime($fechaDada));
+                        $fechaFormateadaAño = strftime('%Y', strtotime($fechaDada));
+                        $urlDoc = 'views/docs/'.$_FILES['doc']['name'];
+                        
+                        $nDoc = $_POST['idNumeral'].'-'.$this->contarNumeralesDocsSubidosController($_POST['idNumeral']).'-'.date('Y');
+                        $status = (date('Y-m-d') < $fechaPublicacion)? 1 : 5 ;
+                        $datos = array('idNumeral'=>$_POST['idNumeral'],
+                            'idDoc'=>$_GET['idDoc'],
+                            'id_usuario'=>$idUsuario,
+                            'id_departamento'=>$idDeptoUsuario,
+                            'idCategoria'=>$_POST['idCategoria'],
+                            'fecha_publicacion'=>$fechaPublicacion,
+                            'fecha_doc'=>$_POST['fecha_doc'],
+                            'year'=>$fechaFormateadaAño,
+                            'mes'=>$fechaFormateadaMes,
+                            'url_doc'=>$urlDoc,
+                            'n_doc'=>$nDoc,
+                            'status'=>$status);
+                        var_dump($datos);
+                        $respuesta = DocModel::
+                        actualizarArchivoConCategoriaModel($datos, 'documentos');
+                        if ($respuesta=='success') {
+                            header('Location:notEditarArchivoOk');
+                        }
+                    }else{
+                        echo "	<script>
+                                        swal({
+                                        type: 'error',
+                                        title: 'Oops...',
+                                        text: 'No esta permitido el uso de caracteres especiales, ni archivos con formatos distintos a PDF',
+                                        })
+                                    </script>";
+                    }
+                }else{
+                    echo "	<script>
+                                    swal({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'No pueden quedar campos vacios',
+                                    })
+                                </script>";
+                }
+            } 
+    }
+
+    
 }
 ?>
