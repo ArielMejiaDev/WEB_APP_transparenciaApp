@@ -4,7 +4,10 @@ categoriaEditar = document.getElementById('idCategoriaEditar');
 avisoCategoriaEditar = document.getElementById('avisoIdCategoriaEditar');
 fechaEditar = document.getElementById('fecha_docEditar');
 avisoFechaEditar = document.getElementById('avisoFechaEditar');
+documentoEditar = document.getElementById('docEditar');
+avidoDocumentoEditar = document.getElementById('avisoDocEditar');
 expRegNum = /^[0-9]*$/;
+expRegPdf = /^.+\.((?:[pP][dD][fF]))$/;
 function validarDocEditar(){
     if (numeralEditar.value == "") {
         avisoNumeralEditar.innerHTML = "No puede quedar vacio";
@@ -34,14 +37,7 @@ function validarDocEditar(){
         avisoFechaEditar.innerHTML = "No puede quedar vacio";
         avisoFechaEditar.style.display = "inline";
         return false;
-    }else{
-        if (!expRegNum.test(fechaEditar.value)) {
-            avisoFechaEditar.innerHTML = "No esta permitido el uso de caracteres especiales";
-            avisoFechaEditar.style.display = "inline";
-            return false;
-        }
     }
-
     
     return true;
 }
