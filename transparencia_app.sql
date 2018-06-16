@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2018 a las 20:39:30
+-- Tiempo de generación: 16-06-2018 a las 02:04:04
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -104,9 +104,9 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`) VALUES
-(41, 48, 1, 5, 31, '2018-07-05', '2018-06-14', 2018, 'junio', 'views/docs/Ariel SALVADOR.pdf', '5-1-2018', 1, '', '2018-06-14 18:34:44'),
-(42, 48, 1, 6, 0, '2018-07-05', '2018-06-14', 2018, 'junio', 'views/docs/CARATULA SEMANA 5.pdf', '6-1-2018', 1, '', '2018-06-14 18:36:15'),
-(43, 48, 1, 6, 0, '2018-07-05', '2018-06-14', 2018, 'junio', 'views/docs/CARATULA SEMANA 7.pdf', '6-2-2018', 1, '', '2018-06-14 18:36:46');
+(50, 48, 1, 5, 31, '2018-07-06', '2018-06-15', 2018, 'junio', 'views/docs/CARATULA SEMANA 7.pdf', '5-3-2018', 1, '', '2018-06-15 21:43:58'),
+(51, 48, 1, 5, 31, '2018-07-06', '2018-06-15', 2018, 'junio', 'views/docs/CARATULA SEMANA 5.pdf', '5-2-2018', 1, '', '2018-06-15 21:43:28'),
+(52, 48, 1, 5, 31, '2018-07-06', '2018-06-15', 2018, 'junio', 'views/docs/NuevoDocumento 2018-05-29.pdf', '5-3-2018', 1, '', '2018-06-16 00:02:21');
 
 -- --------------------------------------------------------
 
@@ -268,7 +268,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
