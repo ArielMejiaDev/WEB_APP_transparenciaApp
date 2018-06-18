@@ -341,8 +341,19 @@ class DocController{
 
     public function actualizarDocController($idUsuario, $idDeptoUsuario){
         if (isset($_GET['idDoc']) && isset($_POST['idNumeralEditar']) && isset($_POST['fecha_docEditar']) 
-        && isset($_POST['idCategoriaEditar']) && isset($_FILES['docEditar'])) {
-            echo "ACTUALIZAR";
+        && isset($_POST['idCategoriaEditar'])) {
+            if (!empty($_GET['idDoc']) && !empty($_POST['idNumeralEditar']) && !empty($_POST['fecha_docEditar']) &&
+            !empty($_POST['idCategoriaEditar']) ) {
+                if (preg_match($this->expRegNum, $_GET['idDoc']) &&
+                    preg_match($this->expRegNum, $_POST['idNumeralEditar']) &&
+                    preg_match($this->expRegDate, $_POST['fecha_docEditar']) &&
+                    preg_match($this->expRegNum, $_POST['idCategoriaEditar']) ) {
+                    $datos = array('idDoc'=>$_GET['idDoc'], 'idNumeralEditar'=>$_POST['idNumeralEditar'],
+                     'idCategoriaEditar'=>$_POST['idCategoriaEditar'], 'fecha_docEditar'=>$_POST['fecha_docEditar'] );
+                    var_dump($datos);
+                    echo 'Edita documentos sin cambiar el documento';
+                }
+            }
         }
     }
 
