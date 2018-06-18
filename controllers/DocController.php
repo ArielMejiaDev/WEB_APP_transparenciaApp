@@ -237,7 +237,7 @@ class DocController{
                             <p id="avisoIdNumeralEditar" class="text-danger text-muted" style="display: none"></p>
                         </div>
                     </div>
-                    <div class="form-group" id="formGroupCat" style="display: block">
+                    <div class="form-group" id="formGroupCatEditar">
                         <label class="col-sm-3 control-label" for="idCategoriaEditar">Categoria</label>
                         <div class="col-sm-6">
                             <select name="idCategoriaEditar" id="idCategoriaEditar" class="form-control">
