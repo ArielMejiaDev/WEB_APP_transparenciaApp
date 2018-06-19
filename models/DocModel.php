@@ -178,8 +178,8 @@ class DocModel{
     //ACTUALIZAR DOCUMENTO SIN CAMBIAR EL DOCUMENTO SUBIDO
     public function actualizarDocSinCambiarDocModel($datosSinDoc,$tabla){
         $sql = "UPDATE $tabla SET";
-        $sql .= "id_usuario=:id_usuario,";
-        $sql .= "id_departamento=:id_departamento,";
+        $sql .= "id_usuario=:idUsuario,";
+        $sql .= "id_departamento=:idDeptoUsuario,";
         $sql .= "id_numeral=:id_numeral,";
         $sql .= "id_categoria=:id_categoria,";
         $sql .= "fecha_doc=:fecha_doc,";
@@ -187,7 +187,14 @@ class DocModel{
         $sql .= "mes=:mes ";
         $sql .= "WHERE id=:idDoc";
         $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam();
+        $stmt->bindParam(':idUsuario', $datosSinDoc['idUsuario'], PDO::PARAM_INT);
+        $stmt->bindParam(':idDeptoUsuario', $datosSinDoc['idDeptoUsuario'], PDO::PARAM_INT);
+        $stmt->bindParam(':idDoc', $datosSinDoc['idDoc'], PDO::PARAM_INT);
+        $stmt->bindParam(':idNumeralEditar', $datosSinDoc['idNumeralEditar'], PDO::PARAM_INT);
+        $stmt->bindParam(':idCategoriaEditar', $datosSinDoc['idCategoriaEditar'], PDO::PARAM_INT);
+        $stmt->bindParam(':fecha_docEditar', $datosSinDoc['fecha_docEditar'], PDO::PARAM_STR);
+        $stmt->bindParam(':year', $datosSinDoc['year'], PDO::PARAM_STR);
+        $stmt->bindParam(':mes', $datosSinDoc['mes'], PDO::PARAM_STR);
         if ($stmt->execute()) {
             return 'success';
         }else{
