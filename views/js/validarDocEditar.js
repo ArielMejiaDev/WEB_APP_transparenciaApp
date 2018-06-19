@@ -32,7 +32,7 @@ function respEnviarNumeralEditarId(){
                 fechaEditar.setAttribute('name','fecha_docEditarSinCat');
 
                 documentoEditar.removeAttribute('name');
-                documentoEditar.setAttribute('name','documentoEditarSinCat');
+                documentoEditar.setAttribute('name','docEditarSinCat');
             }else{
                 formGroup.style.display = "block";
                 categoriaEditar.innerHTML = conexionEditarDoc.responseText;
@@ -44,7 +44,7 @@ function respEnviarNumeralEditarId(){
                 fechaEditar.setAttribute('name','fecha_docEditar');
 
                 documentoEditar.removeAttribute('name');
-                documentoEditar.setAttribute('name','documentoEditar');
+                documentoEditar.setAttribute('name','docEditar');
             }
         }
     }

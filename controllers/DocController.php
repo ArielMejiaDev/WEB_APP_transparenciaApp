@@ -340,22 +340,61 @@ class DocController{
     //}
 
     public function actualizarDocController($idUsuario, $idDeptoUsuario){
-        if (isset($_GET['idDoc']) && isset($_POST['idNumeralEditar']) && isset($_POST['fecha_docEditar']) 
-        && isset($_POST['idCategoriaEditar'])) {
-            if (!empty($_GET['idDoc']) && !empty($_POST['idNumeralEditar']) && !empty($_POST['fecha_docEditar']) &&
-            !empty($_POST['idCategoriaEditar']) ) {
-                if (preg_match($this->expRegNum, $_GET['idDoc']) &&
-                    preg_match($this->expRegNum, $_POST['idNumeralEditar']) &&
-                    preg_match($this->expRegDate, $_POST['fecha_docEditar']) &&
-                    preg_match($this->expRegNum, $_POST['idCategoriaEditar']) ) {
-                    $datos = array('idDoc'=>$_GET['idDoc'], 
-                    'idNumeralEditar'=>$_POST['idNumeralEditar'],
+        if (
+            isset($_GET['idDoc']) && 
+            isset($_POST['idNumeralEditar']) && 
+            isset($_POST['idCategoriaEditar']) && 
+            isset($_POST['fecha_docEditar']) && 
+            isset($_FILES['docEditar']) 
+            )
+        {
+            if (
+                !empty($_GET['idDoc']) && 
+                !empty($_POST['idNumeralEditar']) && 
+                !empty($_POST['idCategoriaEditar']) && 
+                !empty($_POST['fecha_docEditar']) && 
+                !empty($_FILES['docEditar']['name']) 
+                ) 
+            {
+                $datos = array(
+                    'idDoc'=>$_GET['idDoc'], 
+                    'idNumeralEditar'=>$_POST['idNumeralEditar'], 
                     'idCategoriaEditar'=>$_POST['idCategoriaEditar'], 
-                    'fecha_docEditar'=>$_POST['fecha_docEditar']);
-                    var_dump($datos);
-                }
+                    'fecha_docEditar'=>$_POST['fecha_docEditar'], 
+                    'docEditar'=>$_FILES['docEditar']
+                    );
+                var_dump($datos);
+                echo 'actualizar datos cambiando el documento';
             }
         }
+
+
+        if (
+            isset($_GET['idDoc']) && 
+            isset($_POST['idNumeralEditar']) && 
+            isset($_POST['idCategoriaEditar']) && 
+            isset($_POST['fecha_docEditar'])
+            ) 
+        {
+            if (
+                !empty($_GET['idDoc']) && 
+                !empty($_POST['idNumeralEditar']) && 
+                !empty($_POST['idCategoriaEditar']) && 
+                !empty($_POST['fecha_docEditar']) &&
+                empty($_FILES['docEditar']['name'])
+                ) 
+            {
+                $datosSinDoc = array(
+                    'idDoc'=>$_GET['idDoc'], 
+                    'idNumeralEditar'=>$_POST['idNumeralEditar'], 
+                    'idCategoriaEditar'=>$_POST['idCategoriaEditar'], 
+                    'fecha_docEditar'=>$_POST['fecha_docEditar']
+                    );
+                var_dump($datosSinDoc);
+                echo 'actualizar datos sin cambiar el documento';
+            }
+        }
+
     }
 
     

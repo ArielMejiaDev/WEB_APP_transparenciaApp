@@ -174,5 +174,25 @@ class DocModel{
             return 'error';
         }
     }
+
+    //ACTUALIZAR DOCUMENTO SIN CAMBIAR EL DOCUMENTO SUBIDO
+    public function actualizarDocSinCambiarDocModel($datosSinDoc,$tabla){
+        $sql = "UPDATE $tabla SET";
+        $sql .= "id_usuario=:id_usuario,";
+        $sql .= "id_departamento=:id_departamento,";
+        $sql .= "id_numeral=:id_numeral,";
+        $sql .= "id_categoria=:id_categoria,";
+        $sql .= "fecha_doc=:fecha_doc,";
+        $sql .= "year=:year,";
+        $sql .= "mes=:mes ";
+        $sql .= "WHERE id=:idDoc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam();
+        if ($stmt->execute()) {
+            return 'success';
+        }else{
+            return 'error';
+        }
+    }
 }
 ?>
