@@ -348,10 +348,11 @@ class DocController{
                     preg_match($this->expRegNum, $_POST['idNumeralEditar']) &&
                     preg_match($this->expRegDate, $_POST['fecha_docEditar']) &&
                     preg_match($this->expRegNum, $_POST['idCategoriaEditar']) ) {
-                    $datos = array('idDoc'=>$_GET['idDoc'], 'idNumeralEditar'=>$_POST['idNumeralEditar'],
-                     'idCategoriaEditar'=>$_POST['idCategoriaEditar'], 'fecha_docEditar'=>$_POST['fecha_docEditar'] );
+                    $datos = array('idDoc'=>$_GET['idDoc'], 
+                    'idNumeralEditar'=>$_POST['idNumeralEditar'],
+                    'idCategoriaEditar'=>$_POST['idCategoriaEditar'], 
+                    'fecha_docEditar'=>$_POST['fecha_docEditar']);
                     var_dump($datos);
-                    echo 'Edita documentos sin cambiar el documento';
                 }
             }
         }
