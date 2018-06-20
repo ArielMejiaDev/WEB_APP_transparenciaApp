@@ -20,11 +20,11 @@ class DocModel{
 
     //DEVOLVER SI EXISTE O NO CATEGORIAS CON EL ID_NUMERAL QUE COINCIDAN CON EL ID ENVIADO
     public function validarDocAjaxModel($dato,$tabla){
-        $sql = "SELECT COUNT($tabla.id) AS cuenta, $tabla.id, $tabla.descripcion FROM $tabla WHERE $tabla.id_numeral=:id ";
+        $sql = "SELECT $tabla.id, $tabla.descripcion FROM $tabla WHERE $tabla.id_numeral=:id ";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':id',$dato,PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //modelo para insertar datos del archivo subido en al tabla docs

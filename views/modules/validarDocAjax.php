@@ -7,8 +7,11 @@ class DocAjax{
     public function validarDocAjax(){
         $dato = $this->id;
         $respuesta = DocController::validarDocAjaxController($dato);
-        if ($respuesta['cuenta']>0) {
-            echo '<option value="'.$respuesta['id'].'" >'.utf8_encode($respuesta['descripcion']).'</option>';
+        //echo $respuesta;
+        if (count($respuesta)>0) {
+            foreach ($respuesta as $key => $value) {
+                echo '<option value="'.$value['id'].'" >'.utf8_encode($value['descripcion']).'</option>';
+            }
         }else{
             echo 'No hay';
         }

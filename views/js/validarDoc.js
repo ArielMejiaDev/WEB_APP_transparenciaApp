@@ -48,6 +48,7 @@ function respEnviarId(){
                 
                 doc.removeAttribute("name");
                 doc.setAttribute("name","doc");
+                //console.log(conexionSubirDoc.responseText);
                 categoria.innerHTML = conexionSubirDoc.responseText;
             }
         }else{
