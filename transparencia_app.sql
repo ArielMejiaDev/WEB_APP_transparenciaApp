@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2018 a las 02:04:04
+-- Tiempo de generación: 20-06-2018 a las 19:27:48
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -41,8 +41,81 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `id_numeral`, `descripcion`, `status`, `aviso`) VALUES
-(26, 13, 'Normativo', 0, ''),
-(31, 5, 'situación', 0, '');
+(1, 1, 'Marco Normativo', 0, ''),
+(2, 1, 'Funciones Dependencias', 0, ''),
+(3, 1, 'Junta Directiva', 0, ''),
+(4, 1, 'General', 0, ''),
+(5, 1, 'Institucional', 0, ''),
+(6, 1, 'Depto Informática', 0, ''),
+(7, 1, 'Depto Legal', 0, ''),
+(8, 1, 'Auditoria Interna', 0, ''),
+(9, 1, 'Depto Administrativo', 0, ''),
+(10, 1, 'Depto Bienestar Social', 0, ''),
+(11, 1, 'Depto Estadística', 0, ''),
+(12, 1, 'Depto Prestaciones', 0, ''),
+(13, 1, 'Depto Recursos Humanos', 0, ''),
+(14, 1, 'Depto Ingeniería', 0, ''),
+(15, 1, 'Depto Inversiones', 0, ''),
+(16, 1, 'Unidad de Planificación', 0, ''),
+(17, 1, 'Unidad Administración Financiera', 0, ''),
+(18, 2, 'Dirección y Teléfonos del Instituto de Previsión Militar', 0, ''),
+(19, 3, 'Directorio de Empleados del Instituto de Previsión Militar', 0, ''),
+(20, 4, 'Salarios y honorarios que corresponden a cada cargo', 0, ''),
+(21, 5, 'Misión y Visión', 0, ''),
+(22, 5, 'Políticas Institucionales', 0, ''),
+(23, 5, 'Objetivos', 0, ''),
+(24, 5, 'Valores', 0, ''),
+(25, 5, 'Ejes transversales', 0, ''),
+(26, 1, 'Planes Estratégicos', 0, ''),
+(27, 1, 'Plan Operativo Anual', 0, ''),
+(28, 5, 'Meta Plan Operativo Anual', 0, ''),
+(29, 5, 'Resultados Obtenidos', 0, ''),
+(30, 5, 'Memoria de Labores', 0, ''),
+(31, 6, 'Manual de normas y procedimientos IPM', 0, ''),
+(32, 6, 'Normativo para la elaboración emisión pago y control de cheques', 0, ''),
+(33, 6, 'Normativo de inversiones', 0, ''),
+(34, 6, 'Reglamento General de Prestaciones', 0, ''),
+(35, 6, 'Reglamento General Administrativo', 0, ''),
+(36, 6, 'Reglamento de Prestamos Fiduciarios', 0, ''),
+(37, 6, 'Reglamento Interno de Trabajo', 0, ''),
+(38, 6, 'Normativo General de Arrendamiento Estadio del Ejército', 0, ''),
+(39, 6, 'Normativo General de Arrendamiento de Bienes Inmuebles', 0, ''),
+(40, 6, 'Reglamento General de Viáticos y Gastos Conexos', 0, ''),
+(41, 6, 'Reglamento Reconocimiento de Gastos por Servicios Prestados', 0, ''),
+(42, 6, 'Manual de Descripciónes de Puestos', 0, ''),
+(43, 6, 'Manual de Inducción', 0, ''),
+(44, 6, 'Manual de Reclutamiento Selección y Contratación', 0, ''),
+(45, 6, 'Manual de Elección del Empleado Distinguido', 0, ''),
+(46, 7, 'Presupuesto de Ingresos y Egresos', 0, ''),
+(47, 7, 'Modificaciones Presupuestarias', 0, ''),
+(48, 7, 'Ampliación Presupuestaria', 0, ''),
+(49, 8, 'Informe Financiero', 0, ''),
+(50, 8, 'Informe de Ingresos', 0, ''),
+(51, 8, 'Informe de Gastos', 0, ''),
+(52, 8, 'Informe Cuatrimestral', 0, ''),
+(53, 8, 'Informe Anual', 0, ''),
+(54, 9, 'Reporte', 0, ''),
+(55, 10, 'Procesos de cotización', 0, ''),
+(56, 11, 'Programación Subgrupo diez y ocho Servicios Técnicos y Profesionales', 0, ''),
+(57, 11, 'Contratos', 0, ''),
+(58, 11, 'Informes', 0, ''),
+(59, 11, 'Contrataciones de Bienes y Servicios', 0, ''),
+(60, 11, 'Compras de Baja Cuantía', 0, ''),
+(61, 11, 'Bienes y Servicios', 0, ''),
+(62, 12, 'Viáticos', 0, ''),
+(63, 12, 'Viajes Internacionales', 0, ''),
+(64, 13, 'Bienes Muebles', 0, ''),
+(65, 13, 'Bienes Inmuebles', 0, ''),
+(66, 13, 'Bienes IPM', 0, ''),
+(67, 14, 'Contratos de Mantenimiento', 0, ''),
+(68, 19, 'Contratos de Arrendamientos', 0, ''),
+(69, 20, 'Contrataciones de Cotizaciones y Licitaciones', 0, ''),
+(70, 22, 'Compras Directas', 0, ''),
+(71, 23, 'Informe de la Controlaría General de Cuentas', 0, ''),
+(72, 23, 'Informes Auditorías Externas', 0, ''),
+(73, 26, 'Publicación', 0, ''),
+(74, 28, 'Informes', 0, ''),
+(75, 29, 'Informes de Rendición de cuentas', 0, '');
 
 -- --------------------------------------------------------
 
@@ -99,15 +172,6 @@ CREATE TABLE `documentos` (
   `fecha_actualizado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `documentos`
---
-
-INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`) VALUES
-(50, 48, 1, 5, 31, '2018-07-06', '2018-06-15', 2018, 'junio', 'views/docs/CARATULA SEMANA 7.pdf', '5-3-2018', 1, '', '2018-06-15 21:43:58'),
-(51, 48, 1, 5, 31, '2018-07-06', '2018-06-15', 2018, 'junio', 'views/docs/CARATULA SEMANA 5.pdf', '5-2-2018', 1, '', '2018-06-15 21:43:28'),
-(52, 48, 1, 5, 31, '2018-07-06', '2018-06-15', 2018, 'junio', 'views/docs/NuevoDocumento 2018-05-29.pdf', '5-3-2018', 1, '', '2018-06-16 00:02:21');
-
 -- --------------------------------------------------------
 
 --
@@ -139,12 +203,35 @@ CREATE TABLE `numerales` (
 --
 
 INSERT INTO `numerales` (`id`, `descripcion`, `status`, `aviso`) VALUES
-(5, 'ESTRUCTURA ORGÁNICA Y FUNCIONES', 0, ''),
-(6, 'DIRECCIÓN Y TELÉFONOS DE LA ENTIDAD', 0, ''),
-(7, 'DIRECTORIO DE EMPLEADOS Y SERVIDORES PÚBLICOS', 0, ''),
-(11, 'NÚMERO Y NOMBRE DE FUNCIONARIOS', 0, ''),
-(12, 'MISIÓN Y OBJETIVOS DE LA INSTITUCIÓN', 0, ''),
-(13, 'MANUALES DE PROCEDIMIENTOS', 0, '');
+(1, 'Estructura orgánica IPM', 0, ''),
+(2, 'Directorio y teléfonos', 0, ''),
+(3, 'Directorio de empleados y servidores públicos', 0, ''),
+(4, 'Número y nombre de funcionarios', 0, ''),
+(5, 'Misión y objetivos de la institución', 0, ''),
+(6, 'Manuales de procedimientos', 0, ''),
+(7, 'Presupuesto de Ingresos y Egresos', 0, ''),
+(8, 'Informes mensuales de ejecución presupuestaria', 0, ''),
+(9, 'Depósitos con fondos públicos', 0, ''),
+(10, 'Procesos de cotización y licitación', 0, ''),
+(11, 'Contrataciones de bienes y servicios', 0, ''),
+(12, 'Viajes costos y viáticos', 0, ''),
+(13, 'Inventarios de bienes', 0, ''),
+(14, 'Mantenimiento de equipos', 0, ''),
+(15, 'Programas de subsidios', 0, ''),
+(16, 'Contratos licencias y concesiones', 0, ''),
+(17, 'Empresas precalificadas para ejecución de obras públicas', 0, ''),
+(18, 'Listado de obras con fondos públicos', 0, ''),
+(19, 'Contratos de arrendamientos de inmuebles', 0, ''),
+(20, 'Contratos por cotización y licitación', 0, ''),
+(21, 'Fideicomisos', 0, ''),
+(22, 'Compras directas', 0, ''),
+(23, 'Auditorías', 0, ''),
+(24, 'Información de entidades internacionales', 0, ''),
+(25, 'Información de entidades no gubernamentales o privadas', 0, ''),
+(26, 'Publicaciones Diario de Centro América', 0, ''),
+(27, 'indice de informacion', 0, ''),
+(28, 'Pertenencia Sociolinguistica', 0, ''),
+(29, 'Temas relacionados', 0, '');
 
 -- --------------------------------------------------------
 
@@ -256,7 +343,7 @@ ALTER TABLE `vitacora`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT de la tabla `departamentos`
@@ -268,7 +355,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
@@ -280,7 +367,7 @@ ALTER TABLE `mensajes`
 -- AUTO_INCREMENT de la tabla `numerales`
 --
 ALTER TABLE `numerales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
