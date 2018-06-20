@@ -16,7 +16,7 @@ class CategoriaModel extends Conexion{
 
 	//cargar un select para el formulario de crear categoria
 	public function cargarSelectNumeralesModel($tabla){
-		$sql = "SELECT * FROM $tabla";
+		$sql = "SELECT * FROM $tabla WHERE status !=6";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +53,7 @@ class CategoriaModel extends Conexion{
 
 	//CARGAR OPTIONS PARA EDITAR CATEGORIA
 	public function cargarOptionsNumeralesAjaxModel($tabla){
-		$sql = "SELECT * FROM $tabla";
+		$sql = "SELECT * FROM $tabla WHERE status!=6";
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -136,11 +136,11 @@ class NumeralController{
 									'aviso'=>utf8_decode($_POST['avisoAgregarReglaNumeral']), 
 									'status'=>6
 								);
-					var_dump($datos);
-					// $respuesta = NumeralModel::agregarReglaNumeralModel($datos,"numerales");
-					// if ($respuesta=='success') {
-					// 	header('Location:notAgregarReglaNumeralOk');
-					// }
+					//var_dump($datos);
+					$respuesta = NumeralModel::agregarReglaNumeralModel($datos,"numerales");
+					if ($respuesta=='success') {
+						header('Location:notAgregarReglaNumeralOk');
+					}
 				}else{
 					echo "	<script>
 								swal({
