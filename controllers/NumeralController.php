@@ -124,15 +124,23 @@ class NumeralController{
 	public function agregarReglaNumeralController(){
 		$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
 		$expRegNum = '/^[0-9]*$/';
-		if (isset($_POST['idAgregarReglaNumeral']) && isset($_POST['avisoAgregarReglaNumeral']) ) {
-			if (!empty($_POST['idAgregarReglaNumeral']) && !empty($_POST['avisoAgregarReglaNumeral']) ) {
-				if (preg_match($expRegNombres, $_POST['avisoAgregarReglaNumeral']) && preg_match($expRegNum, $_POST['idAgregarReglaNumeral']) ) {
-					$datos = array('id'=>$_POST['idAgregarReglaNumeral'], 'aviso'=>utf8_decode($_POST['avisoAgregarReglaNumeral']));
-					//var_dump($datos);
-					$respuesta = NumeralModel::agregarReglaNumeralModel($datos,"numerales");
-					if ($respuesta=='success') {
-						header('Location:notAgregarReglaNumeralOk');
-					}
+		if (isset($_POST['idAgregarReglaNumeral']) && isset($_POST['avisoAgregarReglaNumeral']) ) 
+		{
+			if (!empty($_POST['idAgregarReglaNumeral']) && !empty($_POST['avisoAgregarReglaNumeral']) ) 
+			{
+				if (preg_match($expRegNombres, $_POST['avisoAgregarReglaNumeral']) && 
+					preg_match($expRegNum, $_POST['idAgregarReglaNumeral']) ) 
+				{
+					$datos = array(
+									'id'=>$_POST['idAgregarReglaNumeral'], 
+									'aviso'=>utf8_decode($_POST['avisoAgregarReglaNumeral']), 
+									'status'=>6
+								);
+					var_dump($datos);
+					// $respuesta = NumeralModel::agregarReglaNumeralModel($datos,"numerales");
+					// if ($respuesta=='success') {
+					// 	header('Location:notAgregarReglaNumeralOk');
+					// }
 				}else{
 					echo "	<script>
 								swal({

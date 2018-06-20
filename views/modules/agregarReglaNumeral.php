@@ -20,7 +20,7 @@ include_once "sidebar.php";
 		                <div class="panel-body">
 		                  	<form style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="return validarAgregarReglaNumeral()" method="post">
 			                    <div class="form-group">
-			                    	<input type="hidden" class="form-control" id="idAgregarReglaNumeral" name="idAgregarReglaNumeral" value=" <?php echo $_GET['id'] ?> ">
+			                    	<input type="hidden" class="form-control" id="idAgregarReglaNumeral" name="idAgregarReglaNumeral" value="<?php echo $_GET['id'] ?>">
 			                      <label class="col-sm-3 control-label" for="descripcionEditarNumeral">Regla para el Numeral:</label>
 			                      <div class="col-sm-6">
 			                        <input type="text" class="form-control" id="avisoAgregarReglaNumeral" name="avisoAgregarReglaNumeral">
