@@ -291,12 +291,19 @@ class DocController{
                 !empty($_FILES['docEditar']['name']) 
                 ) 
             {
+                $year = strftime('%Y',strtotime($_POST['fecha_docEditar']));
+                $mes = strftime('%B',strtotime($_POST['fecha_docEditar']));
+                $url = 'views/docs/'.$_FILES['docEditar']['name'];
                 $datos = array(
-                    'idDoc'=>$_GET['idDoc'], 
-                    'idNumeralEditar'=>$_POST['idNumeralEditar'], 
-                    'idCategoriaEditar'=>$_POST['idCategoriaEditar'], 
-                    'fecha_docEditar'=>$_POST['fecha_docEditar'], 
-                    'docEditar'=>$_FILES['docEditar']
+                    'idUsuario'=>(int)$idUsuario, 
+                    'idDeptoUsuario'=>(int)$idDeptoUsuario,
+                    'idDoc'=>(int)$_GET['idDoc'], 
+                    'idNumeralEditar'=>(int)$_POST['idNumeralEditar'], 
+                    'idCategoriaEditar'=>(int)$_POST['idCategoriaEditar'], 
+                    'fecha_docEditar'=>$_POST['fecha_docEditar'],
+                    'year'=>$year, 
+                    'mes'=>$mes, 
+                    'url_docEditar'=>$url
                     );
                 var_dump($datos);
                 echo 'actualizar datos cambiando el documento';
@@ -332,10 +339,10 @@ class DocController{
                     'mes'=>$mes
                     );
                 var_dump($datosSinDoc);
-                // $respuesta = DocModel::actualizarDocConCatSinDocModel($datos, 'documentos');
-                // if ($respuesta == 'success') {
-                //     header('Location:listarArchivosSubidosGeneral');
-                // }
+                $respuesta = DocModel::actualizarDocConCatSinDocModel($datosSinDoc, 'documentos');
+                if ($respuesta == 'success') {
+                    header('Location:listarArchivosSubidosGeneral');
+                }
                 echo 'actualizar datos sin cambiar el documento';
             }
         }
