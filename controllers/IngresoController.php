@@ -61,18 +61,23 @@ class IngresoController{
 			$datos = array("usuario"=>$_POST['usuarioSeguridad'], "pregunta"=>$_POST['preguntaSeguridad'] , "respuesta"=>$_POST['respuestaSeguridad']); 
 			//var_dump($datos['usuario']);
 			$respuesta = IngresoModel::comprobarRespuestaSeguraModel($datos);
-			if ($_POST['usuarioSeguridad']==utf8_encode($respuesta['usuario']) && $_POST['preguntaSeguridad']==utf8_encode($respuesta['pregunta_seguridad']) && $_POST['respuestaSeguridad']==utf8_encode($respuesta['respuesta_seguridad'])) {
-					$_SESSION['verificar'] == true;
-					$_SESSION['usuario'] = $_POST['usuarioIngreso'];
+			//var_dump($respuesta);
+			if ($_POST['usuarioSeguridad']==utf8_encode($respuesta['usuario']) &&  
+				$_POST['respuestaSeguridad']==utf8_encode($respuesta['respuesta_seguridad'])) 
+			{
+					// $_SESSION['verificar'] == true;
+					// $_SESSION['usuario'] = $_POST['usuarioIngreso'];
 					header('Location:index.php?action=formCambiarPassword&usuario='.$_POST['usuarioSeguridad'].'');
-			}else{
-				echo 	'<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
-		                    <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-		                    <div class="message">
-		                      <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> la respuesta de seguridad no coincide, por favor volver a intentar.
-		                    </div>
-		                 </div>';
+					echo "Que le den";
 			}
+			//else{
+			// 	echo 	'<div role="alert" class="alert alert-contrast alert-danger alert-dismissible">
+		    //                 <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
+		    //                 <div class="message">
+		    //                   <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button><strong>Alerta!</strong> la respuesta de seguridad no coincide, por favor volver a intentar.
+		    //                 </div>
+		    //              </div>';
+			// }
 		}
 	}
 
