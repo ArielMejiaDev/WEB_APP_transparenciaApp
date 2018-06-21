@@ -203,6 +203,34 @@ class DocModel{
     }
 
     //
+    public function actualizarDocConCatConDocModel($datos, $tabla){
+        $sql = "UPDATE documentos SET ";
+        $sql .= "id_usuario=:idUsuario,";
+        $sql .= "id_departamento=:idDeptoUsuario,";
+        $sql .= "id_numeral=:idNumeralEditar,";
+        $sql .= "id_categoria=:idCategoriaEditar,";
+        $sql .= "fecha_doc=:fecha_docEditar,";
+        $sql .= "year=:year,";
+        $sql .= "mes=:mes,";
+        $sql .= "url_doc=:url_docEditar";
+        $sql .= "WHERE id=:idDoc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':idUsuario', $datos['idUsuario'], PDO::PARAM_INT);
+        $stmt->bindParam(':idDeptoUsuario', $datos['idDeptoUsuario'], PDO::PARAM_INT);
+        $stmt->bindParam(':idDoc', $datos['idDoc'], PDO::PARAM_INT);
+        $stmt->bindParam(':idNumeralEditar', $datos['idNumeralEditar'], PDO::PARAM_INT);
+        $stmt->bindParam(':idCategoriaEditar', $datos['idCategoriaEditar'], PDO::PARAM_INT);
+        $stmt->bindParam(':fecha_docEditar', $datos['fecha_docEditar'], PDO::PARAM_STR);
+        $stmt->bindParam(':year', $datos['year'], PDO::PARAM_STR);
+        $stmt->bindParam(':mes', $datos['mes'], PDO::PARAM_STR);
+        $stmt->bindParam(':url_docEditar', $datos['url_docEditar'], PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            return 'success';
+        }else{
+            return 'error';
+        }
+    }
+    //
     public function actualizarDocConCatSinDocModel($datos, $tabla){
           
         $sql = "UPDATE documentos SET ";

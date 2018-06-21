@@ -306,6 +306,10 @@ class DocController{
                     'url_docEditar'=>$url
                     );
                 var_dump($datos);
+                $respuesta = DocModel::actualizarDocConCatConDocModel($datos, 'documentos');
+                if ($respuesta == 'success') {
+                    header('Location:listarArchivosSubidosGeneral');
+                }
                 echo 'actualizar datos cambiando el documento';
             }
         }
