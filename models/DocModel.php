@@ -202,6 +202,15 @@ class DocModel{
         }
     }
 
+    ///RECIVE EL ID DEL DOC Y DEVUELVE LA URL DEL DOC EL PATH 
+    public function getUrlDocModel($idDoc, $tabla){
+        $sql = "SELECT url_doc FROM $tabla WHERE id = :idDoc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':idDoc', $idDoc, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     //
     public function actualizarDocConCatConDocModel($datos, $tabla){
         $sql = "UPDATE $tabla SET ";

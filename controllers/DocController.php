@@ -274,6 +274,13 @@ class DocController{
         }
     }
 
+    //RECIVE EL ID DEL DOC Y DEVUELVE LA URL DEL DOC EL PATH 
+    public function getUrlDocController($idDoc){
+        $respuesta = DocModel::getUrlDocModel($idDoc, 'documentos');
+        $url = $respuesta['url_doc'];
+        return $url;
+    }
+    //actualizar documentos al editarlos evalua si va el doc o no va el doc y actualiza en base a lo que se envia
     public function actualizarDocController($idUsuario, $idDeptoUsuario){
         if (
             isset($_GET['idDoc']) && 
@@ -291,6 +298,9 @@ class DocController{
                 !empty($_FILES['docEditar']['name']) 
                 ) 
             {
+                $doc = $this->getUrlDocController($_GET['idDoc']);
+                //var_dump($doc);
+                unlink($doc);
                 $year = strftime('%Y',strtotime($_POST['fecha_docEditar']));
                 $mes = strftime('%B',strtotime($_POST['fecha_docEditar']));
                 $url = 'views/docs/'.$_FILES['docEditar']['name'];
