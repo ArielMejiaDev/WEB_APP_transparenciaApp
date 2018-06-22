@@ -266,5 +266,18 @@ class DocModel{
             return 'error';
         }
     }
+
+    //RECHAZAR EL DOCUMENTO
+    public function rechazarDocModel($datos, $tabla){
+        $sql = "UPDATE $tabla SET status=4 , justificacion=:justificacion WHERE id = :idDoc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':idDoc',$datos['idDoc'],PDO::PARAM_INT);
+        $stmt->bindParam(':justificacion',$datos['justificacion'],PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            return 'success';
+        }else{
+            return 'error';
+        }
+    }
 }
 ?>

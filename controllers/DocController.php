@@ -5,6 +5,7 @@ class DocController{
     public $expRegDate = '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/';
     public $expRegPdfFile = '/^.+\.((?:[pP][dD][fF]))$/';
     public $expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
+    public $expRegTexto = '/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9,.!? ]*$/';
     public function contarNumeralesDocsSubidosController($dato){
         $respuesta = DocModel::contarNumeralesDocsSubidosModel($dato,'documentos');
         $cuenta = $respuesta['cuenta'] + 1;
@@ -179,20 +180,34 @@ class DocController{
                         <td>'.$value["nombreDepto"].'</td>
                         <td>'.$value["usuario"].'</td>
                         <td>
-							<a target="_blank" href="'.$value["url_doc"].'" class="btn btn-primary">Ver en linea
+                            <a 
+                                target="_blank" href="'.$value["url_doc"].'" 
+                                class="btn btn-primary">
+                                Ver en linea
 							</a>
                         </td>
                         <td>
-							<a href="index.php?action=editarDoc&idDoc='.$value['idDoc'].'" class="btn btn-warning">Editar
+                            <a 
+                                href="index.php?action=editarDoc&idDoc='.$value['idDoc'].'" 
+                                class="btn btn-warning">
+                                Editar
 							</a>
                         </td>
                         <td>
-							<button href="'.$value['idDoc'].'" documento="'.substr($value["url_doc"], 11).'" id="eliminar'.$value['idDoc'].'" class="btn btn-success">Publicar
+                            <button 
+                                href="'.$value['idDoc'].'" 
+                                documento="'.substr($value["url_doc"], 11).'" 
+                                id="eliminar'.$value['idDoc'].'" 
+                                class="btn btn-success">
+                                Publicar
 							</button>
                         </td>
                         <td>
-							<button href="'.$value['idDoc'].'" usuario="'.$value['idUsuario'].'" id="eliminar'.$value['idDoc'].'" class="btn btn-danger">Rechazar
-							</button>
+                        <a 
+                            href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
+                            class="btn btn-danger">
+                            Rechazar
+                        </a>
 						</td>
 					</tr>';
         }
@@ -363,7 +378,20 @@ class DocController{
         }
 
     }
-
-    
+    //RECHAZAR DOCUMENTOS
+    public function rechazarDocController($idUsuario, $idDeptoUsuario){
+        if (isset($_GET['idDoc']) && isset($_POST['justificacion']) ) {
+            if (!empty($_GET['idDoc']) && !empty($_POST['justificacion']) ) {
+                if (preg_match($this->expRegTexto,  $_POST['justificacion'] ) ) {
+                    $datos = array('idDoc'=>$_GET['idDoc'], 'justificacion'=>$_POST['justificacion']);
+                    $respuesta = DocModel::rechazarDocModel($datos, 'documentos');
+                    if ($respuesta == 'success') {
+                        header('Location:listarArchivosSubidosGeneral');
+                    }
+                }
+                
+            }
+        }
+    }
 }
 ?>

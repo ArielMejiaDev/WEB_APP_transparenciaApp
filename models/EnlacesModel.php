@@ -28,7 +28,8 @@ class EnlacesModel extends Conexion{
 			$enlace == "subirArchivos"||
 			$enlace == "listarArchivosRedactores"||
 			$enlace == "editarDoc"||
-			$enlace == "listarArchivosSubidosGeneral") {
+			$enlace == "listarArchivosSubidosGeneral"||
+			$enlace == "rechazarDoc") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
 			$url = 'views/modules/ingreso.php';
