@@ -296,20 +296,21 @@ class DocController{
                 $url = 'views/docs/'.$_FILES['docEditar']['name'];
                 $datos = array(
                     'idUsuario'=>(int)$idUsuario, 
-                    'idDeptoUsuario'=>(int)$idDeptoUsuario,
-                    'idDoc'=>(int)$_GET['idDoc'], 
+                    'idDeptoUsuario'=>(int)$idDeptoUsuario,  
                     'idNumeralEditar'=>(int)$_POST['idNumeralEditar'], 
                     'idCategoriaEditar'=>(int)$_POST['idCategoriaEditar'], 
                     'fecha_docEditar'=>$_POST['fecha_docEditar'],
                     'year'=>$year, 
                     'mes'=>$mes, 
-                    'url_docEditar'=>$url
+                    'url_docEditar'=>$url, 
+                    'idDoc'=>(int)$_GET['idDoc']
                     );
                 var_dump($datos);
                 $respuesta = DocModel::actualizarDocConCatConDocModel($datos, 'documentos');
                 if ($respuesta == 'success') {
                     header('Location:listarArchivosSubidosGeneral');
                 }
+                var_dump($respuesta);
                 echo 'actualizar datos cambiando el documento';
             }
         }
