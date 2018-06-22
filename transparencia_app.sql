@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2018 a las 19:27:48
+-- Tiempo de generación: 22-06-2018 a las 02:12:16
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -172,6 +172,14 @@ CREATE TABLE `documentos` (
   `fecha_actualizado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `documentos`
+--
+
+INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`) VALUES
+(2, 48, 1, 2, 18, '2018-07-11', '2018-06-03', 2018, 'junio', 'views/docs/mh-fwc-match-schedule_en.pdf', '1-1-2018', 2, '', '2018-06-22 00:09:28'),
+(3, 48, 1, 1, 2, '2018-07-12', '2018-06-21', 2018, 'junio', 'views/docs/Acuerdo 286-2015.pdf', '1-2-2018', 1, '', '2018-06-20 23:01:15');
+
 -- --------------------------------------------------------
 
 --
@@ -217,8 +225,8 @@ INSERT INTO `numerales` (`id`, `descripcion`, `status`, `aviso`) VALUES
 (12, 'Viajes costos y viáticos', 0, ''),
 (13, 'Inventarios de bienes', 0, ''),
 (14, 'Mantenimiento de equipos', 0, ''),
-(15, 'Programas de subsidios', 0, ''),
-(16, 'Contratos licencias y concesiones', 0, ''),
+(15, 'Programas de Subsidios', 0, ''),
+(16, 'Contratos licencias y concesiones', 6, 'regla 1'),
 (17, 'Empresas precalificadas para ejecución de obras públicas', 0, ''),
 (18, 'Listado de obras con fondos públicos', 0, ''),
 (19, 'Contratos de arrendamientos de inmuebles', 0, ''),
@@ -259,7 +267,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `email`, `foto`, `rol`, `intentos`, `pregunta_seguridad`, `respuesta_seguridad`, `id_departamento`) VALUES
-(48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$TEdQe7HI5NzIq5pJkBect.ZPpSRWl59pfGfvonT..Nu8AdP4L5H52', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendi la ...', 'referencia', 1),
+(48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$zA81j6c0LAtB3RQAYqk60.R8gyGNvNP1nznI1KvHCpsHY9NJMZL5e', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendi la ...', 'referencia', 1),
 (51, 'Oscar Ruben', 'Colindres Ochoa', 'ocolindres', '$2y$10$WAoJbSFrXZPbPzknSYell.lXsenkQx7U0JDvEt3aUninIXlJSSBba', 'ocolindres@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'encargadodesoftware', 1),
 (52, 'Kevin Andre', 'Carcamo Raudales', 'kcarcamo', '$2y$10$VpRcxYAizGzhC5w.ln2.EeRGJRiFSaqUFmZc1jscCpL4ZIXlsmv9m', 'kcarcamo@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'programador', 1),
 (53, 'Oscar', 'Pacheco Tzorin', 'opacheco', '$2y$10$3hXb856l9JqQ.Y8lNC7CRe7SgMDvcR1WUZPI8a3QoW/FqAn2F90.W', 'opacheco@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'dba', 1),
@@ -355,7 +363,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
