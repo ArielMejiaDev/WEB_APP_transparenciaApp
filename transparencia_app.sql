@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2018 a las 02:12:16
+-- Tiempo de generación: 23-06-2018 a las 00:48:45
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -177,7 +177,7 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`) VALUES
-(2, 48, 1, 2, 18, '2018-07-11', '2018-06-03', 2018, 'junio', 'views/docs/mh-fwc-match-schedule_en.pdf', '1-1-2018', 2, '', '2018-06-22 00:09:28'),
+(2, 48, 1, 2, 18, '2018-07-11', '2018-06-03', 2018, 'junio', 'views/docs/Ariel SALVADOR.pdf', '1-1-2018', 4, 'No tiene el formato adecuado.', '2018-06-22 22:18:57'),
 (3, 48, 1, 1, 2, '2018-07-12', '2018-06-21', 2018, 'junio', 'views/docs/Acuerdo 286-2015.pdf', '1-2-2018', 1, '', '2018-06-20 23:01:15');
 
 -- --------------------------------------------------------
@@ -267,7 +267,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `email`, `foto`, `rol`, `intentos`, `pregunta_seguridad`, `respuesta_seguridad`, `id_departamento`) VALUES
-(48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$zA81j6c0LAtB3RQAYqk60.R8gyGNvNP1nznI1KvHCpsHY9NJMZL5e', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendi la ...', 'referencia', 1),
+(48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$OcgM2LF1VgOBYjnNWqrNEemFvMFleMzREn9SORGnd/F8/FVCIuWSu', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendi la ...', 'referencia', 1),
 (51, 'Oscar Ruben', 'Colindres Ochoa', 'ocolindres', '$2y$10$WAoJbSFrXZPbPzknSYell.lXsenkQx7U0JDvEt3aUninIXlJSSBba', 'ocolindres@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'encargadodesoftware', 1),
 (52, 'Kevin Andre', 'Carcamo Raudales', 'kcarcamo', '$2y$10$VpRcxYAizGzhC5w.ln2.EeRGJRiFSaqUFmZc1jscCpL4ZIXlsmv9m', 'kcarcamo@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'programador', 1),
 (53, 'Oscar', 'Pacheco Tzorin', 'opacheco', '$2y$10$3hXb856l9JqQ.Y8lNC7CRe7SgMDvcR1WUZPI8a3QoW/FqAn2F90.W', 'opacheco@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'dba', 1),
