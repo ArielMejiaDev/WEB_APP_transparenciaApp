@@ -62,16 +62,16 @@ include_once "sidebar.php";
 			                        <p id="avisoEmailCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 			                      </div>
 			                    </div>
-								<div class="form-group">
-								  <label class="col-sm-3 control-label" for="deptoCrearUsuario">Departamento:</label>
-								  <div class="col-sm-6">
-								    <select class="form-control" id="deptoCrearUsuario" name="deptoCrearUsuario">
-								      <option value="0">Seleccione un departamento</option>
-								      <?php $crearUsuario->crearSelectDeptosController(); ?>
-								    </select>
-								    <p id="avisoDeptoCrearUsuario" class="text-danger text-muted" style="display: none"></p>
-								  </div>
-								</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label" for="deptoCrearUsuario">Departamento:</label>
+														<div class="col-sm-6">
+															<select class="form-control" id="deptoCrearUsuario" name="deptoCrearUsuario">
+																<option value="0">Seleccione un departamento</option>
+																<?php $crearUsuario->crearSelectDeptosController(); ?>
+															</select>
+															<p id="avisoDeptoCrearUsuario" class="text-danger text-muted" style="display: none"></p>
+														</div>
+													</div>
 			                    <div class="form-group">
 			                      <label class="col-sm-3 control-label" for="urlFotoCrearUsuario">Url Foto</label>
 			                      <div class="col-sm-6">
@@ -82,18 +82,18 @@ include_once "sidebar.php";
 			                    <div class="form-group">
 		                          <label class="col-sm-3 control-label">Rol</label>
 		                          <div class="col-sm-6">
-									<label class="radio-inline">
-										<input type="radio" class="radioButton" id="redactor" name="rolCrearUsuario" value="redactor">Redactor
-									</label>
-									<label class="radio-inline">
-										<input type="radio" class="radioButton" id="jefeRedaccion" name="rolCrearUsuario" value="jefeRedaccion">Jefe de redacción
-									</label>
-									<label class="radio-inline">
-										<input type="radio" class="radioButton" id="editor" name="rolCrearUsuario" value="editor">Editor
-									</label>
-									<label class="radio-inline">
-										<input type="radio" class="radioButton" id="admin" name="rolCrearUsuario" value="admin">Admin
-									</label>
+													<label class="radio-inline">
+														<input type="radio" class="radioButton" id="redactor" name="rolCrearUsuario" value="redactor">Redactor
+													</label>
+													<label class="radio-inline">
+														<input type="radio" class="radioButton" id="jefeRedaccion" name="rolCrearUsuario" value="jefeRedaccion">Jefe de redacción
+													</label>
+													<label class="radio-inline">
+														<input type="radio" class="radioButton" id="editor" name="rolCrearUsuario" value="editor">Editor
+													</label>
+													<label class="radio-inline">
+														<input type="radio" class="radioButton" id="admin" name="rolCrearUsuario" value="admin">Admin
+													</label>
 		                          </div>
 		                          <p id="avisoRolCrearUsuario" class="text-danger text-muted" style="display: none"></p>
 		                        </div>

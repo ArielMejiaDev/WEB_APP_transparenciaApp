@@ -53,9 +53,8 @@
                             <?php  
                                 if ($datos['rol']!='redactor') {
                                 ?>
-                            <li><a href="#"><i class="icon mdi mdi-check-all"></i> Validar archivos</a>
-                            </li>
-                            <li><a href="#"><i class="icon mdi mdi-long-arrow-up"></i> Publicar archivos</a>
+                            <li>
+                                <a href="activarArchivos"><i class="icon mdi mdi-check-all"></i> Activar extemporaneos</a>
                             </li>
                             <?php 
                                 }

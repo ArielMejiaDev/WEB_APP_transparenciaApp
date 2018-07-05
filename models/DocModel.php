@@ -113,6 +113,48 @@ class DocModel{
 
     }
 
+    //ACTIVAR DOCUMENTOS
+    public function activarDocModel($datos, $tabla)
+    {
+        $sql = "UPDATE $tabla SET id_usuario=:idUsuario,id_departamento=:idDepto,";
+        $sql .= "status=1,observaciones=:observaciones WHERE id=:idDoc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':idDoc',$datos['idDoc'],PDO::PARAM_INT);
+        $stmt->bindParam(':idDepto',$datos['idDepto'],PDO::PARAM_INT);
+        $stmt->bindParam(':idUsuario',$datos['idUsuario'],PDO::PARAM_INT);
+        $stmt->bindParam(':observaciones',$datos['observaciones'],PDO::PARAM_STR);
+        if ($stmt->execute())
+        {
+            return 'success';
+        }else{
+            return 'error';
+        }
+    }
+
+    //LISTAR ARCHIVOS EXTEMPORANEOS
+    public function listarDocumentosExtemporaneosModel()
+    {
+        $sql = "SELECT documentos.id AS idDoc, documentos.id_usuario AS idUsuario, ";
+        $sql .= "usuarios.usuario , documentos.id_departamento AS idDepto, ";
+        $sql .= "departamentos.nombres AS nombreDepto, ";
+        $sql .= "documentos.id_numeral AS idNumeral, ";
+        $sql .= "numerales.descripcion AS numeralDesc, ";
+        $sql .= "documentos.id_categoria AS idCategoria, ";
+        $sql .= "categorias.descripcion AS categoriaDesc, ";
+        $sql .= "documentos.fecha_doc, documentos.url_doc, ";
+        $sql .= "documentos.n_doc, documentos.status FROM ";
+        $sql .= "((((documentos INNER JOIN usuarios ON ";
+        $sql .= "documentos.id_usuario=usuarios.id) INNER JOIN departamentos ON ";
+        $sql .= "documentos.id_departamento = departamentos.id)";
+        $sql .= " INNER JOIN numerales ON ";
+        $sql .= "documentos.id_numeral = numerales.id) LEFT JOIN categorias ON ";
+        $sql .= "documentos.id_categoria = categorias.id) ";
+        $sql .= "WHERE documentos.status = 5";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     //aprobar documento
     public function aprobarDocModel($dato, $tabla)
     {

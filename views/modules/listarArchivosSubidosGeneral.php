@@ -45,10 +45,9 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
-if (isset($_GET['action'])) 
-{
-if ($_GET['action']=='notAprobarDocOk')
-{
+if (isset($_GET['action'])){
+	if ($_GET['action']=='notAprobarDocOk')
+	{
 		echo "
 		<script>
 			swal({
@@ -59,6 +58,38 @@ if ($_GET['action']=='notAprobarDocOk')
 			  timer: 1500
 			})
 		</script>";
+	}
+}
+if (isset($_GET['action']))
+{
+	if ($_GET['action']=='notRechazarDocOk')
+	{
+			echo "
+			<script>
+				swal({
+					position: 'top-end',
+					type: 'info',
+					title: 'Archivo Rechazado exitosamente!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+			</script>";
+	}
+}
+if (isset($_GET['action']))
+{
+	if ($_GET['action']=='notActivarDocOk')
+	{
+			echo "
+			<script>
+				swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Archivo Activado exitosamente!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+			</script>";
 	}
 }
 $listarArchivosSubidosGeneral = new DocController();
@@ -142,7 +173,7 @@ $listarArchivosSubidosGeneral->aprobarDocController();
 		swal({
 		  title: 'Deseas publicar el documento '+documento,
 		  text: "Este paso no se puede revertir!",
-		  type: 'warning',
+		  type: 'question',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
 		  cancelButtonColor: '#d33',
@@ -167,7 +198,7 @@ $listarArchivosSubidosGeneral->aprobarDocController();
 		swal({
 		  title: 'Deseas eliminar el aviso del Numeral '+categoria,
 		  text: "Este paso no se puede revertir!",
-		  type: 'warning',
+		  type: 'question',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
 		  cancelButtonColor: '#d33',
@@ -205,7 +236,7 @@ $listarArchivosSubidosGeneral->aprobarDocController();
 		swal({
 		  title: 'Deseas aprobar el documento '+documento,
 		  text: "Este paso no se puede revertir!",
-		  type: 'warning',
+		  type: 'question',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
 		  cancelButtonColor: '#d33',

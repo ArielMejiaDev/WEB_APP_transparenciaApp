@@ -29,7 +29,9 @@ class EnlacesModel extends Conexion{
 			$enlace == "listarArchivosRedactores"||
 			$enlace == "editarDoc"||
 			$enlace == "listarArchivosSubidosGeneral"||
-			$enlace == "rechazarDoc") {
+			$enlace == "rechazarDoc"||
+			$enlace == "activarArchivos"||
+			$enlace == "activarDoc") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
 			$url = 'views/modules/ingreso.php';
@@ -74,6 +76,10 @@ class EnlacesModel extends Conexion{
 		}else if($enlace == "notEditarArchivoOk"){
 			$url = 'views/modules/listarArchivosSubidosGeneral.php';
 		}else if($enlace == "notAprobarDocOk"){
+			$url = 'views/modules/listarArchivosSubidosGeneral.php';
+		}else if($enlace == "notActivarDocOk"){
+			$url = 'views/modules/listarArchivosSubidosGeneral.php';
+		}else if($enlace == "notRechazarDocOk"){
 			$url = 'views/modules/listarArchivosSubidosGeneral.php';
 		}else{
 			$url = 'views/modules/ingreso.php';

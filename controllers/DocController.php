@@ -222,6 +222,59 @@ class DocController{
         }
     }
 
+    //LISTAR DOCUMENTOS EXTEMPORANEOS
+    public function listarDocumentosExtemporaneosController()
+    {
+        $respuesta = DocModel::listarDocumentosExtemporaneosModel();
+        //var_dump($respuesta);
+        foreach ($respuesta as $key => $value) {
+            $etiquetaCategorias = ($value["categoriaDesc"]!="") ? '<td>'.utf8_encode($value["categoriaDesc"]).'</td>' : '<td>No tiene</td>' ;
+            if ($value["status"]==5) {
+                $descStatus = '<td class="text-danger">Extemporaneo</td>';
+            }
+            $descCat = ($value["idCategoria"]!=0) ? '<td>'.$value["idCategoria"].'</td>' : '<td class="text-warning">No tiene</td>' ;
+            echo   '<tr class="odd gradeX">
+                        <td>'.utf8_encode($value["numeralDesc"]).'</td>
+                        '.$etiquetaCategorias.'
+                        <td>'.substr($value["url_doc"], 11).'</td>
+                        <td>'.$value["n_doc"].'</td>
+                        '.$descStatus.'
+                        <td>'.date("d-m-Y", strtotime($value["fecha_doc"])).'</td>
+                        <td>'.$value["nombreDepto"].'</td>
+                        <td>'.$value["usuario"].'</td>
+                        <td>
+                            <a 
+                                target="_blank" href="'.$value["url_doc"].'" 
+                                class="btn btn-primary">
+                                Ver en linea
+							</a>
+                        </td>
+                        <td>
+                            <a 
+                                href="index.php?action=activarDoc&idDoc='.$value['idDoc'].'" 
+                                class="btn btn-warning">
+                                Activar
+							</a>
+                        </td>
+					</tr>';
+        }
+    }
+
+    //activar Doc
+    public function activarDocController($idUsuario, $idDeptoUsuario)
+    {
+        if (isset($_GET['idDoc']) && !empty($_GET['idDoc']) && isset($_POST['observaciones']) && !empty($_POST['observaciones'])) 
+        {
+            $datos = array('idDoc'=>$_GET['idDoc'], 'idDepto'=>$idDeptoUsuario, 'idUsuario'=>$idUsuario, 'observaciones'=>$_POST['observaciones']);
+            var_dump($datos);
+            $respuesta = DocModel::activarDocModel($datos, 'documentos');
+            if ($respuesta=='success') 
+            {
+                header('Location:notActivarDocOk');
+            }
+        }
+    }
+
     //aprobar documento
     public function aprobarDocController()
     {
@@ -407,7 +460,7 @@ class DocController{
                     $datos = array('idDoc'=>$_GET['idDoc'], 'justificacion'=>$_POST['justificacion']);
                     $respuesta = DocModel::rechazarDocModel($datos, 'documentos');
                     if ($respuesta == 'success') {
-                        header('Location:listarArchivosSubidosGeneral');
+                        header('Location:notRechazarDocOk');
                     }
                 }
                 
