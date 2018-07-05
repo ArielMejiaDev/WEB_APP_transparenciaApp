@@ -265,12 +265,24 @@ class DocController{
     {
         if (isset($_GET['idDoc']) && !empty($_GET['idDoc']) && isset($_POST['observaciones']) && !empty($_POST['observaciones'])) 
         {
-            $datos = array('idDoc'=>$_GET['idDoc'], 'idDepto'=>$idDeptoUsuario, 'idUsuario'=>$idUsuario, 'observaciones'=>$_POST['observaciones']);
-            var_dump($datos);
-            $respuesta = DocModel::activarDocModel($datos, 'documentos');
-            if ($respuesta=='success') 
+            if (preg_match('/[^a-zA-Z\d]/',$_POST['observaciones']) && 
+                preg_match($this->expRegNum,$_GET['idDoc']))
             {
-                header('Location:notActivarDocOk');
+                $datos = array('idDoc'=>$_GET['idDoc'], 'idDepto'=>$idDeptoUsuario, 'idUsuario'=>$idUsuario, 'observaciones'=>utf8_decode($_POST['observaciones']));
+                var_dump($datos);
+                $respuesta = DocModel::activarDocModel($datos, 'documentos');
+                if ($respuesta=='success') 
+                {
+                    header('Location:notActivarDocOk');
+                }
+            }else{
+                echo "	<script>
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'No esta permitido el uso de caracteres especiales',
+                            })
+                        </script>";
             }
         }
     }

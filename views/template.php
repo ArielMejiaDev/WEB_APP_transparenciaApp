@@ -106,6 +106,7 @@
     <script src="views/js/validarCategoria.js"></script>
     <script src="views/js/validarDoc.js"></script>
     <script src="views/js/validarDocEditar.js"></script>
+    <script src="views/js/validarActivarDoc.js"></script>
     <!-- FIN DE MODULOS PERSONALIZADOS -->
   </body>
 </html>
