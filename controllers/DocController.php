@@ -197,19 +197,40 @@ class DocController{
                             <button 
                                 href="'.$value['idDoc'].'" 
                                 documento="'.substr($value["url_doc"], 11).'" 
+                                id="aprobar'.$value['idDoc'].'" 
+                                class="btn btn-color btn-twitter">
+                                Aprobar
+							</button>
+                        </td>
+                        <td>
+                            <button 
+                                href="'.$value['idDoc'].'" 
+                                documento="'.substr($value["url_doc"], 11).'" 
                                 id="eliminar'.$value['idDoc'].'" 
                                 class="btn btn-success">
                                 Publicar
 							</button>
                         </td>
                         <td>
-                        <a 
-                            href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
-                            class="btn btn-danger">
-                            Rechazar
-                        </a>
+                            <a 
+                                href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
+                                class="btn btn-danger">
+                                Rechazar
+                            </a>
 						</td>
 					</tr>';
+        }
+    }
+
+    //aprobar documento
+    public function aprobarDocController()
+    {
+        if (isset($_GET['aprobar']) && !empty($_GET['aprobar']) ) {
+            $dato = $_GET['aprobar'];
+            $respuesta = DocModel::aprobarDocModel($dato, 'documentos');
+            if ($respuesta=='success') {
+                header('Location:notAprobarDocOk');
+            }
         }
     }
 

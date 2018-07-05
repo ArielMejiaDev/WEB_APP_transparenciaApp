@@ -113,6 +113,20 @@ class DocModel{
 
     }
 
+    //aprobar documento
+    public function aprobarDocModel($dato, $tabla)
+    {
+        $sql = "UPDATE $tabla SET status = 2 WHERE id = :id";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id',$dato,PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return 'success';
+        }else{
+            return 'error';
+        }
+    }
+
+    //publicar documento
     public function publicarDocModel($dato,$tabla){
         $sql = "UPDATE $tabla SET status = 3 WHERE id = :id";
         $stmt = Conexion::conectar()->prepare($sql);

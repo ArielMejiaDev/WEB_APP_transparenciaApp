@@ -45,8 +45,25 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
+if (isset($_GET['action'])) 
+{
+if ($_GET['action']=='notAprobarDocOk')
+{
+		echo "
+		<script>
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Archivo Aprobado exitosamente!',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
+		</script>";
+	}
+}
 $listarArchivosSubidosGeneral = new DocController();
 $listarArchivosSubidosGeneral->publicarDocController();
+$listarArchivosSubidosGeneral->aprobarDocController();
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>
@@ -82,6 +99,7 @@ $listarArchivosSubidosGeneral->publicarDocController();
 															<th>Usuario</th>
 															<th>Ver en Linea</th>
 															<th>Editar</th>
+															<th>Aprobar</th>
 															<th>Publicar</th>
 															<th>Rechazar</th>	
 												</tr>
@@ -171,4 +189,40 @@ $listarArchivosSubidosGeneral->publicarDocController();
 	}
 	var hora = new Date();
 	document.title="Archivos Subidos";
+</script>
+<script>
+	var botonesAprobar = document.getElementsByClassName('btn btn-color btn-twitter');
+	for (let i = 0; i < botonesAprobar.length; i++) {
+		botonesAprobar[i].addEventListener('click',capturarEventoAprobar,false);
+	}
+	function capturarEventoAprobar(e){
+		e.preventDefault();
+		var id = e.target.getAttribute('href');
+		var documento = e.target.getAttribute('documento');
+		mostrarMensajeAprobacion(id, documento);
+	}
+	function mostrarMensajeAprobacion(id, documento){
+		swal({
+		  title: 'Deseas aprobar el documento '+documento,
+		  text: "Este paso no se puede revertir!",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Si, eliminar'
+		}).then((result) => {
+		  if (result.value) {
+		    window.location="index.php?action=listarArchivosSubidosGeneral&aprobar="+id;
+		  }else if (
+			    // Read more about handling dismissals
+			    result.dismiss === swal.DismissReason.cancel
+			  ) {
+			    swal(
+			      'Cancelado',
+			      'No se elimino ningun numeral',
+			      'error'
+			    )
+			  }
+		})
+	}
 </script>
