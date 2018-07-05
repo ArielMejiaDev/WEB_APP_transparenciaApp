@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2018 a las 00:48:45
+-- Tiempo de generación: 05-07-2018 a las 23:23:48
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -169,16 +169,17 @@ CREATE TABLE `documentos` (
   `n_doc` text NOT NULL,
   `status` int(11) NOT NULL,
   `justificacion` text NOT NULL,
-  `fecha_actualizado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `fecha_actualizado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `observaciones` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `documentos`
 --
 
-INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`) VALUES
-(2, 48, 1, 2, 18, '2018-07-11', '2018-06-03', 2018, 'junio', 'views/docs/Ariel SALVADOR.pdf', '1-1-2018', 4, 'No tiene el formato adecuado.', '2018-06-22 22:18:57'),
-(3, 48, 1, 1, 2, '2018-07-12', '2018-06-21', 2018, 'junio', 'views/docs/Acuerdo 286-2015.pdf', '1-2-2018', 1, '', '2018-06-20 23:01:15');
+INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
+(2, 48, 1, 2, 18, '2018-07-11', '2018-06-03', 2018, 'junio', 'views/docs/Ariel SALVADOR.pdf', '1-1-2018', 1, 'mal', '2018-07-05 21:21:08', 'Orden 0000123'),
+(3, 48, 1, 1, 2, '2018-07-12', '2018-06-21', 2018, 'junio', 'views/docs/Acuerdo 286-2015.pdf', '1-2-2018', 1, '', '2018-07-05 20:59:48', 'ojooo');
 
 -- --------------------------------------------------------
 
