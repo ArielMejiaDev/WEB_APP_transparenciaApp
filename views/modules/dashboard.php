@@ -27,7 +27,7 @@ $dashboard = new DashboardController();
           <div id="spark2" class="chart sparkline"></div>
           <div class="data-info">
             <div class="desc">Docs publicados</div>
-            <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="80" data-suffix="%" class="number">0</span>
+            <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="<?php $dashboard->contarDocsPublicadosController(); ?>" class="number">0</span>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@ $dashboard = new DashboardController();
           <div id="spark3" class="chart sparkline"></div>
           <div class="data-info">
             <div class="desc">Doc aprobados</div>
-            <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="30" class="number">0</span>
+            <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="<?php $dashboard->contarDocsAprobadosController(); ?>" class="number">0</span>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@ $dashboard = new DashboardController();
           <div id="spark4" class="chart sparkline"></div>
           <div class="data-info">
             <div class="desc">Docs Reprobados</div>
-            <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-down"></span><span data-toggle="counter" data-end="10" class="number">0</span>
+            <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-down"></span><span data-toggle="counter" data-end="<?php $dashboard->contarDocsRechazadosController(); ?>" class="number">0</span>
             </div>
           </div>
         </div>
