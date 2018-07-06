@@ -141,10 +141,12 @@ $listarArchivosSubidosGeneral->aprobarDocController();
 												<th>Ver en Linea</th>
 												<?php $editar = ($rol=='editor') ? '' : '<th>Editar</th>' ; ?>
 												<?php echo $editar;?>
-												<?php $aprobar = ($rol=='editor') ? '' : '<th>Aprobar</th>' ; ?>
+												<?php $aprobar = ($rol=='editor' || $rol=='redactor') ? '' : '<th>Aprobar</th>' ; ?>
 												<?php echo $aprobar;?>
-												<th>Publicar</th>
-												<th>Rechazar</th>	
+												<?php $publicar = ($rol=='jefeRedaccion' || $rol=='redactor') ? '' : '<th>Publicar</th>' ; ?>
+												<?php echo $publicar;?>
+												<?php $rechazar = ($rol=='redactor') ? '' : '<th>Rechazar</th>' ; ?>
+												<?php echo $rechazar;?>
 											</tr>
 										</thead>
 			            	<tbody>

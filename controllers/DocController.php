@@ -176,8 +176,8 @@ class DocController{
                 class="btn btn-warning">
                 Editar
             </a>
-        </td>>' ;
-            $activar = ($rol=='editor') ? '' : '<td>
+        </td>' ;
+            $aprobar = ($rol=='editor' || $rol=='redactor') ? '' : '<td>
             <button 
                 href="'.$value['idDoc'].'" 
                 documento="'.substr($value["url_doc"], 11).'" 
@@ -186,6 +186,22 @@ class DocController{
                 Aprobar
             </button>
         </td>' ;
+        $publicar = ($rol=='jefeRedaccion' || $rol=='redactor') ? '' : '<td>
+        <button 
+            href="'.$value['idDoc'].'" 
+            documento="'.substr($value["url_doc"], 11).'" 
+            id="eliminar'.$value['idDoc'].'" 
+            class="btn btn-success">
+            Publicar
+        </button>
+    </td>' ;
+        $rechazar = ($rol=='redactor') ? '' : '<td>
+        <a 
+            href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
+            class="btn btn-danger">
+            Rechazar
+        </a>
+    </td>' ;
             echo   '<tr class="odd gradeX">
                         <td>'.utf8_encode($value["numeralDesc"]).'</td>
                         '.$etiquetaCategorias.'
@@ -203,23 +219,9 @@ class DocController{
 							</a>
                         </td>
                         '.$editar.'
-                        '.$activar.'
-                        <td>
-                            <button 
-                                href="'.$value['idDoc'].'" 
-                                documento="'.substr($value["url_doc"], 11).'" 
-                                id="eliminar'.$value['idDoc'].'" 
-                                class="btn btn-success">
-                                Publicar
-							</button>
-                        </td>
-                        <td>
-                            <a 
-                                href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
-                                class="btn btn-danger">
-                                Rechazar
-                            </a>
-						</td>
+                        '.$aprobar.'
+                        '.$publicar.'
+                        '.$rechazar.'
 					</tr>';
         }
     }
