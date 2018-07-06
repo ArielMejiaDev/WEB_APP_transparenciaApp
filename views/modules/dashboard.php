@@ -155,30 +155,7 @@ $dashboard = new DashboardController();
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="user-avatar"> <img src="views/images/avatar6.png" alt="Avatar">Erick Contreras</td>
-                  <td>Subio un documento</td>
-                  <td>Jun 16, 2018</td>
-                  <td class="actions"><a href="#" class="icon"><i class="mdi mdi-assignment-account"></i></a></td>
-                </tr>
-                <tr>
-                  <td class="user-avatar"> <img src="views/images/user.png" alt="Avatar">Admin</td>
-                  <td>Creo un nuevo usuario</td>
-                  <td>Jun 17, 2018</td>
-                  <td class="actions"><a href="#" class="icon"><i class="mdi mdi-assignment-account"></i></a></td>
-                </tr>
-                <tr>
-                  <td class="user-avatar"> <img src="views/images/avatar5.png" alt="Avatar">Jefe de RRHH</td>
-                  <td>Aprobo un documento</td>
-                  <td>Jun 15, 2018</td>
-                  <td class="actions"><a href="#" class="icon"><i class="mdi mdi-assignment-account"></i></a></td>
-                </tr>
-                <tr>
-                  <td class="user-avatar"> <img src="views/images/avatar5.png" alt="Avatar">Sub jefe de RRHH</td>
-                  <td>Rechazo un documento</td>
-                  <td>Jun 16, 2018</td>
-                  <td class="actions"><a href="#" class="icon"><i class="mdi mdi-assignment-account"></i></a></td>
-                </tr>
+                <?php $dashboard->listarVitacoraController();?>
               </tbody>
             </table>
           </div>

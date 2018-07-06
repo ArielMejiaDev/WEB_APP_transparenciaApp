@@ -57,4 +57,17 @@ class DashboardController{
 		$respuesta = DashboardModel::totalDocsServidorModel('documentos');
 		return $respuesta['total'];
 	}
+	//IMPRIME LA TABLA DE VITACORA
+	public function listarVitacoraController()
+	{
+		$respuesta = DashboardModel::listarVitacoraModel('usuarios', 'vitacora');
+		foreach ($respuesta as $key => $value) {
+			echo '<tr>
+				<td class="user-avatar"> <img src="'.$value['foto'].'" alt="Avatar"><small style="font-size:9px">'.$value['nombres'].' '.$value['apellidos'].'</small></td>
+				<td>'.$value['desc_actividad'].'</td>
+				<td>'.$value['hora'].'</td>
+				<td class="actions"><a href="#" class="icon"><i class="mdi mdi-assignment-account"></i></a></td>
+			</tr>';
+		}
+	}
 }
