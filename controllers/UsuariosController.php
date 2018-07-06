@@ -1,7 +1,8 @@
 <?php
 class UsuariosController{
 	// INSERTARA UN USUARIO EN LA BASE DE DATOS
-	public function CrearUsuarioController(){
+	public function CrearUsuarioController()
+	{
 		if (isset($_POST['nombresCrearUsuario'])) {
 			//empezamos a validar
 			//que no vayan vacios y que no sean expresiones regulares
@@ -59,7 +60,7 @@ class UsuariosController{
 
 									if ($_POST['deptoCrearUsuario']!=0) {
 										if (empty($_POST['urlFotoCrearUsuario'])) {
-											$_POST['urlFotoCrearUsuario'] = "views/images/avatar.png";
+											$_POST['urlFotoCrearUsuario'] = "views/images/user.png";
 										}
 
 										if (empty($_POST['rolCrearUsuario'])) {
@@ -214,7 +215,8 @@ class UsuariosController{
 		}
 	}
 
-	public function crearFormEditarUsuarioController(){
+	public function crearFormEditarUsuarioController()
+	{
 		if (isset($_GET['id'])) {
 				$dato = $_GET['id']; 
 				$respuesta = UsuariosModel::crearFormEditarUsuarioModel($dato,"usuarios","departamentos");			
@@ -329,7 +331,8 @@ class UsuariosController{
 		}
 	}
 
-	public function actualizarUsuarioController(){
+	public function actualizarUsuarioController()
+	{
 		if (isset($_POST['nombresEditarUsuario'])) {
 			//empezamos a validar
 			//que no vayan vacios y que no sean expresiones regulares
@@ -389,7 +392,7 @@ class UsuariosController{
 								if (preg_match($expRegEmail, $_POST['emailEditarUsuario'])) {
 
 									if (empty($_POST['urlFotoEditarUsuario'])) {
-										$_POST['urlFotoEditarUsuario'] = "views/images/avatar.png";
+										$_POST['urlFotoEditarUsuario'] = "views/images/user.png";
 									}
 
 									if (empty($_POST['rolEditarUsuario'])) {
