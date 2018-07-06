@@ -153,7 +153,7 @@ class DocController{
     }
 
     //LISTAR ARCHIVOS SUBIDOS GENERALES PARA ROL DE ADMIN O JEFE DE REDACCION
-    public function listarDocumentosSubidosGeneralController(){
+    public function listarDocumentosSubidosGeneralController($rol){
         $respuesta = DocModel::listarDocumentosSubidosGeneralModel();
         //var_dump($respuesta);
         foreach ($respuesta as $key => $value) {
@@ -170,6 +170,22 @@ class DocController{
                 $descStatus = '<td class="text-danger">Extemporaneo</td>';
             }
             $descCat = ($value["idCategoria"]!=0) ? '<td>'.$value["idCategoria"].'</td>' : '<td class="text-warning">No tiene</td>' ;
+            $editar = ($rol=='editor') ? '' : '<td>
+            <a 
+                href="index.php?action=editarDoc&idDoc='.$value['idDoc'].'" 
+                class="btn btn-warning">
+                Editar
+            </a>
+        </td>>' ;
+            $activar = ($rol=='editor') ? '' : '<td>
+            <button 
+                href="'.$value['idDoc'].'" 
+                documento="'.substr($value["url_doc"], 11).'" 
+                id="aprobar'.$value['idDoc'].'" 
+                class="btn btn-color btn-twitter">
+                Aprobar
+            </button>
+        </td>' ;
             echo   '<tr class="odd gradeX">
                         <td>'.utf8_encode($value["numeralDesc"]).'</td>
                         '.$etiquetaCategorias.'
@@ -186,22 +202,8 @@ class DocController{
                                 Ver en linea
 							</a>
                         </td>
-                        <td>
-                            <a 
-                                href="index.php?action=editarDoc&idDoc='.$value['idDoc'].'" 
-                                class="btn btn-warning">
-                                Editar
-							</a>
-                        </td>
-                        <td>
-                            <button 
-                                href="'.$value['idDoc'].'" 
-                                documento="'.substr($value["url_doc"], 11).'" 
-                                id="aprobar'.$value['idDoc'].'" 
-                                class="btn btn-color btn-twitter">
-                                Aprobar
-							</button>
-                        </td>
+                        '.$editar.'
+                        '.$activar.'
                         <td>
                             <button 
                                 href="'.$value['idDoc'].'" 

@@ -1,9 +1,11 @@
 <?php  
 session_start();
-if (!$_SESSION['verificar']) {
+if (!$_SESSION['verificar']) 
+{
   header('Location:index.php');
 }
-if (isset($_GET['action'])) {
+if (isset($_GET['action'])) 
+{
 	if ($_GET['action']=='notSubirArchivoOk') {
 		echo "
 		<script>
@@ -17,8 +19,10 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
-if (isset($_GET['action'])) {
-	if ($_GET['action']=='notPublicarDocOk') {
+if (isset($_GET['action'])) 
+{
+	if ($_GET['action']=='notPublicarDocOk') 
+	{
 		echo "
 		<script>
 			swal({
@@ -31,8 +35,10 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
-if (isset($_GET['action'])) {
-	if ($_GET['action']=='notEditarArchivoOk') {
+if (isset($_GET['action'])) 
+{
+	if ($_GET['action']=='notEditarArchivoOk') 
+	{
 		echo "
 		<script>
 			swal({
@@ -45,7 +51,8 @@ if (isset($_GET['action'])) {
 		</script>";
 	}
 }
-if (isset($_GET['action'])){
+if (isset($_GET['action']))
+{
 	if ($_GET['action']=='notAprobarDocOk')
 	{
 		echo "
@@ -92,6 +99,9 @@ if (isset($_GET['action']))
 			</script>";
 	}
 }
+$datosUsuario = new DatosUsuarioController();
+$datos = $datosUsuario->getDatosUsuarioController();
+$rol = $datos['rol'];
 $listarArchivosSubidosGeneral = new DocController();
 $listarArchivosSubidosGeneral->publicarDocController();
 $listarArchivosSubidosGeneral->aprobarDocController();
@@ -100,7 +110,7 @@ $listarArchivosSubidosGeneral->aprobarDocController();
 <?php require_once "sidebar.php"; ?>
 <div class="be-content">
 	<div class="page-head">
-	  <h2 class="page-head-title">Archivos subidos para redactores</h2>
+	  <h2 class="page-head-title">Archivos</h2>
 	  <ol class="breadcrumb page-head-nav">
 	    <li><a href="#">Inicio</a></li>
 	    <li><a href="#">Archivos</a></li>
@@ -123,22 +133,24 @@ $listarArchivosSubidosGeneral->aprobarDocController();
 												<th>Numeral</th>
 												<th>Categoria</th>
 												<th>Documento</th>
-															<th># Documento</th>
-															<th>Status</th>
+												<th># Documento</th>
+												<th>Status</th>
 												<th>Fecha del Doc</th>
 												<th>Depto</th>
-															<th>Usuario</th>
-															<th>Ver en Linea</th>
-															<th>Editar</th>
-															<th>Aprobar</th>
-															<th>Publicar</th>
-															<th>Rechazar</th>	
-												</tr>
+												<th>Usuario</th>
+												<th>Ver en Linea</th>
+												<?php $editar = ($rol=='editor') ? '' : '<th>Editar</th>' ; ?>
+												<?php echo $editar;?>
+												<?php $aprobar = ($rol=='editor') ? '' : '<th>Aprobar</th>' ; ?>
+												<?php echo $aprobar;?>
+												<th>Publicar</th>
+												<th>Rechazar</th>	
+											</tr>
 										</thead>
 			            	<tbody>
 											<div id="botones">
 											<?php  
-												$listarArchivosSubidosGeneral->listarDocumentosSubidosGeneralController();
+												$listarArchivosSubidosGeneral->listarDocumentosSubidosGeneralController($rol);
 											?>
 											</div>
 										</tbody>
