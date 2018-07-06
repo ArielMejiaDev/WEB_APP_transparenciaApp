@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-07-2018 a las 23:23:48
+-- Tiempo de generación: 07-07-2018 a las 00:37:02
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,8 +178,18 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
-(2, 48, 1, 2, 18, '2018-07-11', '2018-06-03', 2018, 'junio', 'views/docs/Ariel SALVADOR.pdf', '1-1-2018', 1, 'mal', '2018-07-05 21:21:08', 'Orden 0000123'),
-(3, 48, 1, 1, 2, '2018-07-12', '2018-06-21', 2018, 'junio', 'views/docs/Acuerdo 286-2015.pdf', '1-2-2018', 1, '', '2018-07-05 20:59:48', 'ojooo');
+(2, 48, 1, 2, 18, '2018-07-11', '2018-06-03', 2018, 'junio', 'views/docs/Ariel SALVADOR.pdf', '1-1-2018', 3, 'mal', '2018-07-06 16:28:18', 'Oficio 1231230203'),
+(3, 48, 1, 1, 2, '2018-07-12', '2018-06-21', 2018, 'junio', 'views/docs/Acuerdo 286-2015.pdf', '1-2-2018', 4, 'No esta bien formateado', '2018-07-06 16:38:56', 'ojooo'),
+(4, 48, 1, 2, 18, '2018-07-27', '2018-07-06', 2018, 'julio', 'views/docs/personal_may18.pdf', '2-2-2018', 2, '', '2018-07-06 16:42:48', ''),
+(5, 55, 1, 5, 22, '2018-07-27', '2018-07-06', 2018, 'julio', 'views/docs/Compendio-PolÃ­ticas-Institucionales.pdf', '5-1-2018', 1, '', '2018-07-06 20:20:14', ''),
+(6, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-1-2018', 3, '', '2018-07-06 21:37:59', ''),
+(7, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-2-2018', 1, '', '2018-07-06 21:13:24', ''),
+(8, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-3-2018', 1, '', '2018-07-06 21:14:40', ''),
+(9, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-4-2018', 1, '', '2018-07-06 21:15:00', ''),
+(10, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-5-2018', 1, '', '2018-07-06 21:15:25', ''),
+(11, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-6-2018', 1, '', '2018-07-06 21:16:45', ''),
+(12, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-7-2018', 1, '', '2018-07-06 21:17:25', ''),
+(13, 48, 1, 1, 4, '2018-07-27', '2018-07-06', 2018, 'julio', 'views/docs/manual_normas_y_procedimientos_marzo18.pdf', '6-1-2018', 1, '', '2018-07-06 21:43:59', 'Oficio : 002315616');
 
 -- --------------------------------------------------------
 
@@ -274,7 +284,7 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `em
 (53, 'Oscar', 'Pacheco Tzorin', 'opacheco', '$2y$10$3hXb856l9JqQ.Y8lNC7CRe7SgMDvcR1WUZPI8a3QoW/FqAn2F90.W', 'opacheco@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'dba', 1),
 (55, 'Cesar', 'Vargas', 'cvargas', '$2y$10$1I2qx5sKWoHHOU3fkCbIE.HwJ4oZi.QhsDZLPPC7R9RF2T41YoQgG', 'cvargas@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'puesto', 'programador', 1),
 (63, 'Marlon Baldemar', 'Martínez Zuñiga', 'mmartinez', '$2y$10$0vrC8JmjS1Wbuy7Qya5jM.3YshP2ybJfatTlkhPbWP0A5VuO4AKV2', 'mmartinez@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'Puesto', 'Programador', 1),
-(64, 'Edgar', 'Urizar', 'eurizar', '$2y$10$G61P2fCXwxwm3/oAOmkx5eEV4UdqQzSTBAJHvr1FbPcTfMaoOFRTa', 'eurizar@ipm.org.gt', 'views/images/avatar.png', 'redactor', 0, 'Puesto', 'Jefe de Recursos Humanos', 14),
+(64, 'Edgar', 'Urizar', 'eurizar', '$2y$10$IQIlpE9b/XPunI6qeApgounspNn.dHiHOkVRkM3XVkP45IjdafGxq', 'eurizar@ipm.org.gt', 'views/images/avatar.png', 'editor', 0, 'Puesto', 'Jefe de Recursos Humanos', 14),
 (65, 'Nelson', 'Boche', 'nboche', '$2y$10$MSuL/9Tj50UK/kALpdEt2eliLjw94HdVWGZ2.O3uasgbH5jpxtmZO', 'nboche@ipm.org.gt', 'views/images/avatar.png', 'jefeRedaccion', 0, 'Puesto', 'Sub jefe de Informatica', 1);
 
 -- --------------------------------------------------------
@@ -290,6 +300,19 @@ CREATE TABLE `vitacora` (
   `fecha` date NOT NULL,
   `hora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `vitacora`
+--
+
+INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) VALUES
+(1, 48, 'Subio un nuevo documento', '2018-07-06', '2018-07-06 21:01:47'),
+(2, 48, 'Subio un nuevo documento', '2018-07-06', '2018-07-06 21:17:25'),
+(3, 55, 'Subio un nuevo documento', '2018-07-06', '2018-07-06 21:26:33'),
+(4, 48, 'Edito un documento', '2018-07-06', '2018-07-06 21:30:13'),
+(5, 48, 'Se aprobo un documento', '2018-07-06', '2018-07-06 21:36:21'),
+(6, 48, 'Se publico un documento', '2018-07-06', '2018-07-06 21:37:59'),
+(7, 48, 'Se activo un documento', '2018-07-06', '2018-07-06 21:43:59');
 
 --
 -- Índices para tablas volcadas
@@ -364,7 +387,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
@@ -388,7 +411,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
