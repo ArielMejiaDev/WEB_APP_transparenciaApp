@@ -130,41 +130,9 @@ $dashboard = new DashboardController();
                 </tr>
               </thead>
               <tbody class="no-border-x">
-                <tr>
-                  <td>Stuardo Perez</td>
-                  <td class="number">054978</td>
-                  <td>Jun 13, 2018</td>
-                  <td class="text-success">Aprobado</td>
-                  <td class="actions"><a href="#" class="icon"><i class="mdi mdi-plus-circle-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Cesar Mathus</td>
-                  <td class="number">067178</td>
-                  <td>Jun 11, 2018</td>
-                  <td class="text-success">Aprobado</td>
-                  <td class="actions"><a href="#" class="icon"><i class="mdi mdi-plus-circle-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>David de la Cruz</td>
-                  <td class="number">6975321</td>
-                  <td>Jun 15, 2018</td>
-                  <td class="text-warning">Pendiente de aprobación</td>
-                  <td class="actions"><a href="#" class="icon"><i class="mdi mdi-plus-circle-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Karen Celada</td>
-                  <td class="number">45693217</td>
-                  <td>Jun 14, 2018</td>
-                  <td class="text-warning">Pendiente de aprobación</td>
-                  <td class="actions"><a href="#" class="icon"><i class="mdi mdi-plus-circle-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Erick Contreras</td>
-                  <td class="number">92873164</td>
-                  <td>Jun 16, 2018</td>
-                  <td class="text-danger">Cancelado</td>
-                  <td class="actions"><a href="#" class="icon"><i class="mdi mdi-plus-circle-o"></i></a></td>
-                </tr>
+              <?php 
+                $dashboard->docsSubidosRecientesController();
+              ?>
               </tbody>
             </table>
           </div>

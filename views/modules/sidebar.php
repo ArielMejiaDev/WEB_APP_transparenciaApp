@@ -1,3 +1,6 @@
+<?php
+$dashboard = new DashboardController();
+?>
 <div class="be-left-sidebar">
     <div class="left-sidebar-wrapper"><a href="#" class="left-sidebar-toggle">Menu</a>
         <div class="left-sidebar-spacer">
@@ -67,7 +70,7 @@
         </div>
         <div class="progress-widget">
           <div class="progress-data">
-            <span class="progress-value">40</span><span class="name">Archivos Subidos</span>
+            <span class="progress-value"><?php echo $dashboard->totalDocsServidorController();?></span><span class="name">Archivos Subidos</span>
           </div>
           <div class="progress">
             <div style="width: 40%;" class="progress-bar progress-bar-primary"></div>
