@@ -102,9 +102,11 @@ if (isset($_GET['action']))
 $datosUsuario = new DatosUsuarioController();
 $datos = $datosUsuario->getDatosUsuarioController();
 $rol = $datos['rol'];
+$idUsuario = $datos['id'];
+$idDeptoUsuario = $datos['id_departamento'];
 $listarArchivosSubidosGeneral = new DocController();
-$listarArchivosSubidosGeneral->publicarDocController();
-$listarArchivosSubidosGeneral->aprobarDocController();
+$listarArchivosSubidosGeneral->publicarDocController($idUsuario);
+$listarArchivosSubidosGeneral->aprobarDocController($idUsuario);
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>

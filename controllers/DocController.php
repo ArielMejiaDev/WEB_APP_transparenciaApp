@@ -6,12 +6,14 @@ class DocController{
     public $expRegPdfFile = '/^.+\.((?:[pP][dD][fF]))$/';
     public $expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
     public $expRegTexto = '/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9,.!? ]*$/';
-    public function contarNumeralesDocsSubidosController($dato){
+    public function contarNumeralesDocsSubidosController($dato)
+    {
         $respuesta = DocModel::contarNumeralesDocsSubidosModel($dato,'documentos');
         $cuenta = $respuesta['cuenta'] + 1;
         return $cuenta;
     }
-    public function subirArchivoController($idUsuario, $idDeptoUsuario){
+    public function subirArchivoController($idUsuario, $idDeptoUsuario)
+    {
         if (isset($_POST['idNumeral']) && isset($_POST['fecha_doc']) 
             && isset($_POST['idCategoria']) && isset($_FILES['doc'])) 
         {
@@ -50,7 +52,10 @@ class DocController{
                     var_dump($datos);
                     $respuesta = DocModel::
                     subirArchivoConCategoriaModel($datos, 'documentos');
-                    if ($respuesta=='success') {
+                    if ($respuesta=='success')
+                    {
+                        $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Subio un nuevo documento');
+                        $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                         header('Location:notSubirArchivoOk');
                     }
                 }else{
@@ -75,9 +80,9 @@ class DocController{
 
         
     }
-
-    //
-    public function subirArchivoSinCategoriaController($idUsuario, $idDeptoUsuario){
+    //SE SUBEN ARCHIVOS SIN TENER SUBCATEGORIAS
+    public function subirArchivoSinCategoriaController($idUsuario, $idDeptoUsuario)
+    {
         if (isset($_POST['idNumeral2']) && isset($_POST['fecha_doc2']) && isset($_FILES['doc2']) ) {
                 if (preg_match($this->expRegNum, $_POST['idNumeral2']) &&
                     preg_match($this->expRegDate, $_POST['fecha_doc2']) &&
@@ -124,24 +129,24 @@ class DocController{
                 }
             }
     }
-
     //cargar options con id del numeral y descripcion del numeral
-    public function cargarOptionsNumeralesController(){
+    public function cargarOptionsNumeralesController()
+    {
         $respuesta = DocModel::cargarOptionsNumeralesModel('numerales');
         //var_dump($respuesta);
         foreach ($respuesta as $key => $value) {
             echo '<option value="'.$value['id'].'">'.utf8_encode($value['descripcion']).'</option>';
         }
     }
-
     //DEVOLVER SI EXISTE O NO CATEGORIAS CON EL ID_NUMERAL QUE COINCIDAN CON EL ID ENVIADO
-    public function validarDocAjaxController($dato){
+    public function validarDocAjaxController($dato)
+    {
         $respuesta = DocModel::validarDocAjaxModel($dato,'categorias');
         return $respuesta;
     }
-
     //BUSCAR SI YA EXISTE EL TITULO DEL DOCUMENTO PDF
-    public function validarDocTitleAjaxController($dato){
+    public function validarDocTitleAjaxController($dato)
+    {
         $url_doc = 'views/docs/'.$dato;
         $respuesta = DocModel::validarDocTitleAjaxModel($url_doc,'documentos');
         $cuenta = $respuesta['cuenta'];
@@ -151,9 +156,9 @@ class DocController{
             return 'no existe';
         }
     }
-
     //LISTAR ARCHIVOS SUBIDOS GENERALES PARA ROL DE ADMIN O JEFE DE REDACCION
-    public function listarDocumentosSubidosGeneralController($rol){
+    public function listarDocumentosSubidosGeneralController($rol)
+    {
         $respuesta = DocModel::listarDocumentosSubidosGeneralModel();
         //var_dump($respuesta);
         foreach ($respuesta as $key => $value) {
@@ -194,14 +199,14 @@ class DocController{
             class="btn btn-success">
             Publicar
         </button>
-    </td>' ;
-        $rechazar = ($rol=='redactor') ? '' : '<td>
-        <a 
-            href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
-            class="btn btn-danger">
-            Rechazar
-        </a>
-    </td>' ;
+        </td>' ;
+            $rechazar = ($rol=='redactor') ? '' : '<td>
+            <a 
+                href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
+                class="btn btn-danger">
+                Rechazar
+            </a>
+        </td>' ;
             echo   '<tr class="odd gradeX">
                         <td>'.utf8_encode($value["numeralDesc"]).'</td>
                         '.$etiquetaCategorias.'
@@ -225,7 +230,6 @@ class DocController{
 					</tr>';
         }
     }
-
     //LISTAR DOCUMENTOS EXTEMPORANEOS
     public function listarDocumentosExtemporaneosController()
     {
@@ -263,7 +267,6 @@ class DocController{
 					</tr>';
         }
     }
-
     //activar Doc
     public function activarDocController($idUsuario, $idDeptoUsuario)
     {
@@ -275,8 +278,10 @@ class DocController{
                 $datos = array('idDoc'=>$_GET['idDoc'], 'idDepto'=>$idDeptoUsuario, 'idUsuario'=>$idUsuario, 'observaciones'=>utf8_decode($_POST['observaciones']));
                 var_dump($datos);
                 $respuesta = DocModel::activarDocModel($datos, 'documentos');
-                if ($respuesta=='success') 
+                if ($respuesta=='success')
                 {
+                    $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Activo un documento');
+                    $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                     header('Location:notActivarDocOk');
                 }
             }else{
@@ -290,31 +295,36 @@ class DocController{
             }
         }
     }
-
     //aprobar documento
-    public function aprobarDocController()
+    public function aprobarDocController($idUsuario)
     {
-        if (isset($_GET['aprobar']) && !empty($_GET['aprobar']) ) {
+        if (isset($_GET['aprobar']) && !empty($_GET['aprobar']) )
+        {
             $dato = $_GET['aprobar'];
             $respuesta = DocModel::aprobarDocModel($dato, 'documentos');
-            if ($respuesta=='success') {
+            if ($respuesta=='success')
+            {
+                $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Aprobo un documento');
+                $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                 header('Location:notAprobarDocOk');
             }
         }
     }
-
     //cambia el status de un documento para que tenga status 3 de publicado 
-    public function publicarDocController(){
+    public function publicarDocController($idUsuario)
+    {
         if (isset($_GET['publicar']) && !empty($_GET['publicar'])) {
             $dato = $_GET['publicar'];
             $respuesta = DocModel::publicarDocModel($dato,'documentos');
             if ($respuesta=='success') {
+                $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'publico un documento');
+                $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                 header('Location:notPublicarDocOk');
             }
         }
     }
-
-    public function listaNumeralesController(){
+    public function listaNumeralesController()
+    {
         $respuesta = DocModel::listaNumeralesModel('numerales');
         $lista = '';
         foreach ($respuesta as $key => $value) {
@@ -322,9 +332,9 @@ class DocController{
         }
         return $lista;
     }
-
     //Crear formulario de edicion de documento subido al servidor
-    public function crearFormEditarDocController(){
+    public function crearFormEditarDocController()
+    {
         if (isset($_GET['idDoc']) && !empty($_GET['idDoc'])) {
             $dato = $_GET['idDoc'];
             $respuesta = DocModel::crearFormEditarDocModel($dato,'documentos');
@@ -378,7 +388,6 @@ class DocController{
             
         }
     }
-
     //RECIVE EL ID DEL DOC Y DEVUELVE LA URL DEL DOC EL PATH 
     public function getUrlDocController($idDoc){
         $respuesta = DocModel::getUrlDocModel($idDoc, 'documentos');
@@ -386,7 +395,8 @@ class DocController{
         return $url;
     }
     //actualizar documentos al editarlos evalua si va el doc o no va el doc y actualiza en base a lo que se envia
-    public function actualizarDocController($idUsuario, $idDeptoUsuario){
+    public function actualizarDocController($idUsuario, $idDeptoUsuario)
+    {
         if (
             isset($_GET['idDoc']) && 
             isset($_POST['idNumeralEditar']) && 
@@ -422,7 +432,10 @@ class DocController{
                     );
                 var_dump($datos);
                 $respuesta = DocModel::actualizarDocConCatConDocModel($datos, 'documentos');
-                if ($respuesta == 'success') {
+                if ($respuesta == 'success')
+                {
+                    $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Edito un documento');
+                    $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                     header('Location:listarArchivosSubidosGeneral');
                 }
                 var_dump($respuesta);
@@ -460,7 +473,10 @@ class DocController{
                     );
                 var_dump($datosSinDoc);
                 $respuesta = DocModel::actualizarDocConCatSinDocModel($datosSinDoc, 'documentos');
-                if ($respuesta == 'success') {
+                if ($respuesta == 'success')
+                {
+                    $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Edito un documento');
+                    $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                     header('Location:listarArchivosSubidosGeneral');
                 }
                 echo 'actualizar datos sin cambiar el documento';
@@ -482,6 +498,12 @@ class DocController{
                 
             }
         }
+    }
+    // INICIAN FUNCIONES PARA LA VITACORA
+    //al subir un documento
+    public function vitacoraSubirDocController($datos)
+    {
+        $respuesta = DocModel::vitacoraSubirDocModel('vitacora',$datos);
     }
 }
 ?>

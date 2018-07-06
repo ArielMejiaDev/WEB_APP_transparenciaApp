@@ -9,7 +9,6 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
     //CARGAR OPTIONS CON ID Y DESCRIPCION DE LOS NUMERALES
     public function cargarOptionsNumeralesModel($tabla){
         $sql = "SELECT * FROM $tabla WHERE status !=6";
@@ -17,7 +16,6 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
     //DEVOLVER SI EXISTE O NO CATEGORIAS CON EL ID_NUMERAL QUE COINCIDAN CON EL ID ENVIADO
     public function validarDocAjaxModel($dato,$tabla){
         $sql = "SELECT $tabla.id, $tabla.descripcion FROM $tabla WHERE $tabla.id_numeral=:id ";
@@ -26,7 +24,6 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
     //modelo para insertar datos del archivo subido en al tabla docs
     public function subirArchivoConCategoriaModel($datos, $tabla)
     {
@@ -53,7 +50,6 @@ class DocModel{
             return 'error';
         }
     }
-
     //modelo para insertar datos del documento subido cuando no tiene categoria
     public function subirArchivoSinCategoriaModel($datos,$tabla)
     {
@@ -78,7 +74,6 @@ class DocModel{
             return 'error';
         }
     }
-
     //REVISAR SI EL DOC PDF YA EXISTE
     public function validarDocTitleAjaxModel($url_doc,$tabla){
         $sql = "SELECT COUNT(url_doc) AS cuenta FROM documentos";
@@ -88,9 +83,9 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
     //LISTAR ARCHIVOS SUBIDOS GENERALES PARA ROLES DE ADMIN Y JEFES DE REDACCION
-    public function listarDocumentosSubidosGeneralModel(){
+    public function listarDocumentosSubidosGeneralModel()
+    {
         $sql = "SELECT documentos.id AS idDoc, documentos.id_usuario AS idUsuario, ";
         $sql .= "usuarios.usuario , documentos.id_departamento AS idDepto, ";
         $sql .= "departamentos.nombres AS nombreDepto, ";
@@ -112,7 +107,6 @@ class DocModel{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
-
     //ACTIVAR DOCUMENTOS
     public function activarDocModel($datos, $tabla)
     {
@@ -130,7 +124,6 @@ class DocModel{
             return 'error';
         }
     }
-
     //LISTAR ARCHIVOS EXTEMPORANEOS
     public function listarDocumentosExtemporaneosModel()
     {
@@ -154,7 +147,6 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
     //aprobar documento
     public function aprobarDocModel($dato, $tabla)
     {
@@ -167,7 +159,6 @@ class DocModel{
             return 'error';
         }
     }
-
     //publicar documento
     public function publicarDocModel($dato,$tabla){
         $sql = "UPDATE $tabla SET status = 3 WHERE id = :id";
@@ -179,7 +170,6 @@ class DocModel{
             return 'error';
         }
     }
-
     //CREAR FORMULARIO
     public function crearFormEditarDocModel($dato,$tabla){
         $sql = "SELECT documentos.id, documentos.id_usuario, ";
@@ -198,7 +188,6 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
     //listar numerales
     public function listaNumeralesModel($tabla){
         $sql = "SELECT id, descripcion FROM $tabla WHERE status!=6";
@@ -206,7 +195,6 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
     //ACTULIZAR DOCUMENTOS CON CATEGORIAS
     public function actualizarArchivoConCategoriaModel($datos, $tabla){
         $sql = "UPDATE $tabla SET id_usuario=:id_usuario,id_departamento=:id_departamento,id_numeral=:id_numeral,id_categoria=:id_categoria,
@@ -230,7 +218,6 @@ class DocModel{
             return 'error';
         }
     }
-
     //ACTUALIZAR DOCUMENTO SIN CAMBIAR EL DOCUMENTO SUBIDO
     public function actualizarDocSinCambiarDocModel($datosSinDoc,$tabla){
         $sql = "UPDATE $tabla SET";
@@ -257,7 +244,6 @@ class DocModel{
             return 'error';
         }
     }
-
     ///RECIVE EL ID DEL DOC Y DEVUELVE LA URL DEL DOC EL PATH 
     public function getUrlDocModel($idDoc, $tabla){
         $sql = "SELECT url_doc FROM $tabla WHERE id = :idDoc";
@@ -266,7 +252,6 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
     //
     public function actualizarDocConCatConDocModel($datos, $tabla){
         $sql = "UPDATE $tabla SET ";
@@ -322,7 +307,6 @@ class DocModel{
             return 'error';
         }
     }
-
     //RECHAZAR EL DOCUMENTO
     public function rechazarDocModel($datos, $tabla){
         $sql = "UPDATE $tabla SET status=4 , justificacion=:justificacion WHERE id = :idDoc";
@@ -334,6 +318,16 @@ class DocModel{
         }else{
             return 'error';
         }
+    }
+    //INICIAN FUNCIONES PARA LA VITACORA DE LOS DOCUMENTOS
+    public function vitacoraSubirDocModel($tabla,$datos)
+    {
+        $sql = "INSERT INTO $tabla(id_usuario, desc_actividad, fecha) VALUES (:id_usuario,:desc_actividad,CURRENT_TIMESTAMP)";
+        //$sql .= "";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id_usuario',$datos['id_usuario'],PDO::PARAM_INT);
+        $stmt->bindParam(':desc_actividad',$datos['desc_actividad'],PDO::PARAM_STR);
+        $stmt->execute();
     }
 }
 ?>
