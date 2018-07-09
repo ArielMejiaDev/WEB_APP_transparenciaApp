@@ -10,6 +10,7 @@
   include_once "controllers/DashboardController.php";
   include_once "controllers/CategoriaController.php";
   include_once "controllers/DocController.php";
+  include_once "controllers/NotificacionesController.php";
 // MODELS
   include_once "models/Conexion.php";
   include_once "models/EnlacesModel.php";
@@ -21,6 +22,7 @@
   include_once "models/DashboardModel.php";
   include_once "models/CategoriaModel.php";
   include_once "models/DocModel.php";
+  include_once "models/NotificacionesModel.php";
 
   $template = new TemplateController();
   $template->includeTemplateController();

@@ -23,7 +23,7 @@ class DocController{
                 if (preg_match($this->expRegNum, $_POST['idNumeral']) && 
                     preg_match($this->expRegNum, $_POST['idCategoria']) &&
                     preg_match($this->expRegDate, $_POST['fecha_doc']) &&
-                    preg_match($this->expRegPdfFile, $_FILES['doc']['name']) ) 
+                    preg_match($this->expRegPdfFile, $_FILES['doc']['name'])) 
                 {
                     $nuevaRuta = 'views/docs/'.$_FILES['doc']['name'];
                     $nombreTemporal = $_FILES['doc']['tmp_name'];
@@ -49,13 +49,25 @@ class DocController{
                         'url_doc'=>$urlDoc,
                         'n_doc'=>$nDoc,
                         'status'=>$status);
-                    var_dump($datos);
+                    //var_dump($datos);
                     $respuesta = DocModel::
                     subirArchivoConCategoriaModel($datos, 'documentos');
                     if ($respuesta=='success')
                     {
                         $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Subio un nuevo documento');
                         $vitacora = $this->vitacoraSubirDocController($datosVitacora);
+                        $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
+                        
+                            foreach ($buscarReceptor as $key => $value)
+                            {
+                                $receptor = $value['id'];
+                                $datosMsj = array('remitente'=>(int)$idUsuario, 
+                                            'receptor'=>$receptor, 
+                                            'contenido'=>'Subio un documento', 
+                                            'status'=>1, 
+                                            'n_doc'=>$nDoc);
+                                $msj = $this->insertarMsjController($datosMsj);
+                            }
                         header('Location:notSubirArchivoOk');
                     }
                 }else{
@@ -161,7 +173,8 @@ class DocController{
     {
         $respuesta = DocModel::listarDocumentosSubidosGeneralModel();
         //var_dump($respuesta);
-        foreach ($respuesta as $key => $value) {
+        foreach ($respuesta as $key => $value)
+        {
             $etiquetaCategorias = ($value["categoriaDesc"]!="") ? '<td>'.utf8_encode($value["categoriaDesc"]).'</td>' : '<td>No tiene</td>' ;
             if ($value["status"]==1) {
                 $descStatus = '<td class="text-warning">Pendiente</td>';
@@ -181,32 +194,32 @@ class DocController{
                 class="btn btn-warning">
                 Editar
             </a>
-        </td>' ;
-            $aprobar = ($rol=='editor' || $rol=='redactor') ? '' : '<td>
+            </td>' ;
+                $aprobar = ($rol=='editor' || $rol=='redactor') ? '' : '<td>
+                <button 
+                    href="'.$value['idDoc'].'" 
+                    documento="'.substr($value["url_doc"], 11).'" 
+                    id="aprobar'.$value['idDoc'].'" 
+                    class="btn btn-color btn-twitter">
+                    Aprobar
+                </button>
+            </td>' ;
+            $publicar = ($rol=='jefeRedaccion' || $rol=='redactor') ? '' : '<td>
             <button 
                 href="'.$value['idDoc'].'" 
                 documento="'.substr($value["url_doc"], 11).'" 
-                id="aprobar'.$value['idDoc'].'" 
-                class="btn btn-color btn-twitter">
-                Aprobar
+                id="eliminar'.$value['idDoc'].'" 
+                class="btn btn-success">
+                Publicar
             </button>
-        </td>' ;
-        $publicar = ($rol=='jefeRedaccion' || $rol=='redactor') ? '' : '<td>
-        <button 
-            href="'.$value['idDoc'].'" 
-            documento="'.substr($value["url_doc"], 11).'" 
-            id="eliminar'.$value['idDoc'].'" 
-            class="btn btn-success">
-            Publicar
-        </button>
-        </td>' ;
+            </td>' ;
             $rechazar = ($rol=='redactor') ? '' : '<td>
             <a 
                 href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
                 class="btn btn-danger">
                 Rechazar
             </a>
-        </td>' ;
+            </td>' ;
             echo   '<tr class="odd gradeX">
                         <td>'.utf8_encode($value["numeralDesc"]).'</td>
                         '.$etiquetaCategorias.'
@@ -654,6 +667,90 @@ class DocController{
     public function vitacoraSubirDocController($datos)
     {
         $respuesta = DocModel::vitacoraSubirDocModel('vitacora',$datos);
+    }
+    //INSERTAR UN MENSAJE EN LAS DIFERENTES ACCIONES DE LOS DOCUMENTOS
+    public function insertarMsjController($datos)
+    {
+        $respuesta = DocModel::insertarMsjModel('mensajes', $datos);
+    }
+    public function buscarReceptorController($idDeptoUsuario)
+    {
+        $respuesta = DocModel::buscarReceptorModel('usuarios', $idDeptoUsuario);
+        return $respuesta;
+    }
+    //DATOS DE DOCUMENTO INDIVIDUAL
+    public function documentoIndividualSubidoController($rol, $n_doc)
+    {
+        $respuesta = DocModel::documentoIndividualSubidoModel($n_doc);
+        foreach ($respuesta as $key => $value)
+        {
+            $etiquetaCategorias = ($value["categoriaDesc"]!="") ? '<td>'.utf8_encode($value["categoriaDesc"]).'</td>' : '<td>No tiene</td>' ;
+            if ($value["status"]==1) {
+                $descStatus = '<td class="text-warning">Pendiente</td>';
+            }elseif ($value["status"]==2) {
+                $descStatus = '<td class="text-primary">Aprobado</td>';
+            }elseif ($value["status"]==3) {
+                $descStatus = '<td class="text-success">Publicado</td>';
+            }elseif ($value["status"]==4) {
+                $descStatus = '<td class="text-danger">Rechazado</td>';
+            }elseif ($value["status"]==5) {
+                $descStatus = '<td class="text-danger">Extemporaneo</td>';
+            }
+            $descCat = ($value["idCategoria"]!=0) ? '<td>'.$value["idCategoria"].'</td>' : '<td class="text-warning">No tiene</td>' ;
+            $editar = ($rol=='editor') ? '' : '<td>
+            <a 
+                href="index.php?action=editarDoc&idDoc='.$value['idDoc'].'" 
+                class="btn btn-warning">
+                Editar
+            </a>
+            </td>' ;
+                $aprobar = ($rol=='editor' || $rol=='redactor') ? '' : '<td>
+                <button 
+                    href="'.$value['idDoc'].'" 
+                    documento="'.substr($value["url_doc"], 11).'" 
+                    id="aprobar'.$value['idDoc'].'" 
+                    class="btn btn-color btn-twitter">
+                    Aprobar
+                </button>
+            </td>' ;
+            $publicar = ($rol=='jefeRedaccion' || $rol=='redactor') ? '' : '<td>
+            <button 
+                href="'.$value['idDoc'].'" 
+                documento="'.substr($value["url_doc"], 11).'" 
+                id="eliminar'.$value['idDoc'].'" 
+                class="btn btn-success">
+                Publicar
+            </button>
+            </td>' ;
+            $rechazar = ($rol=='redactor') ? '' : '<td>
+            <a 
+                href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
+                class="btn btn-danger">
+                Rechazar
+            </a>
+            </td>' ;
+            echo   '<tr class="odd gradeX">
+                        <td>'.utf8_encode($value["numeralDesc"]).'</td>
+                        '.$etiquetaCategorias.'
+                        <td>'.substr($value["url_doc"], 11).'</td>
+                        <td>'.$value["n_doc"].'</td>
+                        '.$descStatus.'
+                        <td>'.date("d-m-Y", strtotime($value["fecha_doc"])).'</td>
+                        <td>'.$value["nombreDepto"].'</td>
+                        <td>'.$value["usuario"].'</td>
+                        <td>
+                            <a 
+                                target="_blank" href="'.$value["url_doc"].'" 
+                                class="btn btn-primary">
+                                Ver en linea
+							</a>
+                        </td>
+                        '.$editar.'
+                        '.$aprobar.'
+                        '.$publicar.'
+                        '.$rechazar.'
+					</tr>';
+        }
     }
 }
 ?>

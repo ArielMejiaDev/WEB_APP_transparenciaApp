@@ -377,5 +377,50 @@ class DocModel{
         $stmt->bindParam(':desc_actividad',$datos['desc_actividad'],PDO::PARAM_STR);
         $stmt->execute();
     }
+    //INSERTA UN MENSAJE CON CADA ACCION DE LOS DOCUMENTOS
+    public function insertarMsjModel($tabla, $datos)
+    {
+        $sql = "INSERT INTO $tabla(remitente, receptor, contenido, status, n_doc) VALUES (:remitente,:receptor,:contenido,:status,:n_doc)";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':remitente', $datos['remitente'], PDO::PARAM_INT);
+        $stmt->bindParam(':receptor', $datos['receptor'], PDO::PARAM_INT);
+        $stmt->bindParam(':contenido', $datos['contenido'], PDO::PARAM_STR);
+        $stmt->bindParam(':status', $datos['status'], PDO::PARAM_INT);
+        $stmt->bindParam(':n_doc', $datos['n_doc'], PDO::PARAM_STR);
+        $stmt->execute();
+    }
+    //BUSCAR EL RECEPTOR PARA LA NOTIFICACION DE QUE SE SUBIO UN DOCUMENTO
+    public function buscarReceptorModel($tabla, $idDeptoUsuario)
+    {
+        $sql = "SELECT id FROM $tabla WHERE usuarios.id_departamento=:id_departamento AND usuarios.rol='jefeRedaccion'";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id_departamento', $idDeptoUsuario, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    //MOSTRAR DATOS DE UN DOCUMENTO INDIVIDUAL
+    public function documentoIndividualSubidoModel($n_doc)
+    {
+        $sql = "SELECT documentos.id AS idDoc, documentos.id_usuario AS idUsuario, ";
+        $sql .= "usuarios.usuario , documentos.id_departamento AS idDepto, ";
+        $sql .= "departamentos.nombres AS nombreDepto, ";
+        $sql .= "documentos.id_numeral AS idNumeral, ";
+        $sql .= "numerales.descripcion AS numeralDesc, ";
+        $sql .= "documentos.id_categoria AS idCategoria, ";
+        $sql .= "categorias.descripcion AS categoriaDesc, ";
+        $sql .= "documentos.fecha_doc, documentos.url_doc, ";
+        $sql .= "documentos.n_doc, documentos.status FROM ";
+        $sql .= "((((documentos INNER JOIN usuarios ON ";
+        $sql .= "documentos.id_usuario=usuarios.id) INNER JOIN departamentos ON ";
+        $sql .= "documentos.id_departamento = departamentos.id)";
+        $sql .= " INNER JOIN numerales ON ";
+        $sql .= "documentos.id_numeral = numerales.id) LEFT JOIN categorias ON ";
+        $sql .= "documentos.id_categoria = categorias.id) ";
+        $sql .= "WHERE documentos.status != 3 AND documentos.n_doc=:n_doc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':n_doc', $n_doc, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
