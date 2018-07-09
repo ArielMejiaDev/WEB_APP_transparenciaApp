@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-07-2018 a las 01:05:10
+-- Tiempo de generación: 10-07-2018 a las 00:35:17
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -189,7 +189,35 @@ INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `
 (10, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-5-2018', 1, '', '2018-07-06 21:15:25', ''),
 (11, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-6-2018', 1, '', '2018-07-06 21:16:45', ''),
 (12, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-7-2018', 1, '', '2018-07-06 21:17:25', ''),
-(13, 48, 1, 1, 4, '2018-07-27', '2018-07-06', 2018, 'julio', 'views/docs/manual_normas_y_procedimientos_marzo18.pdf', '6-1-2018', 1, '', '2018-07-06 21:43:59', 'Oficio : 002315616');
+(13, 48, 1, 1, 4, '2018-07-27', '2018-07-06', 2018, 'julio', 'views/docs/manual_normas_y_procedimientos_marzo18.pdf', '6-1-2018', 1, '', '2018-07-06 21:43:59', 'Oficio : 002315616'),
+(14, 64, 14, 6, 33, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/Normativo-Inversiones1.pdf', '6-1-2018', 1, '', '2018-07-09 15:13:52', ''),
+(15, 55, 1, 6, 38, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/SJDt-214-2015-Normativo-Arrend-Estadio-del-EJto-JUL2015.pdf', '6-2-2018', 1, '', '2018-07-09 16:52:24', ''),
+(16, 55, 1, 6, 45, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/Manualdistinguido.pdf', '6-3-2018', 1, '', '2018-07-09 17:04:44', ''),
+(17, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-3-2018', 1, '', '2018-07-09 17:09:19', ''),
+(18, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-4-2018', 1, '', '2018-07-09 17:21:40', ''),
+(19, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-5-2018', 1, '', '2018-07-09 17:23:16', ''),
+(20, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-6-2018', 1, '', '2018-07-09 17:23:56', ''),
+(21, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-7-2018', 1, '', '2018-07-09 17:24:19', ''),
+(22, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-8-2018', 1, '', '2018-07-09 17:24:32', ''),
+(23, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-9-2018', 1, '', '2018-07-09 17:25:03', ''),
+(24, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-10-2018', 1, '', '2018-07-09 17:25:20', ''),
+(25, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-11-2018', 1, '', '2018-07-09 17:25:31', ''),
+(26, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-12-2018', 1, '', '2018-07-09 17:27:45', ''),
+(27, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-13-2018', 1, '', '2018-07-09 17:28:14', ''),
+(28, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-14-2018', 1, '', '2018-07-09 17:28:56', ''),
+(29, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-15-2018', 1, '', '2018-07-09 17:30:12', ''),
+(30, 55, 1, 3, 19, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/2.pdf', '3-1-2018', 1, '', '2018-07-09 17:32:28', ''),
+(31, 55, 1, 3, 19, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/2.pdf', '3-2-2018', 1, '', '2018-07-09 17:32:41', ''),
+(32, 55, 1, 3, 19, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/2.pdf', '3-3-2018', 1, '', '2018-07-09 17:35:57', ''),
+(33, 55, 1, 8, 51, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/3.pdf', '8-1-2018', 1, '', '2018-07-09 17:41:16', ''),
+(34, 55, 1, 12, 62, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/4.pdf', '12-1-2018', 1, '', '2018-07-09 18:06:46', ''),
+(35, 55, 1, 8, 52, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/5.pdf', '8-2-2018', 1, '', '2018-07-09 19:39:52', ''),
+(36, 55, 1, 8, 52, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/5.pdf', '8-3-2018', 1, '', '2018-07-09 19:40:48', ''),
+(37, 55, 1, 8, 52, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/5.pdf', '8-4-2018', 1, '', '2018-07-09 19:41:08', ''),
+(38, 55, 1, 8, 52, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/5.pdf', '8-5-2018', 1, '', '2018-07-09 19:52:36', ''),
+(39, 55, 1, 8, 53, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/6.pdf', '8-6-2018', 1, '', '2018-07-09 19:53:45', ''),
+(40, 55, 1, 5, 28, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/8.pdf', '5-2-2018', 1, '', '2018-07-09 20:04:15', ''),
+(41, 55, 1, 5, 28, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/8.pdf', '5-3-2018', 1, '', '2018-07-09 20:04:48', '');
 
 -- --------------------------------------------------------
 
@@ -201,8 +229,28 @@ CREATE TABLE `mensajes` (
   `id` int(11) NOT NULL,
   `remitente` int(11) NOT NULL,
   `receptor` int(11) NOT NULL,
-  `contenido` int(11) NOT NULL
+  `contenido` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `n_doc` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `status`, `n_doc`) VALUES
+(6, 55, 48, 'Subio un documento', 1, '3-3-2018'),
+(7, 55, 48, 'Subio un documento', 1, '8-1-2018'),
+(8, 55, 48, 'Subio un documento', 1, '12-1-2018'),
+(9, 55, 48, 'Subio un documento', 1, '8-2-2018'),
+(10, 55, 48, 'Subio un documento', 1, '8-3-2018'),
+(11, 55, 48, 'Subio un documento', 1, '8-4-2018'),
+(12, 55, 65, 'Subio un documento', 1, '8-5-2018'),
+(13, 55, 68, 'Subio un documento', 1, '8-5-2018'),
+(14, 55, 65, 'Subio un documento', 1, '8-6-2018'),
+(15, 55, 68, 'Subio un documento', 1, '8-6-2018'),
+(16, 55, 65, 'Subio un documento', 1, '5-2-2018'),
+(17, 55, 65, 'Subio un documento', 1, '5-3-2018');
 
 -- --------------------------------------------------------
 
@@ -286,7 +334,8 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `em
 (63, 'Marlon Baldemar', 'Martínez Zuñiga', 'mmartinez', '$2y$10$0vrC8JmjS1Wbuy7Qya5jM.3YshP2ybJfatTlkhPbWP0A5VuO4AKV2', 'mmartinez@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'Puesto', 'Programador', 1),
 (64, 'Edgar', 'Urizar', 'eurizar', '$2y$10$IQIlpE9b/XPunI6qeApgounspNn.dHiHOkVRkM3XVkP45IjdafGxq', 'eurizar@ipm.org.gt', 'views/images/user.png', 'editor', 0, 'Puesto', 'Jefe de Recursos Humanos', 14),
 (65, 'Nelson', 'Boche', 'nboche', '$2y$10$Cwb9jOdx.HbTMTlJ3H/oN.Y9h84wNhOlogqdzKGuT8qZNxzdrl7TK', 'nboche@ipm.org.gt', 'views/images/user.png', 'jefeRedaccion', 0, 'Puesto', 'Sub jefe de Informatica', 1),
-(67, 'Ricardo', 'Mayorga', 'rmayorga', '$2y$10$Eqc7fZ40r6Hiv6dKaXlyqeqgYaw71t3cthMwbRV9PDaMp.QkOAKwa', 'rmayorga@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'relator', 1);
+(67, 'Ricardo', 'Mayorga', 'rmayorga', '$2y$10$Eqc7fZ40r6Hiv6dKaXlyqeqgYaw71t3cthMwbRV9PDaMp.QkOAKwa', 'rmayorga@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'relator', 1),
+(68, 'Coronel', 'Rosito', 'crosito', '$2y$10$QmzFR4YES6obC4NX4TPh1u4rnzu/ODMwQJiw7cbLdq0JefPyu7bPy', 'crosito@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'Jefe de departamento', 1);
 
 -- --------------------------------------------------------
 
@@ -313,7 +362,36 @@ INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) V
 (4, 48, 'Edito un documento', '2018-07-06', '2018-07-06 21:30:13'),
 (5, 48, 'Se aprobo un documento', '2018-07-06', '2018-07-06 21:36:21'),
 (6, 48, 'Se publico un documento', '2018-07-06', '2018-07-06 21:37:59'),
-(7, 48, 'Se activo un documento', '2018-07-06', '2018-07-06 21:43:59');
+(7, 48, 'Se activo un documento', '2018-07-06', '2018-07-06 21:43:59'),
+(8, 64, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 15:13:52'),
+(9, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 16:52:24'),
+(10, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:04:44'),
+(11, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:09:20'),
+(12, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:21:40'),
+(13, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:23:16'),
+(14, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:23:56'),
+(15, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:24:19'),
+(16, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:24:19'),
+(17, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:24:32'),
+(18, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:25:04'),
+(19, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:25:20'),
+(20, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:25:31'),
+(21, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:27:45'),
+(22, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:28:14'),
+(23, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:28:56'),
+(24, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:30:12'),
+(25, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:32:28'),
+(26, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:32:41'),
+(27, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:35:57'),
+(28, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:41:16'),
+(29, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 18:06:46'),
+(30, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:39:52'),
+(31, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:40:48'),
+(32, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:41:09'),
+(33, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:52:36'),
+(34, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:53:45'),
+(35, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 20:04:15'),
+(36, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 20:04:48');
 
 --
 -- Índices para tablas volcadas
@@ -388,13 +466,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -406,13 +484,13 @@ ALTER TABLE `numerales`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas
