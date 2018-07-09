@@ -153,8 +153,17 @@ $listarArchivosSubidosGeneral->aprobarDocController($idUsuario);
 										</thead>
 			            	<tbody>
 											<div id="botones">
-											<?php  
-												$listarArchivosSubidosGeneral->listarDocumentosSubidosGeneralController($rol);
+											<?php 
+												if ($rol=='redactor')
+												{
+													$listarArchivosSubidosGeneral->listarDocumentosSubidosPorUsuarioController($rol, $idUsuario);
+												}elseif($rol=='jefeRedaccion')
+												{
+													$listarArchivosSubidosGeneral->listarDocumentosSubidosPorDeptoController($rol, $idDeptoUsuario);
+												}elseif($rol=='admin' || $rol=='editor')
+												{
+													$listarArchivosSubidosGeneral->listarDocumentosSubidosGeneralController($rol);
+												}
 											?>
 											</div>
 										</tbody>

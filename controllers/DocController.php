@@ -230,6 +230,156 @@ class DocController{
 					</tr>';
         }
     }
+    //LISTAR ARCHIVOS SUBIDOS POR USUARIO
+    public function listarDocumentosSubidosPorUsuarioController($rol, $idUsuario)
+    {
+        $respuesta = DocModel::listarDocumentosSubidosPorUsuarioModel($idUsuario);
+        //var_dump($respuesta);
+        foreach ($respuesta as $key => $value)
+        {
+            $etiquetaCategorias = ($value["categoriaDesc"]!="") ? '<td>'.utf8_encode($value["categoriaDesc"]).'</td>' : '<td>No tiene</td>' ;
+            if ($value["status"]==1) {
+                $descStatus = '<td class="text-warning">Pendiente</td>';
+            }elseif ($value["status"]==2) {
+                $descStatus = '<td class="text-primary">Aprobado</td>';
+            }elseif ($value["status"]==3) {
+                $descStatus = '<td class="text-success">Publicado</td>';
+            }elseif ($value["status"]==4) {
+                $descStatus = '<td class="text-danger">Rechazado</td>';
+            }elseif ($value["status"]==5) {
+                $descStatus = '<td class="text-danger">Extemporaneo</td>';
+            }
+            $descCat = ($value["idCategoria"]!=0) ? '<td>'.$value["idCategoria"].'</td>' : '<td class="text-warning">No tiene</td>' ;
+            $editar = ($rol=='editor') ? '' : '<td>
+            <a 
+                href="index.php?action=editarDoc&idDoc='.$value['idDoc'].'" 
+                class="btn btn-warning">
+                Editar
+            </a>
+            </td>' ;
+                $aprobar = ($rol=='editor' || $rol=='redactor') ? '' : '<td>
+                <button 
+                    href="'.$value['idDoc'].'" 
+                    documento="'.substr($value["url_doc"], 11).'" 
+                    id="aprobar'.$value['idDoc'].'" 
+                    class="btn btn-color btn-twitter">
+                    Aprobar
+                </button>
+            </td>' ;
+            $publicar = ($rol=='jefeRedaccion' || $rol=='redactor') ? '' : '<td>
+            <button 
+                href="'.$value['idDoc'].'" 
+                documento="'.substr($value["url_doc"], 11).'" 
+                id="eliminar'.$value['idDoc'].'" 
+                class="btn btn-success">
+                Publicar
+            </button>
+            </td>' ;
+                $rechazar = ($rol=='redactor') ? '' : '<td>
+                <a 
+                    href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
+                    class="btn btn-danger">
+                    Rechazar
+                </a>
+            </td>' ;
+            echo   '<tr class="odd gradeX">
+                        <td>'.utf8_encode($value["numeralDesc"]).'</td>
+                        '.$etiquetaCategorias.'
+                        <td>'.substr($value["url_doc"], 11).'</td>
+                        <td>'.$value["n_doc"].'</td>
+                        '.$descStatus.'
+                        <td>'.date("d-m-Y", strtotime($value["fecha_doc"])).'</td>
+                        <td>'.$value["nombreDepto"].'</td>
+                        <td>'.$value["usuario"].'</td>
+                        <td>
+                            <a 
+                                target="_blank" href="'.$value["url_doc"].'" 
+                                class="btn btn-primary">
+                                Ver en linea
+							</a>
+                        </td>
+                        '.$editar.'
+                        '.$aprobar.'
+                        '.$publicar.'
+                        '.$rechazar.'
+					</tr>';
+        }
+    }
+    //LISTAR DOCUMENTOS SUBIDOS POR DEPARTAMENTO
+    public function listarDocumentosSubidosPorDeptoController($rol, $idDeptoUsuario)
+    {
+        $respuesta = DocModel::listarDocumentosSubidosPorDeptoModel($idDeptoUsuario);
+        //var_dump($respuesta);
+        foreach ($respuesta as $key => $value)
+        {
+            $etiquetaCategorias = ($value["categoriaDesc"]!="") ? '<td>'.utf8_encode($value["categoriaDesc"]).'</td>' : '<td>No tiene</td>' ;
+            if ($value["status"]==1) {
+                $descStatus = '<td class="text-warning">Pendiente</td>';
+            }elseif ($value["status"]==2) {
+                $descStatus = '<td class="text-primary">Aprobado</td>';
+            }elseif ($value["status"]==3) {
+                $descStatus = '<td class="text-success">Publicado</td>';
+            }elseif ($value["status"]==4) {
+                $descStatus = '<td class="text-danger">Rechazado</td>';
+            }elseif ($value["status"]==5) {
+                $descStatus = '<td class="text-danger">Extemporaneo</td>';
+            }
+            $descCat = ($value["idCategoria"]!=0) ? '<td>'.$value["idCategoria"].'</td>' : '<td class="text-warning">No tiene</td>' ;
+            $editar = ($rol=='editor') ? '' : '<td>
+            <a 
+                href="index.php?action=editarDoc&idDoc='.$value['idDoc'].'" 
+                class="btn btn-warning">
+                Editar
+            </a>
+            </td>' ;
+                $aprobar = ($rol=='editor' || $rol=='redactor') ? '' : '<td>
+                <button 
+                    href="'.$value['idDoc'].'" 
+                    documento="'.substr($value["url_doc"], 11).'" 
+                    id="aprobar'.$value['idDoc'].'" 
+                    class="btn btn-color btn-twitter">
+                    Aprobar
+                </button>
+            </td>' ;
+            $publicar = ($rol=='jefeRedaccion' || $rol=='redactor') ? '' : '<td>
+            <button 
+                href="'.$value['idDoc'].'" 
+                documento="'.substr($value["url_doc"], 11).'" 
+                id="eliminar'.$value['idDoc'].'" 
+                class="btn btn-success">
+                Publicar
+            </button>
+            </td>' ;
+                $rechazar = ($rol=='redactor') ? '' : '<td>
+                <a 
+                    href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
+                    class="btn btn-danger">
+                    Rechazar
+                </a>
+            </td>' ;
+            echo   '<tr class="odd gradeX">
+                        <td>'.utf8_encode($value["numeralDesc"]).'</td>
+                        '.$etiquetaCategorias.'
+                        <td>'.substr($value["url_doc"], 11).'</td>
+                        <td>'.$value["n_doc"].'</td>
+                        '.$descStatus.'
+                        <td>'.date("d-m-Y", strtotime($value["fecha_doc"])).'</td>
+                        <td>'.$value["nombreDepto"].'</td>
+                        <td>'.$value["usuario"].'</td>
+                        <td>
+                            <a 
+                                target="_blank" href="'.$value["url_doc"].'" 
+                                class="btn btn-primary">
+                                Ver en linea
+							</a>
+                        </td>
+                        '.$editar.'
+                        '.$aprobar.'
+                        '.$publicar.'
+                        '.$rechazar.'
+					</tr>';
+        }
+    }
     //LISTAR DOCUMENTOS EXTEMPORANEOS
     public function listarDocumentosExtemporaneosController()
     {
