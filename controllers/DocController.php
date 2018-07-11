@@ -176,7 +176,8 @@ class DocController{
         foreach ($respuesta as $key => $value)
         {
             $etiquetaCategorias = ($value["categoriaDesc"]!="") ? '<td>'.utf8_encode($value["categoriaDesc"]).'</td>' : '<td>No tiene</td>' ;
-            if ($value["status"]==1) {
+            if ($value["status"]==1)
+            {
                 $descStatus = '<td class="text-warning">Pendiente</td>';
             }elseif ($value["status"]==2) {
                 $descStatus = '<td class="text-primary">Aprobado</td>';
@@ -213,6 +214,12 @@ class DocController{
                 Publicar
             </button>
             </td>' ;
+            $publicarVacio = '<td>
+            <button 
+                class="btn btn-default">
+                No aplica
+            </button>
+            </td>' ;
             $rechazar = ($rol=='redactor') ? '' : '<td>
             <a 
                 href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
@@ -220,6 +227,7 @@ class DocController{
                 Rechazar
             </a>
             </td>' ;
+            $etiquetaPublicar = ($value["status"]!=2) ? $publicarVacio : $publicar ;
             echo   '<tr class="odd gradeX">
                         <td>'.utf8_encode($value["numeralDesc"]).'</td>
                         '.$etiquetaCategorias.'
@@ -238,7 +246,7 @@ class DocController{
                         </td>
                         '.$editar.'
                         '.$aprobar.'
-                        '.$publicar.'
+                        '.$etiquetaPublicar.'
                         '.$rechazar.'
 					</tr>';
         }

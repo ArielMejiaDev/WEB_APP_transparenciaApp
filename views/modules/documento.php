@@ -16,6 +16,8 @@ if (isset($_GET['n_doc']) && !empty($_GET['n_doc']))
 $listarArchivosSubidosGeneral = new DocController();
 $listarArchivosSubidosGeneral->publicarDocController($idUsuario);
 $listarArchivosSubidosGeneral->aprobarDocController($idUsuario);
+$notificacion = new NotificacionesController();
+$notificacion->cambiarStatusController($n_doc);
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>
@@ -63,8 +65,7 @@ $listarArchivosSubidosGeneral->aprobarDocController($idUsuario);
                                 <tbody>
                                     <div id="botones">
                                     <?php
-                                        $doc = $listarArchivosSubidosGeneral->documentoIndividualSubidoController($rol, $n_doc);
-                                        var_dump($doc);
+																				$doc = $listarArchivosSubidosGeneral->documentoIndividualSubidoController($rol, $n_doc);
                                     ?>
                                     </div>
                                 </tbody>

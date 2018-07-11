@@ -22,4 +22,9 @@ class NotificacionesController
         $respuesta = NotificacionesModel::totalNotificacionesSubidasModel($idUsuario);
         return (int)$respuesta['total'];
     }
+    //CAMBIA EL STATUS DE LA NOTIFICACION PARA QUE CAMBIE A LEIDA Y YA NO APAREZCA COMO NOTIFICAICON NUEVA
+    public function cambiarStatusController($n_doc)
+    {
+        $respuesta = NotificacionesModel::cambiarStatusModel('mensajes', $n_doc);
+    }
 }
