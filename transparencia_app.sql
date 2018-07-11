@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-07-2018 a las 00:35:17
+-- Tiempo de generación: 11-07-2018 a las 04:22:38
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,46 +178,12 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
-(2, 48, 1, 2, 18, '2018-07-11', '2018-06-03', 2018, 'junio', 'views/docs/Ariel SALVADOR.pdf', '1-1-2018', 3, 'mal', '2018-07-06 16:28:18', 'Oficio 1231230203'),
-(3, 48, 1, 1, 2, '2018-07-12', '2018-06-21', 2018, 'junio', 'views/docs/Acuerdo 286-2015.pdf', '1-2-2018', 4, 'No esta bien formateado', '2018-07-06 16:38:56', 'ojooo'),
-(4, 48, 1, 2, 18, '2018-07-27', '2018-07-06', 2018, 'julio', 'views/docs/personal_may18.pdf', '2-2-2018', 2, '', '2018-07-06 16:42:48', ''),
-(5, 55, 1, 5, 22, '2018-07-27', '2018-07-06', 2018, 'julio', 'views/docs/Compendio-PolÃ­ticas-Institucionales.pdf', '5-1-2018', 1, '', '2018-07-06 20:20:14', ''),
-(6, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-1-2018', 3, '', '2018-07-06 21:37:59', ''),
-(7, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-2-2018', 1, '', '2018-07-06 21:13:24', ''),
-(8, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-3-2018', 1, '', '2018-07-06 21:14:40', ''),
-(9, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-4-2018', 1, '', '2018-07-06 21:15:00', ''),
-(10, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-5-2018', 1, '', '2018-07-06 21:15:25', ''),
-(11, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-6-2018', 1, '', '2018-07-06 21:16:45', ''),
-(12, 48, 1, 4, 20, '2018-07-26', '2018-07-05', 2018, 'julio', 'views/docs/nomina_enero18.pdf', '4-7-2018', 1, '', '2018-07-06 21:17:25', ''),
-(13, 48, 1, 1, 4, '2018-07-27', '2018-07-06', 2018, 'julio', 'views/docs/manual_normas_y_procedimientos_marzo18.pdf', '6-1-2018', 1, '', '2018-07-06 21:43:59', 'Oficio : 002315616'),
-(14, 64, 14, 6, 33, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/Normativo-Inversiones1.pdf', '6-1-2018', 1, '', '2018-07-09 15:13:52', ''),
-(15, 55, 1, 6, 38, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/SJDt-214-2015-Normativo-Arrend-Estadio-del-EJto-JUL2015.pdf', '6-2-2018', 1, '', '2018-07-09 16:52:24', ''),
-(16, 55, 1, 6, 45, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/Manualdistinguido.pdf', '6-3-2018', 1, '', '2018-07-09 17:04:44', ''),
-(17, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-3-2018', 1, '', '2018-07-09 17:09:19', ''),
-(18, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-4-2018', 1, '', '2018-07-09 17:21:40', ''),
-(19, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-5-2018', 1, '', '2018-07-09 17:23:16', ''),
-(20, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-6-2018', 1, '', '2018-07-09 17:23:56', ''),
-(21, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-7-2018', 1, '', '2018-07-09 17:24:19', ''),
-(22, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-8-2018', 1, '', '2018-07-09 17:24:32', ''),
-(23, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-9-2018', 1, '', '2018-07-09 17:25:03', ''),
-(24, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-10-2018', 1, '', '2018-07-09 17:25:20', ''),
-(25, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-11-2018', 1, '', '2018-07-09 17:25:31', ''),
-(26, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-12-2018', 1, '', '2018-07-09 17:27:45', ''),
-(27, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-13-2018', 1, '', '2018-07-09 17:28:14', ''),
-(28, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-14-2018', 1, '', '2018-07-09 17:28:56', ''),
-(29, 55, 1, 1, 14, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/1.pdf', '1-15-2018', 1, '', '2018-07-09 17:30:12', ''),
-(30, 55, 1, 3, 19, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/2.pdf', '3-1-2018', 1, '', '2018-07-09 17:32:28', ''),
-(31, 55, 1, 3, 19, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/2.pdf', '3-2-2018', 1, '', '2018-07-09 17:32:41', ''),
-(32, 55, 1, 3, 19, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/2.pdf', '3-3-2018', 1, '', '2018-07-09 17:35:57', ''),
-(33, 55, 1, 8, 51, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/3.pdf', '8-1-2018', 1, '', '2018-07-09 17:41:16', ''),
-(34, 55, 1, 12, 62, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/4.pdf', '12-1-2018', 1, '', '2018-07-09 18:06:46', ''),
-(35, 55, 1, 8, 52, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/5.pdf', '8-2-2018', 1, '', '2018-07-09 19:39:52', ''),
-(36, 55, 1, 8, 52, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/5.pdf', '8-3-2018', 1, '', '2018-07-09 19:40:48', ''),
-(37, 55, 1, 8, 52, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/5.pdf', '8-4-2018', 1, '', '2018-07-09 19:41:08', ''),
-(38, 55, 1, 8, 52, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/5.pdf', '8-5-2018', 1, '', '2018-07-09 19:52:36', ''),
-(39, 55, 1, 8, 53, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/6.pdf', '8-6-2018', 1, '', '2018-07-09 19:53:45', ''),
-(40, 55, 1, 5, 28, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/8.pdf', '5-2-2018', 1, '', '2018-07-09 20:04:15', ''),
-(41, 55, 1, 5, 28, '2018-07-30', '2018-07-09', 2018, 'julio', 'views/docs/8.pdf', '5-3-2018', 1, '', '2018-07-09 20:04:48', '');
+(50, 65, 1, 1, 1, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 212015.pdf', '1-1-2018', 1, '', '2018-07-11 00:44:56', ''),
+(51, 65, 1, 2, 18, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 002015.pdf', '2-1-2018', 4, 'Formato incorrecto.', '2018-07-11 02:06:59', ''),
+(52, 65, 1, 3, 19, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Normativo de inversiones.pdf', '3-1-2018', 2, '', '2018-07-11 01:40:16', ''),
+(53, 65, 1, 1, 26, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-2-2018', 1, '', '2018-07-11 01:39:11', ''),
+(54, 55, 1, 6, 33, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 212016.pdf', '6-1-2018', 1, '', '2018-07-11 01:41:38', ''),
+(55, 48, 1, 9, 54, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Normativo de inversiones 2.pdf', '9-1-2018', 3, '', '2018-07-11 02:06:44', '');
 
 -- --------------------------------------------------------
 
@@ -239,18 +205,22 @@ CREATE TABLE `mensajes` (
 --
 
 INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `status`, `n_doc`) VALUES
-(6, 55, 48, 'Subio un documento', 1, '3-3-2018'),
-(7, 55, 48, 'Subio un documento', 1, '8-1-2018'),
-(8, 55, 48, 'Subio un documento', 1, '12-1-2018'),
-(9, 55, 48, 'Subio un documento', 1, '8-2-2018'),
-(10, 55, 48, 'Subio un documento', 1, '8-3-2018'),
-(11, 55, 48, 'Subio un documento', 1, '8-4-2018'),
-(12, 55, 65, 'Subio un documento', 1, '8-5-2018'),
-(13, 55, 68, 'Subio un documento', 1, '8-5-2018'),
-(14, 55, 65, 'Subio un documento', 1, '8-6-2018'),
-(15, 55, 68, 'Subio un documento', 1, '8-6-2018'),
-(16, 55, 65, 'Subio un documento', 1, '5-2-2018'),
-(17, 55, 65, 'Subio un documento', 1, '5-3-2018');
+(61, 65, 65, 'Subio un documento', 0, '1-1-2018'),
+(62, 65, 68, 'Subio un documento', 0, '1-1-2018'),
+(63, 65, 65, 'Actualizo un documento', 0, '1-1-2018'),
+(64, 65, 68, 'Actualizo un documento', 0, '1-1-2018'),
+(65, 65, 65, 'Actualizo un documento', 0, '1-1-2018'),
+(66, 65, 68, 'Actualizo un documento', 0, '1-1-2018'),
+(67, 65, 65, 'Subio un documento', 0, '2-1-2018'),
+(68, 65, 68, 'Subio un documento', 0, '2-1-2018'),
+(69, 65, 65, 'Subio un documento', 0, '3-1-2018'),
+(70, 65, 68, 'Subio un documento', 0, '3-1-2018'),
+(71, 65, 65, 'Subio un documento', 0, '1-2-2018'),
+(72, 65, 68, 'Subio un documento', 0, '1-2-2018'),
+(73, 55, 65, 'Subio un documento', 1, '6-1-2018'),
+(74, 55, 68, 'Subio un documento', 1, '6-1-2018'),
+(75, 48, 65, 'Subio un documento', 1, '9-1-2018'),
+(76, 48, 68, 'Subio un documento', 1, '9-1-2018');
 
 -- --------------------------------------------------------
 
@@ -326,7 +296,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `email`, `foto`, `rol`, `intentos`, `pregunta_seguridad`, `respuesta_seguridad`, `id_departamento`) VALUES
-(48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$OcgM2LF1VgOBYjnNWqrNEemFvMFleMzREn9SORGnd/F8/FVCIuWSu', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendi la ...', 'referencia', 1),
+(48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$XVj1XpVXHD98MaMVE9RsOecXNcKP.KHbuj.GQzJFBLG0ieb9gh0My', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendi la ...', 'referencia', 1),
 (51, 'Oscar Ruben', 'Colindres Ochoa', 'ocolindres', '$2y$10$WAoJbSFrXZPbPzknSYell.lXsenkQx7U0JDvEt3aUninIXlJSSBba', 'ocolindres@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'encargadodesoftware', 1),
 (52, 'Kevin Andre', 'Carcamo Raudales', 'kcarcamo', '$2y$10$VpRcxYAizGzhC5w.ln2.EeRGJRiFSaqUFmZc1jscCpL4ZIXlsmv9m', 'kcarcamo@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'programador', 1),
 (53, 'Oscar', 'Pacheco Tzorin', 'opacheco', '$2y$10$3hXb856l9JqQ.Y8lNC7CRe7SgMDvcR1WUZPI8a3QoW/FqAn2F90.W', 'opacheco@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'dba', 1),
@@ -335,7 +305,7 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `em
 (64, 'Edgar', 'Urizar', 'eurizar', '$2y$10$IQIlpE9b/XPunI6qeApgounspNn.dHiHOkVRkM3XVkP45IjdafGxq', 'eurizar@ipm.org.gt', 'views/images/user.png', 'editor', 0, 'Puesto', 'Jefe de Recursos Humanos', 14),
 (65, 'Nelson', 'Boche', 'nboche', '$2y$10$Cwb9jOdx.HbTMTlJ3H/oN.Y9h84wNhOlogqdzKGuT8qZNxzdrl7TK', 'nboche@ipm.org.gt', 'views/images/user.png', 'jefeRedaccion', 0, 'Puesto', 'Sub jefe de Informatica', 1),
 (67, 'Ricardo', 'Mayorga', 'rmayorga', '$2y$10$Eqc7fZ40r6Hiv6dKaXlyqeqgYaw71t3cthMwbRV9PDaMp.QkOAKwa', 'rmayorga@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'relator', 1),
-(68, 'Coronel', 'Rosito', 'crosito', '$2y$10$QmzFR4YES6obC4NX4TPh1u4rnzu/ODMwQJiw7cbLdq0JefPyu7bPy', 'crosito@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'Jefe de departamento', 1);
+(68, 'Coronel', 'Rosito', 'crosito', '$2y$10$uLKjHzr2i5trlTwZMYwKPePvDTlFgWFoSCrcr79Hf41mJiqz7vpmO', 'crosito@ipm.org.gt', 'views/images/user.png', 'jefeRedaccion', 0, 'puesto', 'Jefe de departamento', 1);
 
 -- --------------------------------------------------------
 
@@ -356,42 +326,17 @@ CREATE TABLE `vitacora` (
 --
 
 INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) VALUES
-(1, 48, 'Subio un nuevo documento', '2018-07-06', '2018-07-06 21:01:47'),
-(2, 48, 'Subio un nuevo documento', '2018-07-06', '2018-07-06 21:17:25'),
-(3, 55, 'Subio un nuevo documento', '2018-07-06', '2018-07-06 21:26:33'),
-(4, 48, 'Edito un documento', '2018-07-06', '2018-07-06 21:30:13'),
-(5, 48, 'Se aprobo un documento', '2018-07-06', '2018-07-06 21:36:21'),
-(6, 48, 'Se publico un documento', '2018-07-06', '2018-07-06 21:37:59'),
-(7, 48, 'Se activo un documento', '2018-07-06', '2018-07-06 21:43:59'),
-(8, 64, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 15:13:52'),
-(9, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 16:52:24'),
-(10, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:04:44'),
-(11, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:09:20'),
-(12, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:21:40'),
-(13, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:23:16'),
-(14, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:23:56'),
-(15, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:24:19'),
-(16, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:24:19'),
-(17, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:24:32'),
-(18, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:25:04'),
-(19, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:25:20'),
-(20, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:25:31'),
-(21, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:27:45'),
-(22, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:28:14'),
-(23, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:28:56'),
-(24, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:30:12'),
-(25, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:32:28'),
-(26, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:32:41'),
-(27, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:35:57'),
-(28, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 17:41:16'),
-(29, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 18:06:46'),
-(30, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:39:52'),
-(31, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:40:48'),
-(32, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:41:09'),
-(33, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:52:36'),
-(34, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 19:53:45'),
-(35, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 20:04:15'),
-(36, 55, 'Subio un nuevo documento', '2018-07-09', '2018-07-09 20:04:48');
+(65, 65, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 00:44:38'),
+(66, 65, 'Edito un documento', '2018-07-10', '2018-07-11 00:44:56'),
+(67, 65, 'Edito un documento', '2018-07-10', '2018-07-11 00:44:56'),
+(68, 65, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:26:57'),
+(69, 65, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:36:41'),
+(70, 65, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:39:11'),
+(71, 65, 'Aprobo un documento', '2018-07-10', '2018-07-11 01:40:16'),
+(72, 55, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:41:38'),
+(73, 48, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:42:26'),
+(74, 65, 'Aprobo un documento', '2018-07-10', '2018-07-11 02:06:04'),
+(75, 64, 'publico un documento', '2018-07-10', '2018-07-11 02:06:44');
 
 --
 -- Índices para tablas volcadas
@@ -466,13 +411,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -490,7 +435,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- Restricciones para tablas volcadas
