@@ -489,7 +489,7 @@ class DocController{
                     }
                 }
                 if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
-                var_dump($buscarReceptor);
+                //var_dump($buscarReceptor);
                 foreach ($buscarReceptor as $key => $value)
                 {
                     $receptor = $value['id'];
@@ -720,7 +720,7 @@ class DocController{
                     $respuesta = DocModel::rechazarDocModel($datos, 'documentos');
                     if ($respuesta == 'success')
                     {
-                        $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
+                        $buscarReceptor = $this->buscarReceptoresJefesYEditoresController($idDeptoUsuario);
                         $nDoc = $this->buscarNdocController($_GET['idDoc']);
                         $autor = $this->buscarAutorController($_GET['idDoc']);
                         $exist = false;
@@ -742,7 +742,7 @@ class DocController{
                                         'n_doc'=>$nDoc);
                             $msj = $this->insertarMsjController($datosMsj);
                         }
-                        header('Location:notRechazarDocOk');
+                        header('Location:notAprobarDocOk');
                     }
                 }
                 
