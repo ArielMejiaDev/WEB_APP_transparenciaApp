@@ -227,7 +227,7 @@ class DocModel{
         $sql .= "documentos.fecha_publicacion, documentos.fecha_doc, ";
         $sql .= "documentos.year, documentos.mes, documentos.url_doc,";
         $sql .= " documentos.n_doc, documentos.status, documentos.justificacion";
-        $sql .= ", documentos.fecha_actualizado FROM ";
+        $sql .= ", documentos.fecha_actualizado, documentos.n_doc FROM ";
         $sql .= "((documentos INNER JOIN numerales ON documentos.id_numeral =";
         $sql .= " numerales.id) INNER JOIN categorias ON ";
         $sql .= "documentos.id_categoria = categorias.id) WHERE documentos.id = :id";

@@ -506,6 +506,7 @@ class DocController{
             //$listaNumerales = '<option value="5">Estructura Organica</option>'.'<option value="6">Direccion y telefonos</option>';
             echo '<form onsubmit="return validarDocEditar()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
                     <div class="form-group">
+                        <input type="hidden" name="n_doc" id="n_doc" value="'.$respuesta['n_doc'].'" >
                         <label class="col-sm-3 control-label" for="idNumeralEditar">Númeral</label>
                         <div class="col-sm-6">
                             <select name="idNumeralEditar" id="idNumeralEditar" class="form-control">
@@ -552,7 +553,8 @@ class DocController{
         }
     }
     //RECIVE EL ID DEL DOC Y DEVUELVE LA URL DEL DOC EL PATH 
-    public function getUrlDocController($idDoc){
+    public function getUrlDocController($idDoc)
+    {
         $respuesta = DocModel::getUrlDocModel($idDoc, 'documentos');
         $url = $respuesta['url_doc'];
         return $url;
@@ -597,8 +599,23 @@ class DocController{
                 $respuesta = DocModel::actualizarDocConCatConDocModel($datos, 'documentos');
                 if ($respuesta == 'success')
                 {
+                    $nombreTemporal = $_FILES['docEditar']['tmp_name'];
+                    move_uploaded_file($nombreTemporal, $url);
+
                     $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Edito un documento');
                     $vitacora = $this->vitacoraSubirDocController($datosVitacora);
+                    $nDoc = $_POST['n_doc'];
+                    $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
+                    foreach ($buscarReceptor as $key => $value)
+                    {
+                        $receptor = $value['id'];
+                        $datosMsj = array('remitente'=>(int)$idUsuario, 
+                                    'receptor'=>$receptor, 
+                                    'contenido'=>'Actualizo un documento', 
+                                    'status'=>1, 
+                                    'n_doc'=>$nDoc);
+                        $msj = $this->insertarMsjController($datosMsj);
+                    }
                     header('Location:listarArchivosSubidosGeneral');
                 }
                 var_dump($respuesta);
@@ -640,6 +657,18 @@ class DocController{
                 {
                     $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Edito un documento');
                     $vitacora = $this->vitacoraSubirDocController($datosVitacora);
+                    $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
+                    $nDoc = $_POST['n_doc'];
+                    foreach ($buscarReceptor as $key => $value)
+                    {
+                        $receptor = $value['id'];
+                        $datosMsj = array('remitente'=>(int)$idUsuario, 
+                                    'receptor'=>$receptor, 
+                                    'contenido'=>'Actualizo un documento', 
+                                    'status'=>1, 
+                                    'n_doc'=>$nDoc);
+                        $msj = $this->insertarMsjController($datosMsj);
+                    }
                     header('Location:listarArchivosSubidosGeneral');
                 }
                 echo 'actualizar datos sin cambiar el documento';
@@ -648,13 +677,28 @@ class DocController{
 
     }
     //RECHAZAR DOCUMENTOS
-    public function rechazarDocController($idUsuario, $idDeptoUsuario){
+    public function rechazarDocController($idUsuario, $idDeptoUsuario)
+    {
         if (isset($_GET['idDoc']) && isset($_POST['justificacion']) ) {
             if (!empty($_GET['idDoc']) && !empty($_POST['justificacion']) ) {
                 if (preg_match($this->expRegTexto,  $_POST['justificacion'] ) ) {
                     $datos = array('idDoc'=>$_GET['idDoc'], 'justificacion'=>$_POST['justificacion']);
                     $respuesta = DocModel::rechazarDocModel($datos, 'documentos');
-                    if ($respuesta == 'success') {
+                    if ($respuesta == 'success')
+                    {
+
+                        
+                        $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
+                        foreach ($buscarReceptor as $key => $value)
+                        {
+                            $receptor = $value['id'];
+                            $datosMsj = array('remitente'=>(int)$idUsuario, 
+                                        'receptor'=>$receptor, 
+                                        'contenido'=>'Subio un documento', 
+                                        'status'=>1, 
+                                        'n_doc'=>$nDoc);
+                            $msj = $this->insertarMsjController($datosMsj);
+                        }
                         header('Location:notRechazarDocOk');
                     }
                 }
@@ -673,6 +717,7 @@ class DocController{
     {
         $respuesta = DocModel::insertarMsjModel('mensajes', $datos);
     }
+    //DEVUELVE UN ARRAY CON LOS JEFES DE REDACCION QUE APRUEBAN O RECHAZAN UN DOCUMENTO
     public function buscarReceptorController($idDeptoUsuario)
     {
         $respuesta = DocModel::buscarReceptorModel('usuarios', $idDeptoUsuario);

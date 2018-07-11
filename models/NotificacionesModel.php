@@ -7,7 +7,7 @@ class NotificacionesModel extends Conexion
         $sql = "SELECT usuarios.foto, usuarios.nombres, usuarios.apellidos, ";
         $sql .= "mensajes.contenido, mensajes.n_doc FROM usuarios ";
         $sql .= "INNER JOIN mensajes ON usuarios.id=mensajes.remitente ";
-        $sql .= "WHERE mensajes.receptor=:idUsuario";
+        $sql .= "WHERE mensajes.receptor=:idUsuario ORDER BY mensajes.id DESC";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
         $stmt->execute();
