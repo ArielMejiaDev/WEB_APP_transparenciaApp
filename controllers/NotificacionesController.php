@@ -11,7 +11,7 @@ class NotificacionesController
                         <a href="index.php?action=documento&n_doc='.$value['n_doc'].'">
                             <div class="image"><img src="'.$value['foto'].'" alt="Avatar"></div>
                             <div class="notification-info">
-                                <div class="text"><span class="user-name">'.$value['nombres'].' '.$value['apellidos'].'</span> '.$value['contenido'].'.</div><span class="date">hace 2 minutos</span>
+                                <div class="text"><span class="user-name">'.$value['nombres'].' '.$value['apellidos'].'</span><small> '.$value['contenido'].'.</small></div>
                             </div>
                         </a>
                     </li>';
