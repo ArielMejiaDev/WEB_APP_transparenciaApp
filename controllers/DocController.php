@@ -511,7 +511,7 @@ class DocController{
             $dato = $_GET['publicar'];
             $respuesta = DocModel::publicarDocModel($dato,'documentos');
             if ($respuesta=='success') {
-                $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'publico un documento');
+                $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Publico un documento');
                 $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                 header('Location:notPublicarDocOk');
             }
@@ -624,6 +624,7 @@ class DocController{
                     'year'=>$year, 
                     'mes'=>$mes, 
                     'url_docEditar'=>$url, 
+                    'status'=>1, 
                     'idDoc'=>(int)$_GET['idDoc']
                     );
                 var_dump($datos);
@@ -680,6 +681,7 @@ class DocController{
                     'idCategoriaEditar'=>(int)$_POST['idCategoriaEditar'], 
                     'fecha_docEditar'=>$_POST['fecha_docEditar'],
                     'year'=>$year, 
+                    'status'=>1, 
                     'mes'=>$mes
                     );
                 var_dump($datosSinDoc);
@@ -720,6 +722,8 @@ class DocController{
                     $respuesta = DocModel::rechazarDocModel($datos, 'documentos');
                     if ($respuesta == 'success')
                     {
+                        $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Rechazo un documento');
+                        $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                         $buscarReceptor = $this->buscarReceptoresJefesYEditoresController($idDeptoUsuario);
                         $nDoc = $this->buscarNdocController($_GET['idDoc']);
                         $autor = $this->buscarAutorController($_GET['idDoc']);

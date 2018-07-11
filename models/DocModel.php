@@ -310,7 +310,8 @@ class DocModel{
         $sql .= "fecha_doc=:fecha_docEditar,";
         $sql .= "year=:year,";
         $sql .= "mes=:mes,";
-        $sql .= "url_doc=:url_docEditar ";
+        $sql .= "url_doc=:url_docEditar, ";
+        $sql .= "status=:status ";
         $sql .= "WHERE id=:idDoc";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':idUsuario', $datos['idUsuario'], PDO::PARAM_INT);
@@ -321,6 +322,7 @@ class DocModel{
         $stmt->bindParam(':year', $datos['year'], PDO::PARAM_STR);
         $stmt->bindParam(':mes', $datos['mes'], PDO::PARAM_STR);
         $stmt->bindParam(':url_docEditar', $datos['url_docEditar'], PDO::PARAM_STR);
+        $stmt->bindParam(':status', $datos['status'], PDO::PARAM_INT);
         $stmt->bindParam(':idDoc', $datos['idDoc'], PDO::PARAM_INT);
         if ($stmt->execute()) {
             return 'success';
@@ -338,7 +340,8 @@ class DocModel{
         $sql .= "id_categoria=:idCategoriaEditar,";
         $sql .= "fecha_doc=:fecha_docEditar,";
         $sql .= "year=:year,";
-        $sql .= "mes=:mes ";
+        $sql .= "mes=:mes, ";
+        $sql .= "status=:status ";
         $sql .= "WHERE id=:idDoc";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':idUsuario', $datos['idUsuario'], PDO::PARAM_INT);
@@ -348,6 +351,7 @@ class DocModel{
         $stmt->bindParam(':idCategoriaEditar', $datos['idCategoriaEditar'], PDO::PARAM_INT);
         $stmt->bindParam(':fecha_docEditar', $datos['fecha_docEditar'], PDO::PARAM_STR);
         $stmt->bindParam(':year', $datos['year'], PDO::PARAM_STR);
+        $stmt->bindParam(':status', $datos['status'], PDO::PARAM_INT);
         $stmt->bindParam(':mes', $datos['mes'], PDO::PARAM_STR);
         if ($stmt->execute()) {
             return 'success';

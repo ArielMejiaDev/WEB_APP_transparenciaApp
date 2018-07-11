@@ -17,7 +17,7 @@ class NotificacionesModel extends Conexion
     {
         $sql = "SELECT COUNT(*) AS total FROM usuarios ";
         $sql .= "INNER JOIN mensajes ON usuarios.id=mensajes.remitente ";
-        $sql .= "WHERE mensajes.receptor=:idUsuario WHERE mensajes.status=1";
+        $sql .= "WHERE mensajes.receptor=:idUsuario AND mensajes.status=1";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
         $stmt->execute();
