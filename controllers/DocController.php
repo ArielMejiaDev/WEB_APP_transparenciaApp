@@ -477,7 +477,7 @@ class DocController{
             {
                 $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Aprobo un documento');
                 $vitacora = $this->vitacoraSubirDocController($datosVitacora);
-                $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
+                $buscarReceptor = $this->buscarReceptoresJefesYEditoresController($idDeptoUsuario);
                 $nDoc = $this->buscarNdocController($_GET['aprobar']);
                 $autor = $this->buscarAutorController($_GET['aprobar']);
                 $exist = false;
@@ -490,17 +490,17 @@ class DocController{
                 }
                 if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
                 var_dump($buscarReceptor);
-                // foreach ($buscarReceptor as $key => $value)
-                // {
-                //     $receptor = $value['id'];
-                //     $datosMsj = array('remitente'=>(int)$idUsuario, 
-                //                 'receptor'=>$receptor, 
-                //                 'contenido'=>'Aprobo un documento', 
-                //                 'status'=>1, 
-                //                 'n_doc'=>$nDoc);
-                //     $msj = $this->insertarMsjController($datosMsj);
-                // }
-                // header('Location:notAprobarDocOk');
+                foreach ($buscarReceptor as $key => $value)
+                {
+                    $receptor = $value['id'];
+                    $datosMsj = array('remitente'=>(int)$idUsuario, 
+                                'receptor'=>$receptor, 
+                                'contenido'=>'Aprobo un documento', 
+                                'status'=>1, 
+                                'n_doc'=>$nDoc);
+                    $msj = $this->insertarMsjController($datosMsj);
+                }
+                header('Location:notAprobarDocOk');
             }
         }
     }
@@ -760,10 +760,16 @@ class DocController{
     {
         $respuesta = DocModel::insertarMsjModel('mensajes', $datos);
     }
-    //DEVUELVE UN ARRAY CON LOS JEFES DE REDACCION QUE APRUEBAN O RECHAZAN UN DOCUMENTO
+    //DEVUELVE UN ARRAY CON LOS JEFES DE REDACCION PARA LAS ACCIONES CUANDO SUBEN UN DOC
     public function buscarReceptorController($idDeptoUsuario)
     {
         $respuesta = DocModel::buscarReceptorModel('usuarios', $idDeptoUsuario);
+        return $respuesta;
+    }
+    //DEVUELVE UN ARRRAY CON LOS JEFES DE REDACCION Y EDITOR
+    public function buscarReceptoresJefesYEditoresController($idDeptoUsuario)
+    {
+        $respuesta = DocModel::buscarReceptoresJefesYEditoresModel('usuarios', $idDeptoUsuario);
         return $respuesta;
     }
     //DATOS DE DOCUMENTO INDIVIDUAL

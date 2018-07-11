@@ -398,6 +398,15 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    //RETORNA LOS JEFES DE REDACCION Y EDITORES PARA NOTIFICACIONES AL APROBAR Y O RECHAZAR
+    public function buscarReceptoresJefesYEditoresModel($tabla, $idDeptoUsuario)
+    {
+        $sql = "SELECT id FROM $tabla WHERE $tabla.id_departamento=:id_departamento AND $tabla.rol='jefeRedaccion' OR $tabla.rol='editor' ";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id_departamento', $idDeptoUsuario, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     //MOSTRAR DATOS DE UN DOCUMENTO INDIVIDUAL
     public function documentoIndividualSubidoModel($n_doc)
     {
