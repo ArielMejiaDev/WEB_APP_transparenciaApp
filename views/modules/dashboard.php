@@ -46,7 +46,7 @@ $dashboard = new DashboardController();
         <div class="widget widget-tile">
           <div id="spark4" class="chart sparkline"></div>
           <div class="data-info">
-            <div class="desc">Docs Reprobados</div>
+            <div class="desc">Docs Rechazados</div>
             <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-down"></span><span data-toggle="counter" data-end="<?php $dashboard->contarDocsRechazadosController(); ?>" class="number">0</span>
             </div>
           </div>
