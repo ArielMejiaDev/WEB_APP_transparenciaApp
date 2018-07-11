@@ -422,5 +422,23 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    //DEVUELVE EL N_DOC DE UN DOCUMENTO SUBIDO AL SERVIDOR
+    public function buscarNdocModel($tabla, $id_doc)
+    {
+        $sql = "SELECT $tabla.n_doc FROM $tabla WHERE $tabla.id = :id_doc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id_doc', $id_doc, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    //DEVUELVE EL AUTOR DE UN DOCUMENTOS SUBIDO AL SERVIDOR
+    public function buscarAutorModel($tabla, $id_doc)
+    {
+        $sql = "SELECT $tabla.id_usuario FROM $tabla WHERE $tabla.id = :id_doc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':id_doc', $id_doc, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>

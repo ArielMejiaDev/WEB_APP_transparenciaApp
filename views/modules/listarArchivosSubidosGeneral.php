@@ -1,12 +1,13 @@
 <?php  
 session_start();
-if (!$_SESSION['verificar']) 
+if (!$_SESSION['verificar'])
 {
   header('Location:index.php');
 }
-if (isset($_GET['action'])) 
+if (isset($_GET['action']))
 {
-	if ($_GET['action']=='notSubirArchivoOk') {
+	if ($_GET['action']=='notSubirArchivoOk')
+	{
 		echo "
 		<script>
 			swal({
@@ -19,9 +20,9 @@ if (isset($_GET['action']))
 		</script>";
 	}
 }
-if (isset($_GET['action'])) 
+if (isset($_GET['action']))
 {
-	if ($_GET['action']=='notPublicarDocOk') 
+	if ($_GET['action']=='notPublicarDocOk')
 	{
 		echo "
 		<script>
@@ -35,9 +36,9 @@ if (isset($_GET['action']))
 		</script>";
 	}
 }
-if (isset($_GET['action'])) 
+if (isset($_GET['action']))
 {
-	if ($_GET['action']=='notEditarArchivoOk') 
+	if ($_GET['action']=='notEditarArchivoOk')
 	{
 		echo "
 		<script>
@@ -106,7 +107,7 @@ $idUsuario = $datos['id'];
 $idDeptoUsuario = $datos['id_departamento'];
 $listarArchivosSubidosGeneral = new DocController();
 $listarArchivosSubidosGeneral->publicarDocController($idUsuario);
-$listarArchivosSubidosGeneral->aprobarDocController($idUsuario);
+$listarArchivosSubidosGeneral->aprobarDocController($idUsuario, $idDeptoUsuario);
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>

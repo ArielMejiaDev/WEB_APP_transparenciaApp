@@ -467,7 +467,7 @@ class DocController{
         }
     }
     //aprobar documento
-    public function aprobarDocController($idUsuario)
+    public function aprobarDocController($idUsuario, $idDeptoUsuario)
     {
         if (isset($_GET['aprobar']) && !empty($_GET['aprobar']) )
         {
@@ -477,7 +477,30 @@ class DocController{
             {
                 $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Aprobo un documento');
                 $vitacora = $this->vitacoraSubirDocController($datosVitacora);
-                header('Location:notAprobarDocOk');
+                $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
+                $nDoc = $this->buscarNdocController($_GET['aprobar']);
+                $autor = $this->buscarAutorController($_GET['aprobar']);
+                $exist = false;
+                foreach ($buscarReceptor as $key => $value)
+                {
+                    if (in_array($autor,$value))
+                    {
+                        $exist = true;
+                    }
+                }
+                if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
+                var_dump($buscarReceptor);
+                // foreach ($buscarReceptor as $key => $value)
+                // {
+                //     $receptor = $value['id'];
+                //     $datosMsj = array('remitente'=>(int)$idUsuario, 
+                //                 'receptor'=>$receptor, 
+                //                 'contenido'=>'Aprobo un documento', 
+                //                 'status'=>1, 
+                //                 'n_doc'=>$nDoc);
+                //     $msj = $this->insertarMsjController($datosMsj);
+                // }
+                // header('Location:notAprobarDocOk');
             }
         }
     }
@@ -687,22 +710,34 @@ class DocController{
     //RECHAZAR DOCUMENTOS
     public function rechazarDocController($idUsuario, $idDeptoUsuario)
     {
-        if (isset($_GET['idDoc']) && isset($_POST['justificacion']) ) {
-            if (!empty($_GET['idDoc']) && !empty($_POST['justificacion']) ) {
-                if (preg_match($this->expRegTexto,  $_POST['justificacion'] ) ) {
+        if (isset($_GET['idDoc']) && isset($_POST['justificacion']))
+        {
+            if (!empty($_GET['idDoc']) && !empty($_POST['justificacion']))
+            {
+                if (preg_match($this->expRegTexto,  $_POST['justificacion']))
+                {
                     $datos = array('idDoc'=>$_GET['idDoc'], 'justificacion'=>$_POST['justificacion']);
                     $respuesta = DocModel::rechazarDocModel($datos, 'documentos');
                     if ($respuesta == 'success')
                     {
-
-                        
                         $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
+                        $nDoc = $this->buscarNdocController($_GET['idDoc']);
+                        $autor = $this->buscarAutorController($_GET['idDoc']);
+                        $exist = false;
+                        foreach ($buscarReceptor as $key => $value)
+                        {
+                            if (in_array($autor,$value))
+                            {
+                                $exist = true;
+                            }
+                        }
+                        if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
                         foreach ($buscarReceptor as $key => $value)
                         {
                             $receptor = $value['id'];
                             $datosMsj = array('remitente'=>(int)$idUsuario, 
                                         'receptor'=>$receptor, 
-                                        'contenido'=>'Subio un documento', 
+                                        'contenido'=>'Rechazo un documento', 
                                         'status'=>1, 
                                         'n_doc'=>$nDoc);
                             $msj = $this->insertarMsjController($datosMsj);
@@ -804,6 +839,20 @@ class DocController{
                         '.$rechazar.'
 					</tr>';
         }
+    }
+    //DECUELVE EL NUMERO DE DOCUMENTO DE UN DOCUMENTO SUBIDO
+    public function buscarNdocController($id_doc)
+    {
+        $respuesta = DocModel::buscarNdocModel('documentos', $id_doc);
+        $n_doc = $respuesta['n_doc'];
+        return $n_doc;
+    }
+    //DEVUELVE EL AUTOR DEL DOCUMENTO SUBIDO
+    public function buscarAutorController($id_doc)
+    {
+        $respuesta = DocModel::buscarAutorModel('documentos', $id_doc);
+        $autor = $respuesta['id_usuario'];
+        return $autor;
     }
 }
 ?>
