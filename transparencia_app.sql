@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-07-2018 a las 04:22:38
+-- Tiempo de generación: 12-07-2018 a las 02:15:35
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,12 +178,7 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
-(50, 65, 1, 1, 1, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 212015.pdf', '1-1-2018', 1, '', '2018-07-11 00:44:56', ''),
-(51, 65, 1, 2, 18, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 002015.pdf', '2-1-2018', 4, 'Formato incorrecto.', '2018-07-11 02:06:59', ''),
-(52, 65, 1, 3, 19, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Normativo de inversiones.pdf', '3-1-2018', 2, '', '2018-07-11 01:40:16', ''),
-(53, 65, 1, 1, 26, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-2-2018', 1, '', '2018-07-11 01:39:11', ''),
-(54, 55, 1, 6, 33, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 212016.pdf', '6-1-2018', 1, '', '2018-07-11 01:41:38', ''),
-(55, 48, 1, 9, 54, '2018-07-31', '2018-07-10', 2018, 'julio', 'views/docs/Normativo de inversiones 2.pdf', '9-1-2018', 3, '', '2018-07-11 02:06:44', '');
+(64, 55, 1, 1, 1, '2018-08-01', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 212016.pdf', '1-1-2018', 3, 'La fecha esta mal.', '2018-07-11 23:58:52', '');
 
 -- --------------------------------------------------------
 
@@ -205,22 +200,22 @@ CREATE TABLE `mensajes` (
 --
 
 INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `status`, `n_doc`) VALUES
-(61, 65, 65, 'Subio un documento', 0, '1-1-2018'),
-(62, 65, 68, 'Subio un documento', 0, '1-1-2018'),
-(63, 65, 65, 'Actualizo un documento', 0, '1-1-2018'),
-(64, 65, 68, 'Actualizo un documento', 0, '1-1-2018'),
-(65, 65, 65, 'Actualizo un documento', 0, '1-1-2018'),
-(66, 65, 68, 'Actualizo un documento', 0, '1-1-2018'),
-(67, 65, 65, 'Subio un documento', 0, '2-1-2018'),
-(68, 65, 68, 'Subio un documento', 0, '2-1-2018'),
-(69, 65, 65, 'Subio un documento', 0, '3-1-2018'),
-(70, 65, 68, 'Subio un documento', 0, '3-1-2018'),
-(71, 65, 65, 'Subio un documento', 0, '1-2-2018'),
-(72, 65, 68, 'Subio un documento', 0, '1-2-2018'),
-(73, 55, 65, 'Subio un documento', 1, '6-1-2018'),
-(74, 55, 68, 'Subio un documento', 1, '6-1-2018'),
-(75, 48, 65, 'Subio un documento', 1, '9-1-2018'),
-(76, 48, 68, 'Subio un documento', 1, '9-1-2018');
+(171, 55, 65, 'Subio un documento', 0, '1-1-2018'),
+(172, 55, 68, 'Subio un documento', 0, '1-1-2018'),
+(173, 65, 64, 'Rechazo un documento', 0, '1-1-2018'),
+(174, 65, 65, 'Rechazo un documento', 0, '1-1-2018'),
+(175, 65, 68, 'Rechazo un documento', 0, '1-1-2018'),
+(176, 65, 55, 'Rechazo un documento', 0, '1-1-2018'),
+(177, 55, 65, 'Actualizo un documento', 0, '1-1-2018'),
+(178, 55, 68, 'Actualizo un documento', 0, '1-1-2018'),
+(179, 68, 64, 'Aprobo un documento', 0, '1-1-2018'),
+(180, 68, 65, 'Aprobo un documento', 0, '1-1-2018'),
+(181, 68, 68, 'Aprobo un documento', 0, '1-1-2018'),
+(182, 68, 55, 'Aprobo un documento', 0, '1-1-2018'),
+(183, 68, 64, 'Aprobo un documento', 0, '1-1-2018'),
+(184, 68, 65, 'Aprobo un documento', 0, '1-1-2018'),
+(185, 68, 68, 'Aprobo un documento', 0, '1-1-2018'),
+(186, 68, 55, 'Aprobo un documento', 0, '1-1-2018');
 
 -- --------------------------------------------------------
 
@@ -296,7 +291,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `email`, `foto`, `rol`, `intentos`, `pregunta_seguridad`, `respuesta_seguridad`, `id_departamento`) VALUES
-(48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$XVj1XpVXHD98MaMVE9RsOecXNcKP.KHbuj.GQzJFBLG0ieb9gh0My', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendi la ...', 'referencia', 1),
+(48, 'Ariel Fernando', 'Salvador Mejia', 'asalvador', '$2y$10$TzQMCDkch5ijkdRjzqIxXOsEgkPhqQDxF7GJ4oGQfMphLrK8JNSSi', 'asalvador@ipm.org.gt', 'views/images/user.png', 'admin', 0, 'entendi la ...', 'referencia', 1),
 (51, 'Oscar Ruben', 'Colindres Ochoa', 'ocolindres', '$2y$10$WAoJbSFrXZPbPzknSYell.lXsenkQx7U0JDvEt3aUninIXlJSSBba', 'ocolindres@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'encargadodesoftware', 1),
 (52, 'Kevin Andre', 'Carcamo Raudales', 'kcarcamo', '$2y$10$VpRcxYAizGzhC5w.ln2.EeRGJRiFSaqUFmZc1jscCpL4ZIXlsmv9m', 'kcarcamo@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'programador', 1),
 (53, 'Oscar', 'Pacheco Tzorin', 'opacheco', '$2y$10$3hXb856l9JqQ.Y8lNC7CRe7SgMDvcR1WUZPI8a3QoW/FqAn2F90.W', 'opacheco@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'dba', 1),
@@ -305,7 +300,7 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `usuario`, `password`, `em
 (64, 'Edgar', 'Urizar', 'eurizar', '$2y$10$IQIlpE9b/XPunI6qeApgounspNn.dHiHOkVRkM3XVkP45IjdafGxq', 'eurizar@ipm.org.gt', 'views/images/user.png', 'editor', 0, 'Puesto', 'Jefe de Recursos Humanos', 14),
 (65, 'Nelson', 'Boche', 'nboche', '$2y$10$Cwb9jOdx.HbTMTlJ3H/oN.Y9h84wNhOlogqdzKGuT8qZNxzdrl7TK', 'nboche@ipm.org.gt', 'views/images/user.png', 'jefeRedaccion', 0, 'Puesto', 'Sub jefe de Informatica', 1),
 (67, 'Ricardo', 'Mayorga', 'rmayorga', '$2y$10$Eqc7fZ40r6Hiv6dKaXlyqeqgYaw71t3cthMwbRV9PDaMp.QkOAKwa', 'rmayorga@ipm.org.gt', 'views/images/user.png', 'redactor', 0, 'puesto', 'relator', 1),
-(68, 'Coronel', 'Rosito', 'crosito', '$2y$10$uLKjHzr2i5trlTwZMYwKPePvDTlFgWFoSCrcr79Hf41mJiqz7vpmO', 'crosito@ipm.org.gt', 'views/images/user.png', 'jefeRedaccion', 0, 'puesto', 'Jefe de departamento', 1);
+(68, 'Mayor', 'Rosito', 'mrosito', '$2y$10$TEhfHy1xFLJyRxdXT67avOyOqqU5F0vV1IsD0Vo3lQ1yBYQFAqLfy', 'crosito@ipm.org.gt', 'views/images/user.png', 'jefeRedaccion', 0, 'puesto', 'Jefe de departamento', 1);
 
 -- --------------------------------------------------------
 
@@ -326,17 +321,12 @@ CREATE TABLE `vitacora` (
 --
 
 INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) VALUES
-(65, 65, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 00:44:38'),
-(66, 65, 'Edito un documento', '2018-07-10', '2018-07-11 00:44:56'),
-(67, 65, 'Edito un documento', '2018-07-10', '2018-07-11 00:44:56'),
-(68, 65, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:26:57'),
-(69, 65, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:36:41'),
-(70, 65, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:39:11'),
-(71, 65, 'Aprobo un documento', '2018-07-10', '2018-07-11 01:40:16'),
-(72, 55, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:41:38'),
-(73, 48, 'Subio un nuevo documento', '2018-07-10', '2018-07-11 01:42:26'),
-(74, 65, 'Aprobo un documento', '2018-07-10', '2018-07-11 02:06:04'),
-(75, 64, 'publico un documento', '2018-07-10', '2018-07-11 02:06:44');
+(161, 55, 'Subio un nuevo documento', '2018-07-11', '2018-07-11 23:53:22'),
+(162, 65, 'Rechazo un documento', '2018-07-11', '2018-07-11 23:54:18'),
+(163, 55, 'Edito un documento', '2018-07-11', '2018-07-11 23:55:23'),
+(164, 68, 'Aprobo un documento', '2018-07-11', '2018-07-11 23:55:58'),
+(165, 68, 'Aprobo un documento', '2018-07-11', '2018-07-11 23:57:13'),
+(166, 64, 'Publico un documento', '2018-07-11', '2018-07-11 23:58:52');
 
 --
 -- Índices para tablas volcadas
@@ -411,13 +401,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -435,7 +425,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- Restricciones para tablas volcadas
