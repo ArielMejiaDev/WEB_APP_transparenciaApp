@@ -68,6 +68,7 @@ class DocController{
                                             'n_doc'=>$nDoc);
                                 $msj = $this->insertarMsjController($datosMsj);
                             }
+                            //var_dump($datosMsj);
                         header('Location:notSubirArchivoOk');
                     }
                 }else{
@@ -662,7 +663,6 @@ class DocController{
                 $mes = strftime('%B',strtotime($_POST['fecha_docEditar']));
                 $url = 'views/docs/'.$_FILES['docEditar']['name'];
                 $datos = array(
-                    'idUsuario'=>(int)$idUsuario, 
                     'idDeptoUsuario'=>(int)$idDeptoUsuario,  
                     'idNumeralEditar'=>(int)$_POST['idNumeralEditar'], 
                     'idCategoriaEditar'=>(int)$_POST['idCategoriaEditar'], 
@@ -670,7 +670,7 @@ class DocController{
                     'year'=>$year, 
                     'mes'=>$mes, 
                     'url_docEditar'=>$url, 
-                    'status'=>1, 
+                    'status'=>1,  
                     'idDoc'=>(int)$_GET['idDoc']
                     );
                 var_dump($datos);
@@ -690,14 +690,13 @@ class DocController{
                         $datosMsj = array('remitente'=>(int)$idUsuario, 
                                     'receptor'=>$receptor, 
                                     'contenido'=>'Actualizo un documento', 
-                                    'status'=>1, 
                                     'n_doc'=>$nDoc);
-                        $msj = $this->insertarMsjController($datosMsj);
+                        $msj = $this->actualizarMsjController($datosMsj);
                     }
-                    header('Location:listarArchivosSubidosGeneral');
+                    header('Location:notEditarArchivoOk');
                 }
-                var_dump($respuesta);
-                echo 'actualizar datos cambiando el documento';
+                //var_dump($respuesta);
+                //echo 'actualizar datos cambiando el documento';
             }
         }
 
@@ -720,7 +719,6 @@ class DocController{
                 $year = strftime('%Y',strtotime($_POST['fecha_docEditar']));
                 $mes = strftime('%B',strtotime($_POST['fecha_docEditar']));
                 $datosSinDoc = array(
-                    'idUsuario'=>(int)$idUsuario, 
                     'idDeptoUsuario'=>(int)$idDeptoUsuario,
                     'idDoc'=>(int)$_GET['idDoc'], 
                     'idNumeralEditar'=>(int)$_POST['idNumeralEditar'], 
@@ -730,7 +728,7 @@ class DocController{
                     'status'=>1, 
                     'mes'=>$mes
                     );
-                var_dump($datosSinDoc);
+                //var_dump($datosSinDoc);
                 $respuesta = DocModel::actualizarDocConCatSinDocModel($datosSinDoc, 'documentos');
                 if ($respuesta == 'success')
                 {
@@ -741,14 +739,19 @@ class DocController{
                     foreach ($buscarReceptor as $key => $value)
                     {
                         $receptor = $value['id'];
-                        $datosMsj = array('remitente'=>(int)$idUsuario, 
+                        $datosMsj[] = array('remitente'=>(int)$idUsuario, 
                                     'receptor'=>$receptor, 
                                     'contenido'=>'Actualizo un documento', 
-                                    'status'=>1, 
                                     'n_doc'=>$nDoc);
-                        $msj = $this->insertarMsjController($datosMsj);
+                        //$msj = $this->actualizarMsjController($datosMsj);
                     }
-                    header('Location:listarArchivosSubidosGeneral');
+                    foreach ($datosMsj as $key => $value)
+                    {
+                        //var_dump($value);
+                        $msj = $this->actualizarMsjController($value);
+                    }
+                    var_dump($datosMsj);
+                    header('Location:notEditarArchivoOk');
                 }
                 echo 'actualizar datos sin cambiar el documento';
             }
@@ -805,10 +808,15 @@ class DocController{
     {
         $respuesta = DocModel::vitacoraSubirDocModel('vitacora',$datos);
     }
-    //INSERTAR UN MENSAJE EN LAS DIFERENTES ACCIONES DE LOS DOCUMENTOS
+    //INSERTAR UN MENSAJE AL SUBIR DOCUMENTOS
     public function insertarMsjController($datos)
     {
         $respuesta = DocModel::insertarMsjModel('mensajes', $datos);
+    }
+    //ACTUALIZAR UN MENSAJE EN LA EDITAR, RECHAZAR, ACTIVAR Y RECHAZAR
+    public function actualizarMsjController($datos)
+    {
+        $respuesta = DocModel::actualizarMsjModel('mensajes', $datos);
     }
     //DEVUELVE UN ARRAY CON LOS JEFES DE REDACCION PARA LAS ACCIONES CUANDO SUBEN UN DOC
     public function buscarReceptorController($idDeptoUsuario)

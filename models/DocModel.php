@@ -265,7 +265,8 @@ class DocModel{
         }
     }
     //ACTUALIZAR DOCUMENTO SIN CAMBIAR EL DOCUMENTO SUBIDO
-    public function actualizarDocSinCambiarDocModel($datosSinDoc,$tabla){
+    public function actualizarDocSinCambiarDocModel($datosSinDoc,$tabla)
+    {
         $sql = "UPDATE $tabla SET";
         $sql .= "id_usuario=:idUsuario,";
         $sql .= "id_departamento=:idDeptoUsuario,";
@@ -291,7 +292,8 @@ class DocModel{
         }
     }
     ///RECIVE EL ID DEL DOC Y DEVUELVE LA URL DEL DOC EL PATH 
-    public function getUrlDocModel($idDoc, $tabla){
+    public function getUrlDocModel($idDoc, $tabla)
+    {
         $sql = "SELECT url_doc FROM $tabla WHERE id = :idDoc";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':idDoc', $idDoc, PDO::PARAM_INT);
@@ -299,9 +301,9 @@ class DocModel{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     //
-    public function actualizarDocConCatConDocModel($datos, $tabla){
+    public function actualizarDocConCatConDocModel($datos, $tabla)
+    {
         $sql = "UPDATE $tabla SET ";
-        $sql .= "id_usuario=:idUsuario,";
         $sql .= "id_departamento=:idDeptoUsuario,";
         $sql .= "id_numeral=:idNumeralEditar,";
         $sql .= "id_categoria=:idCategoriaEditar,";
@@ -312,7 +314,6 @@ class DocModel{
         $sql .= "status=:status ";
         $sql .= "WHERE id=:idDoc";
         $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(':idUsuario', $datos['idUsuario'], PDO::PARAM_INT);
         $stmt->bindParam(':idDeptoUsuario', $datos['idDeptoUsuario'], PDO::PARAM_INT);
         $stmt->bindParam(':idNumeralEditar', $datos['idNumeralEditar'], PDO::PARAM_INT);
         $stmt->bindParam(':idCategoriaEditar', $datos['idCategoriaEditar'], PDO::PARAM_INT);
@@ -329,10 +330,10 @@ class DocModel{
         }
     }
     //
-    public function actualizarDocConCatSinDocModel($datos, $tabla){
+    public function actualizarDocConCatSinDocModel($datos, $tabla)
+    {
           
         $sql = "UPDATE $tabla SET ";
-        $sql .= "id_usuario=:idUsuario,";
         $sql .= "id_departamento=:idDeptoUsuario,";
         $sql .= "id_numeral=:idNumeralEditar,";
         $sql .= "id_categoria=:idCategoriaEditar,";
@@ -342,7 +343,6 @@ class DocModel{
         $sql .= "status=:status ";
         $sql .= "WHERE id=:idDoc";
         $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(':idUsuario', $datos['idUsuario'], PDO::PARAM_INT);
         $stmt->bindParam(':idDeptoUsuario', $datos['idDeptoUsuario'], PDO::PARAM_INT);
         $stmt->bindParam(':idDoc', $datos['idDoc'], PDO::PARAM_INT);
         $stmt->bindParam(':idNumeralEditar', $datos['idNumeralEditar'], PDO::PARAM_INT);
@@ -358,7 +358,8 @@ class DocModel{
         }
     }
     //RECHAZAR EL DOCUMENTO
-    public function rechazarDocModel($datos, $tabla){
+    public function rechazarDocModel($datos, $tabla)
+    {
         $sql = "UPDATE $tabla SET status=4 , justificacion=:justificacion WHERE id = :idDoc";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':idDoc',$datos['idDoc'],PDO::PARAM_INT);
@@ -382,12 +383,26 @@ class DocModel{
     //INSERTA UN MENSAJE CON CADA ACCION DE LOS DOCUMENTOS
     public function insertarMsjModel($tabla, $datos)
     {
-        $sql = "INSERT INTO $tabla(remitente, receptor, contenido, status, n_doc) VALUES (:remitente,:receptor,:contenido,:status,:n_doc)";
+        $sql = "INSERT INTO $tabla(remitente, receptor, contenido, n_doc, status) ";
+        $sql .= "VALUES (:remitente,:receptor,:contenido,:n_doc,:status)";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':remitente', $datos['remitente'], PDO::PARAM_INT);
         $stmt->bindParam(':receptor', $datos['receptor'], PDO::PARAM_INT);
         $stmt->bindParam(':contenido', $datos['contenido'], PDO::PARAM_STR);
+        $stmt->bindParam(':n_doc', $datos['n_doc'], PDO::PARAM_STR);
         $stmt->bindParam(':status', $datos['status'], PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    //ACTUALIZAR UN MENSAJE CON LAS ACCIONES EDITAR, RECHAZAR, APROBAR, ACTIVAR Y PUBLICAR DOCUMENTOS
+    public function actualizarMsjModel($tabla, $datos)
+    {
+        $sql = "UPDATE $tabla SET $tabla.remitente=:remitente, ";
+        $sql .= "$tabla.receptor=:receptor, $tabla.contenido=:contenido ";
+        $sql .= "WHERE $tabla.n_doc=:n_doc AND $tabla.receptor=:receptor ";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':remitente', $datos['remitente'], PDO::PARAM_INT);
+        $stmt->bindParam(':receptor', $datos['receptor'], PDO::PARAM_INT);
+        $stmt->bindParam(':contenido', $datos['contenido'], PDO::PARAM_STR);
         $stmt->bindParam(':n_doc', $datos['n_doc'], PDO::PARAM_STR);
         $stmt->execute();
     }
