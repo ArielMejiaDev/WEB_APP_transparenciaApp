@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-07-2018 a las 02:15:35
+-- Tiempo de generación: 13-07-2018 a las 00:40:10
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,7 +178,7 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
-(64, 55, 1, 1, 1, '2018-08-01', '2018-07-10', 2018, 'julio', 'views/docs/Acuerdo 212016.pdf', '1-1-2018', 3, 'La fecha esta mal.', '2018-07-11 23:58:52', '');
+(89, 55, 1, 1, 1, '2018-08-02', '2018-07-02', 2018, 'julio', 'views/docs/Normativo de inversiones 2.pdf', '1-1-2018', 1, '', '2018-07-12 21:50:25', '');
 
 -- --------------------------------------------------------
 
@@ -191,31 +191,17 @@ CREATE TABLE `mensajes` (
   `remitente` int(11) NOT NULL,
   `receptor` int(11) NOT NULL,
   `contenido` text NOT NULL,
-  `status` int(11) NOT NULL,
-  `n_doc` text NOT NULL
+  `n_doc` text NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `mensajes`
 --
 
-INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `status`, `n_doc`) VALUES
-(171, 55, 65, 'Subio un documento', 0, '1-1-2018'),
-(172, 55, 68, 'Subio un documento', 0, '1-1-2018'),
-(173, 65, 64, 'Rechazo un documento', 0, '1-1-2018'),
-(174, 65, 65, 'Rechazo un documento', 0, '1-1-2018'),
-(175, 65, 68, 'Rechazo un documento', 0, '1-1-2018'),
-(176, 65, 55, 'Rechazo un documento', 0, '1-1-2018'),
-(177, 55, 65, 'Actualizo un documento', 0, '1-1-2018'),
-(178, 55, 68, 'Actualizo un documento', 0, '1-1-2018'),
-(179, 68, 64, 'Aprobo un documento', 0, '1-1-2018'),
-(180, 68, 65, 'Aprobo un documento', 0, '1-1-2018'),
-(181, 68, 68, 'Aprobo un documento', 0, '1-1-2018'),
-(182, 68, 55, 'Aprobo un documento', 0, '1-1-2018'),
-(183, 68, 64, 'Aprobo un documento', 0, '1-1-2018'),
-(184, 68, 65, 'Aprobo un documento', 0, '1-1-2018'),
-(185, 68, 68, 'Aprobo un documento', 0, '1-1-2018'),
-(186, 68, 55, 'Aprobo un documento', 0, '1-1-2018');
+INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `n_doc`, `status`) VALUES
+(263, 55, 65, 'Actualizo un documento', '1-1-2018', 1),
+(264, 55, 68, 'Actualizo un documento', '1-1-2018', 1);
 
 -- --------------------------------------------------------
 
@@ -321,12 +307,11 @@ CREATE TABLE `vitacora` (
 --
 
 INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) VALUES
-(161, 55, 'Subio un nuevo documento', '2018-07-11', '2018-07-11 23:53:22'),
-(162, 65, 'Rechazo un documento', '2018-07-11', '2018-07-11 23:54:18'),
-(163, 55, 'Edito un documento', '2018-07-11', '2018-07-11 23:55:23'),
-(164, 68, 'Aprobo un documento', '2018-07-11', '2018-07-11 23:55:58'),
-(165, 68, 'Aprobo un documento', '2018-07-11', '2018-07-11 23:57:13'),
-(166, 64, 'Publico un documento', '2018-07-11', '2018-07-11 23:58:52');
+(248, 55, 'Subio un nuevo documento', '2018-07-12', '2018-07-12 21:46:32'),
+(249, 55, 'Edito un documento', '2018-07-12', '2018-07-12 21:47:30'),
+(250, 55, 'Edito un documento', '2018-07-12', '2018-07-12 21:48:20'),
+(251, 55, 'Edito un documento', '2018-07-12', '2018-07-12 21:50:07'),
+(252, 55, 'Edito un documento', '2018-07-12', '2018-07-12 21:50:25');
 
 --
 -- Índices para tablas volcadas
@@ -401,13 +386,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -425,7 +410,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
 
 --
 -- Restricciones para tablas volcadas
