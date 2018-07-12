@@ -446,13 +446,36 @@ class DocController{
             if (preg_match('/[^a-zA-Z\d]/',$_POST['observaciones']) && 
                 preg_match($this->expRegNum,$_GET['idDoc']))
             {
-                $datos = array('idDoc'=>$_GET['idDoc'], 'idDepto'=>$idDeptoUsuario, 'idUsuario'=>$idUsuario, 'observaciones'=>utf8_decode($_POST['observaciones']));
+                $datos = array('idDoc'=>$_GET['idDoc'], 'observaciones'=>utf8_decode($_POST['observaciones']));
                 var_dump($datos);
                 $respuesta = DocModel::activarDocModel($datos, 'documentos');
                 if ($respuesta=='success')
                 {
                     $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Activo un documento');
                     $vitacora = $this->vitacoraSubirDocController($datosVitacora);
+                    $buscarReceptor = $this->buscarReceptoresJefesYEditoresController($idDeptoUsuario);
+                    $nDoc = $this->buscarNdocController($_GET['idDoc']);
+                    $autor = $this->buscarAutorController($_GET['idDoc']);
+                    $exist = false;
+                    foreach ($buscarReceptor as $key => $value)
+                    {
+                        if (in_array($autor,$value))
+                        {
+                            $exist = true;
+                        }
+                    }
+                    if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
+                    //var_dump($buscarReceptor);
+                    foreach ($buscarReceptor as $key => $value)
+                    {
+                        $receptor = $value['id'];
+                        $datosMsj = array('remitente'=>(int)$idUsuario, 
+                                    'receptor'=>$receptor, 
+                                    'contenido'=>'Activo un documento', 
+                                    'status'=>1, 
+                                    'n_doc'=>$nDoc);
+                        $msj = $this->insertarMsjController($datosMsj);
+                    }
                     header('Location:notActivarDocOk');
                 }
             }else{
@@ -505,7 +528,7 @@ class DocController{
         }
     }
     //cambia el status de un documento para que tenga status 3 de publicado 
-    public function publicarDocController($idUsuario)
+    public function publicarDocController($idUsuario, $idDeptoUsuario)
     {
         if (isset($_GET['publicar']) && !empty($_GET['publicar'])) {
             $dato = $_GET['publicar'];
@@ -513,6 +536,29 @@ class DocController{
             if ($respuesta=='success') {
                 $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Publico un documento');
                 $vitacora = $this->vitacoraSubirDocController($datosVitacora);
+                $buscarReceptor = $this->buscarReceptoresJefesYEditoresController($idDeptoUsuario);
+                $nDoc = $this->buscarNdocController($_GET['publicar']);
+                $autor = $this->buscarAutorController($_GET['publicar']);
+                $exist = false;
+                foreach ($buscarReceptor as $key => $value)
+                {
+                    if (in_array($autor,$value))
+                    {
+                        $exist = true;
+                    }
+                }
+                if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
+                var_dump($buscarReceptor);
+                foreach ($buscarReceptor as $key => $value)
+                {
+                    $receptor = $value['id'];
+                    $datosMsj = array('remitente'=>(int)$idUsuario, 
+                                'receptor'=>$receptor, 
+                                'contenido'=>'Publico un documento', 
+                                'status'=>1, 
+                                'n_doc'=>$nDoc);
+                    $msj = $this->insertarMsjController($datosMsj);
+                }
                 header('Location:notPublicarDocOk');
             }
         }

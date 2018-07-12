@@ -14,7 +14,7 @@ if (isset($_GET['n_doc']) && !empty($_GET['n_doc']))
     $n_doc = $_GET['n_doc'];
 }
 $listarArchivosSubidosGeneral = new DocController();
-$listarArchivosSubidosGeneral->publicarDocController($idUsuario);
+$listarArchivosSubidosGeneral->publicarDocController($idUsuario, $idDeptoUsuario);
 $listarArchivosSubidosGeneral->aprobarDocController($idUsuario, $idDeptoUsuario);
 $notificacion = new NotificacionesController();
 $notificacion->cambiarStatusController($n_doc);

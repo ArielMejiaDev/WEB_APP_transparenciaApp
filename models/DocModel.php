@@ -158,12 +158,10 @@ class DocModel{
     //ACTIVAR DOCUMENTOS
     public function activarDocModel($datos, $tabla)
     {
-        $sql = "UPDATE $tabla SET id_usuario=:idUsuario,id_departamento=:idDepto,";
+        $sql = "UPDATE $tabla SET ";
         $sql .= "status=1,observaciones=:observaciones WHERE id=:idDoc";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':idDoc',$datos['idDoc'],PDO::PARAM_INT);
-        $stmt->bindParam(':idDepto',$datos['idDepto'],PDO::PARAM_INT);
-        $stmt->bindParam(':idUsuario',$datos['idUsuario'],PDO::PARAM_INT);
         $stmt->bindParam(':observaciones',$datos['observaciones'],PDO::PARAM_STR);
         if ($stmt->execute())
         {
