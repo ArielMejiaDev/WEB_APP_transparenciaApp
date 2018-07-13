@@ -406,6 +406,17 @@ class DocModel{
         $stmt->bindParam(':n_doc', $datos['n_doc'], PDO::PARAM_STR);
         $stmt->execute();
     }
+    //RETORNA SI EXISTE O NO COINCIDENCIA ENTRE EL REMITENTE Y EL PARAMETRO RECIBIDO EN LOS REGISTROS CON EL N_DOC IGUAL AL RECIBIDO POR PARAM
+    public function comprobacionMsjModel($tabla, $receptor, $n_doc)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM $tabla WHERE $tabla.receptor=:receptor ";
+        $sql .= "AND $tabla.n_doc=:n_doc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':n_doc', $n_doc, PDO::PARAM_STR);
+        $stmt->bindParam(':receptor', $receptor, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } 
     //BUSCAR EL RECEPTOR PARA LA NOTIFICACION DE QUE SE SUBIO UN DOCUMENTO
     public function buscarReceptorModel($tabla, $idDeptoUsuario)
     {

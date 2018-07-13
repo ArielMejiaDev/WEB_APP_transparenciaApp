@@ -785,17 +785,31 @@ class DocController{
                             }
                         }
                         if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
+                        //var_dump($buscarReceptor);
                         foreach ($buscarReceptor as $key => $value)
                         {
                             $receptor = $value['id'];
-                            $datosMsj = array('remitente'=>(int)$idUsuario, 
+                            $datosMsj[] = array('remitente'=>(int)$idUsuario, 
                                         'receptor'=>$receptor, 
                                         'contenido'=>'Rechazo un documento', 
                                         'status'=>1, 
                                         'n_doc'=>$nDoc);
-                            $msj = $this->insertarMsjController($datosMsj);
                         }
-                        header('Location:notAprobarDocOk');
+                        foreach ($datosMsj as $key => $value)
+                        {
+                            $comprobacion = $this->comprobacionMsjController($value['receptor'], $value['n_doc']);
+                            //var_dump($comprobacion);
+                            if ($comprobacion=='insertar')
+                            {
+                                $msj = $this->insertarMsjController($value);
+                            }elseif($comprobacion=='actualizar')
+                            {
+                                $msj = $this->actualizarMsjController($value);
+                            }
+                            //var_dump($value);
+                        }
+                        //var_dump($datosMsj);
+                        header('Location:notRechazarDocOk');
                     }
                 }
                 
@@ -817,6 +831,19 @@ class DocController{
     public function actualizarMsjController($datos)
     {
         $respuesta = DocModel::actualizarMsjModel('mensajes', $datos);
+    }
+    //DEVUELVE UNA INSTRUCCION SI COINCIDE O NO EL REMITENTE DEL MENSAJE CON LOS REGISTROS SEGUN EL PARAM N_DOC
+    public function comprobacionMsjController($receptor, $n_doc)
+    {
+        $respuesta = DocModel::comprobacionMsjModel('mensajes', $receptor, $n_doc);
+        //return $respuesta;
+        if ($respuesta['total']==0)
+        {
+            $instruccion = 'insertar';
+        }elseif($respuesta['total']>0){
+            $instruccion = 'actualizar';
+        }
+        return $instruccion;
     }
     //DEVUELVE UN ARRAY CON LOS JEFES DE REDACCION PARA LAS ACCIONES CUANDO SUBEN UN DOC
     public function buscarReceptorController($idDeptoUsuario)
