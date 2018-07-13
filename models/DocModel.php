@@ -435,6 +435,15 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    //RETORNA UN ARREGLO CON EL ID DE TODOS LOS RECEPTORES DE MENSAJES CON EL MISMO N_DOC
+    public function buscarUsuariosNotificadosModel($tabla, $nDoc)
+    {
+        $sql = "SELECT $tabla.receptor FROM $tabla WHERE $tabla.n_doc=:n_doc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':n_doc', $nDoc, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     //MOSTRAR DATOS DE UN DOCUMENTO INDIVIDUAL
     public function documentoIndividualSubidoModel($n_doc)
     {

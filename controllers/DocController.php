@@ -673,7 +673,7 @@ class DocController{
                     'status'=>1,  
                     'idDoc'=>(int)$_GET['idDoc']
                     );
-                var_dump($datos);
+                //var_dump($datos);
                 $respuesta = DocModel::actualizarDocConCatConDocModel($datos, 'documentos');
                 if ($respuesta == 'success')
                 {
@@ -687,13 +687,19 @@ class DocController{
                     foreach ($buscarReceptor as $key => $value)
                     {
                         $receptor = $value['id'];
-                        $datosMsj = array('remitente'=>(int)$idUsuario, 
+                        $datosMsj[] = array('remitente'=>(int)$idUsuario, 
                                     'receptor'=>$receptor, 
                                     'contenido'=>'Actualizo un documento', 
                                     'n_doc'=>$nDoc);
                         $msj = $this->actualizarMsjController($datosMsj);
                     }
-                    header('Location:notEditarArchivoOk');
+                    // foreach ($datosMsj as $key => $value)
+                    // {
+                        
+                    // }
+                    var_dump($buscarReceptor);
+                    var_dump($datosMsj);
+                    //header('Location:notEditarArchivoOk');
                 }
                 //var_dump($respuesta);
                 //echo 'actualizar datos cambiando el documento';
@@ -736,6 +742,9 @@ class DocController{
                     $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                     $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
                     $nDoc = $_POST['n_doc'];
+                    $totalUsuariosNotificados = $this->buscarUsuariosNotificadosController($nDoc);
+                    var_dump($totalUsuariosNotificados);
+                    var_dump($buscarReceptor);
                     foreach ($buscarReceptor as $key => $value)
                     {
                         $receptor = $value['id'];
@@ -750,8 +759,8 @@ class DocController{
                         //var_dump($value);
                         $msj = $this->actualizarMsjController($value);
                     }
-                    var_dump($datosMsj);
-                    header('Location:notEditarArchivoOk');
+                    var_dump($buscarReceptor);
+                    //header('Location:notEditarArchivoOk');
                 }
                 echo 'actualizar datos sin cambiar el documento';
             }
@@ -855,6 +864,12 @@ class DocController{
     public function buscarReceptoresJefesYEditoresController($idDeptoUsuario)
     {
         $respuesta = DocModel::buscarReceptoresJefesYEditoresModel('usuarios', $idDeptoUsuario);
+        return $respuesta;
+    }
+    //RETORNA UN ARREGLO CON EL ID DE TODOS LOS RECEPTORES DE MENSAJES CON EL MISMO N_DOC
+    public function buscarUsuariosNotificadosController($nDoc)
+    {
+        $respuesta = DocModel::buscarUsuariosNotificadosModel('mensajes', $nDoc);
         return $respuesta;
     }
     //DATOS DE DOCUMENTO INDIVIDUAL
