@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2018 a las 00:40:10
+-- Tiempo de generación: 13-07-2018 a las 03:22:33
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,7 +178,7 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
-(89, 55, 1, 1, 1, '2018-08-02', '2018-07-02', 2018, 'julio', 'views/docs/Normativo de inversiones 2.pdf', '1-1-2018', 1, '', '2018-07-12 21:50:25', '');
+(94, 55, 1, 1, 1, '2018-08-02', '2018-07-01', 2018, 'julio', 'views/docs/Acuerdo 212016.pdf', '1-1-2018', 1, 'Fecha incorrecta revisar documento pdf.', '2018-07-13 01:09:12', '');
 
 -- --------------------------------------------------------
 
@@ -200,8 +200,10 @@ CREATE TABLE `mensajes` (
 --
 
 INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `n_doc`, `status`) VALUES
-(263, 55, 65, 'Actualizo un documento', '1-1-2018', 1),
-(264, 55, 68, 'Actualizo un documento', '1-1-2018', 1);
+(291, 55, 65, 'Actualizo un documento', '1-1-2018', 1),
+(292, 55, 68, 'Actualizo un documento', '1-1-2018', 1),
+(293, 65, 64, 'Rechazo un documento', '1-1-2018', 1),
+(294, 65, 55, 'Rechazo un documento', '1-1-2018', 1);
 
 -- --------------------------------------------------------
 
@@ -307,11 +309,11 @@ CREATE TABLE `vitacora` (
 --
 
 INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) VALUES
-(248, 55, 'Subio un nuevo documento', '2018-07-12', '2018-07-12 21:46:32'),
-(249, 55, 'Edito un documento', '2018-07-12', '2018-07-12 21:47:30'),
-(250, 55, 'Edito un documento', '2018-07-12', '2018-07-12 21:48:20'),
-(251, 55, 'Edito un documento', '2018-07-12', '2018-07-12 21:50:07'),
-(252, 55, 'Edito un documento', '2018-07-12', '2018-07-12 21:50:25');
+(293, 55, 'Subio un nuevo documento', '2018-07-12', '2018-07-13 01:05:31'),
+(294, 65, 'Rechazo un documento', '2018-07-12', '2018-07-13 01:07:02'),
+(295, 65, 'Rechazo un documento', '2018-07-12', '2018-07-13 01:07:22'),
+(296, 65, 'Rechazo un documento', '2018-07-12', '2018-07-13 01:08:32'),
+(297, 55, 'Edito un documento', '2018-07-12', '2018-07-13 01:09:12');
 
 --
 -- Índices para tablas volcadas
@@ -386,13 +388,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=295;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -410,7 +412,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=298;
 
 --
 -- Restricciones para tablas volcadas
