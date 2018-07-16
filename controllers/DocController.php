@@ -513,17 +513,28 @@ class DocController{
                     }
                 }
                 if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
-                //var_dump($buscarReceptor);
                 foreach ($buscarReceptor as $key => $value)
                 {
                     $receptor = $value['id'];
-                    $datosMsj = array('remitente'=>(int)$idUsuario, 
+                    $datosMsj[] = array('remitente'=>(int)$idUsuario, 
                                 'receptor'=>$receptor, 
                                 'contenido'=>'Aprobo un documento', 
                                 'status'=>1, 
                                 'n_doc'=>$nDoc);
-                    $msj = $this->insertarMsjController($datosMsj);
+                    //$msj = $this->insertarMsjController($datosMsj);
                 }
+                foreach ($datosMsj as $key => $value)
+                        {
+                            $comprobacion = $this->comprobacionMsjController($value['receptor'], $value['n_doc']);
+                            if ($comprobacion=='insertar')
+                            {
+                                $msj = $this->insertarMsjController($value);
+                            }elseif($comprobacion=='actualizar')
+                            {
+                                $msj = $this->actualizarMsjController($value);
+                            }
+                        }
+                //var_dump($datosMsj);
                 header('Location:notAprobarDocOk');
             }
         }
@@ -637,7 +648,9 @@ class DocController{
         $url = $respuesta['url_doc'];
         return $url;
     }
-    //actualizar documentos al editarlos evalua si va el doc o no va el doc y actualiza en base a lo que se envia
+    //ACTUALIZAR DOCUMENTOS AL EDITARLOS EVALUA SI SE AGREGO UN DOC O NO Y
+    //UTILIZA DIFERENTE MODELO SEGUN SEA EL CASO DE ACTUALIZAR O NO LOS 
+    //REGISTROS CON EL DOC O SIN EL DOC
     public function actualizarDocController($idUsuario, $idDeptoUsuario)
     {
         //SCRIPT PARA ACTUALIZAR UN REGISTRO CUANDO SI SE CAMBIA EL DOCUMENTO EN EL FORMULARIO DE
