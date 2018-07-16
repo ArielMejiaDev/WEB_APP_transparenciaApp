@@ -106,7 +106,7 @@ $rol = $datos['rol'];
 $idUsuario = $datos['id'];
 $idDeptoUsuario = $datos['id_departamento'];
 $listarArchivosSubidosGeneral = new DocController();
-$listarArchivosSubidosGeneral->publicarDocController($idUsuario, $idDeptoUsuario);
+$listarArchivosSubidosGeneral->publicarDocController($idUsuario);
 $listarArchivosSubidosGeneral->aprobarDocController($idUsuario, $idDeptoUsuario);
 ?>
 <?php require_once "navbar.php"; ?>

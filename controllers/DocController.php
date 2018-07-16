@@ -477,7 +477,6 @@ class DocController{
                     foreach ($datosMsj as $key => $value)
                         {
                             $comprobacion = $this->comprobacionMsjController($value['receptor'], $value['n_doc']);
-                            //var_dump($comprobacion);
                             if ($comprobacion=='insertar')
                             {
                                 $msj = $this->insertarMsjController($value);
@@ -530,26 +529,25 @@ class DocController{
                                 'contenido'=>'Aprobo un documento', 
                                 'status'=>1, 
                                 'n_doc'=>$nDoc);
-                    //$msj = $this->insertarMsjController($datosMsj);
                 }
                 foreach ($datosMsj as $key => $value)
-                        {
-                            $comprobacion = $this->comprobacionMsjController($value['receptor'], $value['n_doc']);
-                            if ($comprobacion=='insertar')
-                            {
-                                $msj = $this->insertarMsjController($value);
-                            }elseif($comprobacion=='actualizar')
-                            {
-                                $msj = $this->actualizarMsjController($value);
-                            }
-                        }
+                {
+                    $comprobacion = $this->comprobacionMsjController($value['receptor'], $value['n_doc']);
+                    if ($comprobacion=='insertar')
+                    {
+                        $msj = $this->insertarMsjController($value);
+                    }elseif($comprobacion=='actualizar')
+                    {
+                        $msj = $this->actualizarMsjController($value);
+                    }
+                }
                 //var_dump($datosMsj);
                 header('Location:notAprobarDocOk');
             }
         }
     }
     //cambia el status de un documento para que tenga status 3 de publicado 
-    public function publicarDocController($idUsuario, $idDeptoUsuario)
+    public function publicarDocController($idUsuario)
     {
         if (isset($_GET['publicar']) && !empty($_GET['publicar'])) {
             $dato = $_GET['publicar'];
@@ -557,7 +555,8 @@ class DocController{
             if ($respuesta=='success') {
                 $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Publico un documento');
                 $vitacora = $this->vitacoraSubirDocController($datosVitacora);
-                $buscarReceptor = $this->buscarReceptoresJefesYEditoresController($idDeptoUsuario);
+                $idDepto = $this->buscaridDeptoDocController($_GET['publicar']);
+                $buscarReceptor = $this->buscarReceptoresJefesYEditoresController($idDepto);
                 $nDoc = $this->buscarNdocController($_GET['publicar']);
                 $autor = $this->buscarAutorController($_GET['publicar']);
                 $exist = false;
@@ -569,16 +568,25 @@ class DocController{
                     }
                 }
                 if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
-                var_dump($buscarReceptor);
                 foreach ($buscarReceptor as $key => $value)
                 {
                     $receptor = $value['id'];
-                    $datosMsj = array('remitente'=>(int)$idUsuario, 
+                    $datosMsj[] = array('remitente'=>(int)$idUsuario, 
                                 'receptor'=>$receptor, 
                                 'contenido'=>'Publico un documento', 
                                 'status'=>1, 
                                 'n_doc'=>$nDoc);
-                    $msj = $this->insertarMsjController($datosMsj);
+                }
+                foreach ($datosMsj as $key => $value)
+                {
+                    $comprobacion = $this->comprobacionMsjController($value['receptor'], $value['n_doc']);
+                    if ($comprobacion=='insertar')
+                    {
+                        $msj = $this->insertarMsjController($value);
+                    }elseif($comprobacion=='actualizar')
+                    {
+                        $msj = $this->actualizarMsjController($value);
+                    }
                 }
                 header('Location:notPublicarDocOk');
             }
@@ -1013,6 +1021,12 @@ class DocController{
         $respuesta = DocModel::buscarAutorModel('documentos', $id_doc);
         $autor = $respuesta['id_usuario'];
         return $autor;
+    }
+    //DEVULEVE EL ID DEL DEPARTAMENTO DEL DOCUMENTO SUBIDO
+    public function buscaridDeptoDocController($idDoc)
+    {
+        $respuesta = DocModel::buscaridDeptoDocModel('documentos', $idDoc);
+        return $respuesta;
     }
 }
 ?>

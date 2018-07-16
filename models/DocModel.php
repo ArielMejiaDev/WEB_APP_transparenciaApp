@@ -486,5 +486,14 @@ class DocModel{
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    //DEVUELVE EL ID DEL DEPTO DEL DOCUMENTO
+    public function buscaridDeptoDocModel($tabla, $idDoc)
+    {
+        $sql = "SELECT $tabla.id_departamento FROM $tabla WHERE $tabla.id=:idDoc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':idDoc', $idDoc, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>
