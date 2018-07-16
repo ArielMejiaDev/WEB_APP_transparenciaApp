@@ -93,6 +93,13 @@ if (isset($_GET['action'])) {
     }
   //fin validar ingreso en agregarReglaCategoria
 
+  //validar ingreso en agregarReglaCategoria
+  if ($_GET['action']=='activarArchivos') {
+    if ($datos['rol']!='admin') {
+        header('Location:index.php');
+      }
+  }
+  //fin validar ingreso en agregarReglaCategoria    
 
 
   //SUBIR ARCHIVOS NO PORQUE TODOS VAN A PODER SUBIR ARCHIVOS

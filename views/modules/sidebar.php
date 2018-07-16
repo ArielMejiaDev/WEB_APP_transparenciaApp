@@ -54,7 +54,7 @@ $dashboard = new DashboardController();
                             <li><a href="listarArchivosSubidosGeneral"><i class="icon mdi mdi-collection-text"></i> Listar archivos General</a>
                             </li>
                             <?php  
-                                if ($datos['rol']!='redactor') {
+                                if ($datos['rol']!='redactor' && $datos['rol']!='jefeRedaccion' && $datos['rol']!='editor') {
                                 ?>
                             <li>
                                 <a href="activarArchivos"><i class="icon mdi mdi-check-all"></i> Activar extemporaneos</a>
