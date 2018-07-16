@@ -640,6 +640,8 @@ class DocController{
     //actualizar documentos al editarlos evalua si va el doc o no va el doc y actualiza en base a lo que se envia
     public function actualizarDocController($idUsuario, $idDeptoUsuario)
     {
+        //SCRIPT PARA ACTUALIZAR UN REGISTRO CUANDO SI SE CAMBIA EL DOCUMENTO EN EL FORMULARIO DE
+        //EDITAR DOCUMENTO
         if (
             isset($_GET['idDoc']) && 
             isset($_POST['idNumeralEditar']) && 
@@ -657,7 +659,6 @@ class DocController{
                 ) 
             {
                 $doc = $this->getUrlDocController($_GET['idDoc']);
-                //var_dump($doc);
                 unlink($doc);
                 $year = strftime('%Y',strtotime($_POST['fecha_docEditar']));
                 $mes = strftime('%B',strtotime($_POST['fecha_docEditar']));
@@ -673,40 +674,54 @@ class DocController{
                     'status'=>1,  
                     'idDoc'=>(int)$_GET['idDoc']
                     );
-                //var_dump($datos);
                 $respuesta = DocModel::actualizarDocConCatConDocModel($datos, 'documentos');
                 if ($respuesta == 'success')
                 {
                     $nombreTemporal = $_FILES['docEditar']['tmp_name'];
                     move_uploaded_file($nombreTemporal, $url);
-
                     $datosVitacora = array('id_usuario'=>$idUsuario, 'desc_actividad'=>'Edito un documento');
                     $vitacora = $this->vitacoraSubirDocController($datosVitacora);
                     $nDoc = $_POST['n_doc'];
                     $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
-                    foreach ($buscarReceptor as $key => $value)
+                    $totalUsuariosNotificados = $this->buscarUsuariosNotificadosController($nDoc);
+                    if (count($totalUsuariosNotificados) > count($buscarReceptor))
                     {
-                        $receptor = $value['id'];
-                        $datosMsj[] = array('remitente'=>(int)$idUsuario, 
-                                    'receptor'=>$receptor, 
-                                    'contenido'=>'Actualizo un documento', 
-                                    'n_doc'=>$nDoc);
-                        $msj = $this->actualizarMsjController($datosMsj);
+                        foreach ($totalUsuariosNotificados as $key => $value)
+                        {
+                            $receptor = $value['receptor'];
+                            $datosMsj[] = array('remitente'=>(int)$idUsuario, 
+                                        'receptor'=>$receptor, 
+                                        'contenido'=>'Actualizo un documento', 
+                                        'n_doc'=>$nDoc);
+                        }
+                        foreach ($datosMsj as $key => $value)
+                        {
+                            $msj = $this->actualizarMsjController($value);
+                        }
+                        //MUESTRA LOS DATOS QUE SE VAN A ACTUALIZAR INCLUYENDO A TODOS LOS USUARIOS QUE RECIBIERON NOTIFICACIONES
+                        //SOBRE EL MISMO DOCUMENTO ANTERIORMENTE
+                        var_dump($datosMsj);
+                        header('Location:notEditarArchivoOk');
+                    }else{
+                        foreach ($buscarReceptor as $key => $value)
+                        {
+                            $receptor = $value['id'];
+                            $datosMsj[] = array('remitente'=>(int)$idUsuario, 
+                                        'receptor'=>$receptor, 
+                                        'contenido'=>'Actualizo un documento', 
+                                        'n_doc'=>$nDoc);
+                            $msj = $this->actualizarMsjController($datosMsj);
+                        }
                     }
-                    // foreach ($datosMsj as $key => $value)
-                    // {
-                        
-                    // }
-                    var_dump($buscarReceptor);
                     var_dump($datosMsj);
-                    //header('Location:notEditarArchivoOk');
+                    header('Location:notEditarArchivoOk');
                 }
-                //var_dump($respuesta);
                 //echo 'actualizar datos cambiando el documento';
             }
         }
 
-
+        //SCRIPT PARA ACTUALIZAR UN REGISTRO CUANDO NO SE CAMBIA EL DOCUMENTO EN EL FORMULARIO DE
+        //EDITAR DOCUMENTO
         if (
             isset($_GET['idDoc']) && 
             isset($_POST['idNumeralEditar']) && 
@@ -734,7 +749,6 @@ class DocController{
                     'status'=>1, 
                     'mes'=>$mes
                     );
-                //var_dump($datosSinDoc);
                 $respuesta = DocModel::actualizarDocConCatSinDocModel($datosSinDoc, 'documentos');
                 if ($respuesta == 'success')
                 {
@@ -743,24 +757,42 @@ class DocController{
                     $buscarReceptor = $this->buscarReceptorController($idDeptoUsuario);
                     $nDoc = $_POST['n_doc'];
                     $totalUsuariosNotificados = $this->buscarUsuariosNotificadosController($nDoc);
-                    var_dump($totalUsuariosNotificados);
-                    var_dump($buscarReceptor);
-                    foreach ($buscarReceptor as $key => $value)
+                    if (count($totalUsuariosNotificados) > count($buscarReceptor))
                     {
-                        $receptor = $value['id'];
-                        $datosMsj[] = array('remitente'=>(int)$idUsuario, 
-                                    'receptor'=>$receptor, 
-                                    'contenido'=>'Actualizo un documento', 
-                                    'n_doc'=>$nDoc);
-                        //$msj = $this->actualizarMsjController($datosMsj);
+                        foreach ($totalUsuariosNotificados as $key => $value)
+                        {
+                            $receptor = $value['receptor'];
+                            $datosMsj[] = array('remitente'=>(int)$idUsuario, 
+                                        'receptor'=>$receptor, 
+                                        'contenido'=>'Actualizo un documento', 
+                                        'n_doc'=>$nDoc);
+                        }
+                        foreach ($datosMsj as $key => $value)
+                        {
+                            $msj = $this->actualizarMsjController($value);
+                        }
+                        //MUESTRA LOS DATOS QUE SE VAN A ACTUALIZAR INCLUYENDO A TODOS LOS USUARIOS QUE RECIBIERON NOTIFICACIONES
+                        //SOBRE EL MISMO DOCUMENTO ANTERIORMENTE
+                        var_dump($datosMsj);
+                        header('Location:notEditarArchivoOk');
+                    }else{
+                        foreach ($buscarReceptor as $key => $value)
+                        {
+                            $receptor = $value['id'];
+                            $datosMsj[] = array('remitente'=>(int)$idUsuario, 
+                                        'receptor'=>$receptor, 
+                                        'contenido'=>'Actualizo un documento', 
+                                        'n_doc'=>$nDoc);
+                        }
+                        foreach ($datosMsj as $key => $value)
+                        {
+                            $msj = $this->actualizarMsjController($value);
+                        }
+                        //MUESTRA UNICAMENTE LOS USUARIOS QUE SON PARTE DEL PROCESO DE EDICION Y QUE SE LES ACTUALIZARA
+                        //LAS NOTIFICACIONES ESTA APLICA CUANDO SE EDITA UN DOCUMENTO QUE NO HA SIDO RECHAZADO
+                        var_dump($datosMsj);
+                        header('Location:notEditarArchivoOk');
                     }
-                    foreach ($datosMsj as $key => $value)
-                    {
-                        //var_dump($value);
-                        $msj = $this->actualizarMsjController($value);
-                    }
-                    var_dump($buscarReceptor);
-                    //header('Location:notEditarArchivoOk');
                 }
                 echo 'actualizar datos sin cambiar el documento';
             }
