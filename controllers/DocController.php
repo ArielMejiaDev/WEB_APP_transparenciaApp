@@ -448,7 +448,6 @@ class DocController{
                 preg_match($this->expRegNum,$_GET['idDoc']))
             {
                 $datos = array('idDoc'=>$_GET['idDoc'], 'observaciones'=>utf8_decode($_POST['observaciones']));
-                var_dump($datos);
                 $respuesta = DocModel::activarDocModel($datos, 'documentos');
                 if ($respuesta=='success')
                 {
@@ -466,17 +465,27 @@ class DocController{
                         }
                     }
                     if (!$exist){ $buscarReceptor[] = array('id'=>$autor);}
-                    //var_dump($buscarReceptor);
                     foreach ($buscarReceptor as $key => $value)
                     {
                         $receptor = $value['id'];
-                        $datosMsj = array('remitente'=>(int)$idUsuario, 
+                        $datosMsj[] = array('remitente'=>(int)$idUsuario, 
                                     'receptor'=>$receptor, 
                                     'contenido'=>'Activo un documento', 
                                     'status'=>1, 
                                     'n_doc'=>$nDoc);
-                        $msj = $this->insertarMsjController($datosMsj);
                     }
+                    foreach ($datosMsj as $key => $value)
+                        {
+                            $comprobacion = $this->comprobacionMsjController($value['receptor'], $value['n_doc']);
+                            //var_dump($comprobacion);
+                            if ($comprobacion=='insertar')
+                            {
+                                $msj = $this->insertarMsjController($value);
+                            }elseif($comprobacion=='actualizar')
+                            {
+                                $msj = $this->actualizarMsjController($value);
+                            }
+                        }
                     header('Location:notActivarDocOk');
                 }
             }else{
