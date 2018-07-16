@@ -17,7 +17,29 @@ $listarArchivosSubidosGeneral = new DocController();
 $listarArchivosSubidosGeneral->publicarDocController($idUsuario, $idDeptoUsuario);
 $listarArchivosSubidosGeneral->aprobarDocController($idUsuario, $idDeptoUsuario);
 $notificacion = new NotificacionesController();
-$notificacion->cambiarStatusController($n_doc);
+//primero mostraremos el rol de usuario
+//segundo mostraremos la descripcion del mensaje
+//tercero dependiendo de la deescripcion usaremos una estructura de control para que solo el rol con permiso
+//pueda llamar el metodo cambiarstatus
+$descNot = new NotificacionesController();
+$descripcion = $descNot->descNotificacionController($n_doc);
+if ($rol == 'jefeRedaccion' && $descripcion['contenido']=='Publico un documento')
+{
+	$notificacion->eliminarMsjController($n_doc);
+}elseif($rol == 'jefeRedaccion' && $descripcion['contenido']=='Subio un documento'){
+	$notificacion->cambiarStatusController($n_doc);
+}elseif($rol == 'jefeRedaccion' && $descripcion['contenido']=='Actualizo un documento'){
+	$notificacion->cambiarStatusController($n_doc);
+}elseif($rol == 'redactor' && $descripcion['contenido']=='Rechazo un documento'){
+	$notificacion->cambiarStatusController($n_doc);
+}elseif($rol == 'editor' && $descripcion['contenido']=='Aprobo un documento'){
+	$notificacion->cambiarStatusController($n_doc);
+}elseif($rol == 'jefeRedaccion' && $descripcion['contenido']=='Activo un documento'){
+	$notificacion->cambiarStatusController($n_doc);
+}elseif($rol == 'jefeRedaccion' && $descripcion['contenido']=='Publico un documento'){
+	$notificacion->cambiarStatusController($n_doc);
+}
+//$notificacion->cambiarStatusController($n_doc);
 ?>
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>

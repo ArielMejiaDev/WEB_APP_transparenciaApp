@@ -28,4 +28,15 @@ class NotificacionesController
     {
         $respuesta = NotificacionesModel::cambiarStatusModel('mensajes', $n_doc);
     }
+    //DEVUELVE LA DESCRIPCION DE LA NOTIFICACION PARA COMPARAR LAS NOTIFICACIONES
+    public function descNotificacionController($n_doc)
+    {
+        $respuesta = NotificacionesModel::descNotificacionModel('mensajes', $n_doc);
+        return $respuesta;
+    }
+    //ELIMINAR NOTIFICACIONES 
+    public function eliminarMsjController($n_doc)
+    {
+        $respuesta = NotificacionesModel::eliminarMsjModel('mensajes', $n_doc);
+    }
 }

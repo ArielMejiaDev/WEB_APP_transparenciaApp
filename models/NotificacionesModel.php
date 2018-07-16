@@ -31,4 +31,25 @@ class NotificacionesModel extends Conexion
         $stmt->bindParam(':n_doc', $n_doc, PDO::PARAM_STR);
         $stmt->execute();
     }
+    public function descNotificacionModel($tabla, $n_doc)
+    {
+        $sql = "SELECT $tabla.contenido FROM $tabla WHERE $tabla.n_doc=:n_doc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':n_doc', $n_doc, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    // ELIMINAR NOTIFICACIONES
+    public function eliminarMsjModel($tabla, $n_doc)
+    {
+        $sql = "DELETE FROM $tabla WHERE $tabla.n_doc = :n_doc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':n_doc', $n_doc, PDO::PARAM_STR);
+        if ($stmt->execute()) 
+        {
+            return 'success';
+        }else{
+            return 'error';
+        }
+    }
 }

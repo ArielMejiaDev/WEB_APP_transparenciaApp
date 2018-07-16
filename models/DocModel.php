@@ -397,7 +397,7 @@ class DocModel{
     public function actualizarMsjModel($tabla, $datos)
     {
         $sql = "UPDATE $tabla SET $tabla.remitente=:remitente, ";
-        $sql .= "$tabla.receptor=:receptor, $tabla.contenido=:contenido ";
+        $sql .= "$tabla.receptor=:receptor, $tabla.contenido=:contenido, status=1 ";
         $sql .= "WHERE $tabla.n_doc=:n_doc AND $tabla.receptor=:receptor ";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':remitente', $datos['remitente'], PDO::PARAM_INT);
