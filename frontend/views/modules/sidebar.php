@@ -57,13 +57,5 @@ $dashboard = new DashboardController();
                 </div>
             </div>
         </div>
-        <div class="progress-widget">
-          <div class="progress-data">
-            <span class="progress-value"><?php echo $dashboard->totalDocsServidorController();?></span><span class="name">Archivos Subidos</span>
-          </div>
-          <div class="progress">
-            <div style="width: <?php echo $dashboard->totalDocsServidorController();?>%;" class="progress-bar progress-bar-primary"></div>
-          </div>
-        </div>
     </div>
 </div>
