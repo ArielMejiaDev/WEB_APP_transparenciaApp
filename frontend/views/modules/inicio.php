@@ -6,154 +6,111 @@ $dashboard = new DashboardController();
 <div class="be-content">
 	<div class="main-content container-fluid">
 		<div class="row">
-			<div class="col-xs-12 col-md-6 col-lg-3">
-        <div class="widget widget-tile">
-          <div id="spark1" class="chart sparkline"></div>
-          <div class="data-info">
-            <div class="desc">Usuarios</div>
-            <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span data-toggle="counter" data-end=" <?php $dashboard->contarUsuariosController(); ?> " class="number">0</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6 col-lg-3">
-        <div class="widget widget-tile">
-          <div id="spark2" class="chart sparkline"></div>
-          <div class="data-info">
-            <div class="desc">Docs publicados</div>
-            <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="<?php $dashboard->contarDocsPublicadosController(); ?>" class="number">0</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6 col-lg-3">
-        <div class="widget widget-tile">
-          <div id="spark3" class="chart sparkline"></div>
-          <div class="data-info">
-            <div class="desc">Doc aprobados</div>
-            <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="<?php $dashboard->contarDocsAprobadosController(); ?>" class="number">0</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6 col-lg-3">
-        <div class="widget widget-tile">
-          <div id="spark4" class="chart sparkline"></div>
-          <div class="data-info">
-            <div class="desc">Docs Rechazados</div>
-            <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-down"></span><span data-toggle="counter" data-end="<?php $dashboard->contarDocsRechazadosController(); ?>" class="number">0</span>
+      <div class="col-sm-12">
+        <div class="panel panel-default panel-border-color panel-border-color-primary">
+          <div class="panel-body">
+            <div class="col-sm-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">Transparencia</div>
+                <div class="tab-container">
+                  <ul class="nav nav-tabs">
+                    <li class=""><a target="_blank" href="https://www.ipm.org.gt/" style="cursor: pointer"><span class="icon mdi mdi-home"></span> Inicio</a></li>
+                    <li class=""><a href="#decreto" data-toggle="tab" aria-expanded="false"><span class="icon mdi mdi-face"></span>Decreto 29-2016</a></li>
+                    <li class=""><a href="#solicitud" data-toggle="tab" aria-expanded="false"><span class="icon mdi mdi-edit"></span>Solicitud</a></li>
+                    <li class="active"><a href="#contacto" data-toggle="tab" aria-expanded="true"><span class="icon mdi mdi-email"></span>contacto</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div id="contacto" class="tab-pane cont active">
+                      <p class="text-center"><img src="views/images/favicon.ico" alt=""></p>
+                      <p class="text-center">INSTITUTO DE PREVISIÓN MILITAR</p>
+                      <p class="text-center">LEY DE ACCESO A LA INFORMACIÓN PÚBLICA</p>
+                      <p class="text-center"> Cualquier información adicional a la publicada en este sitio, puede solicitarla a la Unidad de Información Pública del IPM, llamando al teléfono 23054900 ó por medio de correo electrónico a la dirección</p>
+                      <p class="text-center"><strong>transparencia@ipm.org.gt</strong></p>
+                    </div>
+                    <div id="decreto" class="tab-pane cont">
+                      <h2>Decreto 29-2016</h2>
+                      <p class="text-center">DECRETO 29-2016 – (LEY DE READECUACIÓN PRESUPUESTARIA)</p>
+                      <p class="text-center">Decreto Ley para la viabilización de la ejecución presupuestaria y sustitución de fuentes de financiamiento al presupuesto general de ingresos y egresos del Estado para el ejercicio fiscal 2016; y disposiciones para la profesionalización y carrera pública administrativa;</p>
+                    </div>
+                    <div id="solicitud" class="tab-pane">
+                      <form>
+                          <div class="form-group xs-pt-10">
+                              <label>Nombre Completo (Obligatorio)</label>
+                              <input type="text" placeholder="Ingrese su nombre completo" class="form-control">
+                          </div>
+                          <div class="form-group xs-pt-5">
+                              <label>Dpi (Obligatorio)</label>
+                              <input type="text" placeholder="Ingrese su Dpi" class="form-control">
+                          </div>
+                          <div class="form-group xs-pt-5">
+                              <label>Persona Juridica (Opcional)</label>
+                              <input type="text" placeholder="Ingrese el nombre de la persona juridica" class="form-control">
+                          </div>
+                          <div class="form-group xs-pt-10">
+                              <label>Genero</label><br>
+                              <label class="radio-inline">
+                                <input type="radio" name="genero" checked="true">Masculino
+                              </label>
+                              <label class="radio-inline">
+                                <input type="radio" name="genero">Femenino
+                              </label>
+                          </div>
+                          <div class="form-group xs-pt-10">
+                              <label>Teléfono (Opcional 1.)</label>
+                              <input type="text" placeholder="Ingrese un número de teléfono" class="form-control">
+                          </div>
+                          <div class="form-group xs-pt-10">
+                              <label>Teléfono (Opcional 2.)</label>
+                              <input type="text" placeholder="Ingrese otro número de teléfono" class="form-control">
+                          </div>
+                          <div class="form-group xs-pt-10">
+                              <label>Correo Electrónico (Obligatorio)</label>
+                              <input type="email" placeholder="ingrese su correo electronico" class="form-control">
+                          </div>
+                          <div class="form-group xs-pt-10">
+                              <label>Dirección para recibir notificaciones (Obligatorio)</label>
+                              <input type="text" placeholder="ingrese una direccion para notificarle" class="form-control">
+                          </div>
+                          <div class="form-group xs-pt-10">
+                              <label>DESCRIPCIÓN DEL DOCUMENTO O INFORMACIÓN SOLICITADA:</label>
+                              <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                          </div>
+                          <div class="form-group xs-pt-10">
+                              <label>FORMA EN LA QUE DESEA SE LE ENTREGUE LA INFORMACIÓN:</label><br>
+                              <label class="radio-inline">
+                                <input type="checkbox" name="optradio" checked="true"> Copia en medio digital
+                              </label>
+                              <label class="radio-inline">
+                                <input type="checkbox" name="optradio"> Envío por correo electrónico
+                              </label>
+                              <label class="radio-inline">
+                                <input type="checkbox" name="optradio"> Copia simple
+                              </label>
+                              <label class="radio-inline">
+                                <input type="checkbox" name="optradio"> Copia certificada
+                              </label>
+                          </div>
+                          <div class="col-xs-6">
+                              <p class="text-right">
+                                  <button type="submit" class="btn btn-space btn-primary">Enviar</button>
+                              </p>
+                          </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <!-- <div class="col-md-12">
-        <div class="widget widget-fullwidth be-loading">
-          <div class="widget-head">
-            <div class="tools">
-              <div class="dropdown"><span data-toggle="dropdown" class="icon mdi mdi-more-vert visible-xs-inline-block dropdown-toggle"></span>
-                <ul role="menu" class="dropdown-menu">
-                  <li><a href="#">Week</a></li>
-                  <li><a href="#">Month</a></li>
-                  <li><a href="#">Year</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Today</a></li>
-                </ul>
-              </div><span class="icon mdi mdi-chevron-down"></span><span class="icon toggle-loading mdi mdi-refresh-sync"></span><span class="icon mdi mdi-close"></span>
-            </div>
-            <div class="button-toolbar hidden-xs">
-              <div class="btn-group">
-                <button type="button" class="btn btn-default">Week</button>
-                <button type="button" class="btn btn-default active">Month</button>
-                <button type="button" class="btn btn-default">Year</button>
-              </div>
-              <div class="btn-group">
-                <button type="button" class="btn btn-default">Today</button>
-              </div>
-            </div><span class="title">Recent Movement</span>
-          </div>
-          <div class="widget-chart-container">
-            <div class="widget-chart-info">
-              <ul class="chart-legend-horizontal">
-                <li><span data-color="main-chart-color1"></span> Purchases</li>
-                <li><span data-color="main-chart-color2"></span> Plans</li>
-                <li><span data-color="main-chart-color3"></span> Services</li>
-              </ul>
-            </div>
-            <div class="widget-counter-group widget-counter-group-right">
-              <div class="counter counter-big">
-                <div class="value">25%</div>
-                <div class="desc">Purchase</div>
-              </div>
-              <div class="counter counter-big">
-                <div class="value">5%</div>
-                <div class="desc">Plans</div>
-              </div>
-              <div class="counter counter-big">
-                <div class="value">5%</div>
-                <div class="desc">Services</div>
-              </div>
-            </div>
-            <div id="main-chart" style="height: 260px;"></div>
-          </div>
-          <div class="be-spinner">
-            <svg width="40px" height="40px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-              <circle fill="none" stroke-width="4" stroke-linecap="round" cx="33" cy="33" r="30" class="circle"></circle>
-            </svg>
-          </div>
-        </div>
-      </div> -->
     </div>
     <div class="row">
       <div class="col-md-6">
-        <div class="panel panel-default panel-table">
-          <div class="panel-heading"> 
-            <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
-            <div class="title">Docs subidos recientemente</div>
-          </div>
-          <div class="panel-body table-responsive">
-            <table class="table table-striped table-borderless table-hover">
-              <thead>
-                <tr>
-                  <th style="width:40%;">Usuario</th>
-                  <th class="number">N</th>
-                  <th style="width:20%;">Fecha</th>
-                  <th style="width:20%;">Status</th>
-                  <th style="width:5%;" class="actions"></th>
-                </tr>
-              </thead>
-              <tbody class="no-border-x">
-              <?php 
-                $dashboard->docsSubidosRecientesController();
-              ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
       <div class="col-md-6">
-        <div class="panel panel-default panel-table">
-          <div class="panel-heading">
-            <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
-            <div class="title">Vitacora</div>
-          </div>
-          <div class="panel-body table-responsive">
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th style="width:37%;">Usuario</th>
-                  <th style="width:36%;">Actividad</th>
-                  <th>Fecha</th>
-                  <th class="actions"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $dashboard->listarVitacoraController();?>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </div>
   </div>
