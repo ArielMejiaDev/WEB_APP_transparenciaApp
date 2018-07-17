@@ -7,6 +7,7 @@ avisoFechaEditar = document.getElementById('avisoFechaEditar');
 documentoEditar = document.getElementById('docEditar');
 avidoDocumentoEditar = document.getElementById('avisoDocEditar');
 formGroup = document.getElementById('formGroupCatEditar');
+idDoc = document.getElementById('idDoc');
 expRegNum = /^[0-9]*$/;
 expRegPdf = /^.+\.((?:[pP][dD][fF]))$/;
 var conexionEditarDoc;
@@ -45,6 +46,35 @@ function respEnviarNumeralEditarId(){
 
                 documentoEditar.removeAttribute('name');
                 documentoEditar.setAttribute('name','docEditar');
+            }
+        }
+    }
+}
+documentoEditar.addEventListener('change',valExistPdf,false);
+var conexionValExistPdfEditar;
+function valExistPdf(){
+    var pdfTitleEditar = documentoEditar.files[0]['name'];
+    dato = new FormData();
+    dato.append('pdfTitleEditar',pdfTitleEditar);
+    dato.append('idDoc',idDoc.value);
+    conexionValExistPdfEditar = new XMLHttpRequest();
+    conexionValExistPdfEditar.onreadystatechange = respValExistPdf;
+    conexionValExistPdfEditar.open('POST','views/modules/validarDocAjax.php',true);
+    conexionValExistPdfEditar.send(dato);
+}
+function respValExistPdf(){
+    if (conexionValExistPdfEditar.readyState==4) {
+        if (conexionValExistPdfEditar.status==200) {
+            console.log(conexionValExistPdfEditar.responseText);
+            if (conexionValExistPdfEditar.responseText=='existe') {
+                docExiste = true;
+                swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'El documento ya existe en el sistema',
+                })
+            }else{
+                docExiste = false;
             }
         }
     }

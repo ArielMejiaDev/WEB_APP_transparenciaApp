@@ -74,12 +74,22 @@ class DocModel{
             return 'error';
         }
     }
-    //REVISAR SI EL DOC PDF YA EXISTE
-    public function validarDocTitleAjaxModel($url_doc,$tabla){
+    //REVISAR SI EL DOC PDF YA EXISTE EN EL FORMULARIO DE SUBIR DOC
+    public function validarDocTitleAjaxModel($url_doc,$tabla)
+    {
         $sql = "SELECT COUNT(url_doc) AS cuenta FROM documentos";
         $sql .= " WHERE url_doc=:url_doc";
         $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(':url_doc',$url_doc,PDO::PARAM_STR);
+        $stmt->bindParam(':url_doc', $url_doc, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+     //DEVUELVE EL NOMBRE ESPECIFICO ENCONTRADO BUSCANDO CON EL URL_DOC
+    public function buscarUrlDocModel($idDoc, $tabla)
+    {
+        $sql = "SELECT $tabla.url_doc FROM $tabla WHERE $tabla.id = :idDoc";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':idDoc', $idDoc, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

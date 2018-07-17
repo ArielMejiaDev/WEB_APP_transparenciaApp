@@ -169,6 +169,26 @@ class DocController{
             return 'no existe';
         }
     }
+    //VALIDAR QUE NO INGRESE UN PDF YA EXISTENTE EN LA BD EN EL FORMULARIO DE EDITAR DOC
+    public function validarDocTitleEditarAjaxController($dato, $idDoc)
+    {
+        $url_doc = 'views/docs/'.$dato;
+        $respCuenta = DocModel::validarDocTitleAjaxModel($url_doc, 'documentos');
+        $cuenta = $respCuenta['cuenta'];
+        $archivoEncontrado = DocModel::buscarUrlDocModel($idDoc, 'documentos');
+        $archivo = $archivoEncontrado['url_doc'];
+        if ($url_doc == $archivo)
+        {
+            return 'no existe';
+        }else{
+            if ($cuenta>0)
+            {
+                return 'existe';
+            }else{
+                return 'no existe';
+            }
+        }
+    }
     //LISTAR ARCHIVOS SUBIDOS GENERALES PARA ROL DE ADMIN O JEFE DE REDACCION
     public function listarDocumentosSubidosGeneralController($rol)
     {
@@ -612,6 +632,7 @@ class DocController{
             //$listaNumerales = '<option value="5">Estructura Organica</option>'.'<option value="6">Direccion y telefonos</option>';
             echo '<form onsubmit="return validarDocEditar()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
                     <div class="form-group">
+                        <input type="hidden" name="idDoc" id="idDoc" value="'.$_GET['idDoc'].'" >
                         <input type="hidden" name="n_doc" id="n_doc" value="'.$respuesta['n_doc'].'" >
                         <label class="col-sm-3 control-label" for="idNumeralEditar">Númeral</label>
                         <div class="col-sm-6">
