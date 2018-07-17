@@ -31,6 +31,7 @@ class EnlacesModel extends Conexion{
 			$enlace == "listarArchivosSubidosGeneral"||
 			$enlace == "rechazarDoc"||
 			$enlace == "activarArchivos"||
+			$enlace == "cerrarSesion"||
 			$enlace == "activarDoc"||
 			$enlace == "documento") {
 			$url = 'views/modules/'.$enlace.'.php';
