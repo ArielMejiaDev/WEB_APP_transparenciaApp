@@ -63,36 +63,12 @@
     <script src="views/js/app-dashboard.js" type="text/javascript"></script> 
     <script src="views/lib/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
     <script src="views/js/app-form-elements.js" type="text/javascript"></script>
-    <?php  
-        
-
-
-            if ($_GET['action'] == 'dashboard') {
-                echo '  <script type="text/javascript">
-                          $(document).ready(function(){
-                            //initialize the javascript
-                            App.init();
-                            App.dashboard();
-                          });
-                        </script>';
-            }elseif($_GET['action'] == 'subirArchivos' || $_GET['action'] == 'editarDoc'){
-              echo '  <script type="text/javascript">
-                        $(document).ready(function(){
-                          //initialize the javascript
-                          App.init();
-                          App.formElements();
-                        });
-                      </script>';
-            }else{
-                echo '  <script>
-                          $(document).ready(function(){
-                            //initialize the javascript
-                            App.init();
-                            App.dataTables();
-                          });
-                        </script>';
-            }
-    ?>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //initialize the javascript
+      App.init();
+      App.dashboard();
+    });</script>
         
 
     <!-- MODULOS PERSONALIZADOS -->

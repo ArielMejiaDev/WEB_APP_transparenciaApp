@@ -1,111 +1,3 @@
-<?php  
-$user = $_SESSION['usuario'];
-$datosUsuario = new DatosUsuarioController();
-$datos = $datosUsuario->getDatosUsuarioController();
-$notificaciones = new NotificacionesController();
-
-if (isset($_GET['action'])) {
-  //validar ingerso en crear usuarios
-    if ($_GET['action']=='crearUsuario') {
-        if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingerso en crear usuarios
-
-  //validar ingreso en listar usuarios
-    if ($_GET['action']=='listarUsuarios') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en listar usuarios
-
-  //validar ingreso en crear numerales
-    if ($_GET['action']=='crearNumerales') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en crear numerales
-
-  //validar ingreso en listar numerales
-    if ($_GET['action']=='listarNumerales') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en listar numerales  
-
-  //validar ingreso en crear departamentos
-    if ($_GET['action']=='crearDepartamento') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en crear departamentos
-
-  //validar ingreso en listar departamentos
-    if ($_GET['action']=='listarDepartamentos') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en listar departamentos
-
-  //validar ingreso en agregarReglaNumeral
-    if ($_GET['action']=='agregarReglaNumeral') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en agregarReglaNumeral
-
-  //validar ingreso en crearCategoria
-    if ($_GET['action']=='crearCategoria') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en crearCategoria  
-
-  //validar ingreso en editarCategoria
-    if ($_GET['action']=='editarCategoria') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en editarCategoria
-
-  //validar ingreso en agregarReglaCategoria
-    if ($_GET['action']=='agregarReglaCategoria') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en agregarReglaCategoria
-
-  //validar ingreso en agregarReglaCategoria
-    if ($_GET['action']=='listarCategorias') {
-      if ($datos['rol']!='admin') {
-          header('Location:index.php');
-        }
-    }
-  //fin validar ingreso en agregarReglaCategoria
-
-  //validar ingreso en agregarReglaCategoria
-  if ($_GET['action']=='activarArchivos') {
-    if ($datos['rol']!='admin') {
-        header('Location:index.php');
-      }
-  }
-  //fin validar ingreso en agregarReglaCategoria    
-
-
-  //SUBIR ARCHIVOS NO PORQUE TODOS VAN A PODER SUBIR ARCHIVOS
-  
-}
-?>
 <nav class="navbar navbar-default navbar-fixed-top be-top-header">
   <div class="container-fluid">
     <div class="navbar-header"><a href="index.html" class="navbar-brand"></a></div>
@@ -191,11 +83,11 @@ if (isset($_GET['action'])) {
     <div class="navbar-header"><a href="index.html" class="navbar-brand"></a></div>
     <div class="be-right-navbar">
       <ul class="nav navbar-nav navbar-right be-user-nav">
-        <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><img src="<?php echo $datos['foto'];?>" alt="Avatar"><span class="user-name"><?php echo $user;?></span></a>
+        <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><img src="views/images/user.png" alt="Avatar"><span class="user-name">usuario</span></a>
           <ul role="menu" class="dropdown-menu">
             <li>
               <div class="user-info">
-                <div class="user-name"><?php echo $user;?></div>
+                <div class="user-name">Usuario</div>
                 <div class="user-position online">En línea</div>
               </div>
             </li>
@@ -211,18 +103,14 @@ if (isset($_GET['action'])) {
         <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><span class="icon mdi mdi-notifications"></span><span class="indicator"></span></a>
           <ul class="dropdown-menu be-notifications">
             <li>
-            <?php
-              $notificacionesDocsSubidos = $notificaciones->totalNotificacionesSubidasController((int)$datos['id']);
-              $totalNot = $notificacionesDocsSubidos;
-            ?>
-              <div class="title">Notificaciones<span class="badge"><?php echo $totalNot; ?></span></div>
+              <div class="title">Notificaciones
+                <span class="badge"></span>
+              </div>
               <div class="list">
                 <div class="be-scroller">
                   <div class="content">
                     <ul>
-                    <?php 
-                      $listaNotificaciones = $notificaciones->listarNotificacionesSubidasController((int)$datos['id']);
-                    ?>
+                    <!-- lista de notificaciones -->
                     </ul>
                   </div>
                 </div>

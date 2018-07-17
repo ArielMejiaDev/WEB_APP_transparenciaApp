@@ -12,9 +12,6 @@ $dashboard = new DashboardController();
                             <a href="dashboard"><i class="icon mdi mdi-home"></i><span>Escritorio</span>
                             </a>
                         </li>
-                        <?php 
-                            if ($datos['rol']=='admin') {
-                            ?>
                         <li class="parent"><a href="#"><i class="icon mdi mdi-account-circle"></i><span>Usuarios</span></a>
                             <ul class="sub-menu">
                                 <li>
@@ -44,24 +41,16 @@ $dashboard = new DashboardController();
                             </li>
                           </ul>
                         </li>
-                        <?php
-                            }
-                        ?>
                         <li class="parent"><a href="#"><i class="icon mdi mdi-collection-text"></i><span>Archivos</span></a>
                           <ul class="sub-menu">
                             <li><a href="subirArchivos"><i class="icon mdi mdi-cloud-upload"></i> Subir archivos</a>
                             </li>
                             <li><a href="listarArchivosSubidosGeneral"><i class="icon mdi mdi-collection-text"></i> Listar archivos General</a>
-                            </li>
-                            <?php  
-                                if ($datos['rol']!='redactor' && $datos['rol']!='jefeRedaccion' && $datos['rol']!='editor') {
-                                ?>
+                            </li>  
+                                
                             <li>
                                 <a href="activarArchivos"><i class="icon mdi mdi-check-all"></i> Activar extemporaneos</a>
                             </li>
-                            <?php 
-                                }
-                            ?>
                           </ul>
                         </li>
                     </ul>
