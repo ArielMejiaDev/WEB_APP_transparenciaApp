@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-07-2018 a las 00:47:13
+-- Tiempo de generación: 18-07-2018 a las 03:44:12
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,7 +178,9 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
-(115, 55, 1, 1, 1, '2018-08-06', '2018-06-01', 2018, 'junio', 'views/docs/Acuerdo 212016.pdf', '1-1-2018', 1, '', '2018-07-16 22:44:01', '');
+(116, 55, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Acuerdo 212016.pdf', '1-1-2018', 1, '', '2018-07-17 13:54:53', ''),
+(117, 55, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-2-2018', 1, '', '2018-07-17 14:00:32', ''),
+(118, 48, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Normativo de inversiones 2.pdf', '1-3-2018', 2, '', '2018-07-17 18:11:25', '');
 
 -- --------------------------------------------------------
 
@@ -200,8 +202,14 @@ CREATE TABLE `mensajes` (
 --
 
 INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `n_doc`, `status`) VALUES
-(381, 55, 65, 'Actualizo un documento', '1-1-2018', 1),
-(382, 55, 68, 'Actualizo un documento', '1-1-2018', 1);
+(383, 55, 65, 'Subio un documento', '1-1-2018', 1),
+(384, 55, 68, 'Subio un documento', '1-1-2018', 1),
+(385, 55, 65, 'Subio un documento', '1-2-2018', 1),
+(386, 55, 68, 'Subio un documento', '1-2-2018', 1),
+(387, 65, 65, 'Aprobo un documento', '1-3-2018', 1),
+(388, 65, 68, 'Aprobo un documento', '1-3-2018', 1),
+(389, 65, 64, 'Aprobo un documento', '1-3-2018', 1),
+(390, 65, 48, 'Aprobo un documento', '1-3-2018', 1);
 
 -- --------------------------------------------------------
 
@@ -236,7 +244,7 @@ INSERT INTO `numerales` (`id`, `descripcion`, `status`, `aviso`) VALUES
 (13, 'Inventarios de bienes', 0, ''),
 (14, 'Mantenimiento de equipos', 0, ''),
 (15, 'Programas de Subsidios', 0, ''),
-(16, 'Contratos licencias y concesiones', 6, 'regla 1'),
+(16, 'Contratos licencias y concesiones', 0, ''),
 (17, 'Empresas precalificadas para ejecución de obras públicas', 0, ''),
 (18, 'Listado de obras con fondos públicos', 0, ''),
 (19, 'Contratos de arrendamientos de inmuebles', 0, ''),
@@ -307,8 +315,10 @@ CREATE TABLE `vitacora` (
 --
 
 INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) VALUES
-(407, 55, 'Subio un nuevo documento', '2018-07-16', '2018-07-16 22:43:48'),
-(408, 55, 'Edito un documento', '2018-07-16', '2018-07-16 22:44:01');
+(409, 55, 'Subio un nuevo documento', '2018-07-17', '2018-07-17 13:54:53'),
+(410, 55, 'Subio un nuevo documento', '2018-07-17', '2018-07-17 14:00:32'),
+(411, 48, 'Subio un nuevo documento', '2018-07-17', '2018-07-17 18:09:43'),
+(412, 65, 'Aprobo un documento', '2018-07-17', '2018-07-17 18:11:25');
 
 --
 -- Índices para tablas volcadas
@@ -383,13 +393,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=383;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=391;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -407,7 +417,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=409;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=413;
 
 --
 -- Restricciones para tablas volcadas
