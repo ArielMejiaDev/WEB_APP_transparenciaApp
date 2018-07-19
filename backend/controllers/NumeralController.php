@@ -123,18 +123,19 @@ class NumeralController{
 	//actualizar status del numeral e insertar regla
 	public function agregarReglaNumeralController(){
 		$expRegNombres = '/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/';
+		$expRegTexto = '/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9,.!? ]*$/';
 		$expRegNum = '/^[0-9]*$/';
 		if (isset($_POST['idAgregarReglaNumeral']) && isset($_POST['avisoAgregarReglaNumeral']) ) 
 		{
 			if (!empty($_POST['idAgregarReglaNumeral']) && !empty($_POST['avisoAgregarReglaNumeral']) ) 
 			{
-				if (preg_match($expRegNombres, $_POST['avisoAgregarReglaNumeral']) && 
+				if (preg_match($expRegTexto, $_POST['avisoAgregarReglaNumeral']) && 
 					preg_match($expRegNum, $_POST['idAgregarReglaNumeral']) ) 
 				{
 					$datos = array(
 									'id'=>$_POST['idAgregarReglaNumeral'], 
 									'aviso'=>utf8_decode($_POST['avisoAgregarReglaNumeral']), 
-									'status'=>6
+									'status'=>1
 								);
 					//var_dump($datos);
 					$respuesta = NumeralModel::agregarReglaNumeralModel($datos,"numerales");

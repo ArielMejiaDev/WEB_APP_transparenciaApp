@@ -1,0 +1,15 @@
+<?php 
+require_once 'Conexion.php';
+class MainModel extends Conexion
+{
+    //DEVUELVE LA DESCRIPCION DEL NUMERAL
+    public function printNumeralOnScreenModel($tabla, $dato)
+    {
+        $sql = "SELECT $tabla.descripcion FROM $tabla WHERE $tabla.id=:idNumeral";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':idNumeral', $dato, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    }
+}

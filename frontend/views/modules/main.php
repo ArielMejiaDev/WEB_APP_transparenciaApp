@@ -1,20 +1,23 @@
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>
 <?php 
-//$dashboard = new DashboardController();
+    $main = new MainController();
 ?>
 <div class="be-content">
     <div class="page-head">
-        <h2 class="page-head-title">Numeral</h2>
+        <h2 class="page-head-title"><?php $main->printNumeralOnScreenController($_GET['idNumeral']); ?></h2>
     </div>
 	<div class="main-content container-fluid">
 		<div class="row">
       <div class="col-sm-12">
+      <?php
+        
+      ?>
         <div class="panel panel-default panel-border-color panel-border-color-primary">
           <div class="panel-body">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Numeral</div>
+                    <div class="panel-heading"><?php $main->printNumeralOnScreenController($_GET['idNumeral']); ?></div>
                     <div class="tab-container">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#2018" data-toggle="tab" aria-expanded="true">2018</a></li>
