@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top be-top-header">
   <div class="container-fluid">
-    <div class="navbar-header"><a href="index.html" class="navbar-brand"></a></div>
+    <div class="navbar-header"><a href="index.php" class="navbar-brand"></a></div>
     <div class="be-right-navbar">
       <ul class="nav navbar-nav navbar-right be-user-nav">
         <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><img src="views/images/user.png" alt="Avatar"><span class="user-name">usuario</span></a>
@@ -17,7 +17,7 @@
           </ul>
         </li>
       </ul>
-      <div class="page-title"><span>Transparencia</span></div>
+      <div class="page-title"><span><a href="index.php" style="color: #404040;">Transparencia</a></span></div>
       <ul class="nav navbar-nav navbar-right be-icons-nav">
         <!-- <li class="dropdown"><a href="#" role="button" aria-expanded="false" class="be-toggle-right-sidebar"><span class="icon mdi mdi-settings"></span></a></li> -->
         <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><span class="icon mdi mdi-notifications"></span><span class="indicator"></span></a>
