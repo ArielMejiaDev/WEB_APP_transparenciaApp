@@ -1,7 +1,7 @@
 <?php require_once "navbar.php"; ?>
 <?php require_once "sidebar.php"; ?>
 <?php 
-$dashboard = new DashboardController();
+//$dashboard = new DashboardController();
 ?>
 <div class="be-content">
     <div class="page-head">
