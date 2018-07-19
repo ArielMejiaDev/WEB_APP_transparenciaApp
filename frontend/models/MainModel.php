@@ -12,4 +12,13 @@ class MainModel extends Conexion
         return $stmt->fetch(PDO::FETCH_ASSOC);
 
     }
+    //DEVUELVE EL STATUS DEL NUMERAL
+    public function evalStatusNumeralModel($tabla, $dato)
+    {
+        $sql = "SELECT $tabla.status, $tabla.aviso FROM $tabla WHERE $tabla.id=:idNumeral";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':idNumeral', $dato, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

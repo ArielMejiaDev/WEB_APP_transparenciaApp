@@ -5,19 +5,31 @@
 ?>
 <div class="be-content">
     <div class="page-head">
-        <h2 class="page-head-title"><?php $main->printNumeralOnScreenController($_GET['idNumeral']); ?></h2>
+        <h2 class="page-head-title"><?php $main->printNumeralOnScreenController(); ?></h2>
     </div>
 	<div class="main-content container-fluid">
 		<div class="row">
       <div class="col-sm-12">
       <?php
-        
+        $statusNumeral = $main->evalStatusNumeralController();
+        if ($statusNumeral==1)
+        {
+            echo '<div class="panel panel-full-color panel-full-danger">
+            <div class="panel-heading panel-heading-contrast">Default Full Panel
+              <div class="tools"><span class="icon mdi mdi-close"></span></div><span class="panel-subtitle">Panel subtitle description</span>
+            </div>
+            <div class="panel-body">
+              <p> Quisque gravida aliquam diam at cursus, quisque laoreet ac lectus a rhoncusac tempus odio. </p>
+              <p>Aliquam posuere volutpat turpis, ut euimod diam pellentesque at. Sed sit amet nulla a dui dignisim euismod. Morbi luctus elementum dictum. Donec convallis mattis elit id varius. Quisque facilisis sapien quis mauris,, erat condimentum.</p>
+            </div>
+          </div>';
+        }
       ?>
         <div class="panel panel-default panel-border-color panel-border-color-primary">
           <div class="panel-body">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><?php $main->printNumeralOnScreenController($_GET['idNumeral']); ?></div>
+                    <div class="panel-heading"><?php $main->printNumeralOnScreenController(); ?></div>
                     <div class="tab-container">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#2018" data-toggle="tab" aria-expanded="true">2018</a></li>
