@@ -15,7 +15,7 @@ $dashboard = new DashboardController();
                 <div class="tab-container">
                   <ul class="nav nav-tabs">
                     <li class=""><a target="_blank" href="https://www.ipm.org.gt/" style="cursor: pointer"><span class="icon mdi mdi-home"></span> Inicio</a></li>
-                    <li class=""><a href="#decreto" data-toggle="tab" aria-expanded="false"><span class="icon mdi mdi-face"></span>Decreto 29-2016</a></li>
+                    <li class=""><a href="#decreto" data-toggle="tab" aria-expanded="false"><span class="icon mdi mdi-book"></span>Decreto 29-2016</a></li>
                     <li class=""><a href="#solicitud" data-toggle="tab" aria-expanded="false"><span class="icon mdi mdi-edit"></span>Solicitud</a></li>
                     <li class="active"><a href="#contacto" data-toggle="tab" aria-expanded="true"><span class="icon mdi mdi-email"></span>contacto</a></li>
                   </ul>
