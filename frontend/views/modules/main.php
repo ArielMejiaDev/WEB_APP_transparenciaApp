@@ -75,35 +75,35 @@ $dashboard = new DashboardController();
                             </div>
                         </div>
                     </div>
-                    <div id="categorias" style="display:none;">
-                        <h3>Categorias</h3>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item">
-                                <span class="badge badge-primary">6</span> 
-                                <span class="text-primary mdi mdi-info icon"></span>
-                                Marco Normativo
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge badge-primary">2</span> 
-                                <span class="text-primary mdi mdi-info icon"></span>
-                                Funciones Depenencias
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge badge-primary">10</span> 
-                                <span class="text-primary mdi mdi-info icon"></span>
-                                Junta Directiva
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge badge-primary">5</span> 
-                                <span class="text-primary mdi mdi-info icon"></span>
-                                General
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge badge-primary">4</span>  
-                                <span class="text-primary mdi mdi-info icon"></span>
-                                Institucional
-                            </a>
-                        </div>
+                </div>
+                <div id="categorias" style="display:none;">
+                    <h3>Categorias</h3>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                            <span class="badge badge-primary">6</span> 
+                            <span class="text-primary mdi mdi-info icon"></span>
+                            Marco Normativo
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <span class="badge badge-primary">2</span> 
+                            <span class="text-primary mdi mdi-info icon"></span>
+                            Funciones Depenencias
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <span class="badge badge-primary">10</span> 
+                            <span class="text-primary mdi mdi-info icon"></span>
+                            Junta Directiva
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <span class="badge badge-primary">5</span> 
+                            <span class="text-primary mdi mdi-info icon"></span>
+                            General
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <span class="badge badge-primary">4</span>  
+                            <span class="text-primary mdi mdi-info icon"></span>
+                            Institucional
+                        </a>
                     </div>
                 </div>
             </div>
