@@ -21,4 +21,13 @@ class MainModel extends Conexion
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    //IMPRIME LOS TABS CON AÑOS Y MESES PARA CADA NUMERAL
+    public function renderTabsModel($tabla, $idNumeral)
+    {
+        $sql = "SELECT $tabla.year FROM $tabla WHERE $tabla.id_numeral=:idNumeral GROUP BY year ORDER BY year DESC";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':idNumeral', $idNumeral, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
