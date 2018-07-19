@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-07-2018 a las 03:44:12
+-- Tiempo de generación: 20-07-2018 a las 00:54:04
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,9 +178,14 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
-(116, 55, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Acuerdo 212016.pdf', '1-1-2018', 1, '', '2018-07-17 13:54:53', ''),
-(117, 55, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-2-2018', 1, '', '2018-07-17 14:00:32', ''),
-(118, 48, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Normativo de inversiones 2.pdf', '1-3-2018', 2, '', '2018-07-17 18:11:25', '');
+(116, 55, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Acuerdo 212016.pdf', '1-1-2018', 3, '', '2018-07-19 21:12:38', ''),
+(117, 55, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-2-2018', 3, '', '2018-07-19 21:13:19', ''),
+(118, 48, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Normativo de inversiones 2.pdf', '1-3-2018', 3, '', '2018-07-19 18:00:22', ''),
+(119, 48, 1, 6, 45, '2017-08-25', '2017-08-04', 2017, 'agosto', 'views/docs/Manualdistinguido.pdf', '6-1-2018', 3, '', '2018-07-19 17:59:55', ''),
+(122, 48, 1, 6, 42, '2017-02-22', '2017-02-01', 2017, 'febrero', 'views/docs/Manualdescripciones.pdf', '6-2-2018', 3, '', '2018-07-19 18:00:08', ''),
+(123, 48, 1, 15, 0, '2017-12-31', '2017-12-10', 2017, 'diciembre', 'views/docs/Manualcoso.pdf', '15-1-2018', 3, '', '2018-07-19 17:59:40', ''),
+(124, 48, 1, 6, 35, '2018-08-09', '2018-07-19', 2018, 'julio', 'views/docs/Manualadmin.pdf', '6-3-2018', 3, '', '2018-07-19 21:09:23', ''),
+(125, 55, 1, 6, 39, '2018-08-08', '2018-07-18', 2018, 'julio', 'views/docs/Normativo de arrendamientos.pdf', '6-4-2018', 3, '', '2018-07-19 21:09:12', '');
 
 -- --------------------------------------------------------
 
@@ -196,20 +201,6 @@ CREATE TABLE `mensajes` (
   `n_doc` text NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `mensajes`
---
-
-INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `n_doc`, `status`) VALUES
-(383, 55, 65, 'Subio un documento', '1-1-2018', 1),
-(384, 55, 68, 'Subio un documento', '1-1-2018', 1),
-(385, 55, 65, 'Subio un documento', '1-2-2018', 1),
-(386, 55, 68, 'Subio un documento', '1-2-2018', 1),
-(387, 65, 65, 'Aprobo un documento', '1-3-2018', 1),
-(388, 65, 68, 'Aprobo un documento', '1-3-2018', 1),
-(389, 65, 64, 'Aprobo un documento', '1-3-2018', 1),
-(390, 65, 48, 'Aprobo un documento', '1-3-2018', 1);
 
 -- --------------------------------------------------------
 
@@ -246,7 +237,7 @@ INSERT INTO `numerales` (`id`, `descripcion`, `status`, `aviso`) VALUES
 (15, 'Programas de Subsidios', 0, ''),
 (16, 'Contratos licencias y concesiones', 0, ''),
 (17, 'Empresas precalificadas para ejecución de obras públicas', 0, ''),
-(18, 'Listado de obras con fondos públicos', 0, ''),
+(18, 'Listado de obras con fondos públicos', 1, 'El Instituto de Previsión Militar es una entidad descentralizada del Estado, con personalidad jurídica, autónoma, patrimonio propio y con facultades para adquirir derechos y obligaciones en el cumplimiento de sus fines, razón por la cual no realiza este tipo de actividad y no genera este tipo de información.'),
 (19, 'Contratos de arrendamientos de inmuebles', 0, ''),
 (20, 'Contratos por cotización y licitación', 0, ''),
 (21, 'Fideicomisos', 0, ''),
@@ -318,7 +309,29 @@ INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) V
 (409, 55, 'Subio un nuevo documento', '2018-07-17', '2018-07-17 13:54:53'),
 (410, 55, 'Subio un nuevo documento', '2018-07-17', '2018-07-17 14:00:32'),
 (411, 48, 'Subio un nuevo documento', '2018-07-17', '2018-07-17 18:09:43'),
-(412, 65, 'Aprobo un documento', '2018-07-17', '2018-07-17 18:11:25');
+(412, 65, 'Aprobo un documento', '2018-07-17', '2018-07-17 18:11:25'),
+(413, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 17:48:26'),
+(414, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 17:49:13'),
+(415, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 17:49:58'),
+(416, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 17:50:17'),
+(417, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 17:53:00'),
+(418, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 17:55:02'),
+(419, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 17:58:31'),
+(420, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 17:58:39'),
+(421, 64, 'Publico un documento', '2018-07-19', '2018-07-19 17:59:40'),
+(422, 64, 'Publico un documento', '2018-07-19', '2018-07-19 17:59:55'),
+(423, 64, 'Publico un documento', '2018-07-19', '2018-07-19 18:00:08'),
+(424, 64, 'Publico un documento', '2018-07-19', '2018-07-19 18:00:22'),
+(425, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 21:04:10'),
+(426, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:05:26'),
+(427, 55, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 21:07:06'),
+(428, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:07:37'),
+(429, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:09:12'),
+(430, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:09:23'),
+(431, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:10:44'),
+(432, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:10:55'),
+(433, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:12:38'),
+(434, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:13:19');
 
 --
 -- Índices para tablas volcadas
@@ -393,13 +406,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=391;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=419;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -417,7 +430,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=413;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=435;
 
 --
 -- Restricciones para tablas volcadas
