@@ -246,7 +246,7 @@ class DocModel{
     }
     //listar numerales
     public function listaNumeralesModel($tabla){
-        $sql = "SELECT id, descripcion FROM $tabla WHERE status!=6";
+        $sql = "SELECT id, descripcion FROM $tabla WHERE status!=1";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
