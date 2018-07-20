@@ -17,7 +17,7 @@ class AjaxModuleController
                 </a>';
             }else{
                 echo '<a href="#" class="list-group-item"> 
-                    <span class="text-primary mdi mdi-info icon"></span>
+                    <span class="text-danger mdi mdi-alert-triangle icon"></span>
                     No hay documentos disponibles.
                 </a>';
             }
