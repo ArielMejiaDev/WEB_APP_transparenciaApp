@@ -14,8 +14,11 @@
       <?php
         $status = $main->evalStatusNumeralController();
         echo $status;
-        //var_dump($status);
+        if ($status==='')
+        {
+        
       ?>
+
         <div class="panel panel-default panel-border-color panel-border-color-primary">
           <div class="panel-body">
             <div class="col-sm-12">
@@ -50,6 +53,9 @@
             </div>
           </div>
         </div>
+        <?php
+        } 
+        ?>
       </div>
     </div>
     <div class="row">
@@ -62,48 +68,5 @@
     </div>
   </div>
 </div>
-<script>
-    function mostrar(){
-        var categorias = document.getElementById('categorias');
-        categorias.style.display="block";
-    }
-</script>
 <!-- SCRIPT PARA MANDAR AJAX PARA CARGAR CATEGORIAS -->
-<script>
-    var meses = document.getElementsByClassName("mes");
-    var conexionCategorias;
-    for (let index = 0; index < meses.length; index++) {
-        meses[index].addEventListener('click',enviarNumeralAñoMes,false);
-        
-    }
-    function enviarNumeralAñoMes(e)
-    {
-        e.preventDefault();
-		var idNumeral = e.target.getAttribute('idNumeral');
-        var year = e.target.getAttribute('year');
-        var mes = e.target.getAttribute('mes');
-        //alert('click en el numeral con id: '+idNumeral+' del año: '+year+' en el mes de: '+mes);
-        datos = new FormData();
-        datos.append('idNumeral',idNumeral);
-        datos.append('year',year);
-        datos.append('mes',mes);
-        conexionCategorias = new XMLHttpRequest();
-        conexionCategorias.onreadystatechange = respEnviarNumeralAñoMes;
-        conexionCategorias.open('POST','views/modules/ajaxModule.php',true);
-        conexionCategorias.send(datos);
-    }
-    function respEnviarNumeralAñoMes()
-    {
-        if (conexionCategorias.readyState==4)
-        {
-            if (conexionCategorias.status==200)
-            {
-                console.log(conexionCategorias.responseText);
-                var links = document.getElementById('agregarLinks');
-                categorias = document.getElementById('categorias');
-                categorias.style.display="block";
-                links.innerHTML = conexionCategorias.responseText; 
-            }    
-        }
-    }
-</script>
+<script src="views/js/ajaxMain.js"></script>
