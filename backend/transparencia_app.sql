@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-07-2018 a las 00:54:04
+-- Tiempo de generación: 21-07-2018 a las 01:07:08
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -185,7 +185,10 @@ INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `
 (122, 48, 1, 6, 42, '2017-02-22', '2017-02-01', 2017, 'febrero', 'views/docs/Manualdescripciones.pdf', '6-2-2018', 3, '', '2018-07-19 18:00:08', ''),
 (123, 48, 1, 15, 0, '2017-12-31', '2017-12-10', 2017, 'diciembre', 'views/docs/Manualcoso.pdf', '15-1-2018', 3, '', '2018-07-19 17:59:40', ''),
 (124, 48, 1, 6, 35, '2018-08-09', '2018-07-19', 2018, 'julio', 'views/docs/Manualadmin.pdf', '6-3-2018', 3, '', '2018-07-19 21:09:23', ''),
-(125, 55, 1, 6, 39, '2018-08-08', '2018-07-18', 2018, 'julio', 'views/docs/Normativo de arrendamientos.pdf', '6-4-2018', 3, '', '2018-07-19 21:09:12', '');
+(125, 55, 1, 6, 39, '2018-08-08', '2018-07-18', 2018, 'julio', 'views/docs/Normativo de arrendamientos.pdf', '6-4-2018', 3, '', '2018-07-19 21:09:12', ''),
+(126, 48, 1, 1, 1, '2018-08-10', '2018-07-20', 2018, 'julio', 'views/docs/Acuerdo 25.pdf', '1-4-2018', 1, '', '2018-07-20 18:07:28', ''),
+(127, 48, 1, 1, 1, '2018-05-22', '2018-05-01', 2018, 'mayo', 'views/docs/Acuerdo 26.pdf', '1-5-2018', 5, '', '2018-07-20 22:34:43', ''),
+(128, 55, 1, 1, 1, '2018-05-25', '2018-05-04', 2018, 'mayo', 'views/docs/Acuerdo 27.pdf', '1-5-2018', 5, '', '2018-07-20 23:04:45', '');
 
 -- --------------------------------------------------------
 
@@ -201,6 +204,18 @@ CREATE TABLE `mensajes` (
   `n_doc` text NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `n_doc`, `status`) VALUES
+(1, 48, 65, 'Subio un documento', '1-4-2018', 1),
+(2, 48, 68, 'Subio un documento', '1-4-2018', 1),
+(3, 48, 65, 'Subio un documento', '1-5-2018', 1),
+(4, 48, 68, 'Subio un documento', '1-5-2018', 1),
+(5, 55, 65, 'Subio un documento', '1-5-2018', 1),
+(6, 55, 68, 'Subio un documento', '1-5-2018', 1);
 
 -- --------------------------------------------------------
 
@@ -331,7 +346,10 @@ INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) V
 (431, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:10:44'),
 (432, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:10:55'),
 (433, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:12:38'),
-(434, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:13:19');
+(434, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:13:19'),
+(435, 48, 'Subio un nuevo documento', '2018-07-20', '2018-07-20 18:07:28'),
+(436, 48, 'Subio un nuevo documento', '2018-07-20', '2018-07-20 22:34:43'),
+(437, 55, 'Subio un nuevo documento', '2018-07-20', '2018-07-20 23:04:45');
 
 --
 -- Índices para tablas volcadas
@@ -406,13 +424,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=419;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -430,7 +448,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=435;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=438;
 
 --
 -- Restricciones para tablas volcadas
