@@ -1,4 +1,15 @@
 <?php
+/**
+ * Clase para los Controladores Main
+ *
+ * Clase para la vista main en la carpeta views/modules y modelo Models/MainModel.php
+ *
+ * @author    Ariel Fernando Salvador Mejia <arielsalvadormejia@gmail.com>
+ * @copyright 2018 GPL
+ * @license   Software propietario
+ * @version   "Release: <1.0.0>"
+ * @link      link(https://arielsalvador.000webhostapp.com/)
+ */
 class MainController
 {
     //DEVUELVE LA DESCRIPCION DEL NUMERAL

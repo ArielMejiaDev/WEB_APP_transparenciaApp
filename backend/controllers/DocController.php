@@ -217,7 +217,7 @@ class DocController{
                 Editar
             </a>
             </td>' ;
-                $aprobar = ($rol=='editor' || $rol=='redactor') ? '' : '<td>
+            $aprobar = ($rol=='editor' || $rol=='redactor') ? '' : '<td>
                 <button 
                     href="'.$value['idDoc'].'" 
                     documento="'.substr($value["url_doc"], 11).'" 
@@ -225,6 +225,12 @@ class DocController{
                     class="btn btn-color btn-twitter">
                     Aprobar
                 </button>
+            </td>' ;
+            $aprobarVacio = '<td>
+            <button 
+                class="btn btn-default">
+                No aplica
+            </button>
             </td>' ;
             $publicar = ($rol=='jefeRedaccion' || $rol=='redactor') ? '' : '<td>
             <button 
@@ -383,6 +389,12 @@ class DocController{
                     Aprobar
                 </button>
             </td>' ;
+            $aprobarVacio = '<td>
+                                <button 
+                                    class="btn btn-default">
+                                    No aplica
+                                </button>
+                            </td>' ;
             $publicar = ($rol=='jefeRedaccion' || $rol=='redactor') ? '' : '<td>
             <button 
                 href="'.$value['idDoc'].'" 
@@ -399,6 +411,7 @@ class DocController{
                     Rechazar
                 </a>
             </td>' ;
+            $etiquetaAprobar = ($value["status"]==5) ? $aprobarVacio : $aprobar ;
             echo   '<tr class="odd gradeX">
                         <td>'.utf8_encode($value["numeralDesc"]).'</td>
                         '.$etiquetaCategorias.'
@@ -416,7 +429,7 @@ class DocController{
 							</a>
                         </td>
                         '.$editar.'
-                        '.$aprobar.'
+                        '.$etiquetaAprobar.'
                         '.$publicar.'
                         '.$rechazar.'
 					</tr>';
