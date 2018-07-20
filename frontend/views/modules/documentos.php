@@ -3,6 +3,7 @@
 <?php 
     $main = new MainController();
     $habilitado = false;
+    $documentos = new DocumentosController();
 ?>
 <div class="be-content">
     <div class="page-head">
@@ -30,6 +31,9 @@
                 <div id="categorias" style="">
                     <h3>Documentos</h3>
                     <div class="list-group" id="agregarLinks">
+                        <?php
+                            $documentos->listarDocsController();
+                        ?>
                     </div>
                 </div>
             </div>
