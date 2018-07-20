@@ -44,32 +44,7 @@
                 </div>
                 <div id="categorias" style="display:none;">
                     <h3>Categorias</h3>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                            <span class="badge badge-primary">6</span> 
-                            <span class="text-primary mdi mdi-info icon"></span>
-                            Marco Normativo
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <span class="badge badge-primary">2</span> 
-                            <span class="text-primary mdi mdi-info icon"></span>
-                            Funciones Depenencias
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <span class="badge badge-primary">10</span> 
-                            <span class="text-primary mdi mdi-info icon"></span>
-                            Junta Directiva
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <span class="badge badge-primary">5</span> 
-                            <span class="text-primary mdi mdi-info icon"></span>
-                            General
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <span class="badge badge-primary">4</span>  
-                            <span class="text-primary mdi mdi-info icon"></span>
-                            Institucional
-                        </a>
+                    <div class="list-group" id="agregarLinks">
                     </div>
                 </div>
             </div>
@@ -96,16 +71,39 @@
 <!-- SCRIPT PARA MANDAR AJAX PARA CARGAR CATEGORIAS -->
 <script>
     var meses = document.getElementsByClassName("mes");
+    var conexionCategorias;
     for (let index = 0; index < meses.length; index++) {
-        meses[index].addEventListener('click',capturarDatosMeses,false);
+        meses[index].addEventListener('click',enviarNumeralAñoMes,false);
         
     }
-    function capturarDatosMeses(e)
+    function enviarNumeralAñoMes(e)
     {
         e.preventDefault();
 		var idNumeral = e.target.getAttribute('idNumeral');
         var year = e.target.getAttribute('year');
         var mes = e.target.getAttribute('mes');
-        alert('click en el numeral con id: '+idNumeral+' del año: '+year+' en el mes de: '+mes);
+        //alert('click en el numeral con id: '+idNumeral+' del año: '+year+' en el mes de: '+mes);
+        datos = new FormData();
+        datos.append('idNumeral',idNumeral);
+        datos.append('year',year);
+        datos.append('mes',mes);
+        conexionCategorias = new XMLHttpRequest();
+        conexionCategorias.onreadystatechange = respEnviarNumeralAñoMes;
+        conexionCategorias.open('POST','views/modules/ajaxModule.php',true);
+        conexionCategorias.send(datos);
+    }
+    function respEnviarNumeralAñoMes()
+    {
+        if (conexionCategorias.readyState==4)
+        {
+            if (conexionCategorias.status==200)
+            {
+                console.log(conexionCategorias.responseText);
+                var links = document.getElementById('agregarLinks');
+                categorias = document.getElementById('categorias');
+                categorias.style.display="block";
+                links.innerHTML = conexionCategorias.responseText; 
+            }    
+        }
     }
 </script>
