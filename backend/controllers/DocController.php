@@ -1012,6 +1012,12 @@ class DocController{
                 Publicar
             </button>
             </td>' ;
+            $botonVacio = '<td>
+            <button 
+                class="btn btn-default">
+                No aplica
+            </button>
+            </td>' ;
             $rechazar = ($rol=='redactor') ? '' : '<td>
             <a 
                 href="index.php?action=rechazarDoc&idDoc='.$value['idDoc'].'" 
@@ -1019,6 +1025,14 @@ class DocController{
                 Rechazar
             </a>
             </td>' ;
+            $etiquetaAprobar = '';
+            if ($rol=='jefeRedaccion') {
+                $etiquetaAprobar = ($value["status"]==2) ? $botonVacio : $aprobar ;
+            }
+            $etiquetaPublicar = '';
+            if ($rol=='editor') {
+                $etiquetaPublicar = ($value["status"]!=2) ? $botonVacio : $publicar ;
+            }
             echo   '<tr class="odd gradeX">
                         <td>'.utf8_encode($value["numeralDesc"]).'</td>
                         '.$etiquetaCategorias.'
@@ -1036,8 +1050,8 @@ class DocController{
 							</a>
                         </td>
                         '.$editar.'
-                        '.$aprobar.'
-                        '.$publicar.'
+                        '.$etiquetaAprobar.'
+                        '.$etiquetaPublicar.'
                         '.$rechazar.'
 					</tr>';
         }
