@@ -411,7 +411,7 @@ class DocController{
                     Rechazar
                 </a>
             </td>' ;
-            $etiquetaAprobar = ($value["status"]==5) ? $aprobarVacio : $aprobar ;
+            $etiquetaAprobar = ($value["status"]==5 || $value["status"]==2) ? $aprobarVacio : $aprobar ;
             echo   '<tr class="odd gradeX">
                         <td>'.utf8_encode($value["numeralDesc"]).'</td>
                         '.$etiquetaCategorias.'
