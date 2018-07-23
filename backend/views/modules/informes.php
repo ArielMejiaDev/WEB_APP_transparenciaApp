@@ -11,9 +11,11 @@ $rol = $datos['rol'];
 if ($rol!='editor') {
     header('Location:index.php');
 }
+$informe = new InformesController();
+$informe->generarInformeController();
+require_once "navbar.php"; 
+require_once "sidebar.php"; 
 ?>
-<?php require_once "navbar.php"; ?>
-<?php require_once "sidebar.php"; ?>
 <div class="be-content">
 	<div class="main-content container-fluid">
 		<div class="row">
@@ -28,9 +30,9 @@ if ($rol!='editor') {
 							    <div class="panel-body">
 									<form onsubmit="return validarDoc()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
 										<div class="form-group">
-											<label class="col-sm-3 control-label" for="idNumeral">Informe</label>
+											<label class="col-sm-3 control-label" for="statusInforme">Informe</label>
 											<div class="col-sm-6">
-												<select name="idNumeral" id="idNumeral" class="form-control" autofocus>
+												<select name="statusInforme" id="statusInforme" class="form-control" autofocus>
 													<option>Seleccione el informe que desea generar</option>
 													<option value="1">Documentos Pendientes</option>
                                                     <option value="4">Documentos Rechazados</option>
@@ -38,16 +40,25 @@ if ($rol!='editor') {
                                                     <option value="2">Documentos Aprobados</option>
                                                     <option value="3">Documentos Publicados</option>
 												</select>
-												<p id="avisoIdNumeral" class="text-danger text-muted" style="display: none"></p>
+												<p id="avisoStatusInforme" class="text-danger text-muted" style="display: none"></p>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label" for="fechaInforme"> Fecha </label>
+											<label class="col-sm-3 control-label" for="fechaInicialInforme"> Fecha Inicial </label>
 											<div class="col-md-3 col-xs-7">
 												<div data-min-view="2" data-date-format="yyyy-mm-dd" class="input-group date datetimepicker">
-												<input id="fechaInforme" name="fechaInforme" size="16" type="text" value="" class="form-control"><span class="input-group-addon btn btn-primary"><i class="icon-th mdi mdi-calendar"></i></span>
+												<input id="fechaInicialInforme" name="fechaInicialInforme" size="16" type="text" value="" class="form-control"><span class="input-group-addon btn btn-primary"><i class="icon-th mdi mdi-calendar"></i></span>
 												</div>
-												<p id="avisoFecha" class="text-danger text-muted" style="display: none;"></p>
+												<p id="avisoFechaInicial" class="text-danger text-muted" style="display: none;"></p>
+											</div>
+										</div>
+                                        <div class="form-group">
+											<label class="col-sm-3 control-label" for="fechaFinalInforme"> Fecha Final </label>
+											<div class="col-md-3 col-xs-7">
+												<div data-min-view="2" data-date-format="yyyy-mm-dd" class="input-group date datetimepicker">
+												<input id="fechaFinalInforme" name="fechaFinalInforme" size="16" type="text" value="" class="form-control"><span class="input-group-addon btn btn-primary"><i class="icon-th mdi mdi-calendar"></i></span>
+												</div>
+												<p id="avisoFechaFinal" class="text-danger text-muted" style="display: none;"></p>
 											</div>
 										</div>
 										<div class="form-group">

@@ -11,6 +11,7 @@
   include_once "controllers/CategoriaController.php";
   include_once "controllers/DocController.php";
   include_once "controllers/NotificacionesController.php";
+  include_once "controllers/InformesController.php";
 // MODELS
   include_once "models/Conexion.php";
   include_once "models/EnlacesModel.php";
@@ -23,6 +24,7 @@
   include_once "models/CategoriaModel.php";
   include_once "models/DocModel.php";
   include_once "models/NotificacionesModel.php";
+  include_once "models/InformesModel.php";
 
   $template = new TemplateController();
   $template->includeTemplateController();
