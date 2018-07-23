@@ -10,6 +10,7 @@ class DocumentosModel extends Conexion
         $sql .= " AND $tabla.year=:year";
         $sql .= " AND $tabla.mes=:mes";
         $sql .= " AND $tabla.id_categoria=:idCategoria";
+        $sql .= " AND $tabla.status=3";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':idNumeral', $datos['idNumeral'], PDO::PARAM_INT);
         $stmt->bindParam(':year', $datos['year'], PDO::PARAM_STR);

@@ -16,7 +16,7 @@ class DocumentosController
             $resp = DocumentosModel::listarDocsModel('documentos', $datos);
             foreach ($resp as $key => $value)
             {
-                echo '<a href="http://localhost/app/backend/'.$value['url_doc'].'" class="list-group-item">
+                echo '<a target="_blank" href="http://localhost/app/backend/'.$value['url_doc'].'" class="list-group-item">
                 <span class="text-primary mdi mdi-collection-pdf icon"></span>
                 '.substr(utf8_encode($value['url_doc']),11).'
             </a>';
