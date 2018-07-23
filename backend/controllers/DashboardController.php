@@ -34,9 +34,9 @@ class DashboardController{
 			{
 				$labelStatus = '<td class="text-warning">Pendiente</td>';
 			}elseif ($value['status']==2){
-				$labelStatus = '<td class="text-warning">Aprobado</td>';
+				$labelStatus = '<td class="text-primary">Aprobado</td>';
 			}elseif ($value['status']==3){
-				$labelStatus = '<td class="text-primary">Publicado</td>';
+				$labelStatus = '<td class="text-success">Publicado</td>';
 			}elseif ($value['status']==4){
 				$labelStatus = '<td class="text-danger">Rechazado</td>';
 			}elseif ($value['status']==5){
