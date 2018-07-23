@@ -64,6 +64,19 @@ $dashboard = new DashboardController();
                             ?>
                           </ul>
                         </li>
+                        <?php  
+                            if ($datos['rol']=='editor') {
+                        ?>
+                            <li class="parent"><a href="#"><i class="icon mdi mdi-print"></i><span>Informes</span></a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="informes"><i class="icon mdi mdi-collection-pdf"></i> Informes</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <?php 
+                            }
+                        ?>
                     </ul>
                 </div>
             </div>

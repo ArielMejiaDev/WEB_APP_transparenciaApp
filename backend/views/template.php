@@ -75,7 +75,7 @@
                             App.dashboard();
                           });
                         </script>';
-            }elseif($_GET['action'] == 'subirArchivos' || $_GET['action'] == 'editarDoc'){
+            }elseif($_GET['action'] == 'subirArchivos' || $_GET['action'] == 'editarDoc' || $_GET['action'] == 'informes'){
               echo '  <script type="text/javascript">
                         $(document).ready(function(){
                           //initialize the javascript
