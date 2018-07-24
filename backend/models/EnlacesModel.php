@@ -34,6 +34,7 @@ class EnlacesModel extends Conexion{
 			$enlace == "cerrarSesion"||
 			$enlace == "activarDoc"||
 			$enlace == "informes"||
+			$enlace == "pdf"||
 			$enlace == "documento") {
 			$url = 'views/modules/'.$enlace.'.php';
 		}else if($enlace == "index"){
