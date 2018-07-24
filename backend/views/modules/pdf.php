@@ -63,3 +63,6 @@ $informe = new InformesController();
 	    </div>
     </div>
 </div>
+<script>
+    document.title="Informe de Documentos";
+</script>

@@ -112,10 +112,9 @@ var App = (function () {
         },
         {
             extend: 'pdfHtml5',
-            title: 'Instituto de Previsión Militar',
             orientation: 'landscape',
             pageSize: 'LETTER',
-            download: 'open',
+            //download: 'open',
             customize: function ( doc ) 
             {
                 doc.pageMargins = [100, 40, 100,10 ];
@@ -129,7 +128,6 @@ var App = (function () {
         },
         {
             extend: 'print',
-            title: 'Instituto de Previsión Militar',
             orientation: 'landscape',
             pageSize: 'LETTER',
             text: '<i class="icon mdi mdi-print"> <i>',

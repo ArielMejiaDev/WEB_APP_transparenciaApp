@@ -25,6 +25,7 @@
       
       <?php 
         setlocale(LC_ALL, "es_GT.UTF-8", "es_GT", "esp");
+        date_default_timezone_set('America/Guatemala');
         $enlace = new EnlacesController();
         $enlace->loadEnlaces();
       ?>  

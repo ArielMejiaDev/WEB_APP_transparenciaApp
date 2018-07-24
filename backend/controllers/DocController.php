@@ -42,7 +42,7 @@ class DocController{
                         'id_usuario'=>$idUsuario,
                         'id_departamento'=>$idDeptoUsuario,
                         'idCategoria'=>$_POST['idCategoria'],
-                        'fecha_publicacion'=>$fechaPublicacion,
+                        'fecha_publicacion'=>date('Y-m-d'),
                         'fecha_doc'=>$_POST['fecha_doc'],
                         'year'=>$fechaFormateadaAño,
                         'mes'=>$fechaFormateadaMes,
