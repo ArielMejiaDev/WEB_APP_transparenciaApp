@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-07-2018 a las 01:07:08
+-- Tiempo de generación: 24-07-2018 a las 21:03:06
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,17 +178,9 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
-(116, 55, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Acuerdo 212016.pdf', '1-1-2018', 3, '', '2018-07-19 21:12:38', ''),
-(117, 55, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-2-2018', 3, '', '2018-07-19 21:13:19', ''),
-(118, 48, 1, 1, 1, '2018-08-07', '2018-07-17', 2018, 'julio', 'views/docs/Normativo de inversiones 2.pdf', '1-3-2018', 3, '', '2018-07-19 18:00:22', ''),
-(119, 48, 1, 6, 45, '2017-08-25', '2017-08-04', 2017, 'agosto', 'views/docs/Manualdistinguido.pdf', '6-1-2018', 3, '', '2018-07-19 17:59:55', ''),
-(122, 48, 1, 6, 42, '2017-02-22', '2017-02-01', 2017, 'febrero', 'views/docs/Manualdescripciones.pdf', '6-2-2018', 3, '', '2018-07-19 18:00:08', ''),
-(123, 48, 1, 15, 0, '2017-12-31', '2017-12-10', 2017, 'diciembre', 'views/docs/Manualcoso.pdf', '15-1-2018', 3, '', '2018-07-19 17:59:40', ''),
-(124, 48, 1, 6, 35, '2018-08-09', '2018-07-19', 2018, 'julio', 'views/docs/Manualadmin.pdf', '6-3-2018', 3, '', '2018-07-19 21:09:23', ''),
-(125, 55, 1, 6, 39, '2018-08-08', '2018-07-18', 2018, 'julio', 'views/docs/Normativo de arrendamientos.pdf', '6-4-2018', 3, '', '2018-07-19 21:09:12', ''),
-(126, 48, 1, 1, 1, '2018-08-10', '2018-07-20', 2018, 'julio', 'views/docs/Acuerdo 25.pdf', '1-4-2018', 1, '', '2018-07-20 18:07:28', ''),
-(127, 48, 1, 1, 1, '2018-05-22', '2018-05-01', 2018, 'mayo', 'views/docs/Acuerdo 26.pdf', '1-5-2018', 5, '', '2018-07-20 22:34:43', ''),
-(128, 55, 1, 1, 1, '2018-05-25', '2018-05-04', 2018, 'mayo', 'views/docs/Acuerdo 27.pdf', '1-5-2018', 5, '', '2018-07-20 23:04:45', '');
+(132, 55, 1, 1, 1, '2018-08-13', '2018-07-23', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-1-2018', 3, '', '2018-07-23 15:48:46', ''),
+(133, 55, 1, 1, 1, '2018-08-13', '2018-07-23', 2018, 'julio', 'views/docs/Acuerdo 30.pdf', '1-2-2018', 3, '', '2018-07-23 15:47:50', ''),
+(134, 55, 1, 1, 1, '2018-08-13', '2018-07-17', 2018, 'julio', 'views/docs/Manualcoso.pdf', '1-3-2018', 2, 'fecha incorrecta.', '2018-07-23 16:01:59', '');
 
 -- --------------------------------------------------------
 
@@ -210,12 +202,18 @@ CREATE TABLE `mensajes` (
 --
 
 INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `n_doc`, `status`) VALUES
-(1, 48, 65, 'Subio un documento', '1-4-2018', 1),
-(2, 48, 68, 'Subio un documento', '1-4-2018', 1),
-(3, 48, 65, 'Subio un documento', '1-5-2018', 1),
-(4, 48, 68, 'Subio un documento', '1-5-2018', 1),
-(5, 55, 65, 'Subio un documento', '1-5-2018', 1),
-(6, 55, 68, 'Subio un documento', '1-5-2018', 1);
+(17, 64, 65, 'Publico un documento', '1-1-2018', 1),
+(18, 64, 68, 'Publico un documento', '1-1-2018', 1),
+(19, 64, 64, 'Publico un documento', '1-1-2018', 1),
+(20, 64, 55, 'Publico un documento', '1-1-2018', 1),
+(21, 64, 65, 'Publico un documento', '1-2-2018', 1),
+(22, 64, 68, 'Publico un documento', '1-2-2018', 1),
+(23, 64, 64, 'Publico un documento', '1-2-2018', 1),
+(24, 64, 55, 'Publico un documento', '1-2-2018', 1),
+(25, 65, 65, 'Aprobo un documento', '1-3-2018', 1),
+(26, 65, 68, 'Aprobo un documento', '1-3-2018', 1),
+(27, 65, 64, 'Aprobo un documento', '1-3-2018', 1),
+(28, 65, 55, 'Aprobo un documento', '1-3-2018', 1);
 
 -- --------------------------------------------------------
 
@@ -321,35 +319,17 @@ CREATE TABLE `vitacora` (
 --
 
 INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) VALUES
-(409, 55, 'Subio un nuevo documento', '2018-07-17', '2018-07-17 13:54:53'),
-(410, 55, 'Subio un nuevo documento', '2018-07-17', '2018-07-17 14:00:32'),
-(411, 48, 'Subio un nuevo documento', '2018-07-17', '2018-07-17 18:09:43'),
-(412, 65, 'Aprobo un documento', '2018-07-17', '2018-07-17 18:11:25'),
-(413, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 17:48:26'),
-(414, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 17:49:13'),
-(415, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 17:49:58'),
-(416, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 17:50:17'),
-(417, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 17:53:00'),
-(418, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 17:55:02'),
-(419, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 17:58:31'),
-(420, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 17:58:39'),
-(421, 64, 'Publico un documento', '2018-07-19', '2018-07-19 17:59:40'),
-(422, 64, 'Publico un documento', '2018-07-19', '2018-07-19 17:59:55'),
-(423, 64, 'Publico un documento', '2018-07-19', '2018-07-19 18:00:08'),
-(424, 64, 'Publico un documento', '2018-07-19', '2018-07-19 18:00:22'),
-(425, 48, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 21:04:10'),
-(426, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:05:26'),
-(427, 55, 'Subio un nuevo documento', '2018-07-19', '2018-07-19 21:07:06'),
-(428, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:07:37'),
-(429, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:09:12'),
-(430, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:09:23'),
-(431, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:10:44'),
-(432, 65, 'Aprobo un documento', '2018-07-19', '2018-07-19 21:10:55'),
-(433, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:12:38'),
-(434, 64, 'Publico un documento', '2018-07-19', '2018-07-19 21:13:19'),
-(435, 48, 'Subio un nuevo documento', '2018-07-20', '2018-07-20 18:07:28'),
-(436, 48, 'Subio un nuevo documento', '2018-07-20', '2018-07-20 22:34:43'),
-(437, 55, 'Subio un nuevo documento', '2018-07-20', '2018-07-20 23:04:45');
+(444, 55, 'Subio un nuevo documento', '2018-07-23', '2018-07-23 14:38:29'),
+(445, 65, 'Aprobo un documento', '2018-07-23', '2018-07-23 14:39:36'),
+(446, 65, 'Aprobo un documento', '2018-07-23', '2018-07-23 15:17:02'),
+(447, 55, 'Subio un nuevo documento', '2018-07-23', '2018-07-23 15:46:18'),
+(448, 65, 'Aprobo un documento', '2018-07-23', '2018-07-23 15:47:24'),
+(449, 64, 'Publico un documento', '2018-07-23', '2018-07-23 15:47:50'),
+(450, 64, 'Publico un documento', '2018-07-23', '2018-07-23 15:48:47'),
+(451, 55, 'Subio un nuevo documento', '2018-07-23', '2018-07-23 16:00:14'),
+(452, 65, 'Rechazo un documento', '2018-07-23', '2018-07-23 16:00:50'),
+(453, 55, 'Edito un documento', '2018-07-23', '2018-07-23 16:01:25'),
+(454, 65, 'Aprobo un documento', '2018-07-23', '2018-07-23 16:01:59');
 
 --
 -- Índices para tablas volcadas
@@ -424,13 +404,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -448,7 +428,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=438;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=455;
 
 --
 -- Restricciones para tablas volcadas
