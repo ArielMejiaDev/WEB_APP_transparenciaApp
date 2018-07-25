@@ -18,6 +18,7 @@ $content = '';
            <thead> 
                 <tr bgcolor="#eee">
                     <th align="center">Usuario</th> 
+                    <th align="center">Departamento</th> 
                     <th align="center">Numeral</th> 
                     <th align="center">Categoria</th>
                     <th align="center"># Doc</th> 

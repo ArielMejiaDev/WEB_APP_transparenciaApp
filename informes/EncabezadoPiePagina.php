@@ -4,7 +4,8 @@ require_once('tcpdf/tcpdf.php');
 class MYPDF extends TCPDF 
 {
     // HEADER
-    public function Header() {
+    public function Header()
+    {
         // Logo PARA CAMBIARLO IR AL FOLDER EXAMPLE
         $image_file = K_PATH_IMAGES.'logo blanco y negro transparente.png';
         $this->Image($image_file, 10, 10, 15, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
@@ -17,11 +18,14 @@ class MYPDF extends TCPDF
         $this->Cell(0, 0, 'GUATEMALA - REPÚBLICA DE GUATEMALA, C.A. ', 0, 1, 'C');
     }
     // FOOTER
-    public function Footer() {
+    public function Footer()
+    {    
+        $informe = new InformesController();
+        $usuario = $informe->getUserController();
         // POCISIONANDO 15 ANTES DEL FINAL DE LA PAGINA
         $this->SetY(-15);
         $this->SetFont('helvetica', 'I', 8);
         // FUNCTION PARA IMPRIMIR NUMERO DE PAGINA.
-        $this->Cell(0, 10, 'Pag '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(0, 10, 'Pag '.$this->getAliasNumPage().'/'.$this->getAliasNbPages() . ' Generado por: '.$usuario.' ', 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }

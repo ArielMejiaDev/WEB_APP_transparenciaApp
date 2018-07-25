@@ -43,6 +43,7 @@ require_once "sidebar.php";
 												<p id="avisoStatusInforme" class="text-danger text-muted" style="display: none"></p>
 											</div>
 										</div>
+										<input name="idUsuario" id="idUsuario" type="hidden" value="<?php echo $idUsuario; ?>">
 										<div class="form-group">
 											<label class="col-sm-3 control-label" for="fechaInicialInforme"> Fecha Inicial </label>
 											<div class="col-md-3 col-xs-7">

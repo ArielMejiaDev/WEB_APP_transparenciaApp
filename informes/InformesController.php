@@ -17,19 +17,39 @@ class InformesController
             $datos = '';
             if (count($resp)>0) {
                 foreach ($resp as $key => $value) {
+                    switch ($value["status"]) {
+                        case '1':
+                            $descripcionStatus = 'Documentos Pendientes';
+                            break;
+                        case '2':
+                            $descripcionStatus = 'Documentos Aprobados';
+                            break;
+                        case '3':
+                            $descripcionStatus = 'Documentos Publicados';
+                            break;
+                        case '4':
+                            $descripcionStatus = 'Documentos Rechazados';
+                            break;
+                        case '5':
+                            $descripcionStatus = 'Documentos Extemporaneos';
+                            break;
+                        default:
+                            break;
+                    }
                     $datos.='   <tr>  
-                                  <td align="center">'.utf8_encode($value["usuario"]).'</td>  
+                                  <td align="center">'.utf8_encode($value["usuario"]).'</td>
+                                  <td align="center">'.utf8_encode($value["departamento"]).'</td>
                                   <td align="center">'.utf8_encode($value["numeralesDescripcion"]).'</td>  
                                   <td align="center">'.utf8_encode($value["categoriasDescripcion"]).'</td> 
                                   <td align="center">'.utf8_encode($value["n_doc"]).'</td>  
                                   <td align="center">'.date("d-m-Y", strtotime($value["fecha_publicacion"])).'</td>
                                   <td align="center">'.date("d-m-Y", strtotime($value["fecha_doc"])).'</td>
-                                  <td align="center">'.$value["status"].'</td>
+                                  <td align="center">'.utf8_encode($descripcionStatus).'</td>
                                 </tr>';
                 }
             }else{
                 $datos = '<tr>  
-                            <td colspan="7" align="center">NO HAY DOCUMENTOS SUBIDOS CON ESTE STATUS.</td>
+                            <td colspan="8" align="center">NO HAY DOCUMENTOS SUBIDOS CON ESTE STATUS.</td>
                         </tr>';
             }
             return $datos;
@@ -58,6 +78,17 @@ class InformesController
                 default:
                     break;
             }
+        }
+    }
+
+    //DEVUELVE EL USUARIO QUE GENERO EL DOCUMENTO
+    public function getUserController()
+    {
+        if (isset($_POST['idUsuario']) && !empty($_POST['idUsuario'])) {
+            $idUsuario = $_POST['idUsuario'];
+            $resp = InformesModel::getUserModel('usuarios', $idUsuario);
+            $usuario = $resp['usuario'];
+            return $usuario;
         }
     }
 }
