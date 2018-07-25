@@ -28,7 +28,7 @@ require_once "sidebar.php";
 							    <div class="panel-heading panel-heading-divider">Informes<span class="panel-subtitle">Genera informes de los documentos en el sistema</span>
 							    </div>
 							    <div class="panel-body">
-									<form action="http://localhost/app/informes/informeDocs.php" target="_blank" onsubmit="return validarDoc()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
+									<form action="http://localhost/app/informes/informeDocs.php" target="_blank" onsubmit="return validarInformeDocs()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
 										<div class="form-group">
 											<label class="col-sm-3 control-label" for="statusInforme">Informe</label>
 											<div class="col-sm-6">
@@ -77,3 +77,5 @@ require_once "sidebar.php";
 		</div>
 	</div>
 </div>
+<script src="views/js/validarInformeDocs.js"></script>
+
