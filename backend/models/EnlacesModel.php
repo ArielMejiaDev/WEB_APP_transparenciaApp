@@ -2,8 +2,7 @@
 require_once "Conexion.php";
 class EnlacesModel extends Conexion{
 	public function loadEnlacesModel($enlace){
-		if ($enlace == "inicio" || 
-			$enlace == "agregarUsuario" || 
+		if ($enlace == "agregarUsuario" || 
 			$enlace == "ListarUsuarios" ||
 			$enlace == "header" || 
 			$enlace == "sidebar" ||
