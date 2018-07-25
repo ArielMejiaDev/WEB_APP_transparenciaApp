@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-07-2018 a las 03:20:49
+-- Tiempo de generación: 25-07-2018 a las 20:46:47
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,11 +178,11 @@ CREATE TABLE `documentos` (
 --
 
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
-(132, 55, 1, 1, 1, '2018-08-13', '2018-07-23', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-1-2018', 3, '', '2018-07-23 15:48:46', ''),
-(133, 55, 1, 1, 1, '2018-08-13', '2018-07-23', 2018, 'julio', 'views/docs/Acuerdo 30.pdf', '1-2-2018', 3, '', '2018-07-23 15:47:50', ''),
-(134, 55, 1, 1, 1, '2018-08-13', '2018-07-17', 2018, 'julio', 'views/docs/Manualcoso.pdf', '1-3-2018', 3, 'fecha incorrecta.', '2018-07-24 23:32:32', ''),
-(135, 64, 14, 1, 1, '2018-08-14', '2018-07-24', 2018, 'julio', 'views/docs/PHP_ La Manera Correcta.pdf', '1-4-2018', 1, '', '2018-07-24 21:51:33', ''),
-(136, 64, 14, 1, 1, '0000-00-00', '2018-07-20', 2018, 'julio', 'views/docs/Acuerdo 31.pdf', '1-5-2018', 1, '', '2018-07-24 22:32:56', ''),
+(132, 55, 1, 1, 1, '2018-07-03', '2018-07-23', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-1-2018', 3, '', '2018-07-25 18:29:30', ''),
+(133, 55, 1, 1, 1, '2018-07-15', '2018-07-23', 2018, 'julio', 'views/docs/Acuerdo 30.pdf', '1-2-2018', 3, '', '2018-07-25 18:29:20', ''),
+(134, 55, 1, 1, 1, '2018-07-13', '2018-07-17', 2018, 'julio', 'views/docs/Manualcoso.pdf', '1-3-2018', 3, 'fecha incorrecta.', '2018-07-25 18:29:12', ''),
+(135, 64, 14, 1, 1, '2018-07-14', '2018-07-24', 2018, 'julio', 'views/docs/PHP_ La Manera Correcta.pdf', '1-4-2018', 1, '', '2018-07-25 18:29:38', ''),
+(136, 64, 14, 1, 1, '2018-07-01', '2018-07-20', 2018, 'julio', 'views/docs/Acuerdo 31.pdf', '1-5-2018', 1, '', '2018-07-25 18:28:58', ''),
 (137, 64, 14, 1, 1, '2018-07-25', '2018-07-21', 2018, 'julio', 'views/docs/Acuerdo 32.pdf', '1-6-2018', 1, '', '2018-07-24 22:34:03', ''),
 (138, 64, 14, 1, 1, '2018-07-24', '2018-07-22', 2018, 'julio', 'views/docs/Acuerdo 33.pdf', '1-7-2018', 1, '', '2018-07-24 22:43:06', ''),
 (139, 64, 14, 1, 1, '2018-07-24', '2018-05-01', 2018, 'mayo', 'views/docs/Acuerdo 34.pdf', '1-8-2018', 5, '', '2018-07-24 23:05:38', ''),
