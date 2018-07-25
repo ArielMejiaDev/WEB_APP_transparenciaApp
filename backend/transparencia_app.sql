@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-07-2018 a las 21:03:06
+-- Tiempo de generación: 25-07-2018 a las 03:20:49
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -180,7 +180,18 @@ CREATE TABLE `documentos` (
 INSERT INTO `documentos` (`id`, `id_usuario`, `id_departamento`, `id_numeral`, `id_categoria`, `fecha_publicacion`, `fecha_doc`, `year`, `mes`, `url_doc`, `n_doc`, `status`, `justificacion`, `fecha_actualizado`, `observaciones`) VALUES
 (132, 55, 1, 1, 1, '2018-08-13', '2018-07-23', 2018, 'julio', 'views/docs/Acuerdo 002016.pdf', '1-1-2018', 3, '', '2018-07-23 15:48:46', ''),
 (133, 55, 1, 1, 1, '2018-08-13', '2018-07-23', 2018, 'julio', 'views/docs/Acuerdo 30.pdf', '1-2-2018', 3, '', '2018-07-23 15:47:50', ''),
-(134, 55, 1, 1, 1, '2018-08-13', '2018-07-17', 2018, 'julio', 'views/docs/Manualcoso.pdf', '1-3-2018', 2, 'fecha incorrecta.', '2018-07-23 16:01:59', '');
+(134, 55, 1, 1, 1, '2018-08-13', '2018-07-17', 2018, 'julio', 'views/docs/Manualcoso.pdf', '1-3-2018', 3, 'fecha incorrecta.', '2018-07-24 23:32:32', ''),
+(135, 64, 14, 1, 1, '2018-08-14', '2018-07-24', 2018, 'julio', 'views/docs/PHP_ La Manera Correcta.pdf', '1-4-2018', 1, '', '2018-07-24 21:51:33', ''),
+(136, 64, 14, 1, 1, '0000-00-00', '2018-07-20', 2018, 'julio', 'views/docs/Acuerdo 31.pdf', '1-5-2018', 1, '', '2018-07-24 22:32:56', ''),
+(137, 64, 14, 1, 1, '2018-07-25', '2018-07-21', 2018, 'julio', 'views/docs/Acuerdo 32.pdf', '1-6-2018', 1, '', '2018-07-24 22:34:03', ''),
+(138, 64, 14, 1, 1, '2018-07-24', '2018-07-22', 2018, 'julio', 'views/docs/Acuerdo 33.pdf', '1-7-2018', 1, '', '2018-07-24 22:43:06', ''),
+(139, 64, 14, 1, 1, '2018-07-24', '2018-05-01', 2018, 'mayo', 'views/docs/Acuerdo 34.pdf', '1-8-2018', 5, '', '2018-07-24 23:05:38', ''),
+(140, 55, 1, 1, 1, '2018-07-24', '2018-05-01', 2018, 'mayo', 'views/docs/Acuerdo 35.pdf', '1-8-2018', 5, '', '2018-07-24 23:13:09', ''),
+(141, 55, 1, 1, 1, '2018-07-24', '2018-05-01', 2018, 'mayo', 'views/docs/Acuerdo 36.pdf', '1-8-2018', 3, '', '2018-07-24 23:32:37', ''),
+(142, 55, 1, 1, 1, '2018-07-24', '2018-07-20', 2018, 'julio', 'views/docs/Acuerdo 37.pdf', '1-9-2018', 3, '', '2018-07-24 23:32:17', ''),
+(143, 55, 1, 1, 1, '2018-07-24', '2018-07-23', 2018, 'julio', 'views/docs/Acuerdo 38.pdf', '1-10-2018', 3, '', '2018-07-24 23:32:07', ''),
+(144, 55, 1, 1, 1, '2018-07-24', '2018-07-24', 2018, 'julio', 'views/docs/Acuerdo 39.pdf', '1-11-2018', 3, '', '2018-07-24 23:31:55', ''),
+(145, 55, 1, 1, 1, '2018-07-24', '2018-07-24', 2018, 'julio', 'views/docs/Acuerdo 40.pdf', '1-12-2018', 3, '', '2018-07-24 23:32:26', '');
 
 -- --------------------------------------------------------
 
@@ -210,10 +221,32 @@ INSERT INTO `mensajes` (`id`, `remitente`, `receptor`, `contenido`, `n_doc`, `st
 (22, 64, 68, 'Publico un documento', '1-2-2018', 1),
 (23, 64, 64, 'Publico un documento', '1-2-2018', 1),
 (24, 64, 55, 'Publico un documento', '1-2-2018', 1),
-(25, 65, 65, 'Aprobo un documento', '1-3-2018', 1),
-(26, 65, 68, 'Aprobo un documento', '1-3-2018', 1),
-(27, 65, 64, 'Aprobo un documento', '1-3-2018', 1),
-(28, 65, 55, 'Aprobo un documento', '1-3-2018', 1);
+(25, 64, 65, 'Publico un documento', '1-3-2018', 1),
+(26, 64, 68, 'Publico un documento', '1-3-2018', 1),
+(27, 64, 64, 'Publico un documento', '1-3-2018', 1),
+(28, 64, 55, 'Publico un documento', '1-3-2018', 1),
+(29, 64, 65, 'Publico un documento', '1-8-2018', 1),
+(30, 64, 68, 'Publico un documento', '1-8-2018', 1),
+(31, 64, 65, 'Publico un documento', '1-8-2018', 1),
+(32, 64, 68, 'Publico un documento', '1-8-2018', 1),
+(33, 64, 65, 'Publico un documento', '1-9-2018', 1),
+(34, 64, 68, 'Publico un documento', '1-9-2018', 1),
+(35, 64, 65, 'Publico un documento', '1-10-2018', 1),
+(36, 64, 68, 'Publico un documento', '1-10-2018', 1),
+(37, 64, 65, 'Publico un documento', '1-11-2018', 1),
+(38, 64, 68, 'Publico un documento', '1-11-2018', 1),
+(39, 64, 65, 'Publico un documento', '1-12-2018', 1),
+(40, 64, 68, 'Publico un documento', '1-12-2018', 1),
+(41, 64, 64, 'Publico un documento', '1-12-2018', 1),
+(42, 64, 55, 'Publico un documento', '1-12-2018', 1),
+(43, 64, 64, 'Publico un documento', '1-8-2018', 1),
+(44, 64, 55, 'Publico un documento', '1-8-2018', 1),
+(45, 64, 64, 'Publico un documento', '1-9-2018', 1),
+(46, 64, 55, 'Publico un documento', '1-9-2018', 1),
+(47, 64, 64, 'Publico un documento', '1-10-2018', 1),
+(48, 64, 55, 'Publico un documento', '1-10-2018', 1),
+(49, 64, 64, 'Publico un documento', '1-11-2018', 1),
+(50, 64, 55, 'Publico un documento', '1-11-2018', 1);
 
 -- --------------------------------------------------------
 
@@ -329,7 +362,30 @@ INSERT INTO `vitacora` (`id`, `id_usuario`, `desc_actividad`, `fecha`, `hora`) V
 (451, 55, 'Subio un nuevo documento', '2018-07-23', '2018-07-23 16:00:14'),
 (452, 65, 'Rechazo un documento', '2018-07-23', '2018-07-23 16:00:50'),
 (453, 55, 'Edito un documento', '2018-07-23', '2018-07-23 16:01:25'),
-(454, 65, 'Aprobo un documento', '2018-07-23', '2018-07-23 16:01:59');
+(454, 65, 'Aprobo un documento', '2018-07-23', '2018-07-23 16:01:59'),
+(455, 64, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 21:51:34'),
+(456, 64, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 22:32:56'),
+(457, 64, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 22:34:03'),
+(458, 64, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 22:43:06'),
+(459, 64, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 23:05:39'),
+(460, 55, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 23:13:09'),
+(461, 55, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 23:14:24'),
+(462, 55, 'Edito un documento', '2018-07-24', '2018-07-24 23:14:33'),
+(463, 55, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 23:19:12'),
+(464, 55, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 23:19:44'),
+(465, 55, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 23:21:08'),
+(466, 55, 'Subio un nuevo documento', '2018-07-24', '2018-07-24 23:21:29'),
+(467, 65, 'Aprobo un documento', '2018-07-24', '2018-07-24 23:29:53'),
+(468, 65, 'Aprobo un documento', '2018-07-24', '2018-07-24 23:30:00'),
+(469, 65, 'Aprobo un documento', '2018-07-24', '2018-07-24 23:30:12'),
+(470, 65, 'Aprobo un documento', '2018-07-24', '2018-07-24 23:30:18'),
+(471, 65, 'Aprobo un documento', '2018-07-24', '2018-07-24 23:30:26'),
+(472, 64, 'Publico un documento', '2018-07-24', '2018-07-24 23:31:55'),
+(473, 64, 'Publico un documento', '2018-07-24', '2018-07-24 23:32:08'),
+(474, 64, 'Publico un documento', '2018-07-24', '2018-07-24 23:32:17'),
+(475, 64, 'Publico un documento', '2018-07-24', '2018-07-24 23:32:26'),
+(476, 64, 'Publico un documento', '2018-07-24', '2018-07-24 23:32:32'),
+(477, 64, 'Publico un documento', '2018-07-24', '2018-07-24 23:32:37');
 
 --
 -- Índices para tablas volcadas
@@ -404,13 +460,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `numerales`
@@ -428,7 +484,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vitacora`
 --
 ALTER TABLE `vitacora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=455;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=478;
 
 --
 -- Restricciones para tablas volcadas
