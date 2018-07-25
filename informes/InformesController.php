@@ -1,0 +1,63 @@
+<?php
+class InformesController
+{
+    //INFORME DE DOCUMENTOS POR STATUS
+    public function informeDocsPorStatusController()
+    {
+        if (isset($_POST['statusInforme']) && !empty($_POST['statusInforme']) && 
+            isset($_POST['fechaInicialInforme']) && !empty($_POST['fechaInicialInforme']) && 
+            isset($_POST['fechaFinalInforme']) && !empty($_POST['fechaFinalInforme'])
+        ) {
+            $datos = array('status'=>(int)$_POST['statusInforme'], 
+                            'fechaInicial'=>$_POST['fechaInicialInforme'], 
+                            'fechaFinal'=>$_POST['fechaFinalInforme']);
+            //var_dump($datos);
+            $resp = InformesModel::informeDocsPorStatusModel($datos);
+            //var_dump($resp);
+            $datos = '';
+            if (count($resp)>0) {
+                foreach ($resp as $key => $value) {
+                    $datos.='   <tr>  
+                                  <td align="center">'.utf8_encode($value["usuario"]).'</td>  
+                                  <td align="center">'.utf8_encode($value["numeralesDescripcion"]).'</td>  
+                                  <td align="center">'.utf8_encode($value["categoriasDescripcion"]).'</td> 
+                                  <td align="center">'.utf8_encode($value["n_doc"]).'</td>  
+                                  <td align="center">'.date("d-m-Y", strtotime($value["fecha_publicacion"])).'</td>
+                                  <td align="center">'.date("d-m-Y", strtotime($value["fecha_doc"])).'</td>
+                                  <td align="center">'.$value["status"].'</td>
+                                </tr>';
+                }
+            }else{
+                $datos = '<tr>  
+                            <td colspan="7" align="center">NO HAY DOCUMENTOS SUBIDOS CON ESTE STATUS.</td>
+                        </tr>';
+            }
+            return $datos;
+        }
+    }
+    //OBTENER LA DESCRIPCION PARA EL TITULO DE LOS INFORMES
+    public function getTituloController()
+    {
+        if (isset($_POST['statusInforme']) && !empty($_POST['statusInforme'])) {
+            switch ($_POST['statusInforme']) {
+                case '1':
+                    return 'Documentos Pendientes';
+                    break;
+                case '2':
+                    return 'Documentos Aprobados';
+                    break;
+                case '3':
+                    return 'Documentos Publicados';
+                    break;
+                case '4':
+                    return 'Documentos Rechazados';
+                    break;
+                case '5':
+                    return 'Documentos Extemporaneos';
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
