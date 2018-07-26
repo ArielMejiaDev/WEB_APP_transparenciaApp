@@ -33,6 +33,7 @@ class EnlacesModel extends Conexion{
 			$enlace == "cerrarSesion"||
 			$enlace == "activarDoc"||
 			$enlace == "informes"||
+			$enlace == "informesVitacora"||
 			$enlace == "pdf"||
 			$enlace == "documento") {
 			$url = 'views/modules/'.$enlace.'.php';

@@ -73,7 +73,7 @@ $dashboard = new DashboardController();
                                         <a href="informes"><i class="icon mdi mdi-collection-pdf"></i> Informes Docs</a>
                                     </li>
                                     <li>
-                                        <a href=""><i class="icon mdi mdi-collection-pdf"></i> Informes Vitacora</a>
+                                        <a href="informesVitacora"><i class="icon mdi mdi-collection-pdf"></i> Informes Vitacora</a>
                                     </li>
                                 </ul>
                             </li>

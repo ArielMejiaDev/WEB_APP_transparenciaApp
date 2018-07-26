@@ -76,7 +76,7 @@
                             App.dashboard();
                           });
                         </script>';
-            }elseif($_GET['action'] == 'subirArchivos' || $_GET['action'] == 'editarDoc' || $_GET['action'] == 'informes'){
+            }elseif($_GET['action'] == 'subirArchivos' || $_GET['action'] == 'editarDoc' || $_GET['action'] == 'informes' || $_GET['action'] == 'informesVitacora'){
               echo '  <script type="text/javascript">
                         $(document).ready(function(){
                           //initialize the javascript
