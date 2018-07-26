@@ -16,11 +16,12 @@ require_once('EncabezadoPiePagina.php');
 require_once('ConfPdf.php');
 $pdf->SetFont('helvetica', '', 12);
 $pdf->AddPage('L');
+
 $content = '';  
         $content .= '  
         <h3 align="center">Informe de '.$titulo.'</h3>
         <p align="center">'.$leyenda.'</p>
-        <table class="table table-hover invoice" border="1" cellspacing="0" cellpadding="0" >  
+        <table class="table" border="1" cellspacing="0" cellpadding="0" >  
            <thead> 
                 <tr bgcolor="#eee">
                     <th align="center">Usuario</th> 
