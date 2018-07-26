@@ -36,7 +36,7 @@ class InformesController
                         default:
                             break;
                     }
-                    $datos.='   <tr>  
+                    $datos.='   <tr nobr="true">>  
                                   <td align="center">'.utf8_encode($value["usuario"]).'</td>
                                   <td align="center">'.utf8_encode($value["departamento"]).'</td>
                                   <td align="center">'.utf8_encode($value["numeralesDescripcion"]).'</td>  
