@@ -5,11 +5,7 @@ require_once 'InformesController.php';
 require_once 'InformesModel.php';
 $informe = new InformesController();
 $titulo = 'Vitacora.';
-$i = $_POST['fechaInicialInformeVitacora'];
-$leyendaUno = strftime("Correspondiente del dia %d de %B del %Y ", strtotime($i));
-$f = $_POST['fechaFinalInformeVitacora'];
-$leyendaDos = strftime("al dia %d de %B del %Y.", strtotime($f));
-$leyenda = $leyendaUno . $leyendaDos; 
+$leyenda = $informe->getLeyendaController($_POST['fechaInicialInformeVitacora'], $_POST['fechaFinalInformeVitacora']); 
 //SE LLAMA AL ARCHIVO DE ENCABEZADO Y PIE DE PAGINA PERSONALIZADO
 require_once('EncabezadoPiePagina.php');
 // INSTANCIANDO EL OBJETO PDF CON PARAMETROS PARA EL CONSTRUCTOR DE LA LIBRERIA

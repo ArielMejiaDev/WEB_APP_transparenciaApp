@@ -5,6 +5,7 @@ require_once 'InformesController.php';
 require_once 'InformesModel.php';
 $informe = new InformesController();
 $titulo = $informe->getTituloController();
+$leyenda = $informe->getLeyendaController($_POST['fechaInicialInforme'], $_POST['fechaFinalInforme']); 
 //SE LLAMA AL ARCHIVO DE ENCABEZADO Y PIE DE PAGINA PERSONALIZADO
 require_once('EncabezadoPiePagina.php');
 // INSTANCIANDO EL OBJETO PDF CON PARAMETROS PARA EL CONSTRUCTOR DE LA LIBRERIA
@@ -13,7 +14,8 @@ $pdf->SetFont('helvetica', '', 12);
 $pdf->AddPage('L');
 $content = '';  
         $content .= '  
-        <h3 align="center">Informe de '.$titulo.'</h3><br /><br />  
+        <h3 align="center">Informe de '.$titulo.'</h3>
+        <p align="center">'.$leyenda.'</p> 
         <table class="table table-hover invoice" border="1" cellspacing="0" cellpadding="5">  
            <thead> 
                 <tr bgcolor="#eee">

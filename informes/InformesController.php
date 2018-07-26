@@ -36,7 +36,7 @@ class InformesController
                         default:
                             break;
                     }
-                    $datos.='   <tr nobr="true">>  
+                    $datos.='   <tr nobr="true">
                                   <td align="center">'.utf8_encode($value["usuario"]).'</td>
                                   <td align="center">'.utf8_encode($value["departamento"]).'</td>
                                   <td align="center">'.utf8_encode($value["numeralesDescripcion"]).'</td>  
@@ -118,5 +118,16 @@ class InformesController
             }
             return $datos;
         }
+    }
+    //DEVUELVE LA LEYENDA PARA LOS TITUTLOS DE LOS INFORMES
+    public function getLeyendaController($fechaInicial, $fechaFinal)
+    {
+        
+        $i = $fechaInicial;
+        $leyendaUno = strftime("Correspondiente del dia %d de %B del %Y ", strtotime($i));
+        $f = $fechaFinal;
+        $leyendaDos = strftime("al dia %d de %B del %Y.", strtotime($f));
+        $leyenda = $leyendaUno . $leyendaDos;
+        return $leyenda;
     }
 }
