@@ -65,12 +65,15 @@ $dashboard = new DashboardController();
                           </ul>
                         </li>
                         <?php  
-                            if ($datos['rol']=='editor') {
+                            if ($datos['rol']=='editor' || $datos['rol']=='admin') {
                         ?>
                             <li class="parent"><a href="#"><i class="icon mdi mdi-print"></i><span>Informes</span></a>
                                 <ul class="sub-menu">
                                     <li>
-                                        <a href="informes"><i class="icon mdi mdi-collection-pdf"></i> Informes</a>
+                                        <a href="informes"><i class="icon mdi mdi-collection-pdf"></i> Informes Docs</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon mdi mdi-collection-pdf"></i> Informes Vitacora</a>
                                     </li>
                                 </ul>
                             </li>
