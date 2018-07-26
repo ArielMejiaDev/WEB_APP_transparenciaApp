@@ -26,6 +26,8 @@ class MYPDF extends TCPDF
         $this->SetY(-15);
         $this->SetFont('helvetica', 'I', 8);
         // FUNCTION PARA IMPRIMIR NUMERO DE PAGINA.
-        $this->Cell(0, 10, 'Pag '.$this->getAliasNumPage().'/'.$this->getAliasNbPages() . ' Generado por: '.$usuario.' ', 0, false, 'C', 0, '', 0, false, 'T', 'M');
+        $d = date("Y-m-d");
+        $fecha = strftime(" a los %d dias del mes de %B de %Y.", strtotime($d));
+        $this->Cell(0, 10, 'Pag '.$this->getAliasNumPage().'/'.$this->getAliasNbPages() . ' Generado por usuario: '.$usuario.' a las '. date('H:i:s a').' '.$fecha.' ', 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
