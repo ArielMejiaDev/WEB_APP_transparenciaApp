@@ -35,4 +35,21 @@ class InformesModel extends Conexion
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    //INFORME DE VITACORA
+    public function informeVitacoraModel($datos)
+    {
+        $sql = "SELECT usuarios.usuario, ";
+        $sql .= "departamentos.nombres AS depto, ";
+        $sql .= "vitacora.desc_actividad, ";
+        $sql .= "vitacora.hora ";
+        $sql .= "FROM ((vitacora INNER JOIN usuarios ON ";
+        $sql .= "vitacora.id_usuario=usuarios.id) ";
+        $sql .= "INNER JOIN departamentos ON ";
+        $sql .= "usuarios.id_departamento=departamentos.id)";
+        $stmt = Conexion::connect()->prepare($sql);
+        $stmt->bindParam(':fechaInicial', $datos['fechaInicial'], PDO::PARAM_STR);
+        $stmt->bindParam(':fechaFinal', $datos['fechaFinal'], PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

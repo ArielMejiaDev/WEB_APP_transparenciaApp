@@ -91,4 +91,32 @@ class InformesController
             return $usuario;
         }
     }
+
+    //INFORME DE VITACORA
+    public function informeVitacoraController()
+    {
+        if (isset($_POST['fechaInicialInformeVitacora']) && !empty($_POST['fechaInicialInformeVitacora']) && 
+            isset($_POST['fechaFinalInformeVitacora']) && !empty($_POST['fechaFinalInformeVitacora'])) {
+            $datos = array('fechaInicial'=>$_POST['fechaInicialInformeVitacora'], 
+                        'fechaFinal'=>$_POST['fechaFinalInformeVitacora']);
+            $resp = InformesModel::informeVitacoraModel($datos);
+            //var_dump($resp);
+            $datos = '';
+            if (count($resp)>0) {
+                foreach ($resp as $key => $value) {
+                    $datos.='   <tr nobr="true">  
+                                  <td align="center">'.utf8_encode($value["usuario"]).'</td>
+                                  <td align="center">'.utf8_encode($value["depto"]).'</td> 
+                                  <td align="center">'.utf8_encode($value["desc_actividad"]).'</td> 
+                                  <td align="center">'.utf8_encode($value["hora"]).'</td>
+                                </tr>';
+                }
+            }else{
+                $datos = '<tr>  
+                            <td colspan="8" align="center">NO HAY DOCUMENTOS SUBIDOS CON ESTE STATUS.</td>
+                        </tr>';
+            }
+            return $datos;
+        }
+    }
 }
