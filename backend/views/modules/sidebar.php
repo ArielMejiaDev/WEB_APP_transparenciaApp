@@ -72,9 +72,15 @@ $dashboard = new DashboardController();
                                     <li>
                                         <a href="informes"><i class="icon mdi mdi-collection-pdf"></i> Informes Docs</a>
                                     </li>
+                                    <?php  
+                                        if ($datos['rol']=='admin') {
+                                    ?>
                                     <li>
                                         <a href="informesVitacora"><i class="icon mdi mdi-collection-pdf"></i> Informes Vitacora</a>
                                     </li>
+                                    <?php 
+                                        }
+                                    ?>
                                 </ul>
                             </li>
                         <?php 

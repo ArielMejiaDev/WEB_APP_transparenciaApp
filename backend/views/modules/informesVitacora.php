@@ -8,7 +8,7 @@ $datos = $datosUsuario->getDatosUsuarioController();
 $idUsuario = $datos['id'];
 $idDeptoUsuario = $datos['id_departamento'];
 $rol = $datos['rol'];
-if ($rol!='editor' && $rol!='admin') {
+if ($rol!='admin') {
     header('Location:index.php');
 }
 $informe = new InformesController();
