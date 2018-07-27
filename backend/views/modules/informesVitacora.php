@@ -28,7 +28,7 @@ require_once "sidebar.php";
 							    <div class="panel-heading panel-heading-divider">Informes de Vitacora<span class="panel-subtitle">Genera informes de la vitacora del sistema</span>
 							    </div>
 							    <div class="panel-body">
-									<form action="http://localhost/app/informes/informeVitacoraPdf.php" target="_blank" onsubmit="return validarInformeDocs()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
+									<form action="http://localhost/app/informes/informeVitacoraPdf.php" target="_blank" onsubmit="return validarInformeVitacora()" style="border-radius: 0px;" class="form-horizontal group-border-dashed" onsubmit="" method="post" enctype=multipart/form-data>
 										<input name="idUsuario" id="idUsuario" type="hidden" value="<?php echo $idUsuario; ?>">
 										<div class="form-group">
 											<label class="col-sm-3 control-label" for="fechaInicialInformeVitacora"> Fecha Inicial </label>
@@ -63,5 +63,5 @@ require_once "sidebar.php";
 		</div>
 	</div>
 </div>
-<script src="views/js/validarInformeDocs.js"></script>
+<script src="views/js/validarInformeVitacora.js"></script>
 

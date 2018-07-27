@@ -10,15 +10,12 @@
     <title>Transparencia App</title>
     <link rel="stylesheet" type="text/css" href="views/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
-
     <script src="views/js/sweetalert2.all.js"></script>
     <link rel="stylesheet" type="text/css" href="views/lib/jquery.vectormap/jquery-jvectormap-1.2.2.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/jqvmap/jqvmap.min.css"/>
     <link rel="stylesheet" type="text/css" href="views/lib/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
-
     <link rel="stylesheet" type="text/css" href="views/lib/datatables/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" href="views/css/style.css" type="text/css"/>
-    
   </head>
   <body>
     <div class="be-wrapper">

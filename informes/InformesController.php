@@ -7,7 +7,8 @@ class InformesController
         if (isset($_POST['statusInforme']) && !empty($_POST['statusInforme']) && 
             isset($_POST['fechaInicialInforme']) && !empty($_POST['fechaInicialInforme']) && 
             isset($_POST['fechaFinalInforme']) && !empty($_POST['fechaFinalInforme'])
-        ) {
+        ) 
+        {
             $datos = array('status'=>(int)$_POST['statusInforme'], 
                             'fechaInicial'=>$_POST['fechaInicialInforme'], 
                             'fechaFinal'=>$_POST['fechaFinalInforme']);
